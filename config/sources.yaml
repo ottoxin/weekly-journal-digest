@@ -1,0 +1,138 @@
+timezone: America/Chicago
+default_lookback_days: 28
+state_dir: .state
+social_science_keywords:
+  - communication
+  - media
+  - journalism
+  - political
+  - politics
+  - election
+  - voting
+  - voter
+  - democracy
+  - campaign
+  - parliament
+  - legislature
+  - governance
+  - institution
+  - institutions
+  - misinformation
+  - disinformation
+  - public opinion
+  - survey
+  - sociology
+  - sociological
+  - psychology
+  - behavioral
+  - behavioural
+  - social behavior
+  - social behaviour
+  - inequality
+  - migration
+  - gender
+  - race
+  - policy
+  - public policy
+  - civic
+  - collective behavior
+  - collective behaviour
+  - social network
+sources:
+  - id: joc
+    journal: Journal of Communication
+    category: communication
+    adapter: crossref
+    issns: ["0021-9916", "1460-2466"]
+    allowed_article_types: ["journal-article"]
+  - id: jcmc
+    journal: Journal of Computer-Mediated Communication
+    category: communication
+    adapter: crossref
+    issns: ["1083-6101"]
+    allowed_article_types: ["journal-article"]
+  - id: political-communication
+    journal: Political Communication
+    category: communication
+    adapter: crossref
+    issns: ["1058-4609", "1091-7675"]
+    allowed_article_types: ["journal-article"]
+  - id: hcr
+    journal: Human Communication Research
+    category: communication
+    adapter: crossref
+    issns: ["0360-3989", "1468-2958"]
+    allowed_article_types: ["journal-article"]
+  - id: communication-research
+    journal: Communication Research
+    category: communication
+    adapter: crossref
+    issns: ["0093-6502", "1552-3810"]
+    allowed_article_types: ["journal-article"]
+  - id: ajps
+    journal: American Journal of Political Science
+    category: political_science
+    adapter: crossref
+    issns: ["0092-5853", "1540-5907"]
+    allowed_article_types: ["journal-article"]
+  - id: apsr
+    journal: American Political Science Review
+    category: political_science
+    adapter: crossref
+    issns: ["0003-0554", "1537-5943"]
+    allowed_article_types: ["journal-article"]
+  - id: political-analysis
+    journal: Political Analysis
+    category: political_science
+    adapter: crossref
+    issns: ["1047-1987", "1476-4989"]
+    allowed_article_types: ["journal-article"]
+  - id: nature
+    journal: Nature
+    category: general_science
+    adapter: crossref
+    issns: ["0028-0836", "1476-4687"]
+    allowed_article_types: ["journal-article"]
+    require_social_science_match: true
+  - id: science
+    journal: Science
+    category: general_science
+    adapter: crossref
+    issns: ["0036-8075", "1095-9203"]
+    allowed_article_types: ["journal-article"]
+    require_social_science_match: true
+  - id: pnas
+    journal: Proceedings of the National Academy of Sciences
+    category: general_science
+    adapter: crossref
+    issns: ["0027-8424", "1091-6490"]
+    allowed_article_types: ["journal-article"]
+    require_social_science_match: true
+  - id: science-advances
+    journal: Science Advances
+    category: general_science
+    adapter: crossref
+    issns: ["2375-2548"]
+    allowed_article_types: ["journal-article"]
+    require_social_science_match: true
+  - id: nature-human-behaviour
+    journal: Nature Human Behaviour
+    category: general_science
+    adapter: crossref
+    issns: ["2397-3374"]
+    allowed_article_types: ["journal-article"]
+    require_social_science_match: true
+  - id: nature-communications
+    journal: Nature Communications
+    category: general_science
+    adapter: crossref
+    issns: ["2041-1723"]
+    allowed_article_types: ["journal-article"]
+    require_social_science_match: true
+  - id: nature-machine-intelligence
+    journal: Nature Machine Intelligence
+    category: general_science
+    adapter: crossref
+    issns: ["2522-5839"]
+    allowed_article_types: ["journal-article"]
+    require_social_science_match: true
