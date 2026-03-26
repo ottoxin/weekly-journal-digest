@@ -46,6 +46,8 @@ This means the Monday run is not limited to “only fetch the last 7 days.” It
 
 - Local SQLite state lives under `.state/` by default.
 - Crossref is used as the canonical metadata backbone for DOI normalization, publication dates, and abstract fallback.
+- Collection now uses a layered metadata approach:
+  Crossref for discovery, optional Semantic Scholar DOI enrichment for abstracts and citation counts, and OpenAlex DOI fallback for abstracts that remain missing.
 - Collection is idempotent. Re-running `collect` or `build-weekly-digest` should not duplicate articles.
 - Sending is idempotent per digest date and recipient unless `--force` is used.
 - Collection archives are written to `.state/archives/` for debugging and auditability.
@@ -54,10 +56,13 @@ This means the Monday run is not limited to “only fetch the last 7 days.” It
 
 The repo is meant to be driven by an external automation, but the operational flow is simple:
 
-1. Run `collect` to fetch journal metadata for a rolling window and upsert it into local SQLite state.
-2. Run `build-weekly-digest` with the Monday digest date to generate a deterministic `candidate_digest.json`.
-3. Have Codex read `candidate_digest.json` with the companion skill, filter out clearly irrelevant items, and write `reviewed_digest.md`.
-4. Run `send-digest` with the reviewed markdown file to send the final email through Gmail.
+1. Determine the Monday digest date and the exact weekly window.
+2. Run `collect` to fetch journal metadata for a rolling window and upsert it into local SQLite state.
+3. Run `build-weekly-digest` with the Monday digest date to generate a deterministic `candidate_digest.json`.
+4. Have Codex read `candidate_digest.json` with the companion skill, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP relevance, and write a structured `reviewed_digest.md`.
+   For every kept article in the full curated digest, include abstract, authors, affiliations when available, DOI, and link.
+5. Run `send-digest` with the reviewed markdown file to send a short HTML summary email and attach the full curated digest as a PDF.
+6. Save the markdown and PDF under a repo log folder if you want the run preserved in GitHub history.
 
 The weekly window logic is:
 
@@ -69,9 +74,23 @@ The weekly window logic is:
 
 For the example week `2026-03-15` through `2026-03-21`, use `--digest-date 2026-03-22`.
 
+## Run Logs
+
+For repeatable automation runs, keep artifacts in a tracked log folder inside the repo:
+
+- `logs/YYYY-MM-DD/candidate_digest-YYYY-MM-DD.json`
+- `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md`
+- `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.pdf`
+
+The companion skill now assumes this layout so the reviewed markdown and generated PDF can be committed to GitHub as an execution log when desired.
+
 ## Delivery Model
 
-`send-digest` expects a reviewed markdown file, typically created by a Codex automation using the companion review skill. It sends the final markdown through the Gmail API and records the send in local state so the same digest is not sent twice unless `--force` is used.
+`send-digest` expects a reviewed markdown file, typically created by a Codex automation using the companion review skill.
+
+- If the reviewed file follows the current structured format, the repo sends a short HTML email built from `Email Summary`, `Collection Snapshot`, and `Highlights`, and attaches a PDF built from `Full Curated Digest`.
+- If the reviewed file uses the older unstructured format, the repo falls back to the legacy plain-text send path.
+- Sends are still recorded in local state so the same digest is not sent twice unless `--force` is used.
 
 ## CLI
 
@@ -87,6 +106,14 @@ Collect or refresh the rolling source window:
 weekly-journal-digest collect
 ```
 
+Optional enrichment environment:
+
+```bash
+export WJD_SEMANTIC_SCHOLAR_API_KEY=your_key_here
+```
+
+If the key is not set, the collector still runs and uses OpenAlex fallback for missing abstracts.
+
 Build a deterministic weekly review artifact:
 
 ```bash
@@ -99,6 +126,15 @@ Write the reviewed digest with Codex using the vendored skill:
 2. Use `skills/write-weekly-journal-digest`.
 3. Save the result as `out/reviewed_digest-2026-03-30.md`.
 
+The reviewed markdown should now contain four major sections in this order:
+
+1. `Email Summary`
+2. `Collection Snapshot`
+3. `Highlights`
+4. `Full Curated Digest`
+
+For a logged run, save the reviewed markdown in `logs/YYYY-MM-DD/` instead of `out/`.
+
 Send the reviewed digest:
 
 ```bash
@@ -108,6 +144,8 @@ weekly-journal-digest send-digest \
 ```
 
 If the reviewed markdown starts with `Subject: ...`, that subject line is used automatically.
+
+When the reviewed file follows the current skill contract, `send-digest` also writes a sibling PDF file next to the reviewed markdown before attaching it to the outgoing email.
 
 ## Example Weekly Run
 
@@ -136,7 +174,13 @@ The companion skill is vendored in this repo at:
 
 - `skills/write-weekly-journal-digest`
 
-Its job is narrow: read `candidate_digest.json`, remove clearly irrelevant items that slipped through collection, and write the motivating intro and section framing for the final markdown email.
+Its job is narrow: determine the target week, run the repo when needed, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP priorities, pick the limited set of in-email highlights, and write both the short summary-email sections and the full curated digest section used for the attached PDF.
+
+The ranking emphasis for broad general-science papers is:
+
+- Authoritarian information control in the digital age
+- Multimodal political communication
+- AI for computational social science
 
 If you want Codex to auto-discover it locally, copy or sync the folder to:
 

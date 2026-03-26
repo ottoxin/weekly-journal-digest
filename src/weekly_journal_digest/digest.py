@@ -75,4 +75,8 @@ def _article_to_digest_item(article: ArticleRecord) -> dict:
         "subjects": article.subjects,
         "first_seen_at": article.first_seen_at,
         "authors": article.authors,
+        "affiliations": article.affiliations,
+        "citation_count": article.provenance.get("citation_count"),
+        "abstract_source": article.provenance.get("abstract_source"),
+        "semantic_scholar_tldr": article.provenance.get("semantic_scholar_tldr"),
     }

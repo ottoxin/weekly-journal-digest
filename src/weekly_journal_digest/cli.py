@@ -10,8 +10,15 @@ from pathlib import Path
 from .adapters import build_adapter_registry
 from .config import load_config
 from .digest import build_candidate_digest, compute_weekly_windows
-from .emailing import GmailSender, extract_subject
+from .emailing import EmailAttachment, GmailSender, extract_subject
+from .enrichment import build_metadata_enricher
 from .filters import should_include_record
+from .reviewed_digest import (
+    parse_reviewed_digest,
+    render_curated_digest_pdf,
+    render_summary_html,
+    render_summary_plain_text,
+)
 from .storage import StateStore
 
 
@@ -67,6 +74,9 @@ def cmd_collect(args: argparse.Namespace) -> int:
     state_dir = resolve_state_dir(args.config, args.state_dir or config.state_dir)
     store = StateStore(state_dir / "digest.db")
     adapters = build_adapter_registry(mailto=os.environ.get("WJD_CROSSREF_MAILTO"))
+    enricher = build_metadata_enricher(
+        semantic_scholar_api_key=os.environ.get("WJD_SEMANTIC_SCHOLAR_API_KEY")
+    )
     end_date = parse_date(args.end_date) if args.end_date else date.today()
     lookback_days = args.lookback_days or config.default_lookback_days
     start_date = end_date - timedelta(days=lookback_days - 1)
@@ -85,6 +95,7 @@ def cmd_collect(args: argparse.Namespace) -> int:
         try:
             adapter = adapters[source.adapter]
             records = adapter.collect(source, start_date, end_date)
+            records = enricher.enrich_records(records)
             included = []
             for record in records:
                 include, reason = should_include_record(source, record, config.social_science_keywords)
@@ -157,12 +168,27 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
         print(f"Digest {digest_key} was already sent to {recipient}. Use --force to resend.")
         return 0
     sender = GmailSender.from_env()
-    message_id = sender.send_markdown(recipient, subject, body)
+    reviewed = parse_reviewed_digest(markdown_body)
+    if reviewed is None:
+        message_id = sender.send_markdown(recipient, subject, body)
+    else:
+        plain_text_body = render_summary_plain_text(reviewed)
+        html_body = render_summary_html(reviewed)
+        pdf_bytes = render_curated_digest_pdf(reviewed)
+        attachment_path = reviewed_path.with_suffix(".pdf")
+        attachment_path.write_bytes(pdf_bytes)
+        message_id = sender.send_digest_package(
+            recipient,
+            subject,
+            plain_text_body,
+            html_body,
+            [EmailAttachment(filename=attachment_path.name, content=pdf_bytes, mime_type="application/pdf")],
+        )
     store.record_sent_digest(
         digest_key=digest_key,
         recipient=recipient,
         subject=subject,
-        body=body,
+        body=markdown_body,
         sent_at=utc_now().isoformat(),
         message_id=message_id,
     )

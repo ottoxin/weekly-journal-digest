@@ -24,11 +24,13 @@ class ReconcileTests(unittest.TestCase):
             abstract="Crossref abstract",
             canonical_url="https://doi.org/10.1234/example",
             doi="10.1234/example",
+            affiliations=["Northwestern University"],
             subjects=["Political Science"],
         )
         merged = reconcile_with_crossref(primary, crossref)
         self.assertEqual(merged.abstract, "Crossref abstract")
         self.assertEqual(merged.canonical_url, "https://doi.org/10.1234/example")
+        self.assertEqual(merged.affiliations, ["Northwestern University"])
         self.assertIn("Political Science", merged.subjects)
 
 

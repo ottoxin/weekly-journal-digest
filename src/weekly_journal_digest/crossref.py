@@ -86,12 +86,17 @@ class CrossrefClient:
         issued = date_from_parts(item.get("issued", {}).get("date-parts"))
         created = (item.get("created") or {}).get("date-time", "")[:10] or None
         authors = []
+        affiliations = set()
         for author in item.get("author", []):
             given = author.get("given", "").strip()
             family = author.get("family", "").strip()
             name = " ".join(part for part in [given, family] if part)
             if name:
                 authors.append(name)
+            for affiliation in author.get("affiliation", []):
+                aff_name = normalize_whitespace((affiliation or {}).get("name", "")) if affiliation else ""
+                if aff_name:
+                    affiliations.add(aff_name)
         return ArticleRecord(
             source_id=source.id,
             journal=source.journal,
@@ -104,9 +109,11 @@ class CrossrefClient:
             published_print=published_print,
             abstract=clean_abstract(item.get("abstract")),
             authors=authors,
+            affiliations=sorted(affiliations),
             subjects=sorted(set(item.get("subject", []))),
             provenance={
                 "source": "crossref",
+                "abstract_source": "crossref" if item.get("abstract") else "unavailable",
                 "crossref_issn": item.get("ISSN", []),
                 "container_title": (item.get("container-title") or [source.journal])[0],
                 "publisher": item.get("publisher"),

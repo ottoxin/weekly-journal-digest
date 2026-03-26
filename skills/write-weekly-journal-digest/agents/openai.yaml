@@ -1,4 +1,4 @@
 interface:
   display_name: "Weekly Digest Review"
   short_description: "Review candidate_digest.json and draft reviewed_digest.md"
-  default_prompt: "Read candidate_digest.json, preserve article selection, and write reviewed_digest.md with a motivating intro and section framing."
+  default_prompt: "Operate the weekly COMAP Journal Bot flow: determine the target digest week, run collection/build when needed, review candidate_digest.json, keep all communication and political science journal articles, filter and rank general-science items for COMAP interests, write the structured reviewed_digest.md, and save the run log in the repo."
