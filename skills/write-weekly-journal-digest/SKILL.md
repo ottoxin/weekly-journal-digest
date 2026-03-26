@@ -50,6 +50,8 @@ Do not use this skill to discover articles outside the JSON or change the journa
    Let `send-digest` generate the sibling PDF in that same folder.
    If the repo is otherwise clean enough to do so safely, commit and push the new log files for auditability.
 9. Write the email summary, highlights, and final polish in the voice of `COMAP Journal Bot`.
+10. Send to the configured recipient list by default.
+   Use `config/recipients.json` unless the user explicitly asks for a one-off override recipient.
 
 ## Output Contract
 
@@ -147,6 +149,7 @@ Subject: Weekly journal digest for YYYY-MM-DD to YYYY-MM-DD
 - Do not replace links with DOI text if a URL is already provided.
 - Do not add journals or articles that are not present in the JSON.
 - Do not rewrite article titles.
+- Prefer the configured recipient list over hard-coded email addresses when finishing the send step.
 - Use exact dates everywhere. Do not rely on vague references like “last week” when a specific date range can be shown.
 
 ## Handoff

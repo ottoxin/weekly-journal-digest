@@ -46,6 +46,7 @@ class AppConfig:
     timezone: str
     default_lookback_days: int
     state_dir: str
+    recipients_file: str
     social_science_keywords: list[str]
     sources: list[SourceConfig]
 

@@ -9,6 +9,66 @@ from weekly_journal_digest.cli import main
 
 
 class SendDigestTests(unittest.TestCase):
+    def test_send_digest_uses_configured_recipients_file(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            repo = Path(tmpdir)
+            config_dir = repo / "config"
+            config_dir.mkdir()
+            config_path = config_dir / "sources.yaml"
+            config_path.write_text(
+                """
+timezone: America/Chicago
+default_lookback_days: 28
+state_dir: .state
+recipients_file: config/recipients.json
+social_science_keywords: []
+sources: []
+""".strip(),
+                encoding="utf-8",
+            )
+            (config_dir / "recipients.json").write_text(
+                """
+{
+  "recipients": [
+    {"email": "first@example.com", "active": true},
+    {"email": "second@example.com", "active": true},
+    {"email": "inactive@example.com", "active": false}
+  ]
+}
+""".strip(),
+                encoding="utf-8",
+            )
+            reviewed_path = repo / "reviewed.md"
+            reviewed_path.write_text("Subject: Test digest\n\nHello world.", encoding="utf-8")
+            sent = []
+
+            class FakeSender:
+                @classmethod
+                def from_env(cls):
+                    return cls()
+
+                def send_markdown(self, to_address, subject, markdown_body):
+                    sent.append((to_address, subject, markdown_body))
+                    return f"message-{len(sent)}"
+
+            with patch("weekly_journal_digest.cli.GmailSender", FakeSender):
+                rc = main(
+                    [
+                        "send-digest",
+                        "--config",
+                        str(config_path),
+                        "--digest-date",
+                        "2026-03-30",
+                        "--reviewed-digest",
+                        str(reviewed_path),
+                    ]
+                )
+                self.assertEqual(rc, 0)
+            self.assertEqual(
+                [item[0] for item in sent],
+                ["first@example.com", "second@example.com"],
+            )
+
     def test_send_digest_writes_once_without_duplicate_resend(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             repo = Path(tmpdir)
