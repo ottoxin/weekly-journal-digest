@@ -94,16 +94,21 @@ If the reviewed markdown starts with `Subject: ...`, that subject line is used a
 
 ## Codex Skill
 
-The companion skill is installed at:
+The companion skill is vendored in this repo at:
 
-- `/Users/hao/.codex/skills/write-weekly-journal-digest`
+- `skills/write-weekly-journal-digest`
 
 Its job is narrow: read `candidate_digest.json`, write the motivating intro and section framing, and preserve deterministic article selection unless something is explicitly flagged for review.
+
+If you want Codex to auto-discover it locally, copy or sync the folder to:
+
+- `/Users/hao/.codex/skills/write-weekly-journal-digest`
 
 ## Repo Layout
 
 ```text
 config/sources.yaml          Source registry and journal list
+skills/write-weekly-journal-digest/
 src/weekly_journal_digest/   Python package
 tests/                       Unit, integration, and end-to-end tests
 examples/                    Example reviewed digest format

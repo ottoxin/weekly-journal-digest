@@ -1,0 +1,4 @@
+interface:
+  display_name: "Weekly Digest Review"
+  short_description: "Review candidate_digest.json and draft reviewed_digest.md"
+  default_prompt: "Read candidate_digest.json, preserve article selection, and write reviewed_digest.md with a motivating intro and section framing."
