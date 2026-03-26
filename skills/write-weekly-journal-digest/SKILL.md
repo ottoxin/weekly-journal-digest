@@ -9,8 +9,9 @@ Read the generated `candidate_digest.json`, report the full collected set before
 
 The send pipeline now uses this file in two different ways:
 
-- The email body is built from the short `Email Summary`, `Collection Snapshot`, and `Highlights` sections.
-- The attached PDF is built from the `Full Curated Digest` section.
+- The email body is built from the short `Summary` and `Highlights` sections.
+- The attached PDF is built from the `Summary`, optional `Collection Snapshot`, and `Full Curated Digest` sections.
+- The PDF now generates a journal table of contents automatically from the journal headings in `Full Curated Digest`.
 
 Use the bot name `COMAP Journal Bot` in the final polish and framing.
 
@@ -60,9 +61,9 @@ Write the file in this structure:
 ```md
 Subject: Weekly journal digest for YYYY-MM-DD to YYYY-MM-DD
 
-## Email Summary
+## Summary
 
-[Brief encouraging overview in 2-4 sentences]
+[Brief encouraging overview in 1-2 paragraphs, optionally followed by 2-4 bullet points]
 
 ## Collection Snapshot
 
@@ -119,14 +120,17 @@ Subject: Weekly journal digest for YYYY-MM-DD to YYYY-MM-DD
 
 ## Writing Rules
 
-- `Email Summary` and `Highlights` are the only parts that appear in the main email body. Keep them concise and readable on a phone screen.
+- `Summary` and `Highlights` are the only parts that appear in the main email body. Keep them concise and readable on a phone screen.
+- The `Collection Snapshot` section is optional. If you include it, it will only appear in the PDF, not the email body.
 - `Full Curated Digest` is for the attached PDF. Put the complete curated paper list there with abstracts for `New This Week`.
+- Write the `Summary` in a more vivid, human, academically polished voice. It should sound like a thoughtful weekly brief, not a system notification.
+- The `Summary` may mix short paragraphs and bullet points. Bullet points are encouraged when they make the week easier to scan quickly.
 - For every kept article in `Full Curated Digest`, include abstract, authors, affiliations when available, DOI, and link.
 - If affiliations are unavailable, omit the `Affiliations:` line rather than inventing one.
 - If DOI is unavailable, keep the `Link:` line and omit the `DOI:` line.
 - Assume the reader cares most about computational media, political communication, authoritarian information control, multimodal political communication, and AI for computational social science.
 - Keep the intro warm and encouraging, but do not become chatty or sentimental.
-- In the summary or collection snapshot, explicitly state that the counts above reflect the complete collected set before manual relevance filtering.
+- If you include a collection snapshot, explicitly state that the counts reflect the complete collected set before manual relevance filtering.
 - Include 5 to 8 highlights unless the curated set is smaller than that. Prefer highlights from `New This Week`, but you may include an unusually important catch-up or late addition.
 - Each `Why it matters` note should be specific and short. Do not repeat the abstract.
 - Default to keeping items from the dedicated communication and political science journals unless they are clearly non-article noise.
@@ -136,6 +140,7 @@ Subject: Weekly journal digest for YYYY-MM-DD to YYYY-MM-DD
 - Do not hide the size of the original collection. The email should make clear how many papers were gathered before filtering and that the sections below are curated from that larger set.
 - Preserve exact dates and links.
 - Use the provided abstract text. If an abstract is `"Abstract unavailable."`, keep that wording instead of inventing a summary.
+- Do not add a manual table of contents block to the markdown. The code generates the PDF journal table of contents automatically from the journal headings.
 - Group the `New This Week` section by journal when there are multiple items from the same journal.
 - `Previous Week Catch-Up` and `Late Additions` should also include article-level metadata lines now. They can still be shorter than `New This Week`, but do not drop abstract, authors, affiliations, or DOI when available.
 - Omit the `Late Additions` section if it is empty.
@@ -145,7 +150,7 @@ Subject: Weekly journal digest for YYYY-MM-DD to YYYY-MM-DD
 
 - If an item is borderline, prefer keeping it and call it out briefly rather than dropping it silently.
 - Use the original JSON to compute the unfiltered collection counts. Do not recompute those counts from the curated sections.
-- Do not reorder the major sections: `Email Summary`, `Collection Snapshot`, `Highlights`, `Full Curated Digest`.
+- Do not reorder the major sections: `Summary`, optional `Collection Snapshot`, `Highlights`, `Full Curated Digest`.
 - Do not replace links with DOI text if a URL is already provided.
 - Do not add journals or articles that are not present in the JSON.
 - Do not rewrite article titles.
