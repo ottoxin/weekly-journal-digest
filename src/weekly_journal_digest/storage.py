@@ -37,6 +37,7 @@ class StateStore:
                     abstract TEXT,
                     relevance_status TEXT NOT NULL,
                     authors_json TEXT NOT NULL,
+                    affiliations_json TEXT NOT NULL DEFAULT '[]',
                     subjects_json TEXT NOT NULL,
                     provenance_json TEXT NOT NULL,
                     first_seen_at TEXT NOT NULL,
@@ -55,6 +56,14 @@ class StateStore:
                 );
                 """
             )
+            existing_columns = {
+                row["name"]
+                for row in connection.execute("PRAGMA table_info(articles)").fetchall()
+            }
+            if "affiliations_json" not in existing_columns:
+                connection.execute(
+                    "ALTER TABLE articles ADD COLUMN affiliations_json TEXT NOT NULL DEFAULT '[]'"
+                )
 
     def upsert_articles(self, articles: list[ArticleRecord], seen_at: str) -> None:
         with self._connect() as connection:
@@ -73,9 +82,9 @@ class StateStore:
                     INSERT INTO articles (
                         dedupe_key, source_id, journal, title, doi, canonical_url, article_type,
                         published_date, published_online, published_print, abstract, relevance_status,
-                        authors_json, subjects_json, provenance_json, first_seen_at, last_seen_at
+                        authors_json, affiliations_json, subjects_json, provenance_json, first_seen_at, last_seen_at
                     )
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ON CONFLICT(dedupe_key) DO UPDATE SET
                         source_id = excluded.source_id,
                         journal = excluded.journal,
@@ -94,6 +103,10 @@ class StateStore:
                         authors_json = CASE
                             WHEN articles.authors_json = '[]' THEN excluded.authors_json
                             ELSE articles.authors_json
+                        END,
+                        affiliations_json = CASE
+                            WHEN articles.affiliations_json = '[]' THEN excluded.affiliations_json
+                            ELSE articles.affiliations_json
                         END,
                         subjects_json = CASE
                             WHEN articles.subjects_json = '[]' THEN excluded.subjects_json
@@ -117,6 +130,7 @@ class StateStore:
                         article.abstract,
                         article.relevance_status,
                         json.dumps(article.authors, sort_keys=True),
+                        json.dumps(article.affiliations, sort_keys=True),
                         json.dumps(article.subjects, sort_keys=True),
                         json.dumps(article.provenance, sort_keys=True),
                         first_seen_at,
@@ -206,6 +220,7 @@ class StateStore:
             abstract=row["abstract"],
             relevance_status=row["relevance_status"],
             authors=json.loads(row["authors_json"]),
+            affiliations=json.loads(row["affiliations_json"]),
             subjects=json.loads(row["subjects_json"]),
             first_seen_at=row["first_seen_at"],
             last_seen_at=row["last_seen_at"],

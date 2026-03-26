@@ -15,6 +15,7 @@ def reconcile_with_crossref(primary: ArticleRecord, crossref: ArticleRecord) -> 
     merged.published_date = merged.published_date or crossref.published_date
     merged.abstract = choose_best_abstract(primary.abstract, crossref.abstract)
     merged.authors = merged.authors or crossref.authors
+    merged.affiliations = merged.affiliations or crossref.affiliations
     merged.subjects = sorted(set(merged.subjects) | set(crossref.subjects))
     merged.provenance = {
         **crossref.provenance,

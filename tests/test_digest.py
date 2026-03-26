@@ -30,6 +30,10 @@ class DigestTests(unittest.TestCase):
                         title="Current week article",
                         published_date="2026-03-27",
                         canonical_url="https://doi.org/current",
+                        doi="10.1000/current",
+                        authors=["Jane Doe", "John Smith"],
+                        affiliations=["Northwestern University", "COMAP Lab"],
+                        abstract="Current abstract.",
                     ),
                     ArticleRecord(
                         source_id="apsr",
@@ -65,6 +69,12 @@ class DigestTests(unittest.TestCase):
             self.assertEqual(len(payload["sections"]["new_this_week"]), 1)
             self.assertEqual(len(payload["sections"]["previous_week_catch_up"]), 1)
             self.assertEqual(len(payload["sections"]["late_additions"]), 1)
+            self.assertEqual(payload["sections"]["new_this_week"][0]["doi"], "10.1000/current")
+            self.assertEqual(payload["sections"]["new_this_week"][0]["authors"], ["Jane Doe", "John Smith"])
+            self.assertEqual(
+                payload["sections"]["new_this_week"][0]["affiliations"],
+                ["Northwestern University", "COMAP Lab"],
+            )
 
 
 if __name__ == "__main__":  # pragma: no cover

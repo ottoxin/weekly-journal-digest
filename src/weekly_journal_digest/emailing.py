@@ -3,7 +3,8 @@ from __future__ import annotations
 import base64
 import os
 from dataclasses import dataclass
-from email.mime.text import MIMEText
+from email.message import EmailMessage
+from email.utils import formataddr
 from pathlib import Path
 
 from google.auth.transport.requests import Request
@@ -20,6 +21,14 @@ class GmailSettings:
     credentials_file: Path
     token_file: Path
     sender: str | None = None
+    from_name: str = "COMAP Journal Bot"
+
+
+@dataclass(slots=True)
+class EmailAttachment:
+    filename: str
+    content: bytes
+    mime_type: str
 
 
 class GmailSender:
@@ -31,6 +40,7 @@ class GmailSender:
         credentials_file = os.environ.get("WJD_GMAIL_CREDENTIALS_FILE")
         token_file = os.environ.get("WJD_GMAIL_TOKEN_FILE")
         sender = os.environ.get("WJD_GMAIL_SENDER")
+        from_name = os.environ.get("WJD_GMAIL_FROM_NAME", "COMAP Journal Bot")
         if not credentials_file:
             raise ValueError("WJD_GMAIL_CREDENTIALS_FILE is required.")
         if not token_file:
@@ -40,16 +50,46 @@ class GmailSender:
                 credentials_file=Path(credentials_file),
                 token_file=Path(token_file),
                 sender=sender,
+                from_name=from_name,
             )
         )
 
     def send_markdown(self, to_address: str, subject: str, markdown_body: str) -> str | None:
-        service = self._build_service()
-        message = MIMEText(markdown_body, _charset="utf-8")
+        message = self._base_message(to_address, subject)
+        message.set_content(markdown_body)
+        return self._send_message(message)
+
+    def send_digest_package(
+        self,
+        to_address: str,
+        subject: str,
+        plain_text_body: str,
+        html_body: str,
+        attachments: list[EmailAttachment],
+    ) -> str | None:
+        message = self._base_message(to_address, subject)
+        message.set_content(plain_text_body)
+        message.add_alternative(html_body, subtype="html")
+        for attachment in attachments:
+            maintype, subtype = attachment.mime_type.split("/", 1)
+            message.add_attachment(
+                attachment.content,
+                maintype=maintype,
+                subtype=subtype,
+                filename=attachment.filename,
+            )
+        return self._send_message(message)
+
+    def _base_message(self, to_address: str, subject: str) -> EmailMessage:
+        message = EmailMessage()
         message["to"] = to_address
         if self.settings.sender:
-            message["from"] = self.settings.sender
+            message["from"] = formataddr((self.settings.from_name, self.settings.sender))
         message["subject"] = subject
+        return message
+
+    def _send_message(self, message: EmailMessage) -> str | None:
+        service = self._build_service()
         raw = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
         response = (
             service.users()

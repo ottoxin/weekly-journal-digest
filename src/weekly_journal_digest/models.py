@@ -18,6 +18,7 @@ class ArticleRecord:
     abstract: str | None = None
     relevance_status: str = "included"
     authors: list[str] = field(default_factory=list)
+    affiliations: list[str] = field(default_factory=list)
     subjects: list[str] = field(default_factory=list)
     first_seen_at: str | None = None
     last_seen_at: str | None = None
