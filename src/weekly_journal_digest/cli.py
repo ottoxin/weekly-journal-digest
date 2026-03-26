@@ -32,6 +32,7 @@ def main(argv: list[str] | None = None) -> int:
     if not getattr(args, "command", None):
         parser.print_help()
         return 1
+    load_local_env(getattr(args, "config", None))
     return args.func(args)
 
 
@@ -156,43 +157,64 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
     state_dir = resolve_state_dir(args.config, args.state_dir or config.state_dir)
     store = StateStore(state_dir / "digest.db")
     digest_date = parse_date(args.digest_date) if args.digest_date else date.today()
-    recipient = args.recipient or os.environ.get("WJD_GMAIL_RECIPIENT")
-    if not recipient:
-        raise ValueError("Recipient is required via --recipient or WJD_GMAIL_RECIPIENT.")
     digest_key = digest_date.isoformat()
+    recipients = resolve_recipients(args.config, config.recipients_file, args.recipient)
+    if not recipients:
+        raise ValueError(
+            "At least one recipient is required via --recipient, WJD_GMAIL_RECIPIENT, or the configured recipients file."
+        )
     reviewed_path = Path(args.reviewed_digest)
     markdown_body = reviewed_path.read_text(encoding="utf-8")
     parsed_subject, body = extract_subject(markdown_body)
     subject = args.subject or parsed_subject or default_subject(digest_date)
-    if store.has_sent_digest(digest_key, recipient) and not args.force:
-        print(f"Digest {digest_key} was already sent to {recipient}. Use --force to resend.")
-        return 0
-    sender = GmailSender.from_env()
     reviewed = parse_reviewed_digest(markdown_body)
-    if reviewed is None:
-        message_id = sender.send_markdown(recipient, subject, body)
-    else:
+    plain_text_body = None
+    html_body = None
+    pdf_bytes = None
+    attachment = None
+    if reviewed is not None:
         plain_text_body = render_summary_plain_text(reviewed)
         html_body = render_summary_html(reviewed)
         pdf_bytes = render_curated_digest_pdf(reviewed)
         attachment_path = reviewed_path.with_suffix(".pdf")
         attachment_path.write_bytes(pdf_bytes)
-        message_id = sender.send_digest_package(
-            recipient,
-            subject,
-            plain_text_body,
-            html_body,
-            [EmailAttachment(filename=attachment_path.name, content=pdf_bytes, mime_type="application/pdf")],
+        attachment = EmailAttachment(
+            filename=attachment_path.name,
+            content=pdf_bytes,
+            mime_type="application/pdf",
         )
-    store.record_sent_digest(
-        digest_key=digest_key,
-        recipient=recipient,
-        subject=subject,
-        body=markdown_body,
-        sent_at=utc_now().isoformat(),
-        message_id=message_id,
-    )
-    print(f"Sent digest {digest_key} to {recipient}.")
+    recipients_to_send = [
+        recipient
+        for recipient in recipients
+        if args.force or not store.has_sent_digest(digest_key, recipient)
+    ]
+    if not recipients_to_send:
+        print(f"Digest {digest_key} was already sent to all configured recipients. Use --force to resend.")
+        return 0
+    sender = GmailSender.from_env()
+    for recipient in recipients:
+        if recipient not in recipients_to_send:
+            print(f"Digest {digest_key} was already sent to {recipient}. Use --force to resend.")
+            continue
+        if reviewed is None:
+            message_id = sender.send_markdown(recipient, subject, body)
+        else:
+            message_id = sender.send_digest_package(
+                recipient,
+                subject,
+                plain_text_body,
+                html_body,
+                [attachment],
+            )
+        store.record_sent_digest(
+            digest_key=digest_key,
+            recipient=recipient,
+            subject=subject,
+            body=markdown_body,
+            sent_at=utc_now().isoformat(),
+            message_id=message_id,
+        )
+        print(f"Sent digest {digest_key} to {recipient}.")
     return 0
 
 
@@ -204,14 +226,95 @@ def utc_now() -> datetime:
     return datetime.now(timezone.utc)
 
 
+def load_local_env(
+    config_path: str | Path | None = None,
+    env_paths: list[Path] | None = None,
+) -> None:
+    if env_paths is None:
+        base_dir = repo_root_for_config(config_path) if config_path else REPO_ROOT
+        paths = [base_dir / ".env.local", base_dir / ".env"]
+    else:
+        paths = env_paths
+    for path in paths:
+        if not path.exists():
+            continue
+        for raw_line in path.read_text(encoding="utf-8").splitlines():
+            line = raw_line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            key = key.strip()
+            value = value.strip().strip("'").strip('"')
+            if key:
+                os.environ.setdefault(key, value)
+
+
 def resolve_state_dir(config_path: str | Path, state_dir_value: str) -> Path:
-    state_dir = Path(state_dir_value)
-    if state_dir.is_absolute():
-        return state_dir
+    return resolve_repo_path(config_path, state_dir_value)
+
+
+def resolve_repo_path(config_path: str | Path, configured_path: str) -> Path:
+    path = Path(configured_path)
+    if path.is_absolute():
+        return path
+    return repo_root_for_config(config_path) / path
+
+
+def repo_root_for_config(config_path: str | Path) -> Path:
     config_file = Path(config_path).resolve()
     config_parent = config_file.parent
-    repo_root = config_parent.parent if config_parent.name == "config" else config_parent
-    return repo_root / state_dir
+    return config_parent.parent if config_parent.name == "config" else config_parent
+
+
+def resolve_recipients(
+    config_path: str | Path,
+    recipients_file_value: str,
+    recipient_override: str | None,
+) -> list[str]:
+    if recipient_override:
+        return [recipient_override.strip()]
+    env_recipients = os.environ.get("WJD_GMAIL_RECIPIENT")
+    if env_recipients:
+        return dedupe_recipients(
+            recipient.strip()
+            for recipient in env_recipients.split(",")
+            if recipient.strip()
+        )
+    recipients_path = resolve_repo_path(config_path, recipients_file_value)
+    if not recipients_path.exists():
+        return []
+    return load_recipients(recipients_path)
+
+
+def load_recipients(recipients_path: str | Path) -> list[str]:
+    raw = json.loads(Path(recipients_path).read_text(encoding="utf-8"))
+    if isinstance(raw, dict):
+        entries = raw.get("recipients", [])
+    elif isinstance(raw, list):
+        entries = raw
+    else:
+        raise ValueError("Recipients file must contain a list or a {'recipients': [...]} object.")
+    recipients: list[str] = []
+    for entry in entries:
+        if isinstance(entry, str):
+            email = entry.strip()
+            active = True
+        else:
+            email = str(entry.get("email", "")).strip()
+            active = bool(entry.get("active", True))
+        if email and active:
+            recipients.append(email)
+    return dedupe_recipients(recipients)
+
+
+def dedupe_recipients(recipients: list[str] | tuple[str, ...] | object) -> list[str]:
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for recipient in recipients:
+        if recipient not in seen:
+            seen.add(recipient)
+            ordered.append(recipient)
+    return ordered
 
 
 def default_subject(digest_date: date) -> str:

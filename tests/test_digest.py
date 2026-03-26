@@ -56,6 +56,7 @@ class DigestTests(unittest.TestCase):
                 timezone="America/Chicago",
                 default_lookback_days=28,
                 state_dir=".state",
+                recipients_file="config/recipients.json",
                 social_science_keywords=[],
                 sources=[],
             )

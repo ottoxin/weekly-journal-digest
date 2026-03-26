@@ -45,6 +45,7 @@ This means the Monday run is not limited to “only fetch the last 7 days.” It
 ## Local State And Anti-Miss Strategy
 
 - Local SQLite state lives under `.state/` by default.
+- Recipient configuration lives in `config/recipients.json` by default.
 - Crossref is used as the canonical metadata backbone for DOI normalization, publication dates, and abstract fallback.
 - Collection now uses a layered metadata approach:
   Crossref for discovery, optional Semantic Scholar DOI enrichment for abstracts and citation counts, and OpenAlex DOI fallback for abstracts that remain missing.
@@ -62,6 +63,7 @@ The repo is meant to be driven by an external automation, but the operational fl
 4. Have Codex read `candidate_digest.json` with the companion skill, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP relevance, and write a structured `reviewed_digest.md`.
    For every kept article in the full curated digest, include abstract, authors, affiliations when available, DOI, and link.
 5. Run `send-digest` with the reviewed markdown file to send a short HTML summary email and attach the full curated digest as a PDF.
+   By default it sends to the active emails in `config/recipients.json`. Use `--recipient` only for a one-off override.
 6. Save the markdown and PDF under a repo log folder if you want the run preserved in GitHub history.
 
 The weekly window logic is:
@@ -83,6 +85,28 @@ For repeatable automation runs, keep artifacts in a tracked log folder inside th
 - `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.pdf`
 
 The companion skill now assumes this layout so the reviewed markdown and generated PDF can be committed to GitHub as an execution log when desired.
+
+## Recipients
+
+The default recipient list is stored in:
+
+- `config/recipients.json`
+
+Example:
+
+```json
+{
+  "recipients": [
+    {
+      "email": "haohangxin@u.northwestern.edu",
+      "name": "Haohang Xin",
+      "active": true
+    }
+  ]
+}
+```
+
+`send-digest` sends to every active address in that file unless `--recipient` is provided.
 
 ## Delivery Model
 
@@ -143,6 +167,15 @@ weekly-journal-digest send-digest \
   --reviewed-digest out/reviewed_digest-2026-03-30.md
 ```
 
+Optional one-off override:
+
+```bash
+weekly-journal-digest send-digest \
+  --digest-date 2026-03-30 \
+  --reviewed-digest out/reviewed_digest-2026-03-30.md \
+  --recipient someone@example.com
+```
+
 If the reviewed markdown starts with `Subject: ...`, that subject line is used automatically.
 
 When the reviewed file follows the current skill contract, `send-digest` also writes a sibling PDF file next to the reviewed markdown before attaching it to the outgoing email.
@@ -174,7 +207,13 @@ The companion skill is vendored in this repo at:
 
 - `skills/write-weekly-journal-digest`
 
-Its job is narrow: determine the target week, run the repo when needed, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP priorities, pick the limited set of in-email highlights, and write both the short summary-email sections and the full curated digest section used for the attached PDF.
+Its job is narrow: determine the target week, run the repo when needed, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP priorities, pick the limited set of in-email highlights, write both the short summary-email sections and the full curated digest section used for the attached PDF, and then send to the configured recipients.
+
+Because the detailed workflow lives in the skill, the Codex automation prompt can stay short. A sufficient prompt is:
+
+```text
+Use the [$write-weekly-journal-digest](/Users/hao/.codex/skills/write-weekly-journal-digest/SKILL.md) skill and run the weekly COMAP Journal Bot pipeline in /Users/hao/NU/weekly-journal-digest.
+```
 
 The ranking emphasis for broad general-science papers is:
 

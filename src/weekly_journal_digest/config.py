@@ -28,6 +28,7 @@ def load_config(path: str | Path) -> AppConfig:
         timezone=raw.get("timezone", "America/Chicago"),
         default_lookback_days=int(raw.get("default_lookback_days", 28)),
         state_dir=raw.get("state_dir", ".state"),
+        recipients_file=raw.get("recipients_file", "config/recipients.json"),
         social_science_keywords=list(raw.get("social_science_keywords", [])),
         sources=sources,
     )
