@@ -26,9 +26,15 @@ class Highlight:
 
 
 @dataclass(slots=True)
+class OutlineEntry:
+    label: str
+    anchor: str
+
+
+@dataclass(slots=True)
 class ReviewedDigest:
     subject: str
-    email_summary: str
+    summary: str
     collection_snapshot: list[str]
     highlights: list[Highlight]
     full_curated_digest_markdown: str
@@ -39,27 +45,27 @@ def parse_reviewed_digest(markdown_body: str) -> ReviewedDigest | None:
     if not subject:
         return None
     sections = _split_h2_sections(body)
+    summary_section_name = "Summary" if "Summary" in sections else "Email Summary"
     required = {
-        "Email Summary",
-        "Collection Snapshot",
+        summary_section_name,
         "Highlights",
         "Full Curated Digest",
     }
     if not required.issubset(sections):
         return None
-    email_summary = "\n".join(sections["Email Summary"]).strip()
+    summary = "\n".join(sections[summary_section_name]).strip()
     collection_snapshot = [
         line.strip()[2:].strip()
-        for line in sections["Collection Snapshot"]
+        for line in sections.get("Collection Snapshot", [])
         if line.strip().startswith("- ")
     ]
     highlights = _parse_highlights(sections["Highlights"])
     full_curated_digest_markdown = "\n".join(sections["Full Curated Digest"]).strip()
-    if not email_summary or not highlights or not full_curated_digest_markdown:
+    if not summary or not highlights or not full_curated_digest_markdown:
         return None
     return ReviewedDigest(
         subject=subject,
-        email_summary=email_summary,
+        summary=summary,
         collection_snapshot=collection_snapshot,
         highlights=highlights,
         full_curated_digest_markdown=full_curated_digest_markdown,
@@ -67,10 +73,7 @@ def parse_reviewed_digest(markdown_body: str) -> ReviewedDigest | None:
 
 
 def render_summary_plain_text(reviewed: ReviewedDigest) -> str:
-    lines = [BOT_NAME, "", reviewed.email_summary.strip(), "", "Collection snapshot"]
-    for item in reviewed.collection_snapshot:
-        lines.append(f"- {item}")
-    lines.extend(["", "Highlights"])
+    lines = [BOT_NAME, "", "Summary", "", reviewed.summary.strip(), "", "Highlights"]
     for highlight in reviewed.highlights:
         lines.append(f"- {highlight.title}")
         meta = " | ".join(part for part in [highlight.journal, highlight.published] if part)
@@ -86,13 +89,7 @@ def render_summary_plain_text(reviewed: ReviewedDigest) -> str:
 
 
 def render_summary_html(reviewed: ReviewedDigest) -> str:
-    summary_html = "".join(
-        f"<p style='margin:0 0 12px 0; line-height:1.55; color:#1f2937;'>{escape(paragraph)}</p>"
-        for paragraph in _paragraphs(reviewed.email_summary)
-    )
-    snapshot_items = "".join(
-        f"<li style='margin:0 0 8px 0;'>{escape(item)}</li>" for item in reviewed.collection_snapshot
-    )
+    summary_html = _render_summary_blocks_html(reviewed.summary)
     highlight_cards = []
     for highlight in reviewed.highlights:
         meta = " | ".join(part for part in [highlight.journal, highlight.published] if part)
@@ -123,13 +120,11 @@ def render_summary_html(reviewed: ReviewedDigest) -> str:
         f"<div style='font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#627d98; margin:0 0 10px 0;'>{escape(BOT_NAME)}</div>"
         f"<h1 style='margin:0 0 18px 0; font-size:28px; line-height:1.2; color:#102a43;'>{escape(reviewed.subject)}</h1>"
         f"{summary_html}"
-        "<h2 style='margin:26px 0 10px 0; font-size:18px; color:#102a43;'>Collection Snapshot</h2>"
-        f"<ul style='margin:0 0 20px 18px; padding:0; color:#243b53; line-height:1.55;'>{snapshot_items}</ul>"
         "<h2 style='margin:26px 0 12px 0; font-size:18px; color:#102a43;'>Highlights</h2>"
         f"{''.join(highlight_cards)}"
         "<div style='margin-top:22px; padding:14px 16px; border-radius:12px; background:#f0f4f8; "
         "color:#334e68; font-size:14px; line-height:1.5;'>"
-        "The full curated digest, including abstracts and catch-up sections, is attached as a PDF."
+        "The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents."
         "</div>"
         "</div></div></body></html>"
     )
@@ -148,18 +143,24 @@ def render_curated_digest_pdf(reviewed: ReviewedDigest) -> bytes:
     )
     story = []
     styles = _build_pdf_styles()
+    outline = _build_digest_outline(reviewed.full_curated_digest_markdown)
     story.append(Paragraph(escape(_to_pdf_text(BOT_NAME)), styles["meta"]))
     story.append(Spacer(1, 0.04 * inch))
     story.append(Paragraph(escape(_to_pdf_text(reviewed.subject)), styles["title"]))
     story.append(Spacer(1, 0.18 * inch))
-    story.append(Paragraph("Email Summary", styles["heading"]))
-    for paragraph in _paragraphs(reviewed.email_summary):
-        story.append(Paragraph(escape(_to_pdf_text(paragraph)), styles["body"]))
+    story.append(Paragraph("Summary", styles["heading"]))
+    story.extend(_render_summary_blocks_pdf(reviewed.summary, styles))
     story.append(Spacer(1, 0.12 * inch))
-    story.append(Paragraph("Collection Snapshot", styles["heading"]))
-    for item in reviewed.collection_snapshot:
-        story.append(Paragraph(f"&#8226; {escape(_to_pdf_text(item))}", styles["bullet"]))
-    story.append(Spacer(1, 0.12 * inch))
+    if outline:
+        story.append(Paragraph("Table of Contents", styles["heading"]))
+        for entry in outline:
+            story.append(
+                Paragraph(
+                    f"&#8226; <link href='#{entry.anchor}'>{escape(_to_pdf_text(entry.label))}</link>",
+                    styles["bullet"],
+                )
+            )
+        story.append(Spacer(1, 0.12 * inch))
     story.append(Paragraph("Highlights", styles["heading"]))
     for highlight in reviewed.highlights:
         story.append(Paragraph(escape(_to_pdf_text(highlight.title)), styles["highlight_title"]))
@@ -177,6 +178,11 @@ def render_curated_digest_pdf(reviewed: ReviewedDigest) -> bytes:
             story.append(Paragraph(f"<b>Link:</b> {escape(_to_pdf_text(highlight.link))}", styles["body"]))
         story.append(Spacer(1, 0.08 * inch))
     story.append(Spacer(1, 0.12 * inch))
+    if reviewed.collection_snapshot:
+        story.append(Paragraph("Collection Snapshot", styles["heading"]))
+        for item in reviewed.collection_snapshot:
+            story.append(Paragraph(f"&#8226; {escape(_to_pdf_text(item))}", styles["bullet"]))
+        story.append(Spacer(1, 0.12 * inch))
     story.append(Paragraph("Full Curated Digest", styles["heading"]))
     story.extend(_render_full_digest_story(reviewed.full_curated_digest_markdown, styles))
     doc.build(story)
@@ -259,6 +265,89 @@ def _paragraphs(text: str) -> list[str]:
     return [paragraph.strip() for paragraph in re.split(r"\n\s*\n", text.strip()) if paragraph.strip()]
 
 
+def _summary_blocks(text: str) -> list[tuple[str, list[str]]]:
+    blocks: list[tuple[str, list[str]]] = []
+    paragraph_lines: list[str] = []
+    bullet_lines: list[str] = []
+
+    def flush_paragraph() -> None:
+        if paragraph_lines:
+            blocks.append(("paragraph", [" ".join(paragraph_lines)]))
+            paragraph_lines.clear()
+
+    def flush_bullets() -> None:
+        if bullet_lines:
+            blocks.append(("bullets", bullet_lines.copy()))
+            bullet_lines.clear()
+
+    for raw_line in text.splitlines():
+        stripped = raw_line.strip()
+        if not stripped:
+            flush_paragraph()
+            flush_bullets()
+            continue
+        if stripped.startswith("- "):
+            flush_paragraph()
+            bullet_lines.append(stripped[2:].strip())
+            continue
+        flush_bullets()
+        paragraph_lines.append(stripped)
+    flush_paragraph()
+    flush_bullets()
+    return blocks
+
+
+def _render_summary_blocks_html(text: str) -> str:
+    parts: list[str] = []
+    for block_type, items in _summary_blocks(text):
+        if block_type == "paragraph":
+            parts.append(
+                f"<p style='margin:0 0 12px 0; line-height:1.65; color:#1f2937;'>{escape(items[0])}</p>"
+            )
+            continue
+        bullet_items = "".join(
+            f"<li style='margin:0 0 8px 0;'>{escape(item)}</li>" for item in items
+        )
+        parts.append(
+            "<ul style='margin:0 0 18px 18px; padding:0; color:#243b53; line-height:1.55;'>"
+            f"{bullet_items}</ul>"
+        )
+    return "".join(parts)
+
+
+def _render_summary_blocks_pdf(text: str, styles: dict[str, ParagraphStyle]) -> list:
+    story = []
+    for block_type, items in _summary_blocks(text):
+        if block_type == "paragraph":
+            story.append(Paragraph(escape(_to_pdf_text(items[0])), styles["body"]))
+            continue
+        for item in items:
+            story.append(Paragraph(f"&#8226; {escape(_to_pdf_text(item))}", styles["bullet"]))
+    return story
+
+
+def _build_digest_outline(markdown: str) -> list[OutlineEntry]:
+    outline: list[OutlineEntry] = []
+    current_section = ""
+    seen: dict[tuple[str, str], int] = {}
+    for raw_line in markdown.splitlines():
+        stripped = raw_line.strip()
+        if stripped.startswith("### "):
+            current_section = stripped[4:].strip()
+            continue
+        if stripped.startswith("#### "):
+            journal = stripped[5:].strip()
+            key = (current_section, journal)
+            seen[key] = seen.get(key, 0) + 1
+            outline.append(
+                OutlineEntry(
+                    label=f"{current_section}: {journal}" if current_section else journal,
+                    anchor=_outline_anchor(current_section, journal, seen[key]),
+                )
+            )
+    return outline
+
+
 def _build_pdf_styles() -> dict[str, ParagraphStyle]:
     sample = getSampleStyleSheet()
     return {
@@ -334,6 +423,8 @@ def _build_pdf_styles() -> dict[str, ParagraphStyle]:
 
 def _render_full_digest_story(markdown: str, styles: dict[str, ParagraphStyle]) -> list:
     story = []
+    current_section = ""
+    seen: dict[tuple[str, str], int] = {}
     for raw_line in markdown.splitlines():
         line = raw_line.rstrip()
         stripped = line.strip()
@@ -341,10 +432,20 @@ def _render_full_digest_story(markdown: str, styles: dict[str, ParagraphStyle]) 
             story.append(Spacer(1, 0.06 * inch))
             continue
         if stripped.startswith("### "):
-            story.append(Paragraph(escape(_to_pdf_text(stripped[4:])), styles["heading"]))
+            current_section = stripped[4:].strip()
+            story.append(Paragraph(escape(_to_pdf_text(current_section)), styles["heading"]))
             continue
         if stripped.startswith("#### "):
-            story.append(Paragraph(escape(_to_pdf_text(stripped[5:])), styles["highlight_title"]))
+            journal = stripped[5:].strip()
+            key = (current_section, journal)
+            seen[key] = seen.get(key, 0) + 1
+            anchor = _outline_anchor(current_section, journal, seen[key])
+            story.append(
+                Paragraph(
+                    f"<a name='{anchor}'/>{escape(_to_pdf_text(journal))}",
+                    styles["highlight_title"],
+                )
+            )
             continue
         title_match = re.match(r"^- \*\*(.+?)\*\*$", stripped)
         if title_match:
@@ -371,3 +472,10 @@ def _to_pdf_text(text: str) -> str:
     cleaned = text.translate(str.maketrans(replacements))
     normalized = unicodedata.normalize("NFKD", cleaned)
     return normalized.encode("ascii", "ignore").decode("ascii")
+
+
+def _outline_anchor(section: str, journal: str, index: int) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", _to_pdf_text(f"{section}-{journal}").lower()).strip("-")
+    if not slug:
+        slug = "journal"
+    return f"{slug}-{index}"

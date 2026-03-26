@@ -63,6 +63,7 @@ The repo is meant to be driven by an external automation, but the operational fl
 4. Have Codex read `candidate_digest.json` with the companion skill, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP relevance, and write a structured `reviewed_digest.md`.
    For every kept article in the full curated digest, include abstract, authors, affiliations when available, DOI, and link.
 5. Run `send-digest` with the reviewed markdown file to send a short HTML summary email and attach the full curated digest as a PDF.
+   The email body uses `Summary` and `Highlights`; the PDF includes the full curated digest and an automatically generated journal table of contents.
    By default it sends to the active emails in `config/recipients.json`. Use `--recipient` only for a one-off override.
 6. Save the markdown and PDF under a repo log folder if you want the run preserved in GitHub history.
 
@@ -112,7 +113,7 @@ Example:
 
 `send-digest` expects a reviewed markdown file, typically created by a Codex automation using the companion review skill.
 
-- If the reviewed file follows the current structured format, the repo sends a short HTML email built from `Email Summary`, `Collection Snapshot`, and `Highlights`, and attaches a PDF built from `Full Curated Digest`.
+- If the reviewed file follows the current structured format, the repo sends a short HTML email built from `Summary` and `Highlights`, and attaches a PDF built from `Summary`, the optional `Collection Snapshot`, and `Full Curated Digest`.
 - If the reviewed file uses the older unstructured format, the repo falls back to the legacy plain-text send path.
 - Sends are still recorded in local state so the same digest is not sent twice unless `--force` is used.
 
@@ -150,10 +151,10 @@ Write the reviewed digest with Codex using the vendored skill:
 2. Use `skills/write-weekly-journal-digest`.
 3. Save the result as `out/reviewed_digest-2026-03-30.md`.
 
-The reviewed markdown should now contain four major sections in this order:
+The reviewed markdown should now contain these major sections:
 
-1. `Email Summary`
-2. `Collection Snapshot`
+1. `Summary`
+2. optional `Collection Snapshot`
 3. `Highlights`
 4. `Full Curated Digest`
 
@@ -178,7 +179,7 @@ weekly-journal-digest send-digest \
 
 If the reviewed markdown starts with `Subject: ...`, that subject line is used automatically.
 
-When the reviewed file follows the current skill contract, `send-digest` also writes a sibling PDF file next to the reviewed markdown before attaching it to the outgoing email.
+When the reviewed file follows the current skill contract, `send-digest` also writes a sibling PDF file next to the reviewed markdown before attaching it to the outgoing email. That PDF includes a generated table of contents linking to the journal sections in the curated digest.
 
 ## Example Weekly Run
 
@@ -207,7 +208,7 @@ The companion skill is vendored in this repo at:
 
 - `skills/write-weekly-journal-digest`
 
-Its job is narrow: determine the target week, run the repo when needed, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP priorities, pick the limited set of in-email highlights, write both the short summary-email sections and the full curated digest section used for the attached PDF, and then send to the configured recipients.
+Its job is narrow: determine the target week, run the repo when needed, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP priorities, write a more human but still academic `Summary`, pick the limited set of in-email highlights, and produce the full curated digest used for the attached PDF.
 
 Because the detailed workflow lives in the skill, the Codex automation prompt can stay short. A sufficient prompt is:
 

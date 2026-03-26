@@ -12,9 +12,12 @@ from weekly_journal_digest.reviewed_digest import (
 
 SAMPLE_REVIEWED_DIGEST = """Subject: Weekly journal digest for 2026-03-23 to 2026-03-29
 
-## Email Summary
+## Summary
 
 This week brought a focused set of papers worth your attention.
+
+- Political communication and AI methods are the strongest themes.
+- The attached PDF is organized by journal for quick navigation.
 
 ## Collection Snapshot
 
@@ -63,6 +66,7 @@ class ReviewedDigestTests(unittest.TestCase):
         self.assertEqual(len(reviewed.collection_snapshot), 5)
         self.assertEqual(len(reviewed.highlights), 2)
         self.assertIn("### New This Week", reviewed.full_curated_digest_markdown)
+        self.assertIn("Political communication and AI methods are the strongest themes.", reviewed.summary)
 
     def test_render_summary_outputs_include_highlights(self) -> None:
         reviewed = parse_reviewed_digest(SAMPLE_REVIEWED_DIGEST)
@@ -71,7 +75,10 @@ class ReviewedDigestTests(unittest.TestCase):
         html = render_summary_html(reviewed)
         self.assertIn("The full curated digest is attached as a PDF.", plain_text)
         self.assertIn("Political behavior in online networks", plain_text)
-        self.assertIn("The full curated digest, including abstracts and catch-up sections, is attached as a PDF.", html)
+        self.assertNotIn("Collection Snapshot", plain_text)
+        self.assertNotIn("Collection Snapshot", html)
+        self.assertIn("The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents.", html)
+        self.assertIn("<ul", html)
         self.assertIn("Open article", html)
 
     def test_render_curated_digest_pdf_returns_pdf_bytes(self) -> None:
@@ -79,6 +86,11 @@ class ReviewedDigestTests(unittest.TestCase):
         assert reviewed is not None
         pdf_bytes = render_curated_digest_pdf(reviewed)
         self.assertTrue(pdf_bytes.startswith(b"%PDF-"))
+
+    def test_parse_reviewed_digest_accepts_legacy_email_summary_header(self) -> None:
+        legacy = SAMPLE_REVIEWED_DIGEST.replace("## Summary", "## Email Summary")
+        reviewed = parse_reviewed_digest(legacy)
+        self.assertIsNotNone(reviewed)
 
 
 if __name__ == "__main__":  # pragma: no cover

@@ -1,8 +1,11 @@
 Subject: Weekly journal digest for 2026-03-23 to 2026-03-29
 
-## Email Summary
+## Summary
 
-This week has a manageable set of papers with a few especially strong pieces in political communication, online influence, and causal inference. The email body should stay short, so the highlights are below and the full curated digest is reserved for the attached PDF.
+This week has a manageable set of papers with a few especially strong pieces in political communication, online influence, and causal inference. The highlights below should be enough to decide what to open first, while the attached PDF keeps the full curated packet organized by journal.
+
+- AI methods and political communication are the clearest through-lines this week.
+- The PDF will include a journal table of contents automatically, so you can jump straight to the sections you care about.
 
 ## Collection Snapshot
 
