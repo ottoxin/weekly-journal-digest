@@ -11,3 +11,9 @@ out/
 .state/
 *.sqlite3
 gmail-token.json
+token.json
+client_secret*.json
+*gmail-credentials*.json
+*gmail-token*.json
+.env
+.env.local

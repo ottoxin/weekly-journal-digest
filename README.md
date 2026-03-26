@@ -50,17 +50,28 @@ This means the Monday run is not limited to “only fetch the last 7 days.” It
 - Sending is idempotent per digest date and recipient unless `--force` is used.
 - Collection archives are written to `.state/archives/` for debugging and auditability.
 
-## Gmail Delivery Model
+## Workflow
 
-`send-digest` expects a reviewed markdown file, typically created by a Codex automation using the companion review skill.
+The repo is meant to be driven by an external automation, but the operational flow is simple:
 
-Set these environment variables before sending:
+1. Run `collect` to fetch journal metadata for a rolling window and upsert it into local SQLite state.
+2. Run `build-weekly-digest` with the Monday digest date to generate a deterministic `candidate_digest.json`.
+3. Have Codex read `candidate_digest.json` with the companion skill, filter out clearly irrelevant items, and write `reviewed_digest.md`.
+4. Run `send-digest` with the reviewed markdown file to send the final email through Gmail.
 
-- `WJD_GMAIL_CREDENTIALS_FILE`: Google OAuth client secret JSON path.
-- `WJD_GMAIL_TOKEN_FILE`: Gmail token JSON path. If missing, the first run opens the OAuth flow and writes it.
-- `WJD_GMAIL_SENDER`: Gmail address used as the sender.
-- `WJD_GMAIL_RECIPIENT`: default recipient if `--recipient` is omitted.
-- `WJD_CROSSREF_MAILTO`: recommended email address for polite Crossref API requests.
+The weekly window logic is:
+
+- The collector usually runs with a 28-day lookback.
+- `build-weekly-digest --digest-date YYYY-MM-DD` treats that date as the Monday handoff date.
+- `New This Week` is the previous 7 complete days.
+- `Previous Week Catch-Up` is the 7 days before that.
+- `Late Additions` are older records that were first seen during the current cycle.
+
+For the example week `2026-03-15` through `2026-03-21`, use `--digest-date 2026-03-22`.
+
+## Delivery Model
+
+`send-digest` expects a reviewed markdown file, typically created by a Codex automation using the companion review skill. It sends the final markdown through the Gmail API and records the send in local state so the same digest is not sent twice unless `--force` is used.
 
 ## CLI
 
@@ -82,6 +93,12 @@ Build a deterministic weekly review artifact:
 weekly-journal-digest build-weekly-digest --digest-date 2026-03-30 --output out/candidate_digest-2026-03-30.json
 ```
 
+Write the reviewed digest with Codex using the vendored skill:
+
+1. Open `out/candidate_digest-2026-03-30.json`.
+2. Use `skills/write-weekly-journal-digest`.
+3. Save the result as `out/reviewed_digest-2026-03-30.md`.
+
 Send the reviewed digest:
 
 ```bash
@@ -92,13 +109,34 @@ weekly-journal-digest send-digest \
 
 If the reviewed markdown starts with `Subject: ...`, that subject line is used automatically.
 
+## Example Weekly Run
+
+```bash
+python3 -m pip install -e .
+
+weekly-journal-digest collect \
+  --lookback-days 28 \
+  --end-date 2026-03-22
+
+weekly-journal-digest build-weekly-digest \
+  --digest-date 2026-03-22 \
+  --output out/candidate_digest-2026-03-22.json
+
+# Codex reads the candidate JSON and writes:
+# out/reviewed_digest-2026-03-22.md
+
+weekly-journal-digest send-digest \
+  --digest-date 2026-03-22 \
+  --reviewed-digest out/reviewed_digest-2026-03-22.md
+```
+
 ## Codex Skill
 
 The companion skill is vendored in this repo at:
 
 - `skills/write-weekly-journal-digest`
 
-Its job is narrow: read `candidate_digest.json`, write the motivating intro and section framing, and preserve deterministic article selection unless something is explicitly flagged for review.
+Its job is narrow: read `candidate_digest.json`, remove clearly irrelevant items that slipped through collection, and write the motivating intro and section framing for the final markdown email.
 
 If you want Codex to auto-discover it locally, copy or sync the folder to:
 
