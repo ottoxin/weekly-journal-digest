@@ -19,7 +19,7 @@ SCOPES = ["https://www.googleapis.com/auth/gmail.send"]
 class GmailSettings:
     credentials_file: Path
     token_file: Path
-    sender: str
+    sender: str | None = None
 
 
 class GmailSender:
@@ -35,8 +35,6 @@ class GmailSender:
             raise ValueError("WJD_GMAIL_CREDENTIALS_FILE is required.")
         if not token_file:
             raise ValueError("WJD_GMAIL_TOKEN_FILE is required.")
-        if not sender:
-            raise ValueError("WJD_GMAIL_SENDER is required.")
         return cls(
             GmailSettings(
                 credentials_file=Path(credentials_file),
@@ -49,7 +47,8 @@ class GmailSender:
         service = self._build_service()
         message = MIMEText(markdown_body, _charset="utf-8")
         message["to"] = to_address
-        message["from"] = self.settings.sender
+        if self.settings.sender:
+            message["from"] = self.settings.sender
         message["subject"] = subject
         raw = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
         response = (
