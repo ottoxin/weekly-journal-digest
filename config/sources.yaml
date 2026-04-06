@@ -137,3 +137,10 @@ sources:
     issns: ["2522-5839"]
     allowed_article_types: ["journal-article"]
     require_social_science_match: true
+  - id: nature-computational-science
+    journal: Nature Computational Science
+    category: general_science
+    adapter: crossref
+    issns: ["2662-8457"]
+    allowed_article_types: ["journal-article"]
+    require_social_science_match: true

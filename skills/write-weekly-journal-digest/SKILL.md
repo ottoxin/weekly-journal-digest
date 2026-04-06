@@ -134,7 +134,7 @@ Subject: Weekly journal digest for YYYY-MM-DD to YYYY-MM-DD
 - Include 5 to 8 highlights unless the curated set is smaller than that. Prefer highlights from `New This Week`, but you may include an unusually important catch-up or late addition.
 - Each `Why it matters` note should be specific and short. Do not repeat the abstract.
 - Default to keeping items from the dedicated communication and political science journals unless they are clearly non-article noise.
-- Be stricter with Nature, Science, PNAS, Science Advances, Nature Communications, Nature Human Behaviour, and Nature Machine Intelligence. Keep only items that are genuinely social-science-related.
+- Be stricter with Nature, Science, PNAS, Science Advances, Nature Communications, Nature Human Behaviour, Nature Machine Intelligence, and Nature Computational Science. Keep only items that are genuinely social-science-related.
 - Good keep examples: elections, public opinion, political behavior, institutions, communication effects, media systems, survey methods, social networks, migration, inequality, policy, governance, behavioral science with clear social-science relevance.
 - Good drop examples: oncology, protein structure, pure materials science, astrophysics, chemistry process engineering, cell biology, and other natural-science items with no real social-science connection.
 - Do not hide the size of the original collection. The email should make clear how many papers were gathered before filtering and that the sections below are curated from that larger set.
