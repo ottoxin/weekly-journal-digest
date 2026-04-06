@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import unittest
+from unittest.mock import Mock
+from urllib.error import HTTPError
 
 from weekly_journal_digest.enrichment import (
     MetadataEnricher,
@@ -117,6 +119,80 @@ class MetadataEnricherTests(unittest.TestCase):
         enriched = enricher.enrich_records([record])[0]
         self.assertEqual(enriched.abstract, "Crossref abstract")
         self.assertEqual(enriched.provenance["abstract_source"], "crossref")
+
+
+class EnrichmentResilienceTests(unittest.TestCase):
+    def test_openalex_404_returns_none(self) -> None:
+        http_client = Mock()
+        http_client.get_json.side_effect = HTTPError(
+            url="https://api.openalex.org/works/doi:10.1000%2Fmissing",
+            code=404,
+            msg="Not Found",
+            hdrs=None,
+            fp=None,
+        )
+        client = OpenAlexClient(http_client=http_client)
+
+        self.assertIsNone(client.abstract_by_doi("10.1000/missing"))
+
+    def test_semantic_scholar_batch_lookup_ignores_400(self) -> None:
+        http_client = Mock()
+        http_client.post_json.side_effect = HTTPError(
+            url="https://api.semanticscholar.org/graph/v1/paper/batch",
+            code=400,
+            msg="Bad Request",
+            hdrs=None,
+            fp=None,
+        )
+        client = SemanticScholarClient(http_client=http_client, api_key="test-key")
+
+        self.assertEqual(client.batch_lookup_by_doi(["10.1000/problematic"]), {})
+
+    def test_enrich_records_continues_when_optional_apis_fail(self) -> None:
+        semantic_http = Mock()
+        semantic_http.post_json.side_effect = HTTPError(
+            url="https://api.semanticscholar.org/graph/v1/paper/batch",
+            code=429,
+            msg="Too Many Requests",
+            hdrs=None,
+            fp=None,
+        )
+        semantic_http.get_json.side_effect = HTTPError(
+            url="https://api.semanticscholar.org/graph/v1/paper/search",
+            code=429,
+            msg="Too Many Requests",
+            hdrs=None,
+            fp=None,
+        )
+        openalex_http = Mock()
+        openalex_http.get_json.side_effect = HTTPError(
+            url="https://api.openalex.org/works/doi:10.1000%2Fpaper",
+            code=404,
+            msg="Not Found",
+            hdrs=None,
+            fp=None,
+        )
+        enricher = MetadataEnricher(
+            semantic_scholar=SemanticScholarClient(http_client=semantic_http, api_key="test-key"),
+            openalex=OpenAlexClient(http_client=openalex_http),
+            sleep_seconds=0,
+        )
+        records = [
+            ArticleRecord(
+                source_id="nature",
+                journal="Nature",
+                title="A paper",
+                published_date="2026-04-06",
+                doi="10.1000/paper",
+                canonical_url="https://doi.org/10.1000/paper",
+            )
+        ]
+
+        enriched = enricher.enrich_records(records)
+
+        self.assertEqual(len(enriched), 1)
+        self.assertIsNone(enriched[0].abstract)
+        self.assertEqual(enriched[0].provenance["abstract_source"], "unavailable")
 
 
 if __name__ == "__main__":  # pragma: no cover
