@@ -3,11 +3,15 @@ from __future__ import annotations
 import time
 from dataclasses import replace
 from typing import Any
+from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
 
-from .http_client import JsonHttpClient
+from .http_client import JsonHttpClient, TransientHttpError, is_transient_network_error
 from .models import ArticleRecord
 from .normalize import clean_abstract
+
+
+BEST_EFFORT_HTTP_STATUS_CODES = {400, 404, 408, 409, 425, 429, 500, 502, 503, 504}
 
 
 class SemanticScholarClient:
@@ -28,7 +32,12 @@ class SemanticScholarClient:
             f"{self.base_url}/paper/batch?"
             + urlencode({"fields": "abstract,tldr,citationCount,externalIds"})
         )
-        data = self.http_client.post_json(url, payload, headers={"x-api-key": self.api_key})
+        try:
+            data = self.http_client.post_json(url, payload, headers={"x-api-key": self.api_key})
+        except Exception as exc:
+            if _should_ignore_enrichment_error(exc):
+                return {}
+            raise
         results: dict[str, dict[str, Any]] = {}
         for item in data:
             external_ids = (item or {}).get("externalIds") or {}
@@ -44,7 +53,12 @@ class SemanticScholarClient:
             f"{self.base_url}/paper/search?"
             + urlencode({"query": title, "fields": "title,abstract", "limit": 3})
         )
-        payload = self.http_client.get_json(url, headers={"x-api-key": self.api_key})
+        try:
+            payload = self.http_client.get_json(url, headers={"x-api-key": self.api_key})
+        except Exception as exc:
+            if _should_ignore_enrichment_error(exc):
+                return None
+            raise
         target = title.strip().lower()
         for item in payload.get("data", []):
             candidate_title = (item.get("title") or "").strip().lower()
@@ -63,7 +77,12 @@ class OpenAlexClient:
         if not doi:
             return None
         url = f"{self.base_url}/doi:{quote(doi, safe='')}"
-        payload = self.http_client.get_json(url)
+        try:
+            payload = self.http_client.get_json(url)
+        except Exception as exc:
+            if _should_ignore_enrichment_error(exc):
+                return None
+            raise
         inverted = payload.get("abstract_inverted_index") or {}
         if not inverted:
             return None
@@ -146,3 +165,29 @@ def build_metadata_enricher(
         semantic_scholar=SemanticScholarClient(http_client=http_client, api_key=semantic_scholar_api_key),
         openalex=OpenAlexClient(http_client=http_client),
     )
+
+
+def _should_ignore_enrichment_error(exc: BaseException) -> bool:
+    for current in _iter_exception_chain(exc):
+        if isinstance(current, HTTPError) and current.code in BEST_EFFORT_HTTP_STATUS_CODES:
+            return True
+        if isinstance(current, (TransientHttpError, URLError)) and is_transient_network_error(current):
+            return True
+        if is_transient_network_error(current):
+            return True
+    return False
+
+
+def _iter_exception_chain(exc: BaseException):
+    pending = [exc]
+    seen: set[int] = set()
+    while pending:
+        current = pending.pop()
+        if id(current) in seen:
+            continue
+        seen.add(id(current))
+        yield current
+        if current.__cause__ is not None:
+            pending.append(current.__cause__)
+        if current.__context__ is not None:
+            pending.append(current.__context__)
