@@ -29,6 +29,7 @@ General science journals with social-science filtering:
 - Nature Human Behaviour
 - Nature Communications
 - Nature Machine Intelligence
+- Nature Computational Science
 
 For the general-science group, the collector keeps only social-science-related research articles or brief reports using deterministic keyword and metadata rules.
 
