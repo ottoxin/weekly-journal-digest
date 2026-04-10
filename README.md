@@ -13,6 +13,7 @@ Communication journals:
 - Political Communication
 - Human Communication Research
 - Communication Research
+- Communication Methods and Measures
 
 Political science journals:
 
