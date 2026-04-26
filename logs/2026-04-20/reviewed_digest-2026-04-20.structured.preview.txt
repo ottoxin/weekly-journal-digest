@@ -1,0 +1,55 @@
+Subject: Weekly journal digest for 2026-04-13 to 2026-04-19
+
+Dear Otto,
+
+Summary
+
+COMAP Journal Bot recovered the blocked run and reviewed 314 collected candidates for the 2026-04-13 to 2026-04-19 digest window. After manual relevance filtering, the curated digest keeps 28 papers: 11 new this week, 17 catch-up items, and no late additions.
+
+This is a compact but useful week for COMAP: AI hype and model behavior, free-speech boundaries, fake-news learning, adaptive conjoint methods, election deception networks, and disinformation narratives sit alongside governance papers on climate scenarios, carbon credits, immigration enforcement, state-building, and policy development.
+
+- AI and computational methods are especially strong, with papers on LLM trait transmission, AI hype, reasoning traces, and adaptive survey experiments.
+- Political communication is anchored by free-expression judgments, fake-news learning, political expression on social media, and cross-platform disinformation narratives.
+- Governance and institutions appear through climate politics, carbon-credit auditing, immigration enforcement timing, veto players, bureaucratic resistance, and urban state-building.
+
+Highlights
+- Language models transmit behavioural traits through hidden signals in data
+  Nature | 2026-04-15
+  Why it matters: A direct fit for AI-for-social-science methods: the paper shows that model distillation can transmit behavioral traits even through semantically unrelated training data.
+  Link: https://doi.org/10.1038/s41586-026-10319-8
+
+- Expression at the edge: Free speech boundaries amidst the Gaza crisis
+  Science Advances | 2026-04-17
+  Why it matters: This survey-experimental study is useful for political communication work on campus speech, group identity, harm judgments, and institutional response.
+  Link: https://doi.org/10.1126/sciadv.aea5427
+
+- Blowing artificial intelligence bubbles: studies of technological hype
+  Journal of Communication | 2026-04-16
+  Why it matters: A communication-focused entry point for studying AI hype cycles and the social construction of emerging technologies.
+  Link: https://doi.org/10.1093/joc/jqag002
+
+- Eye of the beholder: Pupillary response reflects how subjective prior beliefs shape reinforcement learning with fake news
+  Proceedings of the National Academy of Sciences | 2026-04-16
+  Why it matters: It connects misinformation exposure to belief-confirming learning dynamics, offering a behavioral mechanism for selective engagement with false news.
+  Link: https://doi.org/10.1073/pnas.2518776123
+
+- Adaptive Randomization in Conjoint Survey Experiments
+  Political Analysis | 2026-04-13
+  Why it matters: A strong methods paper for survey experimentation, especially when researchers care about heterogeneous effects across high-dimensional profile attributes.
+  Link: https://doi.org/10.1017/pan.2026.10040
+
+- How deceptive online networks reached millions in the US 2020 elections
+  Nature Human Behaviour | 2026-04-06
+  Why it matters: This is central to COMAP’s platform-manipulation interests because it focuses on deceptive online networks and election-scale audience reach.
+  Link: https://doi.org/10.1038/s41562-026-02435-2
+
+- Disinformation as Cultural Narrative: Conceptualizing Disinformation as Cross-Platform, Identity-Affirming, Cathartic Stories
+  Political Communication | 2026-04-06
+  Why it matters: It shifts attention from isolated false claims to cross-platform narrative systems, which is useful for work on identity, affect, and political media ecosystems.
+  Link: https://doi.org/10.1080/10584609.2026.2644198
+
+The full curated digest is attached as a PDF.
+
+COMAP Journal Bot
+
+If you wish to unsubscribe, send email to haohangxin@u.northwestern.edu

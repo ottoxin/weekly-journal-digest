@@ -52,6 +52,7 @@ This means the Monday run is not limited to “only fetch the last 7 days.” It
 - Collection now uses a layered metadata approach:
   Crossref for discovery, optional Semantic Scholar DOI enrichment for abstracts and citation counts, and OpenAlex DOI fallback for abstracts that remain missing.
 - Collection is idempotent. Re-running `collect` or `build-weekly-digest` should not duplicate articles.
+- Collection automatically retries transient DNS and transport failures before marking a source as failed.
 - Sending is idempotent per digest date and recipient unless `--force` is used.
 - Collection archives are written to `.state/archives/` for debugging and auditability.
 
@@ -64,10 +65,13 @@ The repo is meant to be driven by an external automation, but the operational fl
 3. Run `build-weekly-digest` with the Monday digest date to generate a deterministic `candidate_digest.json`.
 4. Have Codex read `candidate_digest.json` with the companion skill, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP relevance, and write a structured `reviewed_digest.md`.
    For every kept article in the full curated digest, include abstract, authors, affiliations when available, DOI, and link.
-5. Run `send-digest` with the reviewed markdown file to send a short HTML summary email and attach the full curated digest as a PDF.
+5. Run `render-digest` with the reviewed markdown file to generate no-send preview artifacts: a plain-text body, HTML email body, and PDF.
+   Inspect the `.preview.html` and `.preview.pdf` files before delivery.
+6. Run `send-digest` with the reviewed markdown file to send a short HTML summary email and attach the full curated digest as a PDF.
    The email body uses `Summary` and `Highlights`; the PDF includes the full curated digest and an automatically generated journal table of contents.
    By default it sends to the active emails in `config/recipients.json`. Use `--recipient` only for a one-off override.
-6. Save the markdown and PDF under a repo log folder if you want the run preserved in GitHub history.
+7. Save the markdown and PDF under a repo log folder if you want the run preserved in GitHub history.
+   When `send-digest` is run against a reviewed digest stored under `logs/YYYY-MM-DD/`, it now auto-commits and pushes the candidate JSON, reviewed markdown, and sibling PDF if the repo has no unrelated changes. If the repo is otherwise dirty, it skips the git step safely.
 
 The weekly window logic is:
 
@@ -88,6 +92,7 @@ For repeatable automation runs, keep artifacts in a tracked log folder inside th
 - `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.pdf`
 
 The companion skill now assumes this layout so the reviewed markdown and generated PDF can be committed to GitHub as an execution log when desired.
+If `send-digest` is pointed at the reviewed markdown inside one of these log folders, the CLI will now try to commit and push those log artifacts automatically when the repo is otherwise clean.
 
 ## Recipients
 
@@ -102,7 +107,7 @@ Example:
   "recipients": [
     {
       "email": "haohangxin@u.northwestern.edu",
-      "name": "Haohang Xin",
+      "name": "Otto",
       "active": true
     }
   ]
@@ -115,6 +120,7 @@ Example:
 
 `send-digest` expects a reviewed markdown file, typically created by a Codex automation using the companion review skill.
 
+- Use `render-digest` first when you want to inspect the email and PDF without opening Gmail, writing send records, or auto-committing log artifacts.
 - If the reviewed file follows the current structured format, the repo sends a short HTML email built from `Summary` and `Highlights`, and attaches a PDF built from `Summary`, the optional `Collection Snapshot`, and `Full Curated Digest`.
 - If the reviewed file uses the older unstructured format, the repo falls back to the legacy plain-text send path.
 - Sends are still recorded in local state so the same digest is not sent twice unless `--force` is used.
@@ -162,6 +168,20 @@ The reviewed markdown should now contain these major sections:
 
 For a logged run, save the reviewed markdown in `logs/YYYY-MM-DD/` instead of `out/`.
 
+Render no-send previews:
+
+```bash
+weekly-journal-digest render-digest \
+  --reviewed-digest out/reviewed_digest-2026-03-30.md \
+  --recipient-name "Haohang Xin"
+```
+
+This writes sibling preview files using the reviewed digest stem:
+
+- `reviewed_digest-2026-03-30.preview.txt`
+- `reviewed_digest-2026-03-30.preview.html`
+- `reviewed_digest-2026-03-30.preview.pdf`
+
 Send the reviewed digest:
 
 ```bash
@@ -182,6 +202,7 @@ weekly-journal-digest send-digest \
 If the reviewed markdown starts with `Subject: ...`, that subject line is used automatically.
 
 When the reviewed file follows the current skill contract, `send-digest` also writes a sibling PDF file next to the reviewed markdown before attaching it to the outgoing email. That PDF includes a generated table of contents linking to the journal sections in the curated digest.
+If that reviewed markdown lives under `logs/YYYY-MM-DD/`, `send-digest` will also try to git add, commit, and push the candidate JSON, reviewed markdown, and generated PDF after a successful send, but only when the repo has no unrelated changes.
 
 ## Example Weekly Run
 
@@ -198,6 +219,9 @@ weekly-journal-digest build-weekly-digest \
 
 # Codex reads the candidate JSON and writes:
 # out/reviewed_digest-2026-03-22.md
+
+weekly-journal-digest render-digest \
+  --reviewed-digest out/reviewed_digest-2026-03-22.md
 
 weekly-journal-digest send-digest \
   --digest-date 2026-03-22 \
