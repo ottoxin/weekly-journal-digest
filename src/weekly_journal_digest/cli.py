@@ -3,14 +3,16 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
+from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from .adapters import build_adapter_registry
 from .config import load_config
 from .digest import build_candidate_digest, compute_weekly_windows
-from .emailing import EmailAttachment, GmailSender, extract_subject
+from .emailing import EmailAttachment, GmailSender, describe_delivery_error, extract_subject
 from .enrichment import build_metadata_enricher
 from .filters import should_include_record
 from .reviewed_digest import (
@@ -18,12 +20,30 @@ from .reviewed_digest import (
     render_curated_digest_pdf,
     render_summary_html,
     render_summary_plain_text,
+    UNSUBSCRIBE_TEXT,
 )
 from .storage import StateStore
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CONFIG_PATH = REPO_ROOT / "config" / "sources.yaml"
+
+
+@dataclass(frozen=True, slots=True)
+class Recipient:
+    email: str
+    name: str | None = None
+
+    @property
+    def salutation_name(self) -> str:
+        cleaned = " ".join((self.name or "").split())
+        if cleaned:
+            return cleaned
+        local_part = self.email.split("@", 1)[0]
+        inferred = " ".join(
+            piece for piece in re_split_recipient_name(local_part) if piece
+        )
+        return inferred.title() if inferred else "Reader"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -56,6 +76,15 @@ def build_parser() -> argparse.ArgumentParser:
     build_parser_.add_argument("--digest-date", default=None, help="Digest date in YYYY-MM-DD.")
     build_parser_.add_argument("--output", default=None)
     build_parser_.set_defaults(func=cmd_build_weekly_digest)
+
+    render_parser = subparsers.add_parser(
+        "render-digest",
+        help="Render email and PDF preview artifacts without sending.",
+    )
+    render_parser.add_argument("--reviewed-digest", required=True)
+    render_parser.add_argument("--output-dir", default=None)
+    render_parser.add_argument("--recipient-name", default=None)
+    render_parser.set_defaults(func=cmd_render_digest)
 
     send_parser = subparsers.add_parser("send-digest", help="Send the reviewed digest via Gmail API.")
     send_parser.add_argument("--config", default=str(DEFAULT_CONFIG_PATH))
@@ -152,8 +181,40 @@ def cmd_build_weekly_digest(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_render_digest(args: argparse.Namespace) -> int:
+    reviewed_path = Path(args.reviewed_digest)
+    output_dir = Path(args.output_dir) if args.output_dir else reviewed_path.parent
+    output_dir.mkdir(parents=True, exist_ok=True)
+    markdown_body = reviewed_path.read_text(encoding="utf-8")
+    parsed_subject, body = extract_subject(markdown_body)
+    reviewed = parse_reviewed_digest(markdown_body)
+    output_stem = reviewed_path.stem
+    written_paths: list[Path] = []
+    if reviewed is None:
+        subject = parsed_subject or "Weekly journal digest preview"
+        plain_text_body = format_legacy_email_body(body, args.recipient_name or "Reader")
+        text_path = output_dir / f"{output_stem}.preview.txt"
+        text_path.write_text(f"Subject: {subject}\n\n{plain_text_body}", encoding="utf-8")
+        written_paths.append(text_path)
+    else:
+        text_path = output_dir / f"{output_stem}.preview.txt"
+        html_path = output_dir / f"{output_stem}.preview.html"
+        pdf_path = output_dir / f"{output_stem}.preview.pdf"
+        plain_text_body = render_summary_plain_text(reviewed, args.recipient_name)
+        html_body = render_summary_html(reviewed, args.recipient_name)
+        text_path.write_text(f"Subject: {reviewed.subject}\n\n{plain_text_body}", encoding="utf-8")
+        html_path.write_text(html_body, encoding="utf-8")
+        pdf_path.write_bytes(render_curated_digest_pdf(reviewed))
+        written_paths.extend([text_path, html_path, pdf_path])
+    print("Wrote digest preview artifacts:")
+    for path in written_paths:
+        print(f"- {path}")
+    return 0
+
+
 def cmd_send_digest(args: argparse.Namespace) -> int:
     config = load_config(args.config)
+    repo_root = repo_root_for_config(args.config)
     state_dir = resolve_state_dir(args.config, args.state_dir or config.state_dir)
     store = StateStore(state_dir / "digest.db")
     digest_date = parse_date(args.digest_date) if args.digest_date else date.today()
@@ -173,8 +234,6 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
     pdf_bytes = None
     attachment = None
     if reviewed is not None:
-        plain_text_body = render_summary_plain_text(reviewed)
-        html_body = render_summary_html(reviewed)
         pdf_bytes = render_curated_digest_pdf(reviewed)
         attachment_path = reviewed_path.with_suffix(".pdf")
         attachment_path.write_bytes(pdf_bytes)
@@ -186,35 +245,62 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
     recipients_to_send = [
         recipient
         for recipient in recipients
-        if args.force or not store.has_sent_digest(digest_key, recipient)
+        if args.force or not store.has_sent_digest(digest_key, recipient.email)
     ]
     if not recipients_to_send:
         print(f"Digest {digest_key} was already sent to all configured recipients. Use --force to resend.")
         return 0
-    sender = GmailSender.from_env()
-    for recipient in recipients:
-        if recipient not in recipients_to_send:
-            print(f"Digest {digest_key} was already sent to {recipient}. Use --force to resend.")
-            continue
-        if reviewed is None:
-            message_id = sender.send_markdown(recipient, subject, body)
-        else:
-            message_id = sender.send_digest_package(
-                recipient,
-                subject,
-                plain_text_body,
-                html_body,
-                [attachment],
+    sent_any = False
+    try:
+        sender = GmailSender.from_env()
+        for recipient in recipients:
+            if recipient not in recipients_to_send:
+                print(f"Digest {digest_key} was already sent to {recipient.email}. Use --force to resend.")
+                continue
+            plain_text_body = None
+            html_body = None
+            if reviewed is None:
+                message_id = sender.send_markdown(
+                    recipient.email,
+                    subject,
+                    format_legacy_email_body(body, recipient.salutation_name),
+                )
+            else:
+                plain_text_body = render_summary_plain_text(reviewed, recipient.salutation_name)
+                html_body = render_summary_html(reviewed, recipient.salutation_name)
+                message_id = sender.send_digest_package(
+                    recipient.email,
+                    subject,
+                    plain_text_body,
+                    html_body,
+                    [attachment],
+                )
+            store.record_sent_digest(
+                digest_key=digest_key,
+                recipient=recipient.email,
+                subject=subject,
+                body=markdown_body,
+                sent_at=utc_now().isoformat(),
+                message_id=message_id,
             )
-        store.record_sent_digest(
-            digest_key=digest_key,
-            recipient=recipient,
-            subject=subject,
-            body=markdown_body,
-            sent_at=utc_now().isoformat(),
-            message_id=message_id,
-        )
-        print(f"Sent digest {digest_key} to {recipient}.")
+            sent_any = True
+            print(f"Sent digest {digest_key} to {recipient.email}.")
+    except Exception as exc:
+        detail = describe_delivery_error(exc)
+        if sent_any:
+            print(
+                f"Digest {digest_key} stopped after at least one successful send. "
+                f"Remaining recipients were not delivered: {detail}",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"Digest {digest_key} was not sent. No send record was written: {detail}",
+                file=sys.stderr,
+            )
+        return 1
+    if sent_any:
+        maybe_commit_and_push_log_artifacts(repo_root, digest_key, reviewed_path)
     return 0
 
 
@@ -270,13 +356,13 @@ def resolve_recipients(
     config_path: str | Path,
     recipients_file_value: str,
     recipient_override: str | None,
-) -> list[str]:
+) -> list[Recipient]:
     if recipient_override:
-        return [recipient_override.strip()]
+        return [Recipient(email=recipient_override.strip())]
     env_recipients = os.environ.get("WJD_GMAIL_RECIPIENT")
     if env_recipients:
         return dedupe_recipients(
-            recipient.strip()
+            Recipient(email=recipient.strip())
             for recipient in env_recipients.split(",")
             if recipient.strip()
         )
@@ -286,7 +372,7 @@ def resolve_recipients(
     return load_recipients(recipients_path)
 
 
-def load_recipients(recipients_path: str | Path) -> list[str]:
+def load_recipients(recipients_path: str | Path) -> list[Recipient]:
     raw = json.loads(Path(recipients_path).read_text(encoding="utf-8"))
     if isinstance(raw, dict):
         entries = raw.get("recipients", [])
@@ -294,27 +380,167 @@ def load_recipients(recipients_path: str | Path) -> list[str]:
         entries = raw
     else:
         raise ValueError("Recipients file must contain a list or a {'recipients': [...]} object.")
-    recipients: list[str] = []
+    recipients: list[Recipient] = []
     for entry in entries:
         if isinstance(entry, str):
             email = entry.strip()
             active = True
+            name = None
         else:
             email = str(entry.get("email", "")).strip()
             active = bool(entry.get("active", True))
+            name = str(entry.get("name", "")).strip() or None
         if email and active:
-            recipients.append(email)
+            recipients.append(Recipient(email=email, name=name))
     return dedupe_recipients(recipients)
 
 
-def dedupe_recipients(recipients: list[str] | tuple[str, ...] | object) -> list[str]:
+def dedupe_recipients(recipients: list[Recipient] | tuple[Recipient, ...] | object) -> list[Recipient]:
     seen: set[str] = set()
-    ordered: list[str] = []
+    ordered: list[Recipient] = []
     for recipient in recipients:
-        if recipient not in seen:
-            seen.add(recipient)
+        if recipient.email not in seen:
+            seen.add(recipient.email)
             ordered.append(recipient)
     return ordered
+
+
+def format_legacy_email_body(body: str, recipient_name: str) -> str:
+    return (
+        f"Dear {recipient_name},\n\n"
+        f"{body.strip()}\n\n"
+        "COMAP Journal Bot\n\n"
+        f"{UNSUBSCRIBE_TEXT}\n"
+    )
+
+
+def maybe_commit_and_push_log_artifacts(
+    repo_root: Path,
+    digest_key: str,
+    reviewed_path: Path,
+) -> None:
+    reviewed_path = reviewed_path.resolve()
+    repo_root = repo_root.resolve()
+    expected_log_dir = (repo_root / "logs" / digest_key).resolve()
+    if reviewed_path.parent != expected_log_dir:
+        return
+    if not _git_is_repository(repo_root):
+        return
+    artifact_paths = [
+        expected_log_dir / f"candidate_digest-{digest_key}.json",
+        reviewed_path,
+        reviewed_path.with_suffix(".pdf"),
+    ]
+    artifact_paths = [path.resolve() for path in artifact_paths if path.exists()]
+    if not artifact_paths:
+        return
+    allowed_paths = {str(path.relative_to(repo_root)) for path in artifact_paths}
+    status = _git(repo_root, "status", "--porcelain", "--untracked-files=all")
+    if status.returncode != 0:
+        print(f"Skipping git auto-push for {digest_key}: could not inspect git status.")
+        return
+    status_lines = [line for line in status.stdout.splitlines() if line.strip()]
+    if not status_lines:
+        return
+    changed_paths: list[str] = []
+    for line in status_lines:
+        path = _parse_git_status_path(line)
+        if path is None:
+            print(f"Skipping git auto-push for {digest_key}: unsupported git status entry `{line}`.")
+            return
+        changed_paths.append(path)
+    unrelated_paths = sorted(path for path in changed_paths if path not in allowed_paths)
+    if unrelated_paths:
+        preview = ", ".join(unrelated_paths[:3])
+        if len(unrelated_paths) > 3:
+            preview += ", ..."
+        print(
+            f"Skipping git auto-push for {digest_key}: repo has unrelated changes ({preview})."
+        )
+        return
+    add_result = _git(repo_root, "add", "--", *sorted(allowed_paths))
+    if add_result.returncode != 0:
+        print(f"Skipping git auto-push for {digest_key}: could not stage log artifacts.")
+        return
+    staged_result = _git(
+        repo_root,
+        "diff",
+        "--cached",
+        "--name-only",
+        "--",
+        *sorted(allowed_paths),
+    )
+    if staged_result.returncode != 0 or not staged_result.stdout.strip():
+        return
+    commit_result = _git(repo_root, "commit", "-m", f"Add digest log for {digest_key}")
+    if commit_result.returncode != 0:
+        error = commit_result.stderr.strip() or commit_result.stdout.strip()
+        print(f"Skipping git auto-push for {digest_key}: commit failed ({error}).")
+        return
+    push_result = _git_push_current_branch(repo_root)
+    if push_result.returncode == 0:
+        print(f"Committed and pushed digest log for {digest_key}.")
+        return
+    error = push_result.stderr.strip() or push_result.stdout.strip()
+    print(
+        f"Committed digest log for {digest_key}, but push failed"
+        f"{f' ({error})' if error else '.'}"
+    )
+
+
+def _git_is_repository(repo_root: Path) -> bool:
+    result = _git(repo_root, "rev-parse", "--is-inside-work-tree")
+    return result.returncode == 0 and result.stdout.strip() == "true"
+
+
+def _git_push_current_branch(repo_root: Path) -> subprocess.CompletedProcess[str]:
+    upstream = _git(
+        repo_root,
+        "rev-parse",
+        "--abbrev-ref",
+        "--symbolic-full-name",
+        "@{u}",
+    )
+    if upstream.returncode == 0 and upstream.stdout.strip():
+        return _git(repo_root, "push")
+    branch = _git(repo_root, "branch", "--show-current")
+    remote = _git(repo_root, "remote")
+    branch_name = branch.stdout.strip()
+    remotes = [line.strip() for line in remote.stdout.splitlines() if line.strip()]
+    if branch.returncode != 0 or not branch_name or "origin" not in remotes:
+        return subprocess.CompletedProcess(
+            args=["git", "push"],
+            returncode=1,
+            stdout="",
+            stderr="No upstream or origin remote configured.",
+        )
+    return _git(repo_root, "push", "-u", "origin", branch_name)
+
+
+def _git(repo_root: Path, *args: str) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        ["git", "-C", str(repo_root), *args],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+
+def _parse_git_status_path(line: str) -> str | None:
+    if len(line) < 4:
+        return None
+    path = line[3:].strip()
+    if not path or " -> " in path:
+        return None
+    return path
+
+
+def re_split_recipient_name(value: str) -> list[str]:
+    return [
+        piece
+        for chunk in value.replace(".", " ").replace("_", " ").replace("-", " ").split()
+        for piece in [chunk]
+    ]
 
 
 def default_subject(digest_date: date) -> str:

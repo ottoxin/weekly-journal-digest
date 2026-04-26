@@ -48,8 +48,9 @@ Do not use this skill to discover articles outside the JSON or change the journa
 8. Save the reviewed artifact and repo log.
    Write the structured markdown to `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md`.
    Keep the candidate digest in the same log folder.
-   Let `send-digest` generate the sibling PDF in that same folder.
-   If the repo is otherwise clean enough to do so safely, commit and push the new log files for auditability.
+   Run `weekly-journal-digest render-digest --reviewed-digest logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md` when the user wants a no-send preview of the email and PDF.
+   Let `send-digest` generate the sibling delivery PDF in that same folder when sending is requested.
+   When `send-digest` runs against a reviewed digest stored under `logs/YYYY-MM-DD/`, it now auto-commits and pushes the candidate JSON, reviewed markdown, and sibling PDF if the repo has no unrelated changes. If the repo is dirty beyond those log artifacts, it skips the git step safely.
 9. Write the email summary, highlights, and final polish in the voice of `COMAP Journal Bot`.
 10. Send to the configured recipient list by default.
    Use `config/recipients.json` unless the user explicitly asks for a one-off override recipient.
