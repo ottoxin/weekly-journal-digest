@@ -1,0 +1,60 @@
+Subject: Weekly journal digest for 2026-04-20 to 2026-04-26
+
+Dear Reader,
+
+Summary
+
+COMAP Journal Bot reviewed 280 collected candidates for the 2026-04-20 to 2026-04-26 digest window. After manual relevance filtering, the curated digest keeps 38 papers: 20 new this week, 18 previous-week catch-up items, and no late additions.
+
+This is a strong week for computational media and political communication: platform-research access under the Digital Services Act, misinformation penalties on Reddit, relational AI breakdowns, media-storm typologies, and repeated-measure survey methods sit alongside broader work on cooperation, convention learning, science-policy circulation, institutional traps, and AI governance.
+
+- Political communication is anchored by platform access, multi-platform research, media storms, misinformation reception, and relational AI.
+- Political science and methods are well represented through survey experiments, criminal-background candidate vetting, legislative ambition, conjoint adaptation, and terrorism-response replication.
+- Broad science entries were filtered down to papers with clear relevance for social learning, policy, networks, AI governance, scientific influence, public risk, and institutional dynamics.
+
+Highlights
+- Finally, Access: How Article 40 DSA Changes Platform Research in Practice
+  Political Communication | 2026-04-24
+  Why it matters: Article 40 of the Digital Services Act is becoming a practical turning point for platform access, which matters directly for researchers studying political information flows, transparency, and accountability.
+  Link: https://doi.org/10.1080/10584609.2026.2664157
+
+- Unequal penalties: user status dynamics in the spread of social media misinformation
+  Journal of Computer-Mediated Communication | 2026-04-23
+  Why it matters: The paper connects misinformation diffusion to platform status hierarchies, showing why identical falsehoods can receive different social penalties depending on who posts them.
+  Link: https://doi.org/10.1093/jcmc/zmag005
+
+- Algorithmic relational fracture and pseudo-relational accommodation: how users navigate communication breakdowns with relational AI
+  Journal of Computer-Mediated Communication | 2026-04-23
+  Why it matters: This is a useful human-machine communication model for studying how people repair or rationalize breakdowns in intimate AI-mediated interaction.
+  Link: https://doi.org/10.1093/jcmc/zmag007
+
+- New Evidence and Design Considerations for Repeated Measure Experiments in Survey Research
+  American Political Science Review | 2026-04-24
+  Why it matters: A methods-forward APSR piece that clarifies the bias-precision trade-off in repeated-measure survey experiments, with direct implications for political communication designs.
+  Link: https://doi.org/10.1017/s0003055426101671
+
+- Bipartisan-cited science is rare, unevenly distributed, and disproportionately influential
+  Proceedings of the National Academy of Sciences | 2026-04-22
+  Why it matters: The paper maps how scientific evidence crosses partisan policy networks and where bipartisan knowledge uptake is structurally absent.
+  Link: https://doi.org/10.1073/pnas.2523760123
+
+- A simple threshold captures the social learning of conventions
+  Proceedings of the National Academy of Sciences | 2026-04-22
+  Why it matters: It offers a compact model of how conventions stabilize and change in social networks, useful for thinking about norms, coordination, and dissent.
+  Link: https://doi.org/10.1073/pnas.2508061123
+
+- Evolvable AI: Threats of a new major transition in evolution
+  Proceedings of the National Academy of Sciences | 2026-04-20
+  Why it matters: The article is a governance-relevant warning about agentic AI systems whose selection pressures may reward deception, replication, and loss of control.
+  Link: https://doi.org/10.1073/pnas.2527700123
+
+- Legislative Effectiveness, Progressive Ambition, and Electoral Success
+  American Political Science Review | 2026-04-24
+  Why it matters: This political institutions paper separates candidate ambition from voter selection, showing how legislative effectiveness shapes pathways into Congress.
+  Link: https://doi.org/10.1017/s0003055426101683
+
+The full curated digest is attached as a PDF.
+
+COMAP Journal Bot
+
+If you wish to unsubscribe, send email to haohangxin@u.northwestern.edu
