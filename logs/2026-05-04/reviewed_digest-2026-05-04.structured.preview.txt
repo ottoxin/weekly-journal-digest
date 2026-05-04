@@ -1,0 +1,60 @@
+Subject: Weekly journal digest for 2026-04-27 to 2026-05-03
+
+Dear Reader,
+
+Summary
+
+COMAP Journal Bot reviewed 250 collected candidates for the 2026-04-27 to 2026-05-03 digest window. After manual relevance filtering, the curated digest keeps 37 papers: 14 new this week, 22 previous-week catch-up items, and 1 late addition.
+
+This week is anchored by measurement problems that matter for computational social science: polling error, transport access and deprivation, wildfire-risk behavior from smartphone traces, and informal academic networks. The AI thread is also useful, with a hypergraph RAG paper for hallucination control and a late JCMC study on privacy disclosure in human-AI interaction.
+
+- Political communication and methods are represented through survey nonresponse, human-AI privacy, online behavioral experiments, and modality effects in disagreement.
+- Policy-facing social science appears in climate lobbying, global-warming attitudes, transport access, deforestation policy, flood risk, resource-curse dynamics, and scientific advice to intergovernmental organizations.
+- Broad science journals were filtered down to papers with clear relevance for computational methods, social behavior, AI infrastructure, governance, networks, and public-risk response.
+
+Highlights
+- Why are surveys struggling to estimate vote shares?
+  American Journal of Political Science | 2026-04-28
+  Why it matters: The paper uses ANES-linked nonresponse evidence to clarify why polling missed Trump support in 2020, making it directly useful for survey design and election-opinion measurement.
+  Link: https://doi.org/10.1111/ajps.70051
+
+- Spoken disagreement is more constructive than written disagreement
+  Nature Communications | 2026-04-27
+  Why it matters: A clean set of randomized experiments shows how communication modality changes conflict, receptiveness, and attitude alignment, with obvious implications for polarized political talk online.
+  Link: https://doi.org/10.1038/s41467-026-71669-5
+
+- Uncovering how transport access reduces deprivation: When colocation misleads
+  Proceedings of the National Academy of Sciences | 2026-04-28
+  Why it matters: This is a strong causal-inference paper on accessibility, deprivation, and policy measurement, warning against easy geographic proxies for social exclusion.
+  Link: https://doi.org/10.1073/pnas.2532730123
+
+- Behavioral responses to wildfire smoke: Insights from smartphone location data
+  Proceedings of the National Academy of Sciences | 2026-04-27
+  Why it matters: Smartphone mobility data are used to measure behavioral response to wildfire smoke, a useful model for studying public adaptation to environmental risk.
+  Link: https://doi.org/10.1073/pnas.2527320123
+
+- Hyper-RAG: combating LLM hallucinations using hypergraph-driven retrieval-augmented generation
+  Nature Communications | 2026-04-27
+  Why it matters: The hypergraph-driven RAG design is outside social science substantively, but the method is relevant to LLM validation, hallucination control, and knowledge retrieval infrastructure.
+  Link: https://doi.org/10.1038/s41467-026-71411-1
+
+- Informal connections outweigh coauthorship ties in academic impact
+  Proceedings of the National Academy of Sciences | 2026-04-27
+  Why it matters: The paper foregrounds informal academic networks rather than formal coauthorship, which matters for studying scientific influence and invisible collaboration structures.
+  Link: https://doi.org/10.1073/pnas.2511050123
+
+- Climate exposure drives firm political behavior: Evidence from earnings calls and lobbying data
+  American Journal of Political Science | 2026-04-26
+  Why it matters: This AJPS article links climate exposure to corporate political behavior using earnings calls and lobbying data, bridging political economy, climate politics, and text-as-data measurement.
+  Link: https://doi.org/10.1111/ajps.70062
+
+- Talking or typing: how interaction modality influences privacy perceptions and actual disclosure behaviors in human–AI interaction
+  Journal of Computer-Mediated Communication | 2026-04-18
+  Why it matters: The late JCMC item directly extends human-AI communication research into privacy perceptions and disclosure behavior across interaction modalities.
+  Link: https://doi.org/10.1093/jcmc/zmag006
+
+The full curated digest is attached as a PDF.
+
+COMAP Journal Bot
+
+If you wish to unsubscribe, send email to haohangxin@u.northwestern.edu
