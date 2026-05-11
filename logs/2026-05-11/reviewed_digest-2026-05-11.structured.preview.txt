@@ -1,0 +1,60 @@
+Subject: Weekly journal digest for 2026-05-04 to 2026-05-10
+
+Dear Reader,
+
+Summary
+
+COMAP Journal Bot reviewed 251 collected candidates for the 2026-05-04 to 2026-05-10 digest window. After manual relevance filtering, the curated digest keeps 50 papers: 23 new this week, 24 previous-week catch-up items, and 3 late additions.
+
+This is a high-signal week for computational media and political communication. The strongest thread runs from dataveillance and chilling effects to TikTok’s partisan recommendation skews, Russian wartime rhetoric on social media, multilingual survey-response classification, and the legal limits of DSA-style platform research access.
+
+- Political communication is especially strong: surveillance, identity threat, campaign affect, persuasive media discussion, social media rhetoric, and platform access all appear in the same week.
+- Methods pieces focus on text-as-behavior, multilingual open-ended survey classification, digital trace sequences, genetic confounding in observational studies, and higher-order network structure.
+- Broad-science keeps were filtered toward social inequality, democratic norms, misinformation, AI reliability, scientific visibility, climate and environmental policy, and public-risk behavior.
+
+Highlights
+- Dataveillance inhibits legitimate communication: causal evidence for chilling effects
+  Journal of Communication | 2026-05-05
+  Why it matters: This is the week’s clearest fit for COMAP: causal evidence that surveillance expectations can chill legitimate communication, directly relevant to censorship, platform governance, and political expression.
+  Link: https://doi.org/10.1093/joc/jqag004
+
+- Systematic partisan content skews in TikTok during the 2024 US elections
+  Nature | 2026-05-06
+  Why it matters: A large sock-puppet audit of TikTok during the 2024 US election gives unusually direct evidence on algorithmic curation, partisan exposure, and platform power.
+  Link: https://doi.org/10.1038/s41586-026-10447-1
+
+- “Everything for the Front, Everything for Victory”? Elite Incentives and Rhetorical Adaptation of Russia’s Members of Parliament on Social Media
+  Political Communication | 2026-05-05
+  Why it matters: The article tracks how Russian MPs adapt rhetoric on social media under wartime incentives, linking authoritarian communication, elite behavior, and digital trace data.
+  Link: https://doi.org/10.1080/10584609.2026.2664717
+
+- Text as Behavior
+  Political Analysis | 2026-05-06
+  Why it matters: This methods piece reframes text as behavioral evidence, a useful conceptual anchor for computational social science work using language traces.
+  Link: https://doi.org/10.1017/pan.2026.10041
+
+- Using Multilingual Language Technology to Classify Open-Ended Survey Responses: Conceptions of Democracy in a Cross-Cultural Survey Setting
+  Political Analysis | 2026-05-04
+  Why it matters: The paper applies multilingual language technology to open-ended survey responses across cultures, directly relevant to scalable measurement and cross-national public opinion research.
+  Link: https://doi.org/10.1017/pan.2026.10043
+
+- The electoral choice context and support for democratic norms
+  Proceedings of the National Academy of Sciences | 2026-05-06
+  Why it matters: The experiments show that ballot context changes voters’ willingness to punish antidemocratic candidates, sharpening how we think about institutions and democratic norm support.
+  Link: https://doi.org/10.1073/pnas.2521380123
+
+- Social media promotion improves job market outcomes
+  Proceedings of the National Academy of Sciences | 2026-05-04
+  Why it matters: A field experiment on academic job-market tweets estimates the causal value of social-media amplification, with implications for networks, visibility, and inequality in scientific careers.
+  Link: https://doi.org/10.1073/pnas.2528289123
+
+- What the DSA Means Outside Europe: Research Access and Its Limits
+  Political Communication | 2026-05-01
+  Why it matters: This DSA follow-up is important for platform research beyond Europe, clarifying what research-access rules can and cannot export across jurisdictions.
+  Link: https://doi.org/10.1080/10584609.2026.2665427
+
+The full curated digest is attached as a PDF.
+
+COMAP Journal Bot
+
+If you wish to unsubscribe, send email to private-contact
