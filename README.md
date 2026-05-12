@@ -47,7 +47,7 @@ This means the Monday run is not limited to “only fetch the last 7 days.” It
 ## Local State And Anti-Miss Strategy
 
 - Local SQLite state lives under `.state/` by default.
-- Recipient configuration lives in `config/recipients.json` by default.
+- Recipient configuration lives in local-only `config/recipients.json` by default.
 - Crossref is used as the canonical metadata backbone for DOI normalization, publication dates, and abstract fallback.
 - Collection now uses a layered metadata approach:
   Crossref for discovery, optional Semantic Scholar DOI enrichment for abstracts and citation counts, and OpenAlex DOI fallback for abstracts that remain missing.
@@ -100,14 +100,16 @@ The default recipient list is stored in:
 
 - `config/recipients.json`
 
+This file is intentionally ignored by git because it contains real delivery addresses. Start from `config/recipients.example.json` when setting up a new checkout.
+
 Example:
 
 ```json
 {
   "recipients": [
     {
-      "email": "private-contact",
-      "name": "Otto",
+      "email": "recipient@example.edu",
+      "name": "Recipient",
       "active": true
     }
   ]

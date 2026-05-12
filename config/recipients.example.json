@@ -1,0 +1,9 @@
+{
+  "recipients": [
+    {
+      "email": "recipient@example.edu",
+      "name": "Recipient",
+      "active": true
+    }
+  ]
+}
