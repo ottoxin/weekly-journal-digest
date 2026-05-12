@@ -101,7 +101,7 @@ sources: []
             self.assertIn("COMAP Journal Bot", sent[0][2])
             self.assertTrue(
                 sent[0][2].rstrip().endswith(
-                    "If you wish to unsubscribe, send email to private-contact"
+                    "Delivery preferences can be changed in the local recipient configuration."
                 )
             )
             self.assertTrue(sent[1][2].startswith("Dear Second,\n\n"))
@@ -249,10 +249,10 @@ Short summary.
             self.assertIn("Dear Reader,", sent[0][2])
             self.assertIn("The full curated digest is attached as a PDF.", sent[0][2])
             self.assertIn("COMAP Journal Bot", sent[0][2])
-            self.assertIn("If you wish to unsubscribe, send email to private-contact", sent[0][2])
+            self.assertIn("Delivery preferences can be changed in the local recipient configuration.", sent[0][2])
             self.assertIn("Dear Reader,", sent[0][3])
             self.assertIn("COMAP Journal Bot</div>", sent[0][3])
-            self.assertIn("If you wish to unsubscribe, send email to private-contact", sent[0][3])
+            self.assertIn("Delivery preferences can be changed in the local recipient configuration.", sent[0][3])
             self.assertIn("Open article", sent[0][3])
             self.assertEqual(len(sent[0][4]), 1)
             self.assertEqual(sent[0][4][0].filename, "reviewed.pdf")
@@ -400,8 +400,8 @@ Short summary.
             self.assertEqual(len(sent), 1)
             self.assertIn("Dear Haohang Xin,", sent[0][2])
             self.assertIn("Dear Haohang Xin,", sent[0][3])
-            self.assertIn("If you wish to unsubscribe, send email to private-contact", sent[0][2])
-            self.assertIn("If you wish to unsubscribe, send email to private-contact", sent[0][3])
+            self.assertIn("Delivery preferences can be changed in the local recipient configuration.", sent[0][2])
+            self.assertIn("Delivery preferences can be changed in the local recipient configuration.", sent[0][3])
 
     def test_send_digest_auto_commits_and_pushes_log_files_when_repo_is_clean(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

@@ -15,8 +15,7 @@ from reportlab.platypus import CondPageBreak, KeepTogether, Paragraph, SimpleDoc
 
 
 BOT_NAME = "COMAP Journal Bot"
-UNSUBSCRIBE_EMAIL = "private-contact"
-UNSUBSCRIBE_TEXT = f"If you wish to unsubscribe, send email to {UNSUBSCRIBE_EMAIL}"
+DELIVERY_PREFERENCES_TEXT = "Delivery preferences can be changed in the local recipient configuration."
 SECTION_PALETTES = {
     "New This Week": {
         "accent": colors.HexColor("#0f766e"),
@@ -140,7 +139,7 @@ def render_summary_plain_text(
             lines.append(f"  Link: {highlight.link}")
         lines.append("")
     lines.append("The full curated digest is attached as a PDF.")
-    lines.extend(["", BOT_NAME, "", UNSUBSCRIBE_TEXT])
+    lines.extend(["", BOT_NAME, "", DELIVERY_PREFERENCES_TEXT])
     return "\n".join(lines).strip() + "\n"
 
 
@@ -206,7 +205,7 @@ def render_summary_html(
         "The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents."
         "</div>"
         f"<div style='margin-top:20px; font-size:15px; line-height:1.4; font-weight:700; color:#102a43;'>{escape(BOT_NAME)}</div>"
-        f"<div style='margin-top:10px; font-size:12px; line-height:1.5; color:#627d98;'>{escape(UNSUBSCRIBE_TEXT)}</div>"
+        f"<div style='margin-top:10px; font-size:12px; line-height:1.5; color:#627d98;'>{escape(DELIVERY_PREFERENCES_TEXT)}</div>"
         "</td></tr>"
         "</table></td></tr></table></body></html>"
     )
@@ -288,7 +287,7 @@ def render_curated_digest_pdf(reviewed: ReviewedDigest) -> bytes:
     )
     story.extend(_render_full_digest_story(sections, styles, doc.width))
     story.append(Spacer(1, 0.12 * inch))
-    story.append(Paragraph(escape(_to_pdf_text(UNSUBSCRIBE_TEXT)), styles["fineprint"]))
+    story.append(Paragraph(escape(_to_pdf_text(DELIVERY_PREFERENCES_TEXT)), styles["fineprint"]))
     doc.build(story, onFirstPage=_draw_pdf_footer, onLaterPages=_draw_pdf_footer)
     return buffer.getvalue()
 

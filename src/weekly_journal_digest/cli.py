@@ -16,11 +16,11 @@ from .emailing import EmailAttachment, GmailSender, describe_delivery_error, ext
 from .enrichment import build_metadata_enricher
 from .filters import should_include_record
 from .reviewed_digest import (
+    DELIVERY_PREFERENCES_TEXT,
     parse_reviewed_digest,
     render_curated_digest_pdf,
     render_summary_html,
     render_summary_plain_text,
-    UNSUBSCRIBE_TEXT,
 )
 from .storage import StateStore
 
@@ -410,7 +410,7 @@ def format_legacy_email_body(body: str, recipient_name: str) -> str:
         f"Dear {recipient_name},\n\n"
         f"{body.strip()}\n\n"
         "COMAP Journal Bot\n\n"
-        f"{UNSUBSCRIBE_TEXT}\n"
+        f"{DELIVERY_PREFERENCES_TEXT}\n"
     )
 
 

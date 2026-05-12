@@ -52,4 +52,4 @@ The full curated digest is attached as a PDF.
 
 COMAP Journal Bot
 
-If you wish to unsubscribe, send email to private-contact
+Delivery preferences can be changed in the local recipient configuration.

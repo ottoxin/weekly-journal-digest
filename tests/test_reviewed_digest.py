@@ -108,7 +108,7 @@ class ReviewedDigestTests(unittest.TestCase):
         self.assertIn("COMAP Journal Bot", plain_text)
         self.assertTrue(
             plain_text.rstrip().endswith(
-                "If you wish to unsubscribe, send email to private-contact"
+                "Delivery preferences can be changed in the local recipient configuration."
             )
         )
         self.assertIn("Political behavior in online networks", plain_text)
@@ -116,7 +116,7 @@ class ReviewedDigestTests(unittest.TestCase):
         self.assertNotIn("Collection Snapshot", html)
         self.assertIn("Dear Haohang Xin,", html)
         self.assertIn("COMAP Journal Bot</div>", html)
-        self.assertIn("If you wish to unsubscribe, send email to private-contact", html)
+        self.assertIn("Delivery preferences can be changed in the local recipient configuration.", html)
         self.assertIn("The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents.", html)
         self.assertIn("<ul", html)
         self.assertIn("Open article", html)
