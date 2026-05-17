@@ -146,6 +146,8 @@ def render_summary_plain_text(
 def render_summary_html(
     reviewed: ReviewedDigest,
     recipient_name: str | None = None,
+    *,
+    include_full_digest: bool = False,
 ) -> str:
     summary_html = _render_summary_blocks_html(reviewed.summary)
     highlight_cards = []
@@ -175,11 +177,17 @@ def render_summary_html(
                 ]
             )
         )
+    full_digest_html = _render_full_digest_email_html(reviewed) if include_full_digest else ""
+    digest_callout = (
+        "The full curated digest is included below. The attached PDF is also available for archive and printing."
+        if include_full_digest
+        else "The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents."
+    )
     return (
         "<!doctype html><html><body style='margin:0; padding:0; background:#eef3f9; "
         "font-family:Arial, Helvetica, sans-serif;'>"
         "<div style='display:none; max-height:0; overflow:hidden; color:#eef3f9;'>"
-        "Weekly COMAP Journal Bot highlights with the full curated digest attached as a PDF."
+        f"{escape(digest_callout)}"
         "</div>"
         "<table role='presentation' width='100%' cellspacing='0' cellpadding='0' style='border-collapse:collapse; background:#eef3f9;'>"
         "<tr><td align='center' style='padding:24px 14px;'>"
@@ -199,10 +207,11 @@ def render_summary_html(
         f"{''.join(highlight_cards)}"
         "</table>"
         "</td></tr>"
+        f"{full_digest_html}"
         "<tr><td style='padding:8px 28px 24px 28px;'>"
         "<div style='padding:14px 16px; border:1px solid #c7d2fe; border-radius:8px; background:#eef2ff; "
         "color:#334155; font-size:14px; line-height:1.55;'>"
-        "The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents."
+        f"{escape(digest_callout)}"
         "</div>"
         f"<div style='margin-top:20px; font-size:15px; line-height:1.4; font-weight:700; color:#102a43;'>{escape(BOT_NAME)}</div>"
         f"<div style='margin-top:10px; font-size:12px; line-height:1.5; color:#627d98;'>{escape(DELIVERY_PREFERENCES_TEXT)}</div>"
@@ -421,6 +430,109 @@ def _render_summary_blocks_html(text: str) -> str:
             f"{bullet_items}</ul>"
         )
     return "".join(parts)
+
+
+def _render_full_digest_email_html(reviewed: ReviewedDigest) -> str:
+    sections = _parse_full_curated_digest(reviewed.full_curated_digest_markdown)
+    if not sections:
+        return ""
+    parts = [
+        "<tr><td style='padding:10px 28px 0 28px;'>",
+    ]
+    if reviewed.collection_snapshot:
+        parts.append(
+            "<h2 style='margin:0 0 12px 0; font-size:19px; line-height:1.3; color:#102a43;'>Collection Snapshot</h2>"
+        )
+        parts.append(_render_collection_snapshot_email_html(reviewed.collection_snapshot))
+    parts.append(
+        "<h2 style='margin:18px 0 12px 0; font-size:19px; line-height:1.3; color:#102a43;'>Full Curated Digest</h2>"
+    )
+    for section in sections:
+        palette = SECTION_PALETTES.get(section.label, DEFAULT_SECTION_PALETTE)
+        article_count = sum(len(journal.articles) for journal in section.journals)
+        parts.append(
+            "<div style='margin:0 0 14px 0; padding:10px 12px; "
+            f"border-left:4px solid {_hex_color(palette['accent'])}; background:{_hex_color(palette['surface'])}; "
+            f"border-top:1px solid {_hex_color(palette['border'])}; border-right:1px solid {_hex_color(palette['border'])}; "
+            f"border-bottom:1px solid {_hex_color(palette['border'])};'>"
+            f"<div style='font-size:16px; line-height:1.3; font-weight:700; color:#0f172a;'>{escape(section.label)}</div>"
+            f"<div style='margin-top:3px; font-size:12px; line-height:1.4; color:#64748b;'>{article_count} papers / {len(section.journals)} journals</div>"
+            "</div>"
+        )
+        for journal in section.journals:
+            parts.append(
+                f"<h3 style='margin:16px 0 8px 0; font-size:16px; line-height:1.35; color:#102a43;'>{escape(journal.journal)}</h3>"
+            )
+            for article in journal.articles:
+                parts.append(_render_article_email_html(article, palette))
+    parts.append("</td></tr>")
+    return "".join(parts)
+
+
+def _render_collection_snapshot_email_html(snapshot_items: list[str]) -> str:
+    rows = []
+    for item in snapshot_items:
+        label, _, value = item.partition(":")
+        rows.append(
+            "<tr>"
+            f"<td style='padding:7px 9px; border-bottom:1px solid #e2e8f0; font-size:13px; line-height:1.35; font-weight:700; color:#334155;'>{escape(label.strip() + ':')}</td>"
+            f"<td style='padding:7px 9px; border-bottom:1px solid #e2e8f0; font-size:13px; line-height:1.35; color:#1f2937;'>{escape(value.strip())}</td>"
+            "</tr>"
+        )
+    return (
+        "<table role='presentation' width='100%' cellspacing='0' cellpadding='0' "
+        "style='border-collapse:collapse; margin:0 0 18px 0; border:1px solid #cbd5e1;'>"
+        f"{''.join(rows)}"
+        "</table>"
+    )
+
+
+def _render_article_email_html(article: DigestArticle, palette: dict) -> str:
+    meta_bits = [bit for bit in [article.published, article.authors] if bit]
+    details = []
+    if article.affiliations:
+        details.append(("Affiliations", article.affiliations))
+    if article.doi:
+        details.append(("DOI", article.doi))
+    if article.link:
+        details.append(
+            (
+                "Link",
+                f"<a href='{escape(article.link, quote=True)}' style='color:#0f766e; font-weight:700; text-decoration:none;'>Open article</a>",
+            )
+        )
+    if article.abstract:
+        details.append(("Abstract", article.abstract))
+    detail_html = []
+    for label, value in details:
+        if label == "Link":
+            rendered_value = value
+        else:
+            rendered_value = escape(value)
+        detail_html.append(
+            "<div style='margin:0 0 6px 0; font-size:13px; line-height:1.55; color:#334155;'>"
+            f"<strong>{escape(label)}:</strong> {rendered_value}"
+            "</div>"
+        )
+    meta_html = (
+        f"<div style='margin:0 0 8px 0; font-size:12px; line-height:1.45; color:#52606d;'>{escape(' | '.join(meta_bits))}</div>"
+        if meta_bits
+        else ""
+    )
+    return (
+        "<div style='margin:0 0 12px 0; padding:13px 15px 12px 15px; background:#ffffff; "
+        f"border:1px solid {_hex_color(palette['border'])}; border-left:4px solid {_hex_color(palette['accent'])};'>"
+        f"<div style='margin:0 0 6px 0; font-size:15px; line-height:1.38; font-weight:700; color:#0f172a;'>{escape(article.title)}</div>"
+        f"{meta_html}"
+        f"{''.join(detail_html)}"
+        "</div>"
+    )
+
+
+def _hex_color(color) -> str:
+    if hasattr(color, "hexval"):
+        return color.hexval().replace("0x", "#", 1)
+    return str(color)
 
 
 def _render_summary_blocks_pdf(text: str, styles: dict[str, ParagraphStyle]) -> list:

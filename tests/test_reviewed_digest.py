@@ -114,12 +114,23 @@ class ReviewedDigestTests(unittest.TestCase):
         self.assertIn("Political behavior in online networks", plain_text)
         self.assertNotIn("Collection Snapshot", plain_text)
         self.assertNotIn("Collection Snapshot", html)
+        self.assertNotIn("Full Curated Digest", html)
         self.assertIn("Dear Haohang Xin,", html)
         self.assertIn("COMAP Journal Bot</div>", html)
         self.assertIn("Delivery preferences can be changed in the local recipient configuration.", html)
         self.assertIn("The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents.", html)
         self.assertIn("<ul", html)
         self.assertIn("Open article", html)
+
+    def test_render_summary_html_can_include_full_digest(self) -> None:
+        reviewed = parse_reviewed_digest(SAMPLE_REVIEWED_DIGEST)
+        assert reviewed is not None
+        html = render_summary_html(reviewed, "Haohang Xin", include_full_digest=True)
+        self.assertIn("Collection Snapshot", html)
+        self.assertIn("Full Curated Digest", html)
+        self.assertIn("Late discovery in institutions", html)
+        self.assertIn("Example late addition abstract.", html)
+        self.assertIn("The full curated digest is included below.", html)
 
     def test_render_curated_digest_pdf_returns_pdf_bytes(self) -> None:
         reviewed = parse_reviewed_digest(SAMPLE_REVIEWED_DIGEST)

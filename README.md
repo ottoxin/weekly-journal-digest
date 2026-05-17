@@ -175,7 +175,8 @@ Render no-send previews:
 ```bash
 weekly-journal-digest render-digest \
   --reviewed-digest out/reviewed_digest-2026-03-30.md \
-  --recipient-name "Haohang Xin"
+  --recipient-name "Haohang Xin" \
+  --full-html
 ```
 
 This writes sibling preview files using the reviewed digest stem:
@@ -189,7 +190,8 @@ Send the reviewed digest:
 ```bash
 weekly-journal-digest send-digest \
   --digest-date 2026-03-30 \
-  --reviewed-digest out/reviewed_digest-2026-03-30.md
+  --reviewed-digest out/reviewed_digest-2026-03-30.md \
+  --full-html
 ```
 
 Optional one-off override:
@@ -202,6 +204,8 @@ weekly-journal-digest send-digest \
 ```
 
 If the reviewed markdown starts with `Subject: ...`, that subject line is used automatically.
+
+Use `--full-html` when the HTML preview or outgoing email should include the collection snapshot and full curated digest directly in the message body. Without it, the HTML body stays compact and contains only the summary and highlights.
 
 When the reviewed file follows the current skill contract, `send-digest` also writes a sibling PDF file next to the reviewed markdown before attaching it to the outgoing email. That PDF includes a generated table of contents linking to the journal sections in the curated digest.
 If that reviewed markdown lives under `logs/YYYY-MM-DD/`, `send-digest` will also try to git add, commit, and push the candidate JSON, reviewed markdown, and generated PDF after a successful send, but only when the repo has no unrelated changes.

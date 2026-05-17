@@ -84,6 +84,11 @@ def build_parser() -> argparse.ArgumentParser:
     render_parser.add_argument("--reviewed-digest", required=True)
     render_parser.add_argument("--output-dir", default=None)
     render_parser.add_argument("--recipient-name", default=None)
+    render_parser.add_argument(
+        "--full-html",
+        action="store_true",
+        help="Include the collection snapshot and full curated digest in the HTML preview body.",
+    )
     render_parser.set_defaults(func=cmd_render_digest)
 
     send_parser = subparsers.add_parser("send-digest", help="Send the reviewed digest via Gmail API.")
@@ -94,6 +99,11 @@ def build_parser() -> argparse.ArgumentParser:
     send_parser.add_argument("--recipient", default=None)
     send_parser.add_argument("--subject", default=None)
     send_parser.add_argument("--force", action="store_true")
+    send_parser.add_argument(
+        "--full-html",
+        action="store_true",
+        help="Include the collection snapshot and full curated digest in the outgoing HTML body.",
+    )
     send_parser.set_defaults(func=cmd_send_digest)
 
     return parser
@@ -201,7 +211,7 @@ def cmd_render_digest(args: argparse.Namespace) -> int:
         html_path = output_dir / f"{output_stem}.preview.html"
         pdf_path = output_dir / f"{output_stem}.preview.pdf"
         plain_text_body = render_summary_plain_text(reviewed, args.recipient_name)
-        html_body = render_summary_html(reviewed, args.recipient_name)
+        html_body = render_summary_html(reviewed, args.recipient_name, include_full_digest=args.full_html)
         text_path.write_text(f"Subject: {reviewed.subject}\n\n{plain_text_body}", encoding="utf-8")
         html_path.write_text(html_body, encoding="utf-8")
         pdf_path.write_bytes(render_curated_digest_pdf(reviewed))
@@ -267,7 +277,11 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
                 )
             else:
                 plain_text_body = render_summary_plain_text(reviewed, recipient.salutation_name)
-                html_body = render_summary_html(reviewed, recipient.salutation_name)
+                html_body = render_summary_html(
+                    reviewed,
+                    recipient.salutation_name,
+                    include_full_digest=args.full_html,
+                )
                 message_id = sender.send_digest_package(
                     recipient.email,
                     subject,
