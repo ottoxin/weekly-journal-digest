@@ -339,7 +339,21 @@ Short summary.
             self.assertIn("Full Curated Digest", sent[0][3])
             self.assertIn("Collection Snapshot", sent[0][3])
             self.assertIn("Example abstract for the HTML body.", sent[0][3])
-            self.assertEqual(len(sent[0][4]), 1)
+            self.assertEqual(len(sent[0][4]), 2)
+            self.assertEqual(sent[0][4][0].filename, "reviewed.pdf")
+            self.assertEqual(sent[0][4][0].mime_type, "application/pdf")
+            self.assertEqual(sent[0][4][1].filename, "reviewed.html")
+            self.assertEqual(sent[0][4][1].mime_type, "text/html")
+            self.assertIn(
+                "Example abstract for the HTML body.",
+                sent[0][4][1].content.decode("utf-8"),
+            )
+            full_html_path = repo / "reviewed.html"
+            self.assertTrue(full_html_path.exists())
+            full_html = full_html_path.read_text(encoding="utf-8")
+            self.assertIn("Full Curated Digest", full_html)
+            self.assertIn("Collection Snapshot", full_html)
+            self.assertIn("Example abstract for the HTML body.", full_html)
 
     def test_render_digest_writes_preview_artifacts_without_sending(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -576,6 +590,8 @@ Short summary.
             self.assertEqual(remote_commit, "Add digest log for 2026-03-30")
             status = self._run_git(repo, "status", "--short").stdout.strip()
             self.assertEqual(status, "")
+            committed_files = self._run_git(repo, "show", "--name-only", "--format=", "HEAD").stdout
+            self.assertIn("logs/2026-03-30/reviewed_digest-2026-03-30.structured.html", committed_files)
 
     def test_send_digest_skips_auto_commit_when_repo_has_unrelated_changes(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

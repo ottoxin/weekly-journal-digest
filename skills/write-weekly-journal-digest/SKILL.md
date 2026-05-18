@@ -7,9 +7,11 @@ description: Operate the weekly COMAP Journal Bot workflow from collection throu
 
 Read the generated `candidate_digest.json`, report the full collected set before filtering, filter out clearly irrelevant items, preserve the remaining section boundaries, and write the final `reviewed_digest.md`.
 
-The send pipeline now uses this file in two different ways:
+The send pipeline now uses this file in three related ways:
 
-- The email body is built from the short `Summary` and `Highlights` sections.
+- The full HTML email body is built from `Summary`, `Highlights`, optional `Collection Snapshot`, and `Full Curated Digest` when `--full-html` is used.
+- The no-send preview is generated as a sibling `.preview.html` file with `render-digest --full-html`.
+- The browser-openable delivery artifact is generated as a sibling `.html` file with `send-digest`, and it is attached to the outgoing email when `--full-html` is used.
 - The attached PDF is built from the `Summary`, optional `Collection Snapshot`, and `Full Curated Digest` sections.
 - The PDF now generates a journal table of contents automatically from the journal headings in `Full Curated Digest`.
 
@@ -44,13 +46,14 @@ Do not use this skill to discover articles outside the JSON or change the journa
    biomedical, clinical, chemistry, materials, pure neuroscience, astrophysics, and other natural-science papers with no strong COMAP-relevant social-science connection.
 7. Build the final curated article list.
    The reviewed artifact should contain all kept articles.
-   Use code to format the final email and PDF. Do not hand-design their layout inside the markdown.
+   Use code to format the final email, HTML artifact, and PDF. Do not hand-design their layout inside the markdown.
 8. Save the reviewed artifact and repo log.
    Write the structured markdown to `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md`.
    Keep the candidate digest in the same log folder.
-   Run `weekly-journal-digest render-digest --reviewed-digest logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md` when the user wants a no-send preview of the email and PDF.
-   Let `send-digest` generate the sibling delivery PDF in that same folder when sending is requested.
-   When `send-digest` runs against a reviewed digest stored under `logs/YYYY-MM-DD/`, it now auto-commits and pushes the candidate JSON, reviewed markdown, and sibling PDF if the repo has no unrelated changes. If the repo is dirty beyond those log artifacts, it skips the git step safely.
+   Run `weekly-journal-digest render-digest --reviewed-digest logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md --full-html` to create the no-send full HTML and PDF preview files.
+   Run `weekly-journal-digest send-digest --digest-date YYYY-MM-DD --reviewed-digest logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md --full-html` when sending is requested.
+   Let `send-digest` generate the sibling delivery PDF and browser-openable sibling HTML in that same folder; with `--full-html`, both files are attached to the outgoing email.
+   When `send-digest` runs against a reviewed digest stored under `logs/YYYY-MM-DD/`, it now auto-commits and pushes the candidate JSON, reviewed markdown, sibling PDF, and sibling HTML if the repo has no unrelated changes. If the repo is dirty beyond those log artifacts, it skips the git step safely.
 9. Write the email summary, highlights, and final polish in the voice of `COMAP Journal Bot`.
 10. Send to the configured recipient list by default.
    Use `config/recipients.json` unless the user explicitly asks for a one-off override recipient.
@@ -121,9 +124,9 @@ Subject: Weekly journal digest for YYYY-MM-DD to YYYY-MM-DD
 
 ## Writing Rules
 
-- `Summary` and `Highlights` are the only parts that appear in the main email body. Keep them concise and readable on a phone screen.
-- The `Collection Snapshot` section is optional. If you include it, it will only appear in the PDF, not the email body.
-- `Full Curated Digest` is for the attached PDF. Put the complete curated paper list there with abstracts for `New This Week`.
+- `Summary` and `Highlights` appear first in the email body and should remain concise and readable on a phone screen.
+- The `Collection Snapshot` section is optional. If you include it, it appears in the PDF, sibling full HTML file, and `--full-html` email body.
+- `Full Curated Digest` feeds the attached PDF, sibling full HTML file, and `--full-html` email body. Put the complete curated paper list there with abstracts for `New This Week`.
 - Write the `Summary` in a more vivid, human, academically polished voice. It should sound like a thoughtful weekly brief, not a system notification.
 - The `Summary` may mix short paragraphs and bullet points. Bullet points are encouraged when they make the week easier to scan quickly.
 - For every kept article in `Full Curated Digest`, include abstract, authors, affiliations when available, DOI, and link.

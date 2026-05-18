@@ -65,13 +65,13 @@ The repo is meant to be driven by an external automation, but the operational fl
 3. Run `build-weekly-digest` with the Monday digest date to generate a deterministic `candidate_digest.json`.
 4. Have Codex read `candidate_digest.json` with the companion skill, keep all communication and political science journal articles, filter and rank the general-science candidates for COMAP relevance, and write a structured `reviewed_digest.md`.
    For every kept article in the full curated digest, include abstract, authors, affiliations when available, DOI, and link.
-5. Run `render-digest` with the reviewed markdown file to generate no-send preview artifacts: a plain-text body, HTML email body, and PDF.
+5. Run `render-digest --full-html` with the reviewed markdown file to generate no-send preview artifacts: a plain-text body, full HTML email body, and PDF.
    Inspect the `.preview.html` and `.preview.pdf` files before delivery.
-6. Run `send-digest` with the reviewed markdown file to send a short HTML summary email and attach the full curated digest as a PDF.
-   The email body uses `Summary` and `Highlights`; the PDF includes the full curated digest and an automatically generated journal table of contents.
+6. Run `send-digest --full-html` with the reviewed markdown file to send the full HTML digest body and attach both the full curated PDF and sibling full HTML file.
+   The HTML body includes `Summary`, `Highlights`, `Collection Snapshot`, and `Full Curated Digest`; the PDF includes the full curated digest and an automatically generated journal table of contents.
    By default it sends to the active emails in `config/recipients.json`. Use `--recipient` only for a one-off override.
-7. Save the markdown and PDF under a repo log folder if you want the run preserved in GitHub history.
-   When `send-digest` is run against a reviewed digest stored under `logs/YYYY-MM-DD/`, it now auto-commits and pushes the candidate JSON, reviewed markdown, and sibling PDF if the repo has no unrelated changes. If the repo is otherwise dirty, it skips the git step safely.
+7. Save the markdown, PDF, and full HTML artifact under a repo log folder if you want the run preserved in GitHub history.
+   When `send-digest` is run against a reviewed digest stored under `logs/YYYY-MM-DD/`, it now auto-commits and pushes the candidate JSON, reviewed markdown, sibling PDF, and sibling HTML artifact if the repo has no unrelated changes. If the repo is otherwise dirty, it skips the git step safely.
 
 The weekly window logic is:
 
@@ -90,8 +90,9 @@ For repeatable automation runs, keep artifacts in a tracked log folder inside th
 - `logs/YYYY-MM-DD/candidate_digest-YYYY-MM-DD.json`
 - `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md`
 - `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.pdf`
+- `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.html`
 
-The companion skill now assumes this layout so the reviewed markdown and generated PDF can be committed to GitHub as an execution log when desired.
+The companion skill now assumes this layout so the reviewed markdown, generated PDF, and generated full HTML artifact can be committed to GitHub as an execution log when desired.
 If `send-digest` is pointed at the reviewed markdown inside one of these log folders, the CLI will now try to commit and push those log artifacts automatically when the repo is otherwise clean.
 
 ## Recipients
@@ -123,7 +124,7 @@ Example:
 `send-digest` expects a reviewed markdown file, typically created by a Codex automation using the companion review skill.
 
 - Use `render-digest` first when you want to inspect the email and PDF without opening Gmail, writing send records, or auto-committing log artifacts.
-- If the reviewed file follows the current structured format, the repo sends a short HTML email built from `Summary` and `Highlights`, and attaches a PDF built from `Summary`, the optional `Collection Snapshot`, and `Full Curated Digest`.
+- If the reviewed file follows the current structured format, the repo can send either a compact HTML summary or, with `--full-html`, a full HTML email built from `Summary`, `Highlights`, the optional `Collection Snapshot`, and `Full Curated Digest`; it also attaches a PDF built from those same curated sections.
 - If the reviewed file uses the older unstructured format, the repo falls back to the legacy plain-text send path.
 - Sends are still recorded in local state so the same digest is not sent twice unless `--force` is used.
 
@@ -207,8 +208,8 @@ If the reviewed markdown starts with `Subject: ...`, that subject line is used a
 
 Use `--full-html` when the HTML preview or outgoing email should include the collection snapshot and full curated digest directly in the message body. Without it, the HTML body stays compact and contains only the summary and highlights.
 
-When the reviewed file follows the current skill contract, `send-digest` also writes a sibling PDF file next to the reviewed markdown before attaching it to the outgoing email. That PDF includes a generated table of contents linking to the journal sections in the curated digest.
-If that reviewed markdown lives under `logs/YYYY-MM-DD/`, `send-digest` will also try to git add, commit, and push the candidate JSON, reviewed markdown, and generated PDF after a successful send, but only when the repo has no unrelated changes.
+When the reviewed file follows the current skill contract, `send-digest` also writes sibling PDF and full HTML files next to the reviewed markdown before sending. The PDF is always attached. With `--full-html`, the sibling HTML file is also attached to the outgoing email. The PDF includes a generated table of contents linking to the journal sections in the curated digest, and the HTML file is the browser-openable full digest artifact.
+If that reviewed markdown lives under `logs/YYYY-MM-DD/`, `send-digest` will also try to git add, commit, and push the candidate JSON, reviewed markdown, generated PDF, and generated HTML after a successful send, but only when the repo has no unrelated changes.
 
 ## Example Weekly Run
 

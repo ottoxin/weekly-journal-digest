@@ -242,16 +242,29 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
     plain_text_body = None
     html_body = None
     pdf_bytes = None
-    attachment = None
+    attachments: list[EmailAttachment] = []
     if reviewed is not None:
         pdf_bytes = render_curated_digest_pdf(reviewed)
         attachment_path = reviewed_path.with_suffix(".pdf")
         attachment_path.write_bytes(pdf_bytes)
-        attachment = EmailAttachment(
-            filename=attachment_path.name,
-            content=pdf_bytes,
-            mime_type="application/pdf",
+        full_html_path = reviewed_path.with_suffix(".html")
+        full_html_body = render_summary_html(reviewed, include_full_digest=True)
+        full_html_path.write_text(full_html_body, encoding="utf-8")
+        attachments.append(
+            EmailAttachment(
+                filename=attachment_path.name,
+                content=pdf_bytes,
+                mime_type="application/pdf",
+            )
         )
+        if args.full_html:
+            attachments.append(
+                EmailAttachment(
+                    filename=full_html_path.name,
+                    content=full_html_body.encode("utf-8"),
+                    mime_type="text/html",
+                )
+            )
     recipients_to_send = [
         recipient
         for recipient in recipients
@@ -287,7 +300,7 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
                     subject,
                     plain_text_body,
                     html_body,
-                    [attachment],
+                    attachments,
                 )
             store.record_sent_digest(
                 digest_key=digest_key,
@@ -444,6 +457,7 @@ def maybe_commit_and_push_log_artifacts(
         expected_log_dir / f"candidate_digest-{digest_key}.json",
         reviewed_path,
         reviewed_path.with_suffix(".pdf"),
+        reviewed_path.with_suffix(".html"),
     ]
     artifact_paths = [path.resolve() for path in artifact_paths if path.exists()]
     if not artifact_paths:
