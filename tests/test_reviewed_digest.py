@@ -5,6 +5,7 @@ import unittest
 from weekly_journal_digest.reviewed_digest import (
     parse_reviewed_digest,
     render_curated_digest_pdf,
+    render_full_digest_html,
     render_summary_html,
     render_summary_plain_text,
 )
@@ -73,11 +74,14 @@ class ReviewedDigestTests(unittest.TestCase):
         assert reviewed is not None
         plain_text = render_summary_plain_text(reviewed)
         html = render_summary_html(reviewed)
-        self.assertIn("The full curated digest is attached as a PDF.", plain_text)
+        self.assertIn("The full curated digest is attached as a PDF (also available as an HTML version).", plain_text)
         self.assertIn("Political behavior in online networks", plain_text)
         self.assertNotIn("Collection Snapshot", plain_text)
         self.assertNotIn("Collection Snapshot", html)
-        self.assertIn("The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents.", html)
+        self.assertIn(
+            "The attached PDF (and the bundled HTML view) contain the full curated digest, abstract-level details, and a journal table of contents.",
+            html,
+        )
         self.assertIn("<ul", html)
         self.assertIn("Open article", html)
 
@@ -86,6 +90,22 @@ class ReviewedDigestTests(unittest.TestCase):
         assert reviewed is not None
         pdf_bytes = render_curated_digest_pdf(reviewed)
         self.assertTrue(pdf_bytes.startswith(b"%PDF-"))
+
+    def test_render_full_digest_html_includes_sections_and_anchors(self) -> None:
+        reviewed = parse_reviewed_digest(SAMPLE_REVIEWED_DIGEST)
+        assert reviewed is not None
+        html = render_full_digest_html(reviewed)
+        self.assertTrue(html.startswith("<!doctype html>"))
+        self.assertIn("<title>Weekly journal digest for 2026-03-23 to 2026-03-29</title>", html)
+        self.assertIn("Political behavior in online networks", html)
+        self.assertIn("Nature Human Behaviour", html)
+        self.assertIn("highlight-card", html)
+        self.assertIn("article__title", html)
+        self.assertIn("toc__journal-link", html)
+        self.assertIn("New This Week", html)
+        self.assertIn("snapshot-card", html)
+        self.assertIn("href=\"#full-digest\"", html)
+        self.assertNotIn("&NBSP;", html)
 
     def test_parse_reviewed_digest_accepts_legacy_email_summary_header(self) -> None:
         legacy = SAMPLE_REVIEWED_DIGEST.replace("## Summary", "## Email Summary")

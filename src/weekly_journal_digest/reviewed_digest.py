@@ -3,17 +3,61 @@ from __future__ import annotations
 import re
 import unicodedata
 from dataclasses import dataclass
-from html import escape
+from html import escape as _html_escape, unescape
 from io import BytesIO
 
+
+def escape(value: str, quote: bool = False) -> str:
+    """Escape after first unescaping, so pre-escaped source text isn't double-escaped."""
+    return _html_escape(unescape(value), quote=quote)
+
 from reportlab.lib import colors
+from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import LETTER
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
-from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import (
+    BaseDocTemplate,
+    Flowable,
+    Frame,
+    KeepTogether,
+    PageBreak,
+    PageTemplate,
+    Paragraph,
+    Spacer,
+    Table,
+    TableStyle,
+)
 
 
 BOT_NAME = "COMAP Journal Bot"
+
+PAGE_WIDTH, PAGE_HEIGHT = LETTER
+
+PALETTE = {
+    "ink": "#0b2545",
+    "ink_soft": "#1f2937",
+    "muted": "#52606d",
+    "muted_soft": "#7b8794",
+    "accent": "#1f6feb",
+    "accent_dark": "#0a4faf",
+    "accent_soft": "#e7efff",
+    "highlight": "#b45309",
+    "highlight_bg": "#fff7ed",
+    "surface": "#ffffff",
+    "surface_alt": "#f6f8fb",
+    "surface_band": "#eef2f8",
+    "border": "#e2e8f0",
+    "border_soft": "#eef0f4",
+    "section_band": "#0b2545",
+    "subsection_band": "#1f6feb",
+}
+
+SECTION_COLOR_MAP = {
+    "New This Week": ("#0b2545", "#e7efff"),
+    "Previous Week Catch-Up": ("#134e4a", "#e6fffa"),
+    "Late Additions": ("#7c2d12", "#fff7ed"),
+}
 
 
 @dataclass(slots=True)
@@ -28,7 +72,33 @@ class Highlight:
 @dataclass(slots=True)
 class OutlineEntry:
     label: str
+    section: str
+    journal: str
     anchor: str
+
+
+@dataclass(slots=True)
+class FullDigestArticle:
+    title: str
+    published: str = ""
+    authors: str = ""
+    affiliations: str = ""
+    doi: str = ""
+    link: str = ""
+    abstract: str = ""
+
+
+@dataclass(slots=True)
+class FullDigestJournal:
+    name: str
+    anchor: str
+    articles: list[FullDigestArticle]
+
+
+@dataclass(slots=True)
+class FullDigestSection:
+    name: str
+    journals: list[FullDigestJournal]
 
 
 @dataclass(slots=True)
@@ -84,7 +154,7 @@ def render_summary_plain_text(reviewed: ReviewedDigest) -> str:
         if highlight.link:
             lines.append(f"  Link: {highlight.link}")
         lines.append("")
-    lines.append("The full curated digest is attached as a PDF.")
+    lines.append("The full curated digest is attached as a PDF (also available as an HTML version).")
     return "\n".join(lines).strip() + "\n"
 
 
@@ -92,20 +162,23 @@ def render_summary_html(reviewed: ReviewedDigest) -> str:
     summary_html = _render_summary_blocks_html(reviewed.summary)
     highlight_cards = []
     for highlight in reviewed.highlights:
-        meta = " | ".join(part for part in [highlight.journal, highlight.published] if part)
+        meta_parts = [part for part in [highlight.journal, highlight.published] if part]
+        meta = " &middot; ".join(escape(part) for part in meta_parts)
         highlight_cards.append(
             "".join(
                 [
-                    "<div style='border:1px solid #d9e2f0; border-left:4px solid #1f6feb; "
-                    "border-radius:10px; padding:14px 16px; margin:0 0 14px 0; background:#ffffff;'>",
-                    f"<div style='font-size:16px; font-weight:700; color:#0f172a; margin:0 0 6px 0;'>{escape(highlight.title)}</div>",
-                    f"<div style='font-size:13px; color:#52606d; margin:0 0 8px 0;'>{escape(meta)}</div>" if meta else "",
-                    f"<div style='font-size:14px; line-height:1.55; color:#243b53; margin:0 0 10px 0;'><strong>Why it matters:</strong> {escape(highlight.why_it_matters)}</div>"
+                    "<div style=\"border:1px solid #dde4ed; border-left:4px solid #1f6feb;"
+                    " border-radius:12px; padding:16px 18px; margin:0 0 14px 0; background:#ffffff;\">",
+                    f"<div style=\"font-size:16px; font-weight:700; color:#0b2545; line-height:1.35; margin:0 0 6px 0;\">{escape(highlight.title)}</div>",
+                    f"<div style=\"font-size:12px; color:#52606d; text-transform:uppercase; letter-spacing:0.04em; margin:0 0 10px 0;\">{meta}</div>"
+                    if meta
+                    else "",
+                    f"<div style=\"font-size:14px; line-height:1.6; color:#1f2937; margin:0 0 12px 0;\"><strong style=\"color:#0b2545;\">Why it matters &middot;</strong> {escape(highlight.why_it_matters)}</div>"
                     if highlight.why_it_matters
                     else "",
-                    f"<a href='{escape(highlight.link, quote=True)}' "
-                    "style='display:inline-block; padding:8px 12px; background:#1f6feb; color:#ffffff; "
-                    "text-decoration:none; border-radius:999px; font-size:13px; font-weight:600;'>Open article</a>"
+                    f"<a href=\"{escape(highlight.link, quote=True)}\""
+                    " style=\"display:inline-block; padding:8px 14px; background:#1f6feb; color:#ffffff;"
+                    " text-decoration:none; border-radius:999px; font-size:13px; font-weight:600;\">Open article &rarr;</a>"
                     if highlight.link
                     else "",
                     "</div>",
@@ -113,80 +186,140 @@ def render_summary_html(reviewed: ReviewedDigest) -> str:
             )
         )
     return (
-        "<html><body style='margin:0; padding:0; background:#eef3f9;'>"
-        "<div style='max-width:760px; margin:0 auto; padding:24px 16px;'>"
-        "<div style='background:#ffffff; border-radius:18px; padding:28px 28px 20px 28px; "
-        "box-shadow:0 10px 30px rgba(15,23,42,0.08);'>"
-        f"<div style='font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#627d98; margin:0 0 10px 0;'>{escape(BOT_NAME)}</div>"
-        f"<h1 style='margin:0 0 18px 0; font-size:28px; line-height:1.2; color:#102a43;'>{escape(reviewed.subject)}</h1>"
-        f"{summary_html}"
-        "<h2 style='margin:26px 0 12px 0; font-size:18px; color:#102a43;'>Highlights</h2>"
-        f"{''.join(highlight_cards)}"
-        "<div style='margin-top:22px; padding:14px 16px; border-radius:12px; background:#f0f4f8; "
-        "color:#334e68; font-size:14px; line-height:1.5;'>"
-        "The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents."
+        "<html><body style=\"margin:0; padding:0; background:#eef2f8;"
+        " font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">"
+        "<div style=\"max-width:760px; margin:0 auto; padding:24px 16px;\">"
+        "<div style=\"background:#ffffff; border-radius:18px; overflow:hidden;"
+        " box-shadow:0 10px 30px rgba(15,23,42,0.08);\">"
+        "<div style=\"background:#0b2545; padding:22px 28px; color:#ffffff;\">"
+        f"<div style=\"font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#9ab1d4; margin:0 0 6px 0;\">{escape(BOT_NAME)}</div>"
+        f"<h1 style=\"margin:0; font-size:24px; line-height:1.25; color:#ffffff;\">{escape(reviewed.subject)}</h1>"
         "</div>"
-        "</div></div></body></html>"
+        "<div style=\"padding:24px 28px 26px 28px;\">"
+        "<h2 style=\"margin:0 0 14px 0; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#1f6feb;\">Summary</h2>"
+        f"{summary_html}"
+        "<h2 style=\"margin:26px 0 14px 0; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#1f6feb;\">Highlights</h2>"
+        f"{''.join(highlight_cards)}"
+        "<div style=\"margin-top:18px; padding:14px 16px; border-radius:12px; background:#f6f8fb;"
+        " color:#334e68; font-size:13px; line-height:1.55;\">"
+        "The attached PDF (and the bundled HTML view) contain the full curated digest, abstract-level details, and a journal table of contents."
+        "</div>"
+        "</div></div></div></body></html>"
     )
 
 
 def render_curated_digest_pdf(reviewed: ReviewedDigest) -> bytes:
     buffer = BytesIO()
-    doc = SimpleDocTemplate(
+    subject_text = _to_pdf_text(reviewed.subject)
+    doc = BaseDocTemplate(
         buffer,
         pagesize=LETTER,
-        leftMargin=0.65 * inch,
-        rightMargin=0.65 * inch,
-        topMargin=0.75 * inch,
+        leftMargin=0.6 * inch,
+        rightMargin=0.6 * inch,
+        topMargin=0.95 * inch,
         bottomMargin=0.75 * inch,
-        title=_to_pdf_text(reviewed.subject),
+        title=subject_text,
+        author=BOT_NAME,
     )
-    story = []
+    frame = Frame(
+        doc.leftMargin,
+        doc.bottomMargin,
+        doc.width,
+        doc.height,
+        id="content",
+        leftPadding=0,
+        rightPadding=0,
+        topPadding=0,
+        bottomPadding=0,
+    )
+    page_template = PageTemplate(
+        id="default",
+        frames=[frame],
+        onPage=_build_page_chrome(subject_text),
+    )
+    doc.addPageTemplates([page_template])
     styles = _build_pdf_styles()
-    outline = _build_digest_outline(reviewed.full_curated_digest_markdown)
-    story.append(Paragraph(escape(_to_pdf_text(BOT_NAME)), styles["meta"]))
-    story.append(Spacer(1, 0.04 * inch))
-    story.append(Paragraph(escape(_to_pdf_text(reviewed.subject)), styles["title"]))
-    story.append(Spacer(1, 0.18 * inch))
-    story.append(Paragraph("Summary", styles["heading"]))
-    story.extend(_render_summary_blocks_pdf(reviewed.summary, styles))
-    story.append(Spacer(1, 0.12 * inch))
-    if outline:
-        story.append(Paragraph("Table of Contents", styles["heading"]))
-        for entry in outline:
-            story.append(
-                Paragraph(
-                    f"&#8226; <link href='#{entry.anchor}'>{escape(_to_pdf_text(entry.label))}</link>",
-                    styles["bullet"],
-                )
-            )
-        story.append(Spacer(1, 0.12 * inch))
-    story.append(Paragraph("Highlights", styles["heading"]))
-    for highlight in reviewed.highlights:
-        story.append(Paragraph(escape(_to_pdf_text(highlight.title)), styles["highlight_title"]))
-        meta = " | ".join(part for part in [highlight.journal, highlight.published] if part)
-        if meta:
-            story.append(Paragraph(escape(_to_pdf_text(meta)), styles["meta"]))
-        if highlight.why_it_matters:
-            story.append(
-                Paragraph(
-                    f"<b>Why it matters:</b> {escape(_to_pdf_text(highlight.why_it_matters))}",
-                    styles["body"],
-                )
-            )
-        if highlight.link:
-            story.append(Paragraph(f"<b>Link:</b> {escape(_to_pdf_text(highlight.link))}", styles["body"]))
-        story.append(Spacer(1, 0.08 * inch))
-    story.append(Spacer(1, 0.12 * inch))
+    structured = _structure_full_digest(reviewed.full_curated_digest_markdown)
+    story: list = []
+    story.extend(_pdf_cover_block(reviewed, styles))
+    story.extend(_pdf_summary_block(reviewed, styles))
+    story.extend(_pdf_highlights_block(reviewed, styles))
+    if structured:
+        story.extend(_pdf_toc_block(structured, styles))
     if reviewed.collection_snapshot:
-        story.append(Paragraph("Collection Snapshot", styles["heading"]))
-        for item in reviewed.collection_snapshot:
-            story.append(Paragraph(f"&#8226; {escape(_to_pdf_text(item))}", styles["bullet"]))
-        story.append(Spacer(1, 0.12 * inch))
-    story.append(Paragraph("Full Curated Digest", styles["heading"]))
-    story.extend(_render_full_digest_story(reviewed.full_curated_digest_markdown, styles))
+        story.extend(_pdf_snapshot_block(reviewed.collection_snapshot, styles))
+    story.extend(_pdf_full_digest_block(structured, styles))
     doc.build(story)
     return buffer.getvalue()
+
+
+def render_full_digest_html(reviewed: ReviewedDigest) -> str:
+    structured = _structure_full_digest(reviewed.full_curated_digest_markdown)
+    summary_html = _render_summary_blocks_full_html(reviewed.summary)
+    highlights_html = _render_highlights_full_html(reviewed.highlights)
+    snapshot_html = _render_snapshot_full_html(reviewed.collection_snapshot)
+    toc_html, body_html = _render_full_digest_sections_html(structured)
+    css = _full_html_css()
+    return (
+        "<!doctype html>"
+        "<html lang=\"en\">"
+        "<head>"
+        "<meta charset=\"utf-8\">"
+        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+        f"<title>{escape(reviewed.subject)}</title>"
+        f"<style>{css}</style>"
+        "</head>"
+        "<body>"
+        "<header class=\"page-header\">"
+        "<div class=\"page-header__inner\">"
+        f"<div class=\"page-header__eyebrow\">{escape(BOT_NAME)}</div>"
+        f"<h1 class=\"page-header__title\">{escape(reviewed.subject)}</h1>"
+        "<div class=\"page-header__meta\">A curated weekly digest of new articles in political communication and computational social science.</div>"
+        "</div>"
+        "</header>"
+        "<div class=\"layout\">"
+        "<aside class=\"toc\">"
+        "<div class=\"toc__title\">In this digest</div>"
+        "<nav class=\"toc__list\">"
+        "<a class=\"toc__group-link\" href=\"#summary\">Summary</a>"
+        "<a class=\"toc__group-link\" href=\"#highlights\">Highlights</a>"
+        + (
+            "<a class=\"toc__group-link\" href=\"#snapshot\">Collection snapshot</a>"
+            if reviewed.collection_snapshot
+            else ""
+        )
+        + "<a class=\"toc__group-link\" href=\"#full-digest\">Full curated digest</a>"
+        + toc_html
+        + "</nav>"
+        "</aside>"
+        "<main class=\"main\">"
+        "<section id=\"summary\" class=\"section section--summary\">"
+        "<h2 class=\"section__title\">Summary</h2>"
+        f"<div class=\"summary-body\">{summary_html}</div>"
+        "</section>"
+        "<section id=\"highlights\" class=\"section section--highlights\">"
+        "<h2 class=\"section__title\">Highlights</h2>"
+        f"<div class=\"highlight-grid\">{highlights_html}</div>"
+        "</section>"
+        + (
+            "<section id=\"snapshot\" class=\"section section--snapshot\">"
+            "<h2 class=\"section__title\">Collection snapshot</h2>"
+            f"<div class=\"snapshot-grid\">{snapshot_html}</div>"
+            "</section>"
+            if reviewed.collection_snapshot
+            else ""
+        )
+        + "<section id=\"full-digest\" class=\"section section--digest\">"
+        "<h2 class=\"section__title\">Full curated digest</h2>"
+        f"{body_html}"
+        "</section>"
+        "</main>"
+        "</div>"
+        "<footer class=\"page-footer\">"
+        f"<div>{escape(BOT_NAME)} &middot; {escape(reviewed.subject)}</div>"
+        "</footer>"
+        "</body></html>"
+    )
 
 
 def _extract_subject(markdown_body: str) -> tuple[str | None, str]:
@@ -261,10 +394,6 @@ def _parse_highlights(lines: list[str]) -> list[Highlight]:
     return [highlight for highlight in highlights if highlight.title]
 
 
-def _paragraphs(text: str) -> list[str]:
-    return [paragraph.strip() for paragraph in re.split(r"\n\s*\n", text.strip()) if paragraph.strip()]
-
-
 def _summary_blocks(text: str) -> list[tuple[str, list[str]]]:
     blocks: list[tuple[str, list[str]]] = []
     paragraph_lines: list[str] = []
@@ -302,172 +431,956 @@ def _render_summary_blocks_html(text: str) -> str:
     for block_type, items in _summary_blocks(text):
         if block_type == "paragraph":
             parts.append(
-                f"<p style='margin:0 0 12px 0; line-height:1.65; color:#1f2937;'>{escape(items[0])}</p>"
+                f"<p style=\"margin:0 0 12px 0; line-height:1.65; color:#1f2937; font-size:15px;\">{escape(items[0])}</p>"
             )
             continue
         bullet_items = "".join(
-            f"<li style='margin:0 0 8px 0;'>{escape(item)}</li>" for item in items
+            f"<li style=\"margin:0 0 8px 0;\">{escape(item)}</li>" for item in items
         )
         parts.append(
-            "<ul style='margin:0 0 18px 18px; padding:0; color:#243b53; line-height:1.55;'>"
+            "<ul style=\"margin:0 0 18px 18px; padding:0; color:#243b53; line-height:1.6; font-size:15px;\">"
             f"{bullet_items}</ul>"
         )
     return "".join(parts)
 
 
-def _render_summary_blocks_pdf(text: str, styles: dict[str, ParagraphStyle]) -> list:
-    story = []
+def _render_summary_blocks_full_html(text: str) -> str:
+    parts: list[str] = []
     for block_type, items in _summary_blocks(text):
         if block_type == "paragraph":
-            story.append(Paragraph(escape(_to_pdf_text(items[0])), styles["body"]))
+            parts.append(f"<p>{escape(items[0])}</p>")
             continue
-        for item in items:
-            story.append(Paragraph(f"&#8226; {escape(_to_pdf_text(item))}", styles["bullet"]))
-    return story
+        bullet_items = "".join(f"<li>{escape(item)}</li>" for item in items)
+        parts.append(f"<ul>{bullet_items}</ul>")
+    return "".join(parts)
 
 
-def _build_digest_outline(markdown: str) -> list[OutlineEntry]:
-    outline: list[OutlineEntry] = []
-    current_section = ""
+def _render_highlights_full_html(highlights: list[Highlight]) -> str:
+    cards = []
+    for highlight in highlights:
+        meta_parts = [escape(part) for part in [highlight.journal, highlight.published] if part]
+        meta = " &middot; ".join(meta_parts)
+        why_html = (
+            f"<p class=\"highlight-card__why\"><span class=\"highlight-card__label\">Why it matters</span> {escape(highlight.why_it_matters)}</p>"
+            if highlight.why_it_matters
+            else ""
+        )
+        link_html = (
+            f"<a class=\"highlight-card__cta\" href=\"{escape(highlight.link, quote=True)}\">Open article &rarr;</a>"
+            if highlight.link
+            else ""
+        )
+        meta_html = f"<div class=\"highlight-card__meta\">{meta}</div>" if meta else ""
+        cards.append(
+            "<article class=\"highlight-card\">"
+            f"<h3 class=\"highlight-card__title\">{escape(highlight.title)}</h3>"
+            f"{meta_html}{why_html}{link_html}"
+            "</article>"
+        )
+    return "".join(cards)
+
+
+def _render_snapshot_full_html(items: list[str]) -> str:
+    cells = []
+    for item in items:
+        label, _, value = item.partition(":")
+        if value:
+            cells.append(
+                "<div class=\"snapshot-card\">"
+                f"<div class=\"snapshot-card__label\">{escape(label.strip())}</div>"
+                f"<div class=\"snapshot-card__value\">{escape(value.strip())}</div>"
+                "</div>"
+            )
+        else:
+            cells.append(
+                "<div class=\"snapshot-card snapshot-card--note\">"
+                f"<div class=\"snapshot-card__value\">{escape(item.strip())}</div>"
+                "</div>"
+            )
+    return "".join(cells)
+
+
+def _render_full_digest_sections_html(
+    structured: list[FullDigestSection],
+) -> tuple[str, str]:
+    toc_parts: list[str] = []
+    body_parts: list[str] = []
+    for section_index, section in enumerate(structured):
+        section_anchor = f"section-{section_index + 1}"
+        section_id = escape(section_anchor)
+        toc_parts.append(
+            "<div class=\"toc__group\">"
+            f"<a class=\"toc__group-link toc__group-link--nested\" href=\"#{section_id}\">{escape(section.name)}</a>"
+        )
+        body_parts.append(
+            f"<div id=\"{section_id}\" class=\"digest-section\">"
+            f"<h3 class=\"digest-section__title\">{escape(section.name)}</h3>"
+        )
+        for journal in section.journals:
+            journal_anchor = escape(journal.anchor)
+            toc_parts.append(
+                f"<a class=\"toc__journal-link\" href=\"#{journal_anchor}\">{escape(journal.name)}</a>"
+            )
+            body_parts.append(
+                f"<div id=\"{journal_anchor}\" class=\"digest-journal\">"
+                f"<h4 class=\"digest-journal__title\">{escape(journal.name)}</h4>"
+                "<div class=\"digest-articles\">"
+            )
+            for article in journal.articles:
+                body_parts.append(_render_full_html_article(article, section.name))
+            body_parts.append("</div></div>")
+        body_parts.append("</div>")
+        toc_parts.append("</div>")
+    return "".join(toc_parts), "".join(body_parts)
+
+
+def _render_full_html_article(article: FullDigestArticle, section_name: str) -> str:
+    meta_chips: list[str] = []
+    if article.published:
+        meta_chips.append(
+            f"<span class=\"chip chip--date\">{escape(article.published)}</span>"
+        )
+    if section_name:
+        meta_chips.append(
+            f"<span class=\"chip chip--section\">{escape(section_name)}</span>"
+        )
+    if article.doi:
+        meta_chips.append(
+            f"<span class=\"chip chip--doi\">DOI {escape(article.doi)}</span>"
+        )
+    authors_html = (
+        f"<p class=\"article__authors\">{escape(article.authors)}</p>"
+        if article.authors
+        else ""
+    )
+    affiliations_html = (
+        f"<p class=\"article__affiliations\">{escape(article.affiliations)}</p>"
+        if article.affiliations
+        else ""
+    )
+    abstract_html = (
+        f"<p class=\"article__abstract\">{escape(article.abstract)}</p>"
+        if article.abstract
+        else ""
+    )
+    link_html = (
+        f"<a class=\"article__cta\" href=\"{escape(article.link, quote=True)}\">Read article &rarr;</a>"
+        if article.link
+        else ""
+    )
+    chips_html = (
+        f"<div class=\"article__chips\">{''.join(meta_chips)}</div>" if meta_chips else ""
+    )
+    return (
+        "<article class=\"article\">"
+        f"<h5 class=\"article__title\">{escape(article.title)}</h5>"
+        f"{chips_html}{authors_html}{affiliations_html}{abstract_html}{link_html}"
+        "</article>"
+    )
+
+
+def _full_html_css() -> str:
+    return (
+        ":root {"
+        "--ink:#0b2545; --ink-soft:#1f2937; --muted:#52606d; --muted-soft:#7b8794;"
+        "--accent:#1f6feb; --accent-dark:#0a4faf; --accent-soft:#e7efff;"
+        "--highlight:#b45309; --highlight-bg:#fff7ed; --surface:#ffffff;"
+        "--surface-alt:#f6f8fb; --surface-band:#eef2f8; --border:#e2e8f0;"
+        "--border-soft:#eef0f4;"
+        "}"
+        "* { box-sizing: border-box; }"
+        "html, body { margin:0; padding:0; background:var(--surface-band);"
+        " color:var(--ink-soft);"
+        " font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;"
+        " font-size:16px; line-height:1.6; }"
+        "a { color:var(--accent); text-decoration:none; }"
+        "a:hover { text-decoration:underline; }"
+        ".page-header { background:linear-gradient(135deg,#0b2545 0%,#13315c 100%); color:#fff;"
+        " padding:42px 24px 36px; }"
+        ".page-header__inner { max-width:1080px; margin:0 auto; }"
+        ".page-header__eyebrow { font-size:12px; letter-spacing:0.18em; text-transform:uppercase;"
+        " color:#9ab1d4; margin-bottom:8px; font-weight:600; }"
+        ".page-header__title { font-size:32px; line-height:1.2; margin:0 0 10px 0; color:#fff;"
+        " font-weight:700; letter-spacing:-0.01em; }"
+        ".page-header__meta { color:#c5d4ec; font-size:14px; max-width:640px; margin:0; }"
+        ".layout { display:grid; grid-template-columns:260px minmax(0,1fr); gap:32px;"
+        " max-width:1080px; margin:-12px auto 40px; padding:0 24px; }"
+        ".toc { background:var(--surface); border:1px solid var(--border); border-radius:16px;"
+        " padding:18px; box-shadow:0 6px 18px rgba(15,23,42,0.04); position:sticky; top:16px;"
+        " align-self:start; max-height:calc(100vh - 32px); overflow:auto; font-size:14px; }"
+        ".toc__title { font-size:11px; letter-spacing:0.16em; text-transform:uppercase;"
+        " color:var(--muted); margin-bottom:12px; font-weight:700; }"
+        ".toc__list { display:flex; flex-direction:column; gap:2px; }"
+        ".toc__group { display:flex; flex-direction:column; gap:2px; margin-top:6px;"
+        " padding-top:6px; border-top:1px solid var(--border-soft); }"
+        ".toc__group:first-of-type { margin-top:10px; }"
+        ".toc__group-link { font-weight:600; color:var(--ink); padding:6px 8px;"
+        " border-radius:8px; }"
+        ".toc__group-link--nested { color:var(--ink); }"
+        ".toc__group-link:hover { background:var(--accent-soft); text-decoration:none; }"
+        ".toc__journal-link { color:var(--muted); padding:5px 8px 5px 20px; border-radius:8px;"
+        " font-size:13px; }"
+        ".toc__journal-link:hover { background:var(--accent-soft); color:var(--accent-dark);"
+        " text-decoration:none; }"
+        ".main { display:flex; flex-direction:column; gap:24px; min-width:0; }"
+        ".section { background:var(--surface); border-radius:18px; padding:24px 26px;"
+        " border:1px solid var(--border); box-shadow:0 6px 18px rgba(15,23,42,0.04); }"
+        ".section__title { margin:0 0 18px 0; font-size:13px; letter-spacing:0.14em;"
+        " text-transform:uppercase; color:var(--accent); font-weight:700; }"
+        ".summary-body p { margin:0 0 12px 0; font-size:16px; line-height:1.7;"
+        " color:var(--ink-soft); }"
+        ".summary-body ul { margin:0 0 14px 22px; padding:0; color:var(--ink-soft);"
+        " line-height:1.65; }"
+        ".summary-body ul li { margin-bottom:8px; }"
+        ".highlight-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));"
+        " gap:16px; }"
+        ".highlight-card { background:var(--surface); border:1px solid var(--border);"
+        " border-left:4px solid var(--accent); border-radius:14px; padding:18px 18px 16px;"
+        " display:flex; flex-direction:column; gap:8px; }"
+        ".highlight-card__title { margin:0; font-size:16px; line-height:1.35; color:var(--ink);"
+        " font-weight:700; }"
+        ".highlight-card__meta { font-size:11px; letter-spacing:0.08em; text-transform:uppercase;"
+        " color:var(--muted); }"
+        ".highlight-card__why { margin:0; font-size:14px; line-height:1.55; color:var(--ink-soft); }"
+        ".highlight-card__label { color:var(--accent-dark); font-weight:700; margin-right:4px; }"
+        ".highlight-card__cta { display:inline-block; background:var(--accent); color:#fff;"
+        " padding:8px 14px; border-radius:999px; font-size:13px; font-weight:600;"
+        " align-self:flex-start; margin-top:auto; }"
+        ".highlight-card__cta:hover { background:var(--accent-dark); text-decoration:none; }"
+        ".snapshot-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr));"
+        " gap:14px; }"
+        ".snapshot-card { background:var(--surface-alt); border:1px solid var(--border-soft);"
+        " border-radius:12px; padding:14px 16px; }"
+        ".snapshot-card__label { font-size:11px; letter-spacing:0.1em; text-transform:uppercase;"
+        " color:var(--muted); margin-bottom:6px; font-weight:600; }"
+        ".snapshot-card__value { font-size:18px; font-weight:700; color:var(--ink); }"
+        ".snapshot-card--note { grid-column:1/-1; background:transparent; border:none; padding:6px 0; }"
+        ".snapshot-card--note .snapshot-card__value { font-size:13px; font-weight:400;"
+        " color:var(--muted); }"
+        ".digest-section { margin-top:8px; }"
+        ".digest-section:first-of-type { margin-top:0; }"
+        ".digest-section__title { font-size:20px; margin:18px 0 12px; color:var(--ink);"
+        " padding-bottom:8px; border-bottom:2px solid var(--accent); }"
+        ".digest-journal { margin-top:18px; }"
+        ".digest-journal__title { font-size:14px; letter-spacing:0.06em; text-transform:uppercase;"
+        " color:var(--accent-dark); margin:0 0 12px; padding:8px 14px; background:var(--accent-soft);"
+        " border-radius:10px; display:inline-block; }"
+        ".digest-articles { display:flex; flex-direction:column; gap:14px; }"
+        ".article { background:var(--surface); border:1px solid var(--border-soft);"
+        " border-left:3px solid var(--accent); border-radius:12px; padding:16px 18px;"
+        " display:flex; flex-direction:column; gap:8px; }"
+        ".article__title { margin:0; font-size:16px; line-height:1.35; color:var(--ink);"
+        " font-weight:700; }"
+        ".article__chips { display:flex; flex-wrap:wrap; gap:6px; }"
+        ".chip { font-size:11px; letter-spacing:0.04em; padding:3px 9px; border-radius:999px;"
+        " background:var(--surface-band); color:var(--muted); font-weight:600; }"
+        ".chip--date { background:var(--accent-soft); color:var(--accent-dark); }"
+        ".chip--section { background:#fef3c7; color:#92400e; }"
+        ".chip--doi { background:#ecfdf5; color:#047857; font-family:'SFMono-Regular',Menlo,monospace;"
+        " font-size:10px; }"
+        ".article__authors { margin:0; font-size:13px; color:var(--muted); font-style:italic; }"
+        ".article__affiliations { margin:0; font-size:12px; color:var(--muted-soft); }"
+        ".article__abstract { margin:6px 0 0; font-size:14px; line-height:1.65;"
+        " color:var(--ink-soft); }"
+        ".article__cta { font-size:13px; font-weight:600; color:var(--accent); align-self:flex-start;"
+        " margin-top:4px; }"
+        ".page-footer { max-width:1080px; margin:0 auto; padding:20px 24px 36px; color:var(--muted);"
+        " font-size:13px; text-align:center; }"
+        "@media (max-width: 900px) {"
+        " .layout { grid-template-columns:1fr; }"
+        " .toc { position:static; max-height:none; }"
+        " .page-header__title { font-size:26px; }"
+        "}"
+        "@media print {"
+        " body { background:#fff; }"
+        " .toc, .page-footer { display:none; }"
+        " .layout { grid-template-columns:1fr; padding:0; margin:0; }"
+        " .section { box-shadow:none; border:none; padding:8px 0; }"
+        "}"
+    )
+
+
+def _structure_full_digest(markdown: str) -> list[FullDigestSection]:
+    sections: list[FullDigestSection] = []
+    current_section: FullDigestSection | None = None
+    current_journal: FullDigestJournal | None = None
+    current_article: FullDigestArticle | None = None
     seen: dict[tuple[str, str], int] = {}
-    for raw_line in markdown.splitlines():
-        stripped = raw_line.strip()
+
+    def flush_article() -> None:
+        nonlocal current_article
+        if current_article is None:
+            return
+        if current_journal is None:
+            current_article = None
+            return
+        current_journal.articles.append(current_article)
+        current_article = None
+
+    def flush_journal() -> None:
+        nonlocal current_journal
+        flush_article()
+        if current_journal and current_section:
+            current_section.journals.append(current_journal)
+        current_journal = None
+
+    def flush_section() -> None:
+        nonlocal current_section
+        flush_journal()
+        if current_section:
+            sections.append(current_section)
+        current_section = None
+
+    body_line_target = None
+    for raw_line in markdown.splitlines() + [""]:
+        line = raw_line.rstrip()
+        stripped = line.strip()
         if stripped.startswith("### "):
-            current_section = stripped[4:].strip()
+            flush_section()
+            current_section = FullDigestSection(name=stripped[4:].strip(), journals=[])
             continue
         if stripped.startswith("#### "):
-            journal = stripped[5:].strip()
-            key = (current_section, journal)
+            flush_journal()
+            journal_name = stripped[5:].strip()
+            section_name = current_section.name if current_section else ""
+            key = (section_name, journal_name)
             seen[key] = seen.get(key, 0) + 1
-            outline.append(
-                OutlineEntry(
-                    label=f"{current_section}: {journal}" if current_section else journal,
-                    anchor=_outline_anchor(current_section, journal, seen[key]),
-                )
+            anchor = _outline_anchor(section_name, journal_name, seen[key])
+            current_journal = FullDigestJournal(
+                name=journal_name, anchor=anchor, articles=[]
             )
-    return outline
+            continue
+        title_match = re.match(r"^- \*\*(.+?)\*\*$", stripped)
+        if title_match:
+            flush_article()
+            current_article = FullDigestArticle(title=title_match.group(1).strip())
+            body_line_target = None
+            continue
+        if current_article is None:
+            continue
+        if not stripped:
+            body_line_target = None
+            continue
+        attr_match = re.match(r"^(Published|Authors|Affiliations|DOI|Link|Abstract):\s*(.*)$", stripped)
+        if attr_match:
+            field = attr_match.group(1).lower()
+            value = attr_match.group(2).strip()
+            setattr(current_article, field, value)
+            body_line_target = field if field in {"abstract", "authors", "affiliations"} else None
+            continue
+        if body_line_target == "abstract" and current_article.abstract:
+            current_article.abstract = f"{current_article.abstract} {stripped}".strip()
+        elif body_line_target == "authors" and current_article.authors:
+            current_article.authors = f"{current_article.authors} {stripped}".strip()
+        elif body_line_target == "affiliations" and current_article.affiliations:
+            current_article.affiliations = (
+                f"{current_article.affiliations} {stripped}".strip()
+            )
+
+    flush_section()
+    return [section for section in sections if section.journals]
 
 
 def _build_pdf_styles() -> dict[str, ParagraphStyle]:
     sample = getSampleStyleSheet()
+    base = ParagraphStyle(
+        "DigestBaseBody",
+        parent=sample["BodyText"],
+        fontName="Helvetica",
+        fontSize=10,
+        leading=13.5,
+        textColor=colors.HexColor(PALETTE["ink_soft"]),
+        spaceAfter=0,
+    )
     return {
+        "eyebrow": ParagraphStyle(
+            "DigestEyebrow",
+            parent=sample["BodyText"],
+            fontName="Helvetica-Bold",
+            fontSize=9,
+            leading=11,
+            textColor=colors.HexColor(PALETTE["accent"]),
+            spaceAfter=4,
+        ),
         "title": ParagraphStyle(
             "DigestTitle",
             parent=sample["Title"],
             fontName="Helvetica-Bold",
-            fontSize=19,
-            leading=24,
-            textColor=colors.HexColor("#102a43"),
-            spaceAfter=10,
+            fontSize=22,
+            leading=26,
+            textColor=colors.HexColor(PALETTE["ink"]),
+            alignment=TA_LEFT,
+            spaceAfter=4,
         ),
-        "heading": ParagraphStyle(
-            "DigestHeading",
+        "subtitle": ParagraphStyle(
+            "DigestSubtitle",
+            parent=sample["BodyText"],
+            fontName="Helvetica-Oblique",
+            fontSize=11,
+            leading=15,
+            textColor=colors.HexColor(PALETTE["muted"]),
+            spaceAfter=8,
+        ),
+        "section_band": ParagraphStyle(
+            "DigestSectionBand",
             parent=sample["Heading2"],
             fontName="Helvetica-Bold",
-            fontSize=13,
-            leading=16,
-            textColor=colors.HexColor("#102a43"),
-            spaceBefore=8,
-            spaceAfter=6,
+            fontSize=11,
+            leading=13,
+            textColor=colors.HexColor(PALETTE["accent"]),
+            spaceAfter=0,
+        ),
+        "section_band_label": ParagraphStyle(
+            "DigestSectionBandLabel",
+            parent=sample["Heading2"],
+            fontName="Helvetica-Bold",
+            fontSize=10,
+            leading=12,
+            textColor=colors.white,
+            spaceAfter=0,
+        ),
+        "digest_section_heading": ParagraphStyle(
+            "DigestDigestSectionHeading",
+            parent=sample["Heading2"],
+            fontName="Helvetica-Bold",
+            fontSize=12.5,
+            leading=15,
+            textColor=colors.white,
+            spaceAfter=0,
+        ),
+        "journal_heading": ParagraphStyle(
+            "DigestJournalHeading",
+            parent=sample["Heading3"],
+            fontName="Helvetica-Bold",
+            fontSize=10.5,
+            leading=13,
+            textColor=colors.HexColor(PALETTE["accent_dark"]),
+            spaceAfter=0,
         ),
         "highlight_title": ParagraphStyle(
             "DigestHighlightTitle",
             parent=sample["Heading3"],
             fontName="Helvetica-Bold",
-            fontSize=11.5,
+            fontSize=11,
             leading=14,
-            textColor=colors.HexColor("#0f172a"),
-            spaceAfter=3,
+            textColor=colors.HexColor(PALETTE["ink"]),
+            spaceAfter=2,
         ),
-        "meta": ParagraphStyle(
-            "DigestMeta",
+        "highlight_meta": ParagraphStyle(
+            "DigestHighlightMeta",
             parent=sample["BodyText"],
-            fontName="Helvetica",
+            fontName="Helvetica-Bold",
+            fontSize=8,
+            leading=11,
+            textColor=colors.HexColor(PALETTE["muted"]),
+            spaceAfter=4,
+        ),
+        "highlight_body": ParagraphStyle(
+            "DigestHighlightBody",
+            parent=base,
+            fontSize=10,
+            leading=13.5,
+            spaceAfter=4,
+        ),
+        "highlight_link": ParagraphStyle(
+            "DigestHighlightLink",
+            parent=base,
+            fontName="Helvetica-Bold",
             fontSize=9.5,
             leading=12,
-            textColor=colors.HexColor("#52606d"),
-            spaceAfter=4,
+            textColor=colors.HexColor(PALETTE["accent"]),
+            spaceAfter=0,
         ),
         "body": ParagraphStyle(
             "DigestBody",
-            parent=sample["BodyText"],
-            fontName="Helvetica",
+            parent=base,
             fontSize=10,
-            leading=13,
-            textColor=colors.HexColor("#243b53"),
-            spaceAfter=5,
+            leading=14,
+            spaceAfter=6,
         ),
         "bullet": ParagraphStyle(
             "DigestBullet",
-            parent=sample["BodyText"],
-            fontName="Helvetica",
+            parent=base,
             fontSize=10,
-            leading=13,
-            textColor=colors.HexColor("#243b53"),
-            leftIndent=12,
+            leading=14,
+            leftIndent=14,
             firstLineIndent=-10,
             spaceAfter=4,
         ),
-        "detail": ParagraphStyle(
-            "DigestDetail",
-            parent=sample["BodyText"],
-            fontName="Helvetica",
+        "toc_section": ParagraphStyle(
+            "DigestTocSection",
+            parent=base,
+            fontName="Helvetica-Bold",
+            fontSize=10,
+            leading=13,
+            textColor=colors.HexColor(PALETTE["ink"]),
+            spaceBefore=4,
+            spaceAfter=2,
+        ),
+        "toc_entry": ParagraphStyle(
+            "DigestTocEntry",
+            parent=base,
             fontSize=9.5,
-            leading=12,
-            textColor=colors.HexColor("#334e68"),
+            leading=13,
+            textColor=colors.HexColor(PALETTE["accent_dark"]),
             leftIndent=14,
+            spaceAfter=2,
+        ),
+        "article_title": ParagraphStyle(
+            "DigestArticleTitle",
+            parent=sample["Heading4"],
+            fontName="Helvetica-Bold",
+            fontSize=11,
+            leading=14,
+            textColor=colors.HexColor(PALETTE["ink"]),
+            spaceAfter=2,
+        ),
+        "article_meta": ParagraphStyle(
+            "DigestArticleMeta",
+            parent=base,
+            fontName="Helvetica-Bold",
+            fontSize=8.5,
+            leading=11,
+            textColor=colors.HexColor(PALETTE["muted"]),
+            spaceAfter=2,
+        ),
+        "article_authors": ParagraphStyle(
+            "DigestArticleAuthors",
+            parent=base,
+            fontName="Helvetica-Oblique",
+            fontSize=9,
+            leading=12,
+            textColor=colors.HexColor(PALETTE["muted"]),
+            spaceAfter=2,
+        ),
+        "article_affiliations": ParagraphStyle(
+            "DigestArticleAffiliations",
+            parent=base,
+            fontSize=8.5,
+            leading=11,
+            textColor=colors.HexColor(PALETTE["muted_soft"]),
             spaceAfter=4,
+        ),
+        "article_abstract": ParagraphStyle(
+            "DigestArticleAbstract",
+            parent=base,
+            fontSize=9.5,
+            leading=13.5,
+            textColor=colors.HexColor(PALETTE["ink_soft"]),
+            spaceAfter=4,
+        ),
+        "article_link": ParagraphStyle(
+            "DigestArticleLink",
+            parent=base,
+            fontName="Helvetica-Bold",
+            fontSize=9,
+            leading=12,
+            textColor=colors.HexColor(PALETTE["accent"]),
+            spaceAfter=0,
+        ),
+        "snapshot_label": ParagraphStyle(
+            "DigestSnapshotLabel",
+            parent=base,
+            fontName="Helvetica-Bold",
+            fontSize=8,
+            leading=10,
+            textColor=colors.HexColor(PALETTE["muted"]),
+            spaceAfter=2,
+        ),
+        "snapshot_value": ParagraphStyle(
+            "DigestSnapshotValue",
+            parent=base,
+            fontName="Helvetica-Bold",
+            fontSize=14,
+            leading=17,
+            textColor=colors.HexColor(PALETTE["ink"]),
+            spaceAfter=0,
+        ),
+        "snapshot_note": ParagraphStyle(
+            "DigestSnapshotNote",
+            parent=base,
+            fontSize=9,
+            leading=12,
+            textColor=colors.HexColor(PALETTE["muted"]),
+            spaceAfter=0,
+        ),
+        "footer_note": ParagraphStyle(
+            "DigestFooterNote",
+            parent=base,
+            fontSize=9,
+            leading=12,
+            textColor=colors.HexColor(PALETTE["muted"]),
+            spaceAfter=0,
         ),
     }
 
 
-def _render_full_digest_story(markdown: str, styles: dict[str, ParagraphStyle]) -> list:
-    story = []
-    current_section = ""
-    seen: dict[tuple[str, str], int] = {}
-    for raw_line in markdown.splitlines():
-        line = raw_line.rstrip()
-        stripped = line.strip()
-        if not stripped:
-            story.append(Spacer(1, 0.06 * inch))
-            continue
-        if stripped.startswith("### "):
-            current_section = stripped[4:].strip()
-            story.append(Paragraph(escape(_to_pdf_text(current_section)), styles["heading"]))
-            continue
-        if stripped.startswith("#### "):
-            journal = stripped[5:].strip()
-            key = (current_section, journal)
-            seen[key] = seen.get(key, 0) + 1
-            anchor = _outline_anchor(current_section, journal, seen[key])
+def _build_page_chrome(subject_text: str):
+    def draw(canvas, doc):
+        canvas.saveState()
+        if doc.page == 1:
+            canvas.setFillColor(colors.HexColor(PALETTE["ink"]))
+            canvas.rect(0, PAGE_HEIGHT - 0.4 * inch, PAGE_WIDTH, 0.4 * inch, fill=1, stroke=0)
+            canvas.setFillColor(colors.white)
+            canvas.setFont("Helvetica-Bold", 9)
+            canvas.drawString(0.6 * inch, PAGE_HEIGHT - 0.255 * inch, BOT_NAME.upper())
+            canvas.setFont("Helvetica", 9)
+            canvas.setFillColor(colors.HexColor("#c5d4ec"))
+            canvas.drawRightString(
+                PAGE_WIDTH - 0.6 * inch,
+                PAGE_HEIGHT - 0.255 * inch,
+                subject_text,
+            )
+        else:
+            canvas.setFillColor(colors.HexColor(PALETTE["ink"]))
+            canvas.setFont("Helvetica-Bold", 8.5)
+            canvas.drawString(0.6 * inch, PAGE_HEIGHT - 0.45 * inch, BOT_NAME)
+            canvas.setFillColor(colors.HexColor(PALETTE["muted"]))
+            canvas.setFont("Helvetica", 8.5)
+            canvas.drawRightString(
+                PAGE_WIDTH - 0.6 * inch, PAGE_HEIGHT - 0.45 * inch, subject_text
+            )
+            canvas.setStrokeColor(colors.HexColor(PALETTE["border"]))
+            canvas.setLineWidth(0.5)
+            canvas.line(
+                0.6 * inch,
+                PAGE_HEIGHT - 0.6 * inch,
+                PAGE_WIDTH - 0.6 * inch,
+                PAGE_HEIGHT - 0.6 * inch,
+            )
+        canvas.setFillColor(colors.HexColor(PALETTE["muted"]))
+        canvas.setFont("Helvetica", 8)
+        canvas.drawString(0.6 * inch, 0.45 * inch, subject_text)
+        canvas.drawRightString(
+            PAGE_WIDTH - 0.6 * inch, 0.45 * inch, f"Page {doc.page}"
+        )
+        canvas.restoreState()
+
+    return draw
+
+
+def _pdf_cover_block(reviewed: ReviewedDigest, styles: dict[str, ParagraphStyle]) -> list:
+    story: list = []
+    story.append(Paragraph("WEEKLY JOURNAL DIGEST", styles["eyebrow"]))
+    story.append(Paragraph(escape(_to_pdf_text(reviewed.subject)), styles["title"]))
+    story.append(
+        Paragraph(
+            "Curated articles in political communication and computational social science.",
+            styles["subtitle"],
+        )
+    )
+    story.append(_accent_rule())
+    story.append(Spacer(1, 0.16 * inch))
+    return story
+
+
+def _pdf_summary_block(reviewed: ReviewedDigest, styles: dict[str, ParagraphStyle]) -> list:
+    story: list = [_section_band("Summary", styles)]
+    for block_type, items in _summary_blocks(reviewed.summary):
+        if block_type == "paragraph":
             story.append(
-                Paragraph(
-                    f"<a name='{anchor}'/>{escape(_to_pdf_text(journal))}",
-                    styles["highlight_title"],
-                )
+                Paragraph(escape(_to_pdf_text(items[0])), styles["body"])
             )
             continue
-        title_match = re.match(r"^- \*\*(.+?)\*\*$", stripped)
-        if title_match:
-            story.append(Paragraph(f"&#8226; <b>{escape(_to_pdf_text(title_match.group(1)))}</b>", styles["bullet"]))
-            continue
-        if stripped.startswith("- "):
-            story.append(Paragraph(f"&#8226; {escape(_to_pdf_text(stripped[2:]))}", styles["bullet"]))
-            continue
-        story.append(Paragraph(escape(_to_pdf_text(stripped)), styles["detail"]))
+        for item in items:
+            story.append(
+                Paragraph(
+                    f"&bull;&nbsp;&nbsp;{escape(_to_pdf_text(item))}",
+                    styles["bullet"],
+                )
+            )
+    story.append(Spacer(1, 0.16 * inch))
     return story
+
+
+def _pdf_highlights_block(reviewed: ReviewedDigest, styles: dict[str, ParagraphStyle]) -> list:
+    story: list = [_section_band("Highlights", styles)]
+    for highlight in reviewed.highlights:
+        inner: list = [
+            Paragraph(escape(_to_pdf_text(highlight.title)), styles["highlight_title"]),
+        ]
+        meta_parts = [part for part in [highlight.journal, highlight.published] if part]
+        if meta_parts:
+            inner.append(
+                Paragraph(
+                    " &nbsp;&middot;&nbsp; ".join(
+                        escape(_to_pdf_text(p)).upper() for p in meta_parts
+                    ),
+                    styles["highlight_meta"],
+                )
+            )
+        if highlight.why_it_matters:
+            inner.append(
+                Paragraph(
+                    f"<b>Why it matters &middot;</b> {escape(_to_pdf_text(highlight.why_it_matters))}",
+                    styles["highlight_body"],
+                )
+            )
+        if highlight.link:
+            inner.append(
+                Paragraph(
+                    f"<link href='{escape(highlight.link, quote=True)}'>Open article &rarr;</link>",
+                    styles["highlight_link"],
+                )
+            )
+        card = Table(
+            [[inner]],
+            colWidths=[None],
+            style=TableStyle(
+                [
+                    ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor(PALETTE["surface"])),
+                    ("BOX", (0, 0), (-1, -1), 0.5, colors.HexColor(PALETTE["border"])),
+                    ("LINEBEFORE", (0, 0), (0, -1), 3, colors.HexColor(PALETTE["accent"])),
+                    ("LEFTPADDING", (0, 0), (-1, -1), 14),
+                    ("RIGHTPADDING", (0, 0), (-1, -1), 14),
+                    ("TOPPADDING", (0, 0), (-1, -1), 11),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), 11),
+                ]
+            ),
+        )
+        story.append(KeepTogether(card))
+        story.append(Spacer(1, 0.08 * inch))
+    story.append(Spacer(1, 0.08 * inch))
+    return story
+
+
+def _pdf_toc_block(structured: list[FullDigestSection], styles: dict[str, ParagraphStyle]) -> list:
+    if not structured:
+        return []
+    story: list = [_section_band("Table of Contents", styles)]
+    for section in structured:
+        story.append(Paragraph(escape(_to_pdf_text(section.name)), styles["toc_section"]))
+        for journal in section.journals:
+            story.append(
+                Paragraph(
+                    f"&bull;&nbsp;&nbsp;<link href='#{journal.anchor}'>{escape(_to_pdf_text(journal.name))}</link>",
+                    styles["toc_entry"],
+                )
+            )
+    story.append(Spacer(1, 0.16 * inch))
+    return story
+
+
+def _pdf_snapshot_block(items: list[str], styles: dict[str, ParagraphStyle]) -> list:
+    story: list = [_section_band("Collection Snapshot", styles)]
+    stat_cells: list[tuple[str, str]] = []
+    note_items: list[str] = []
+    for entry in items:
+        label, _, value = entry.partition(":")
+        if value:
+            stat_cells.append((label.strip(), value.strip()))
+        else:
+            note_items.append(entry.strip())
+    columns = 3
+    rows: list[list] = []
+    while stat_cells:
+        row_chunk = stat_cells[:columns]
+        stat_cells = stat_cells[columns:]
+        row: list = []
+        for label, value in row_chunk:
+            cell = [
+                Paragraph(escape(_to_pdf_text(label)).upper(), styles["snapshot_label"]),
+                Paragraph(escape(_to_pdf_text(value)), styles["snapshot_value"]),
+            ]
+            row.append(cell)
+        while len(row) < columns:
+            row.append("")
+        rows.append(row)
+    if rows:
+        column_width = (PAGE_WIDTH - 1.2 * inch) / columns
+        snapshot_table = Table(
+            rows,
+            colWidths=[column_width] * columns,
+            style=TableStyle(
+                [
+                    ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor(PALETTE["surface_alt"])),
+                    ("BOX", (0, 0), (-1, -1), 0.4, colors.HexColor(PALETTE["border_soft"])),
+                    ("INNERGRID", (0, 0), (-1, -1), 0.4, colors.HexColor(PALETTE["border_soft"])),
+                    ("LEFTPADDING", (0, 0), (-1, -1), 12),
+                    ("RIGHTPADDING", (0, 0), (-1, -1), 12),
+                    ("TOPPADDING", (0, 0), (-1, -1), 10),
+                    ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
+                    ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ]
+            ),
+        )
+        story.append(KeepTogether(snapshot_table))
+    for note in note_items:
+        story.append(Spacer(1, 0.05 * inch))
+        story.append(Paragraph(escape(_to_pdf_text(note)), styles["snapshot_note"]))
+    story.append(Spacer(1, 0.16 * inch))
+    return story
+
+
+def _pdf_full_digest_block(
+    structured: list[FullDigestSection], styles: dict[str, ParagraphStyle]
+) -> list:
+    if not structured:
+        return []
+    story: list = [PageBreak(), _section_band("Full Curated Digest", styles)]
+    for section_index, section in enumerate(structured):
+        if section_index > 0:
+            story.append(Spacer(1, 0.18 * inch))
+        story.append(_digest_section_header(section.name, styles))
+        story.append(Spacer(1, 0.1 * inch))
+        for journal in section.journals:
+            story.append(_journal_header(journal, styles))
+            story.append(Spacer(1, 0.05 * inch))
+            for article in journal.articles:
+                story.append(_article_card(article, styles))
+                story.append(Spacer(1, 0.06 * inch))
+            story.append(Spacer(1, 0.06 * inch))
+    return story
+
+
+def _section_band(label: str, styles: dict[str, ParagraphStyle]) -> Table:
+    band = Table(
+        [[Paragraph(escape(_to_pdf_text(label)).upper(), styles["section_band_label"])]],
+        colWidths=[None],
+        style=TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor(PALETTE["ink"])),
+                ("LINEABOVE", (0, 0), (-1, 0), 0, colors.HexColor(PALETTE["ink"])),
+                ("LEFTPADDING", (0, 0), (-1, -1), 12),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 12),
+                ("TOPPADDING", (0, 0), (-1, -1), 6),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+            ]
+        ),
+    )
+    band.spaceAfter = 0.08 * inch
+    return band
+
+
+def _digest_section_header(name: str, styles: dict[str, ParagraphStyle]) -> Table:
+    accent_color, tint_color = SECTION_COLOR_MAP.get(name, (PALETTE["ink"], PALETTE["accent_soft"]))
+    style = ParagraphStyle(
+        f"DigestDigestSectionHeading-{name}",
+        parent=styles["digest_section_heading"],
+        textColor=colors.HexColor(accent_color),
+    )
+    return Table(
+        [[Paragraph(escape(_to_pdf_text(name)), style)]],
+        colWidths=[None],
+        style=TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor(tint_color)),
+                ("LINEBEFORE", (0, 0), (0, -1), 5, colors.HexColor(accent_color)),
+                ("LEFTPADDING", (0, 0), (-1, -1), 14),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 14),
+                ("TOPPADDING", (0, 0), (-1, -1), 8),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+            ]
+        ),
+    )
+
+
+def _journal_header(journal: FullDigestJournal, styles: dict[str, ParagraphStyle]) -> Table:
+    anchored = f"<a name='{journal.anchor}'/>{escape(_to_pdf_text(journal.name))}"
+    return Table(
+        [[Paragraph(anchored, styles["journal_heading"])]],
+        colWidths=[None],
+        style=TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor(PALETTE["accent_soft"])),
+                ("LINEBEFORE", (0, 0), (0, -1), 3, colors.HexColor(PALETTE["accent"])),
+                ("LEFTPADDING", (0, 0), (-1, -1), 12),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 12),
+                ("TOPPADDING", (0, 0), (-1, -1), 5),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+            ]
+        ),
+    )
+
+
+def _article_card(article: FullDigestArticle, styles: dict[str, ParagraphStyle]) -> KeepTogether:
+    inner: list = [
+        Paragraph(escape(_to_pdf_text(article.title)), styles["article_title"]),
+    ]
+    meta_parts: list[str] = []
+    if article.published:
+        meta_parts.append(escape(_to_pdf_text(article.published)).upper())
+    if article.doi:
+        meta_parts.append(f"DOI {escape(_to_pdf_text(article.doi)).upper()}")
+    if meta_parts:
+        inner.append(
+            Paragraph(
+                " &nbsp;&middot;&nbsp; ".join(meta_parts),
+                styles["article_meta"],
+            )
+        )
+    if article.authors:
+        inner.append(
+            Paragraph(escape(_to_pdf_text(article.authors)), styles["article_authors"])
+        )
+    if article.affiliations:
+        inner.append(
+            Paragraph(
+                escape(_to_pdf_text(article.affiliations)),
+                styles["article_affiliations"],
+            )
+        )
+    if article.abstract:
+        inner.append(
+            Paragraph(
+                f"<b>Abstract.</b> {escape(_to_pdf_text(article.abstract))}",
+                styles["article_abstract"],
+            )
+        )
+    if article.link:
+        inner.append(
+            Paragraph(
+                f"<link href='{escape(article.link, quote=True)}'>Read article &rarr;</link>",
+                styles["article_link"],
+            )
+        )
+    card = Table(
+        [[inner]],
+        colWidths=[None],
+        style=TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor(PALETTE["surface"])),
+                ("BOX", (0, 0), (-1, -1), 0.4, colors.HexColor(PALETTE["border_soft"])),
+                ("LINEBEFORE", (0, 0), (0, -1), 2, colors.HexColor(PALETTE["accent"])),
+                ("LEFTPADDING", (0, 0), (-1, -1), 12),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 12),
+                ("TOPPADDING", (0, 0), (-1, -1), 10),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
+            ]
+        ),
+    )
+    return KeepTogether(card)
+
+
+def _accent_rule() -> Flowable:
+    rule = Table(
+        [[""]],
+        colWidths=[1.4 * inch],
+        rowHeights=[3],
+        style=TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor(PALETTE["accent"])),
+                ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+                ("TOPPADDING", (0, 0), (-1, -1), 0),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+            ]
+        ),
+    )
+    rule.spaceAfter = 0
+    return rule
 
 
 def _to_pdf_text(text: str) -> str:
     replacements = {
-        "\u2013": "-",
-        "\u2014": "-",
-        "\u2018": "'",
-        "\u2019": "'",
-        "\u201c": '"',
-        "\u201d": '"',
-        "\u2022": "-",
-        "\u00a0": " ",
+        "–": "-",
+        "—": "-",
+        "‘": "'",
+        "’": "'",
+        "“": '"',
+        "”": '"',
+        "•": "-",
+        " ": " ",
     }
     cleaned = text.translate(str.maketrans(replacements))
     normalized = unicodedata.normalize("NFKD", cleaned)

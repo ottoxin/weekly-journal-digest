@@ -209,11 +209,19 @@ Short summary.
                 self.assertEqual(rc, 0)
             self.assertEqual(len(sent), 1)
             self.assertEqual(sent[0][1], "Test digest")
-            self.assertIn("The full curated digest is attached as a PDF.", sent[0][2])
+            self.assertIn(
+                "The full curated digest is attached as a PDF (also available as an HTML version).",
+                sent[0][2],
+            )
             self.assertIn("Open article", sent[0][3])
             self.assertEqual(len(sent[0][4]), 1)
             self.assertEqual(sent[0][4][0].filename, "reviewed.pdf")
             self.assertTrue((repo / "reviewed.pdf").exists())
+            html_path = repo / "reviewed.html"
+            self.assertTrue(html_path.exists())
+            html_text = html_path.read_text(encoding="utf-8")
+            self.assertTrue(html_text.startswith("<!doctype html>"))
+            self.assertIn("Important article", html_text)
 
 
 if __name__ == "__main__":  # pragma: no cover

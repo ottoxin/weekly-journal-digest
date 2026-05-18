@@ -16,6 +16,7 @@ from .filters import should_include_record
 from .reviewed_digest import (
     parse_reviewed_digest,
     render_curated_digest_pdf,
+    render_full_digest_html,
     render_summary_html,
     render_summary_plain_text,
 )
@@ -178,6 +179,8 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
         pdf_bytes = render_curated_digest_pdf(reviewed)
         attachment_path = reviewed_path.with_suffix(".pdf")
         attachment_path.write_bytes(pdf_bytes)
+        full_html_path = reviewed_path.with_suffix(".html")
+        full_html_path.write_text(render_full_digest_html(reviewed), encoding="utf-8")
         attachment = EmailAttachment(
             filename=attachment_path.name,
             content=pdf_bytes,
