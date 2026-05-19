@@ -70,6 +70,12 @@ sources:
     adapter: crossref
     issns: ["0093-6502", "1552-3810"]
     allowed_article_types: ["journal-article"]
+  - id: communication-methods-and-measures
+    journal: Communication Methods and Measures
+    category: communication
+    adapter: crossref
+    issns: ["1931-2458", "1931-2466"]
+    allowed_article_types: ["journal-article"]
   - id: ajps
     journal: American Journal of Political Science
     category: political_science
@@ -135,5 +141,12 @@ sources:
     category: general_science
     adapter: crossref
     issns: ["2522-5839"]
+    allowed_article_types: ["journal-article"]
+    require_social_science_match: true
+  - id: nature-computational-science
+    journal: Nature Computational Science
+    category: general_science
+    adapter: crossref
+    issns: ["2662-8457"]
     allowed_article_types: ["journal-article"]
     require_social_science_match: true

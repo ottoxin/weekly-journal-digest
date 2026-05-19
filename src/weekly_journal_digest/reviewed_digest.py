@@ -31,6 +31,7 @@ from reportlab.platypus import (
 
 
 BOT_NAME = "COMAP Journal Bot"
+DELIVERY_PREFERENCES_TEXT = "Delivery preferences can be changed in the local recipient configuration."
 
 PAGE_WIDTH, PAGE_HEIGHT = LETTER
 
@@ -142,8 +143,17 @@ def parse_reviewed_digest(markdown_body: str) -> ReviewedDigest | None:
     )
 
 
-def render_summary_plain_text(reviewed: ReviewedDigest) -> str:
-    lines = [BOT_NAME, "", "Summary", "", reviewed.summary.strip(), "", "Highlights"]
+def render_summary_plain_text(
+    reviewed: ReviewedDigest,
+    recipient_name: str | None = None,
+) -> str:
+    lines = [
+        f"Dear {_salutation_name(recipient_name)},",
+        "",
+        reviewed.summary.strip(),
+        "",
+        "Highlights",
+    ]
     for highlight in reviewed.highlights:
         lines.append(f"- {highlight.title}")
         meta = " | ".join(part for part in [highlight.journal, highlight.published] if part)
@@ -154,11 +164,17 @@ def render_summary_plain_text(reviewed: ReviewedDigest) -> str:
         if highlight.link:
             lines.append(f"  Link: {highlight.link}")
         lines.append("")
-    lines.append("The full curated digest is attached as a PDF (also available as an HTML version).")
+    lines.append("The full curated digest is attached as a PDF. A browser-ready HTML version is also generated.")
+    lines.extend(["", BOT_NAME, "", DELIVERY_PREFERENCES_TEXT])
     return "\n".join(lines).strip() + "\n"
 
 
-def render_summary_html(reviewed: ReviewedDigest) -> str:
+def render_summary_html(
+    reviewed: ReviewedDigest,
+    recipient_name: str | None = None,
+    *,
+    include_full_digest: bool = False,
+) -> str:
     summary_html = _render_summary_blocks_html(reviewed.summary)
     highlight_cards = []
     for highlight in reviewed.highlights:
@@ -185,6 +201,12 @@ def render_summary_html(reviewed: ReviewedDigest) -> str:
                 ]
             )
         )
+    full_digest_html = _render_email_full_digest_html(reviewed) if include_full_digest else ""
+    digest_callout = (
+        "The full curated digest is included below. The attached PDF is also available for archive and printing."
+        if include_full_digest
+        else "The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents."
+    )
     return (
         "<html><body style=\"margin:0; padding:0; background:#eef2f8;"
         " font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">"
@@ -196,13 +218,21 @@ def render_summary_html(reviewed: ReviewedDigest) -> str:
         f"<h1 style=\"margin:0; font-size:24px; line-height:1.25; color:#ffffff;\">{escape(reviewed.subject)}</h1>"
         "</div>"
         "<div style=\"padding:24px 28px 26px 28px;\">"
+        f"<p style=\"margin:0 0 16px 0; font-size:15px; line-height:1.55; color:#1f2937;\">Dear {escape(_salutation_name(recipient_name))},</p>"
         "<h2 style=\"margin:0 0 14px 0; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#1f6feb;\">Summary</h2>"
         f"{summary_html}"
         "<h2 style=\"margin:26px 0 14px 0; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#1f6feb;\">Highlights</h2>"
         f"{''.join(highlight_cards)}"
+        f"{full_digest_html}"
         "<div style=\"margin-top:18px; padding:14px 16px; border-radius:12px; background:#f6f8fb;"
         " color:#334e68; font-size:13px; line-height:1.55;\">"
-        "The attached PDF (and the bundled HTML view) contain the full curated digest, abstract-level details, and a journal table of contents."
+        f"{escape(digest_callout)}"
+        "</div>"
+        "<div style=\"margin-top:20px; font-size:15px; line-height:1.4; font-weight:700; color:#0b2545;\">"
+        f"{escape(BOT_NAME)}"
+        "</div>"
+        "<div style=\"margin-top:8px; font-size:12px; line-height:1.5; color:#52606d;\">"
+        f"{escape(DELIVERY_PREFERENCES_TEXT)}"
         "</div>"
         "</div></div></div></body></html>"
     )
@@ -284,11 +314,11 @@ def render_full_digest_html(reviewed: ReviewedDigest) -> str:
         "<a class=\"toc__group-link\" href=\"#summary\">Summary</a>"
         "<a class=\"toc__group-link\" href=\"#highlights\">Highlights</a>"
         + (
-            "<a class=\"toc__group-link\" href=\"#snapshot\">Collection snapshot</a>"
+            "<a class=\"toc__group-link\" href=\"#snapshot\">Collection Snapshot</a>"
             if reviewed.collection_snapshot
             else ""
         )
-        + "<a class=\"toc__group-link\" href=\"#full-digest\">Full curated digest</a>"
+        + "<a class=\"toc__group-link\" href=\"#full-digest\">Full Curated Digest</a>"
         + toc_html
         + "</nav>"
         "</aside>"
@@ -303,14 +333,14 @@ def render_full_digest_html(reviewed: ReviewedDigest) -> str:
         "</section>"
         + (
             "<section id=\"snapshot\" class=\"section section--snapshot\">"
-            "<h2 class=\"section__title\">Collection snapshot</h2>"
+            "<h2 class=\"section__title\">Collection Snapshot</h2>"
             f"<div class=\"snapshot-grid\">{snapshot_html}</div>"
             "</section>"
             if reviewed.collection_snapshot
             else ""
         )
         + "<section id=\"full-digest\" class=\"section section--digest\">"
-        "<h2 class=\"section__title\">Full curated digest</h2>"
+        "<h2 class=\"section__title\">Full Curated Digest</h2>"
         f"{body_html}"
         "</section>"
         "</main>"
@@ -320,6 +350,91 @@ def render_full_digest_html(reviewed: ReviewedDigest) -> str:
         "</footer>"
         "</body></html>"
     )
+
+
+def _salutation_name(recipient_name: str | None) -> str:
+    cleaned = " ".join((recipient_name or "").split())
+    return cleaned or "Reader"
+
+
+def _render_email_full_digest_html(reviewed: ReviewedDigest) -> str:
+    blocks = []
+    if reviewed.collection_snapshot:
+        snapshot_items = "".join(
+            f"<li style=\"margin:0 0 6px 0;\">{escape(item)}</li>"
+            for item in reviewed.collection_snapshot
+        )
+        blocks.append(
+            "<h2 style=\"margin:28px 0 12px 0; font-size:13px; letter-spacing:0.12em; "
+            "text-transform:uppercase; color:#1f6feb;\">Collection Snapshot</h2>"
+            "<ul style=\"margin:0 0 18px 18px; padding:0; color:#1f2937; font-size:14px; "
+            f"line-height:1.55;\">{snapshot_items}</ul>"
+        )
+    blocks.append(
+        "<h2 style=\"margin:28px 0 12px 0; font-size:13px; letter-spacing:0.12em; "
+        "text-transform:uppercase; color:#1f6feb;\">Full Curated Digest</h2>"
+    )
+    sections = _structure_full_digest(reviewed.full_curated_digest_markdown)
+    if not sections:
+        blocks.append(
+            "<div style=\"white-space:pre-wrap; color:#1f2937; font-size:14px; line-height:1.6;\">"
+            f"{escape(reviewed.full_curated_digest_markdown)}"
+            "</div>"
+        )
+        return "".join(blocks)
+    for section in sections:
+        blocks.append(
+            "<div style=\"margin:18px 0 10px 0; padding:10px 12px; border-radius:10px; "
+            "background:#e7efff; color:#0b2545; font-size:15px; font-weight:700;\">"
+            f"{escape(section.name)}</div>"
+        )
+        for journal in section.journals:
+            blocks.append(
+                "<h3 style=\"margin:16px 0 10px 0; font-size:16px; line-height:1.35; color:#0b2545;\">"
+                f"{escape(journal.name)}</h3>"
+            )
+            for article in journal.articles:
+                meta_parts = [
+                    part
+                    for part in [
+                        article.published,
+                        f"DOI {article.doi}" if article.doi else "",
+                    ]
+                    if part
+                ]
+                meta = " | ".join(meta_parts)
+                blocks.append(
+                    "<div style=\"margin:0 0 14px 0; padding:14px 16px; border:1px solid #dde4ed; "
+                    "border-radius:10px; background:#ffffff;\">"
+                    f"<div style=\"font-size:15px; font-weight:700; line-height:1.35; color:#0b2545;\">{escape(article.title)}</div>"
+                    + (
+                        f"<div style=\"margin-top:5px; font-size:12px; line-height:1.45; color:#52606d;\">{escape(meta)}</div>"
+                        if meta
+                        else ""
+                    )
+                    + (
+                        f"<div style=\"margin-top:8px; font-size:13px; line-height:1.5; color:#334155;\"><strong>Authors:</strong> {escape(article.authors)}</div>"
+                        if article.authors
+                        else ""
+                    )
+                    + (
+                        f"<div style=\"margin-top:8px; font-size:13px; line-height:1.5; color:#334155;\"><strong>Affiliations:</strong> {escape(article.affiliations)}</div>"
+                        if article.affiliations
+                        else ""
+                    )
+                    + (
+                        f"<div style=\"margin-top:8px; font-size:14px; line-height:1.6; color:#1f2937;\">{escape(article.abstract)}</div>"
+                        if article.abstract
+                        else ""
+                    )
+                    + (
+                        f"<a href=\"{escape(article.link, quote=True)}\" style=\"display:inline-block; margin-top:10px; color:#1f6feb; font-size:13px; font-weight:700; text-decoration:none;\">Open article</a>"
+                        if article.link
+                        else ""
+                    )
+                    + "</div>"
+                )
+    return "".join(blocks)
 
 
 def _extract_subject(markdown_body: str) -> tuple[str | None, str]:
@@ -1227,7 +1342,7 @@ def _pdf_full_digest_block(
             story.append(_journal_header(journal, styles))
             story.append(Spacer(1, 0.05 * inch))
             for article in journal.articles:
-                story.append(_article_card(article, styles))
+                story.extend(_article_card(article, styles))
                 story.append(Spacer(1, 0.06 * inch))
             story.append(Spacer(1, 0.06 * inch))
     return story
@@ -1293,63 +1408,70 @@ def _journal_header(journal: FullDigestJournal, styles: dict[str, ParagraphStyle
     )
 
 
-def _article_card(article: FullDigestArticle, styles: dict[str, ParagraphStyle]) -> KeepTogether:
-    inner: list = [
+def _article_card(article: FullDigestArticle, styles: dict[str, ParagraphStyle]) -> list:
+    story: list = [_article_rule()]
+    story.extend(
+        [
         Paragraph(escape(_to_pdf_text(article.title)), styles["article_title"]),
-    ]
+        ]
+    )
     meta_parts: list[str] = []
     if article.published:
         meta_parts.append(escape(_to_pdf_text(article.published)).upper())
     if article.doi:
         meta_parts.append(f"DOI {escape(_to_pdf_text(article.doi)).upper()}")
     if meta_parts:
-        inner.append(
+        story.append(
             Paragraph(
                 " &nbsp;&middot;&nbsp; ".join(meta_parts),
                 styles["article_meta"],
             )
         )
     if article.authors:
-        inner.append(
+        story.append(
             Paragraph(escape(_to_pdf_text(article.authors)), styles["article_authors"])
         )
     if article.affiliations:
-        inner.append(
+        story.append(
             Paragraph(
                 escape(_to_pdf_text(article.affiliations)),
                 styles["article_affiliations"],
             )
         )
     if article.abstract:
-        inner.append(
+        story.append(
             Paragraph(
                 f"<b>Abstract.</b> {escape(_to_pdf_text(article.abstract))}",
                 styles["article_abstract"],
             )
         )
     if article.link:
-        inner.append(
+        story.append(
             Paragraph(
                 f"<link href='{escape(article.link, quote=True)}'>Read article &rarr;</link>",
                 styles["article_link"],
             )
         )
-    card = Table(
-        [[inner]],
+    return story
+
+
+def _article_rule() -> Flowable:
+    rule = Table(
+        [[""]],
         colWidths=[None],
+        rowHeights=[1.5],
         style=TableStyle(
             [
-                ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor(PALETTE["surface"])),
-                ("BOX", (0, 0), (-1, -1), 0.4, colors.HexColor(PALETTE["border_soft"])),
-                ("LINEBEFORE", (0, 0), (0, -1), 2, colors.HexColor(PALETTE["accent"])),
-                ("LEFTPADDING", (0, 0), (-1, -1), 12),
-                ("RIGHTPADDING", (0, 0), (-1, -1), 12),
-                ("TOPPADDING", (0, 0), (-1, -1), 10),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
+                ("BACKGROUND", (0, 0), (-1, -1), colors.HexColor(PALETTE["border_soft"])),
+                ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+                ("TOPPADDING", (0, 0), (-1, -1), 0),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
             ]
         ),
     )
-    return KeepTogether(card)
+    rule.spaceAfter = 0.08 * inch
+    return rule
 
 
 def _accent_rule() -> Flowable:

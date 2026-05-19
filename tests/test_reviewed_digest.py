@@ -54,7 +54,20 @@ This week brought a focused set of papers worth your attention.
 
 ### Previous Week Catch-Up
 
-- Science | 2026-03-20 | Field experiments at scale | https://doi.org/10.1000/example-2
+#### Science
+- **Field experiments at scale**
+  Published: 2026-03-20
+  Link: https://doi.org/10.1000/example-2
+  Abstract: Example catch-up abstract.
+
+### Late Additions
+
+#### Political Analysis
+- **Late discovery in institutions**
+  Published: 2026-03-18
+  Authors: Example Author
+  Link: https://doi.org/10.1000/example-3
+  Abstract: Example late addition abstract.
 """
 
 
@@ -72,21 +85,48 @@ class ReviewedDigestTests(unittest.TestCase):
     def test_render_summary_outputs_include_highlights(self) -> None:
         reviewed = parse_reviewed_digest(SAMPLE_REVIEWED_DIGEST)
         assert reviewed is not None
-        plain_text = render_summary_plain_text(reviewed)
-        html = render_summary_html(reviewed)
-        self.assertIn("The full curated digest is attached as a PDF (also available as an HTML version).", plain_text)
+        plain_text = render_summary_plain_text(reviewed, "Haohang Xin")
+        html = render_summary_html(reviewed, "Haohang Xin")
+        self.assertIn("Dear Haohang Xin,", plain_text)
+        self.assertIn("The full curated digest is attached as a PDF.", plain_text)
+        self.assertIn("COMAP Journal Bot", plain_text)
+        self.assertTrue(
+            plain_text.rstrip().endswith(
+                "Delivery preferences can be changed in the local recipient configuration."
+            )
+        )
         self.assertIn("Political behavior in online networks", plain_text)
         self.assertNotIn("Collection Snapshot", plain_text)
         self.assertNotIn("Collection Snapshot", html)
-        self.assertIn(
-            "The attached PDF (and the bundled HTML view) contain the full curated digest, abstract-level details, and a journal table of contents.",
-            html,
-        )
+        self.assertNotIn("Full Curated Digest", html)
+        self.assertIn("Dear Haohang Xin,", html)
+        self.assertIn("COMAP Journal Bot</div>", html)
+        self.assertIn("Delivery preferences can be changed in the local recipient configuration.", html)
+        self.assertIn("The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents.", html)
         self.assertIn("<ul", html)
         self.assertIn("Open article", html)
 
+    def test_render_summary_html_can_include_full_digest(self) -> None:
+        reviewed = parse_reviewed_digest(SAMPLE_REVIEWED_DIGEST)
+        assert reviewed is not None
+        html = render_summary_html(reviewed, "Haohang Xin", include_full_digest=True)
+        self.assertIn("Collection Snapshot", html)
+        self.assertIn("Full Curated Digest", html)
+        self.assertIn("Late discovery in institutions", html)
+        self.assertIn("Example late addition abstract.", html)
+        self.assertIn("The full curated digest is included below.", html)
+
     def test_render_curated_digest_pdf_returns_pdf_bytes(self) -> None:
         reviewed = parse_reviewed_digest(SAMPLE_REVIEWED_DIGEST)
+        assert reviewed is not None
+        pdf_bytes = render_curated_digest_pdf(reviewed)
+        self.assertTrue(pdf_bytes.startswith(b"%PDF-"))
+
+    def test_render_curated_digest_pdf_handles_long_abstracts(self) -> None:
+        long_abstract = " ".join(["This long abstract should flow across pages cleanly."] * 220)
+        reviewed = parse_reviewed_digest(
+            SAMPLE_REVIEWED_DIGEST.replace("Example abstract text.", long_abstract)
+        )
         assert reviewed is not None
         pdf_bytes = render_curated_digest_pdf(reviewed)
         self.assertTrue(pdf_bytes.startswith(b"%PDF-"))
@@ -103,7 +143,7 @@ class ReviewedDigestTests(unittest.TestCase):
         self.assertIn("article__title", html)
         self.assertIn("toc__journal-link", html)
         self.assertIn("New This Week", html)
-        self.assertIn("snapshot-card", html)
+        self.assertIn("Collection Snapshot", html)
         self.assertIn("href=\"#full-digest\"", html)
         self.assertNotIn("&NBSP;", html)
 

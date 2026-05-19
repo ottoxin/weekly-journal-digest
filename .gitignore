@@ -18,3 +18,4 @@ client_secret*.json
 *gmail-token*.json
 .env
 .env.local
+config/recipients.json

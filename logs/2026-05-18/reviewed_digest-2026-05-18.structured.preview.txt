@@ -1,0 +1,60 @@
+Subject: Weekly journal digest for 2026-05-11 to 2026-05-17
+
+Dear Reader,
+
+Summary
+
+COMAP Journal Bot reviewed 320 collected candidates for the 2026-05-11 to 2026-05-17 digest window. After manual relevance filtering, the curated digest keeps 66 papers: 25 new this week, 28 previous-week catch-up items, and 13 late additions.
+
+The week is unusually strong for COMAP: state-media effects on LLM behavior, AI-generated knowledge infrastructures, misinformation sharing cues, military AI governance, public-opinion estimation, electoral reform, embodied political emotion, immigration enforcement, climate conflict, and platform-scale political exposure all appear in the curated set.
+
+- AI and computational social science are anchored by LLM behavior under state media control, Grokipedia versus Wikipedia, LLM-generated social-science data, AI rights, military AI governance, and multilingual survey-response classification.
+- Political communication and misinformation remain central, with papers on authority cues, national cues, campaign affect, political identity threats, social media dataveillance, TikTok partisan exposure, disinformation corrections, and DSA research access.
+- Governance and institutions show up through electoral reform, regime classification, vote buying, immigration enforcement, climate coalitions, USAID cuts, Amazon dredging governance, global policy citations, and institutional trust.
+
+Highlights
+- State media control shapes LLM behaviour by influencing training data
+  Nature | 2026-05-13
+  Why it matters: A direct fit for COMAP’s digital authoritarianism and AI agenda: it links state-controlled information environments to measurable shifts in model behavior.
+  Link: https://doi.org/10.1038/s41586-026-10441-7
+
+- Scientific authority cues increase the spread of misinformation
+  Proceedings of the National Academy of Sciences | 2026-05-15
+  Why it matters: This one is useful for misinformation work because it shows how authority signals can unintentionally increase sharing of false claims.
+  Link: https://doi.org/10.1073/pnas.2505468123
+
+- Selective divergence between Grokipedia and Wikipedia articles
+  Proceedings of the National Academy of Sciences | 2026-05-15
+  Why it matters: A timely comparison of AI-generated and collaboratively edited knowledge infrastructures, with clear implications for platform bias and public knowledge.
+  Link: https://doi.org/10.1073/pnas.2603588123
+
+- Improving Small-Area Estimates of Public Opinion by Calibrating to Known Population Quantities
+  Political Analysis | 2026-05-15
+  Why it matters: A practical methods contribution for public-opinion measurement, especially when survey nonresponse and model misspecification threaten subgroup estimates.
+  Link: https://doi.org/10.1017/pan.2026.10047
+
+- Attitudes Toward Electoral System Reform and Party System Change in the U.S.
+  American Political Science Review | 2026-05-14
+  Why it matters: The paper gives experimental evidence on how Americans evaluate alternative electoral systems and their party-system consequences.
+  Link: https://doi.org/10.1017/s0003055426000291
+
+- Educational policies can strengthen climate coalitions
+  Proceedings of the National Academy of Sciences | 2026-05-14
+  Why it matters: This is a strong climate-politics keep: it asks how policy design can build broader support for decarbonization coalitions.
+  Link: https://doi.org/10.1073/pnas.2525458123
+
+- Re-thinking human–machine interaction and the governance of AI in the military domain
+  Nature Machine Intelligence | 2026-05-11
+  Why it matters: A governance-focused AI paper that connects human-machine interaction to high-stakes institutional and military settings.
+  Link: https://doi.org/10.1038/s42256-026-01055-5
+
+- Politics embodied: How politics shapes and is shaped by the bodily experience of emotions
+  Proceedings of the National Academy of Sciences | 2026-05-11
+  Why it matters: It extends political communication and behavior research by connecting political emotion to embodied experience and polarization.
+  Link: https://doi.org/10.1073/pnas.2601392123
+
+The full curated digest is attached as a PDF.
+
+COMAP Journal Bot
+
+Delivery preferences can be changed in the local recipient configuration.
