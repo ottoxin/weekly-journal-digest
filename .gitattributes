@@ -1,4 +1,0 @@
-# Treat generated digest artifacts as generated so GitHub's language stats
-# reflect actual source code rather than rendered weekly output.
-logs/** linguist-generated=true
-*.pdf binary
