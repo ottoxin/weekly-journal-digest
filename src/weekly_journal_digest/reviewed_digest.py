@@ -68,6 +68,7 @@ class Highlight:
     published: str
     why_it_matters: str
     link: str
+    authors: str = ""
 
 
 @dataclass(slots=True)
@@ -159,6 +160,8 @@ def render_summary_plain_text(
         meta = " | ".join(part for part in [highlight.journal, highlight.published] if part)
         if meta:
             lines.append(f"  {meta}")
+        if highlight.authors:
+            lines.append(f"  Authors: {highlight.authors}")
         if highlight.why_it_matters:
             lines.append(f"  Why it matters: {highlight.why_it_matters}")
         if highlight.link:
@@ -186,8 +189,11 @@ def render_summary_html(
                     "<div style=\"border:1px solid #dde4ed; border-left:4px solid #1f6feb;"
                     " border-radius:12px; padding:16px 18px; margin:0 0 14px 0; background:#ffffff;\">",
                     f"<div style=\"font-size:16px; font-weight:700; color:#0b2545; line-height:1.35; margin:0 0 6px 0;\">{escape(highlight.title)}</div>",
-                    f"<div style=\"font-size:12px; color:#52606d; text-transform:uppercase; letter-spacing:0.04em; margin:0 0 10px 0;\">{meta}</div>"
+                    f"<div style=\"font-size:12px; color:#52606d; text-transform:uppercase; letter-spacing:0.04em; margin:0 0 6px 0;\">{meta}</div>"
                     if meta
+                    else "",
+                    f"<div style=\"font-size:13px; color:#334e68; font-style:italic; line-height:1.5; margin:0 0 10px 0;\">{escape(highlight.authors)}</div>"
+                    if highlight.authors
                     else "",
                     f"<div style=\"font-size:14px; line-height:1.6; color:#1f2937; margin:0 0 12px 0;\"><strong style=\"color:#0b2545;\">Why it matters &middot;</strong> {escape(highlight.why_it_matters)}</div>"
                     if highlight.why_it_matters
@@ -498,6 +504,8 @@ def _parse_highlights(lines: list[str]) -> list[Highlight]:
             current.journal = stripped.removeprefix("Journal: ").strip()
         elif stripped.startswith("Published: "):
             current.published = stripped.removeprefix("Published: ").strip()
+        elif stripped.startswith("Authors: "):
+            current.authors = stripped.removeprefix("Authors: ").strip()
         elif stripped.startswith("Why it matters: "):
             current.why_it_matters = stripped.removeprefix("Why it matters: ").strip()
         elif stripped.startswith("Link: "):
@@ -586,10 +594,15 @@ def _render_highlights_full_html(highlights: list[Highlight]) -> str:
             else ""
         )
         meta_html = f"<div class=\"highlight-card__meta\">{meta}</div>" if meta else ""
+        authors_html = (
+            f"<div class=\"highlight-card__authors\">{escape(highlight.authors)}</div>"
+            if highlight.authors
+            else ""
+        )
         cards.append(
             "<article class=\"highlight-card\">"
             f"<h3 class=\"highlight-card__title\">{escape(highlight.title)}</h3>"
-            f"{meta_html}{why_html}{link_html}"
+            f"{meta_html}{authors_html}{why_html}{link_html}"
             "</article>"
         )
     return "".join(cards)
@@ -756,6 +769,8 @@ def _full_html_css() -> str:
         " font-weight:700; }"
         ".highlight-card__meta { font-size:11px; letter-spacing:0.08em; text-transform:uppercase;"
         " color:var(--muted); }"
+        ".highlight-card__authors { font-size:13px; line-height:1.5; color:var(--ink-soft);"
+        " font-style:italic; }"
         ".highlight-card__why { margin:0; font-size:14px; line-height:1.55; color:var(--ink-soft); }"
         ".highlight-card__label { color:var(--accent-dark); font-weight:700; margin-right:4px; }"
         ".highlight-card__cta { display:inline-block; background:var(--accent); color:#fff;"
@@ -990,6 +1005,15 @@ def _build_pdf_styles() -> dict[str, ParagraphStyle]:
             textColor=colors.HexColor(PALETTE["muted"]),
             spaceAfter=4,
         ),
+        "highlight_authors": ParagraphStyle(
+            "DigestHighlightAuthors",
+            parent=sample["BodyText"],
+            fontName="Helvetica-Oblique",
+            fontSize=9,
+            leading=12,
+            textColor=colors.HexColor(PALETTE["ink_soft"]),
+            spaceAfter=5,
+        ),
         "highlight_body": ParagraphStyle(
             "DigestHighlightBody",
             parent=base,
@@ -1222,6 +1246,13 @@ def _pdf_highlights_block(reviewed: ReviewedDigest, styles: dict[str, ParagraphS
                         escape(_to_pdf_text(p)).upper() for p in meta_parts
                     ),
                     styles["highlight_meta"],
+                )
+            )
+        if highlight.authors:
+            inner.append(
+                Paragraph(
+                    f"<i>{escape(_to_pdf_text(highlight.authors))}</i>",
+                    styles["highlight_authors"],
                 )
             )
         if highlight.why_it_matters:
