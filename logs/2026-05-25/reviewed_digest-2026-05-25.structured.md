@@ -1,0 +1,414 @@
+Subject: Weekly journal digest for 2026-05-18 to 2026-05-24
+
+## Summary
+
+COMAP Journal Bot reviewed 322 collected candidates for the 2026-05-18 to 2026-05-24 digest window. After manual relevance filtering, the curated digest keeps 43 papers: 19 new this week, 24 previous-week catch-up items, and 0 late additions.
+
+The week's standout cluster is AI governance and authoritarian information control: a Nature pair on state-media influence over LLM behavior, a PNAS analysis showing Trump-administration rhetoric shifts Republican voters toward supporting censorship, and a PNAS comparison of Grokipedia and Wikipedia divergence. Method-focused political-science work is unusually strong with an AJPS note on post-instrument bias and a Political Analysis piece on synthetic controls for proportional outcomes. The catch-up queue adds civic grammar for AI rights, polarization of US health outcomes, misinformation amplified by scientific-authority cues, and an immigration-enforcement framework.
+
+- Authoritarian information control, AI governance, and platform-knowledge infrastructures dominate the broad-science material this week.
+- Methodological progress for computational social science continues in AJPS and Political Analysis.
+- Late additions are empty this cycle — everything fits cleanly inside the current two-week window.
+
+## Collection Snapshot
+
+- Total collected candidates: 322
+- New This Week candidates: 162
+- Previous Week Catch-Up candidates: 160
+- Late Additions candidates: 0
+- Curated digest below: 19 new, 24 catch-up, 0 late additions
+- Note: The full collected set above is before manual relevance filtering, while the HTML email body and attached PDF reflect the curated digest.
+
+## Highlights
+
+- **State media control influences large language models**
+  Journal: Nature
+  Published: 2026-05-13
+  Authors: Hannah Waight; Eddie Yang; Yin Yuan; Solomon Messing; Margaret E. Roberts; et al. (7 total)
+  Why it matters: A direct hit for COMAP's digital-authoritarianism and AI-for-CSS agenda: it links state-controlled information environments to measurable LLM behavior.
+  Link: https://doi.org/10.1038/s41586-026-10506-7
+
+- **From free speech advocates to critics: The Trump administration’s new rhetoric promotes support for censorship among Trump voters**
+  Journal: Proceedings of the National Academy of Sciences
+  Published: 2026-05-21
+  Authors: Matthew E. K. Hall; B. Tyler Leigh; Brittany C. Solomon
+  Why it matters: A clean example of how partisan elite cues can reshape public attitudes toward censorship, with implications for political communication and authoritarian information control.
+  Link: https://doi.org/10.1073/pnas.2532084123
+
+- **Selective divergence between Grokipedia and Wikipedia articles**
+  Journal: Proceedings of the National Academy of Sciences
+  Published: 2026-05-15
+  Authors: Saeedeh Mohammadi; Taha Yasseri
+  Why it matters: A timely comparison of AI-generated and collaboratively edited knowledge infrastructures, with clear implications for platform bias and the governance of public knowledge.
+  Link: https://doi.org/10.1073/pnas.2603294123
+
+- **Post‐instrument bias**
+  Journal: American Journal of Political Science
+  Published: 2026-05-19
+  Authors: Julian Schuessler; Adam N. Glynn; Miguel R. Rueda
+  Why it matters: A methods paper that should reshape how political scientists use instrumental variables when conditioning on covariates measured after treatment.
+  Link: https://doi.org/10.1111/ajps.70064
+
+- **Systemic electioneering from the evangelical pulpit: Evidence from a computational analysis**
+  Journal: Proceedings of the National Academy of Sciences
+  Published: 2026-05-18
+  Authors: Marc S. Jacob; Yphtach Lelkes; Samuel Wolken; Sean J. Westwood
+  Why it matters: Computational analysis of religious political communication at scale — strong overlap with COMAP's interest in multimodal political messaging and elite cues.
+  Link: https://doi.org/10.1073/pnas.2603911123
+
+- **A civic grammar for AI rights**
+  Journal: Science
+  Published: 2026-05-14
+  Authors: Alondra Nelson
+  Why it matters: A Science perspective that frames the political and institutional vocabulary needed for governing AI systems — broad-appeal AI governance.
+  Link: https://doi.org/10.1126/science.aeh7153
+
+- **The political polarization of health outcomes in the USA**
+  Journal: Nature Human Behaviour
+  Published: 2026-05-14
+  Authors: Elizabeth Elder; Neil A. O’Brian
+  Why it matters: Long-running evidence that political identity now structures health behavior and mortality, with implications for misinformation, trust, and public-health communication.
+  Link: https://doi.org/10.1038/s41562-026-02474-9
+
+- **Scientific authority cues increase the spread of misinformation**
+  Journal: Proceedings of the National Academy of Sciences
+  Published: 2026-05-15
+  Authors: Ismail Harrando; Rodrigo Reyes Cordova; Achim Edelmann
+  Why it matters: Useful for misinformation work because it shows how authority signals can unintentionally amplify the sharing of fact-checked false claims.
+  Link: https://doi.org/10.1073/pnas.2535823123
+
+## Full Curated Digest
+
+### New This Week
+
+#### American Journal of Political Science
+- **Breaking barriers: How an international treaty for women reduces the size of the informal economy**
+  Published: 2026-05-19
+  Authors: Chris Gahagan
+  Affiliations: Department of Political Science Florida State University Tallahassee Florida USA
+  DOI: 10.1111/ajps.70065
+  Link: https://doi.org/10.1111/ajps.70065
+  Abstract: Abstract Prior research on the role the Convention on the Elimination of All Forms of Discrimination Against Women (CEDAW) has improving women's outcomes has shown ratification results in increased political and social rights, yet no improvements in economic rights. I challenge prior findings by providing evidence that CEDAW improves women's economic rights by reducing gendered legal barriers to employment. I also demonstrate CEDAW has unexpected but desirable downstream consequences that further improve women's economic outcomes by facilitating movement from the informal to the formal economy. Through matching within a difference‐in‐differences design, I show ratifying countries experience a significant increase in women's equality of economic opportunity and a significant decrease in the size of the informal economy. These results hold under multiple robustness checks and placebo tests. By examining specific outcomes that are relevant to CEDAW, I offer greater insight into CEDAW's impact on women's economic outcomes than previous research has afforded.
+- **Post‐instrument bias**
+  Published: 2026-05-19
+  Authors: Julian Schuessler; Adam N. Glynn; Miguel R. Rueda
+  Affiliations: Associate Professor, Department of Political Science Emory University, Atlanta, Georgia, USA; Independent researcher; Professor, Department of Data and Decision Sciences and Department of Political Science Emory University, Atlanta, Georgia, USA
+  DOI: 10.1111/ajps.70064
+  Link: https://doi.org/10.1111/ajps.70064
+  Abstract: Abstract When using instrumental variables, researchers often assume that causal effects are only identified conditional on covariates. We show that the role of these covariates is often unclear and that there exists confusion regarding their ability to mitigate violations of the exclusion restriction. We explain when and how existing adjustment strategies may lead to “post‐instrument” bias. We then discuss assumptions that are sufficient to identify various treatment effects when adjustment for post‐instrument variables is required. In general, these assumptions are highly restrictive, albeit they sometimes are testable. We also show that other existing tests are possibly misleading. Then, we introduce a sensitivity analysis that uses information on variables influenced by the instrument to gauge the effect of potential violations of the exclusion restriction. We illustrate it using a published study and summarize our results in easy‐to‐understand guidelines.
+
+#### Political Analysis
+- **Estimating Treatment Effects on Proportions with Synthetic Controls**
+  Published: 2026-05-21
+  Authors: Konstantin Bogatyrev; Lukas F. Stoetzer
+  Affiliations: London School of Economics and Political Science; University of Witten/Herdecke
+  DOI: 10.1017/pan.2026.10046
+  Link: https://doi.org/10.1017/pan.2026.10046
+  Abstract: Abstract Synthetic control methods are widely used for causal inference in case studies and panel data settings, often applied to model counterfactuals for proportional outcomes. However, conventional synthetic control methods are designed for univariate outcomes, leading researchers to model counterfactuals for each proportion separately. We make the case for jointly estimating synthetic controls across multiple compositional outcomes. Using the same weights for each proportion establishes a constant control comparison, improving comparability while adhering to compositional constraints on treatment effects. We illustrate the benefits of the method through a simulation and two applications to recent empirical studies. This implementation integrates naturally with a wide range of synthetic control approaches, providing interpretable estimates for compositional panel data common in political science.
+
+#### Political Communication
+- **Press and Prejudice: an Interview Study on Politicians’ Perceptions of Partisan News Media Bias**
+  Published: 2026-05-21
+  Authors: Karolin Soontjens; Kathleen Beckers; Emma van der Goot; Sophie Morosoli
+  Affiliations: Amsterdam School of Communication, University of Amsterdam; Department of Political Science, University of Antwerp, Antwerp, Belgium
+  DOI: 10.1080/10584609.2026.2675595
+  Link: https://doi.org/10.1080/10584609.2026.2675595
+  Abstract: Abstract unavailable.
+- **The Hostile Misinformation Effect: How Ideological Congruence Drives the Assessment of Misinformation Targets**
+  Published: 2026-05-18
+  Authors: Patrick van Erkel; Michael Hameleers; Aqsa Farooq; Katjana Gattermann; Marina Tulin; Elske van den Hoogen; Claes de Vreese
+  Affiliations: University of Amsterdam
+  DOI: 10.1080/10584609.2026.2671760
+  Link: https://doi.org/10.1080/10584609.2026.2671760
+  Abstract: Abstract unavailable.
+
+#### Journal of Communication
+- **Revisiting “Communication Theory as a Field”**
+  Published: 2026-05-22
+  Authors: Andrew Brian Chrystall
+  Affiliations: School of Humanities, Media & Creative Communication, Massey University , Auckland,
+  DOI: 10.1093/joc/jqag007
+  Link: https://doi.org/10.1093/joc/jqag007
+  Abstract: Abstract This article revisits Robert T. Craig’s “Communication Theory as a Field” on its 25th anniversary to reassess its relevance for contemporary communication studies. It foregrounds mediation and communication technologies’ role in shaping how scholars think and write about communication. Focusing on the 1990s media environment, the analysis draws on Walter Ong’s insights into the sensory, technological, and historical conditions of knowledge production. “Communication Theory as a Field” is shown to echo the spatial-visualist logics of Web 1.0. A comparative reading with Peter Ramus highlights the unintended visualism of Craig’s project and challenges the ocular paradigm long dominant in communication theory. The article advances communication-as-constitutive perspectives by advocating a “sensory rapprochement” that restores auditory, embodied, and dialogic dimensions to theory while underscoring the need for reflexivity about how evolving technologies shape disciplinary frameworks and the conditions of theorizing.
+
+#### Nature
+- **NoTrue, Silence and Rubbish Communications: satirical journals give Chinese academics a pressure valve**
+  Published: 2026-05-20
+  Authors: Xiaoying You
+  DOI: 10.1038/d41586-026-01548-y
+  Link: https://doi.org/10.1038/d41586-026-01548-y
+  Abstract: Abstract unavailable.
+- **Support academic institutions under attack**
+  Published: 2026-05-19
+  Authors: Roozbeh Kiani; Sepiedeh Keshavarzi; Athena Akrami
+  DOI: 10.1038/d41586-026-01603-8
+  Link: https://doi.org/10.1038/d41586-026-01603-8
+  Abstract: Abstract unavailable.
+
+#### Nature Human Behaviour
+- **Why social media research has failed policy-makers**
+  Published: 2026-05-22
+  Authors: Tobias Dahl; Njål Foldnes; Steffen Grønneberg; Craig Aaen-Stockdale
+  DOI: 10.1038/s41562-026-02482-9
+  Link: https://doi.org/10.1038/s41562-026-02482-9
+  Abstract: Abstract unavailable.
+- **Status quo bias drives public support for drug policy in the USA**
+  Published: 2026-05-20
+  Authors: Bence Hamrak; Gabor Simonovits
+  DOI: 10.1038/s41562-026-02471-y
+  Link: https://doi.org/10.1038/s41562-026-02471-y
+  Abstract: Abstract Substance regulation in the USA is in a crisis. Here we explore whether seemingly misaligned policies contradict public preferences or reflect biased citizen opinions. Using survey data ( N = 5,053), we show that policy outcomes align with public opinion. We further demonstrate that regulatory preferences are driven by status quo bias: support for the legality of legal substances exceeds that for hypothetical drugs with corresponding properties (Δ median drug = 39.33, 95% confidence interval 35.34 to 43.20), while the opposite holds for illegal drugs (Δ median drug = −12.59, 95% confidence interval −15.44 to −9.87). Randomly assigning individuals to information about harm attenuates the status quo bias in the case of legal substances (Δ median drug = −17.70, 95% confidence interval −22.35 to −13.05) but not for illegal ones. We discuss implications for public control over drug policies.
+
+#### Nature Communications
+- **Counterfactual evaluation of elementary and secondary school policies in the COVID-19 pandemic**
+  Published: 2026-05-23
+  Authors: Benedetta Canfora; Rey Audie Escosio; Otilia Boldea; Ana Nunes; Ganna Rozhnova
+  DOI: 10.1038/s41467-026-73344-1
+  Link: https://doi.org/10.1038/s41467-026-73344-1
+  Abstract: Abstract Understanding the role of elementary and secondary schools in SARS-CoV-2 transmission is essential for designing effective public health policies. We developed a stochastic age-stratified transmission model, fitted to Dutch epidemiological and contact survey data, to evaluate how alternative closure and reopening strategies for elementary and secondary schools might have shaped the course of the pandemic in the Netherlands from early 2020 through late 2021. Using counterfactual simulations combined with time-varying elasticity analysis, we found that school closures had the potential to mitigate transmission and reduce burden on healthcare. However, their effectiveness was highly context-dependent, influenced by school type, contact patterns, policy timing, and population immunity. Our findings indicate that the contributions of different age groups to transmission shifted over time. Adults were the primary drivers early in the pandemic, followed by adolescents in late 2020 and early 2021, and children in late 2021. These dynamics were reflected in the changing relative impact of different educational levels on overall transmission and hospital burden. Secondary schools had a greater effect on national hospitalizations in 2020, while elementary schools became more important in 2021, partly due to lower prior infection-induced immunity and negligible vaccination coverage among children compared to adolescents. Together, these results highlight the importance of accounting for age-specific transmission dynamics and changing epidemiological landscape when evaluating school closure and reopening strategies. Our study supports a more targeted and adaptive approach to school policies in future pandemics.
+- **How regional characteristics drive various human mobility types across Europe**
+  Published: 2026-05-21
+  Authors: Milad Malekzadeh; Tuomas Väisänen; Anastasia Panori; Vicente Royuela; Olle Järv
+  DOI: 10.1038/s41467-026-73288-6
+  Link: https://doi.org/10.1038/s41467-026-73288-6
+  Abstract: Spatial mobility of people between regions is critically shaped by socioeconomic landscapes, influencing and being influenced by regional characteristics, especially amid the on-going green and digital transitions. However, this is often studied through the lens of a single mobility type, overlooking the diverse factors driving different forms of movement. This study examines the distinct impacts of regional characteristics on seven types of mobility-permanent migration, long-term and short-term student mobility, seasonal work, long-distance and cross-border commuting, and multilocal living arrangements-across European regions. By integrating data from the Labor Force Survey, Erasmus + , and Twitter, we show how regional characteristics have different effects regarding each mobility type influenced by unique combinations of economic, environmental, and social factors. These differences underscore the limitations of a one-size-fits-all approach in addressing interregional spatial mobility, highlight the need for policies tailored both to specific types of mobility and regional characteristics. Considering these insights, we present avenues for targeted policy recommendations towards enhancing regional attractiveness and supporting balanced territorial development.
+
+#### Science
+- **Chile’s environmental policy at risk**
+  Published: 2026-05-21
+  Authors: América Paz Durán; Ariel Espinoza-Galdames; Víctor Caro; Daniela Manuschevich
+  Affiliations: Conservación Ecológica Consultores, Santiago, Chile.; Departamento de Geografía, Universidad de Chile, Santiago, Chile.; Departamento de Gestión y Políticas Públicas, Universidad de Santiago, Santiago, Chile.
+  DOI: 10.1126/science.aeh6525
+  Link: https://doi.org/10.1126/science.aeh6525
+  Abstract: Abstract unavailable.
+
+#### Proceedings of the National Academy of Sciences
+- **Cultural evolution of beauty standards**
+  Published: 2026-05-21
+  Authors: Louis Boucherie; Sagar Kumar; Katharina Ledebur; August Lohse; Karolina Śliwa
+  Affiliations: Center for Social Data Science, University of Copenhagen; Complexity Science Hub; Computational Health Informatics Program, Boston Children’s Hospital, Harvard Medical School; Danish School of Education, University of Aarhus; Department of Applied Mathematics and Computer Science, Technical University of Denmark; Department of Information Systems and Operations Management, Vienna University of Economics and Business; Institute of the Science of Complex Systems, Medical University of Vienna; Network Science Institute, Northeastern University
+  DOI: 10.1073/pnas.2602380123
+  Link: https://doi.org/10.1073/pnas.2602380123
+  Abstract: Beauty standards shape self-perception and health through social comparison and objectification, while exposure to idealized imagery exacerbates body-image concerns. Media and fashion are central arbiters of these ideals, yet long-term, quantitative, intersectional studies on how representation has changed remain scarce. We assembled a dataset of 793,199 records spanning 25 y of advertising, magazine covers, runway shows, and editorials to quantify changes in anthropometric and demographic representation. We find a paradox in the evolution of beauty ideals: While representational diversity has increased, the median model physique remains stable. This is driven by selective plus-size inclusion at the upper tail, while the typical physique continues to diverge from the US population. Intersectionally, non-White models are 4.5 times more likely to be plus-size, suggesting that the industry consolidates multiple markers of diversity onto already underrepresented individuals rather than broadening inclusion structurally. Stratifying the industry via a data-driven prestige hierarchy, we find that thinness is overrepresented at the top tier. Finally, descriptive comparisons of two regulatory interventions suggest that numeric thresholds may be more effective than flexible guidelines at reducing underweight appearances. Our results quantify the cultural evolution in media and fashion, revealing that inclusion has increased; however, gains are uneven and intersectionally concentrated on size and ethnicity, whereas the prevailing thin ideal remains largely unchanged.
+- **From free speech advocates to critics: The Trump administration’s new rhetoric promotes support for censorship among Trump voters**
+  Published: 2026-05-21
+  Authors: Matthew E. K. Hall; B. Tyler Leigh; Brittany C. Solomon
+  Affiliations: Department of Management & Organization, Mendoza College of Business, University of Notre Dame; Department of Political Science, University of Notre Dame
+  DOI: 10.1073/pnas.2532084123
+  Link: https://doi.org/10.1073/pnas.2532084123
+  Abstract: Most Americans claim to support freedom of speech, including President Donald Trump who has portrayed himself as an ardent defender of this constitutional right. However, in the wake of Charlie Kirk’s assassination, Trump and members of his administration began to explicitly call for speech restrictions. This largely unprecedented rhetoric from a sitting president and his allies provides an opportunity to examine competing theories of public opinion: the influence of partisan elites versus the public’s purported commitment to free speech. In a preregistered survey experiment, we found that exposure to such unusually explicit antispeech rhetoric increased Trump voters’ support for government censorship of outparty media and individuals but prompted backlash among non-Trump voters, increasing their support for protecting outparty speech. While prior research has established that partisans favor censorship of outparty members, we demonstrate that partisans differentially shifted their censorship attitudes in response to the Trump administration’s new rhetoric, whether or not the source was attributed to Trump and his allies. These findings highlight the influence of elite rhetoric on public support for even the most foundational—and popular—democratic norm, raising concerns about the resilience of American democracy in the face of explicitly illiberal elites.
+- **Wind turbine proximity and health: Longitudinal evidence from US households**
+  Published: 2026-05-19
+  Authors: Niklas Rott; Douglas Almond; Osea Giuntella
+  Affiliations: Department of Economics, Columbia University; Department of Economics, University of Pittsburgh; Faculty of Business and Economics, University of Augsburg
+  DOI: 10.1073/pnas.2525715123
+  Link: https://doi.org/10.1073/pnas.2525715123
+  Abstract: Rapid growth of wind energy plays a key role in global efforts to reduce carbon emissions, yet public concerns persist about its potential health effects, particularly through noise exposure. While some studies and media reports suggest that wind turbines may contribute to sleep disturbances, anxiety, and even suicide, existing evidence remains limited and inconclusive. This study combines geolocated data on turbines from the US Wind Turbine Database with longitudinal survey data on over 120,000 households (2011–2023) and consumer purchasing records to assess whether proximity to wind turbines affects mental and physical health. We examine a wide range of outcomes, including depression, anxiety, sleep disorders, headaches, and use of sleep aids and painkillers. Comparing households before and after nearby turbine installations, we find no detectable adverse health effects from turbine exposure at typical exposure distances. While we cannot rule out small effects, our CIs exclude moderate-to-large impacts, suggesting that fears about substantial health impacts are not borne out in population-level data. Other disamenities such as noise, shadow flicker, and visual intrusion may still affect quality of life even absent measurable health impacts.
+- **Electoral politics influence expansion and titling of informal urban settlements**
+  Published: 2026-05-18
+  Authors: Beth Tellman; Meha Jain; Hallie Eakin; Dylan Connor; Felipe de Alba
+  Affiliations: Centro de Estudios Sociales y de Opinión Pública; Nelson Institute for Environmental Studies, University of Wisconsin-Madison; School for Environment and Sustainability, University of Michigan; School of Geographical Sciences and Urban Planning, Arizona State University; School of Sustainability, Arizona State University
+  DOI: 10.1073/pnas.2421303123
+  Link: https://doi.org/10.1073/pnas.2421303123
+  Abstract: Understanding what and who shapes urban growth and how it unfolds in the Global South is critical to ensure theories and predictive models of urban expansion and, consequently, global environmental change, are salient to contemporary contexts. Much of the urban expansion in the Global South occurs in informal settlements where urbanization is not officially permitted and residents often lack access to basic services and infrastructure. As a result, formalizing settlements becomes an asset for political transactions where politicians provide titles and improve conditions in exchange for residents’ votes. Yet the cumulative effect of these political transactions on land change remains unknown, rendering electoral dynamics absent from land system science models of urbanization. Here we use panel regression to examine the influence of electoral cycles and voting patterns on urban expansion and formalization of property titles from 1997–2015 in Mexico City. We find the distribution of land titles to residents increases in the months leading up to local elections, and more titles are given to core voting neighborhoods of the historically dominant party. Furthermore, urban built-up area increases in districts with higher electoral competition. These results demonstrate that electoral politics influence when and where the legal city boundary expands, who can access secure tenure, and potentially which settlements grow. These results imply sociopolitical dynamics shape urban sustainability. Incorporating quantified links between political dynamics and urban expansion could improve models of future urban growth and identify relevant levers to improve urban sustainability.
+- **How rising ICE activity influences the childcare workforce**
+  Published: 2026-05-18
+  Authors: Erkmen G. Aslim; Janet Currie; Chris M. Herbst; Erdal Tekin
+  Affiliations: CESifo; Department of Economics, University of Vermont; Department of Economics, Yale University; IZA@LISER; National Bureau of Economic Research; School of Public Affairs, American University; School of Public Affairs, Arizona State University
+  DOI: 10.1073/pnas.2602686123
+  Link: https://doi.org/10.1073/pnas.2602686123
+  Abstract: Immigrants play a critical role in the US childcare workforce, yet little is known about how immigration enforcement shapes employment in this essential sector. We study how the sharp escalation in community-based Immigration and Customs Enforcement (ICE) activity following President Trump’s inauguration in early 2025 affected childcare employment in the United States. Monthly data from the Current Population Survey are linked to compiled state-level ICE arrest records from September 2023 through September 2025, to ask how changes in enforcement intensity influence employment across childcare settings that differ in regulation and visibility. We find that increased ICE activity led to significant declines in employment among foreign-born women, with effects concentrated in center-based settings that are highly regulated and publicly visible. At the same time, employment in private household childcare increased, consistent with a reallocation toward less visible and less formal arrangements rather than a complete exit from the sector. These effects strengthened markedly after early 2025, a period characterized both by a sharp rise in nonprison ICE arrests and heightened public attention to immigration enforcement. Among native-born women, employment responses are limited in magnitude and confined to a limited number of specific care settings, providing little evidence of broad substitution for foreign-born workers. Overall, the results show that immigration enforcement reshapes not only the size but also the structure of the childcare workforce, with important potential implications for childcare access, labor markets, and families.
+- **Systemic electioneering from the evangelical pulpit: Evidence from a computational analysis**
+  Published: 2026-05-18
+  Authors: Marc S. Jacob; Yphtach Lelkes; Samuel Wolken; Sean J. Westwood
+  Affiliations: Annenberg School for Communication; Dartmouth College; Department of Government; Keough School of Global Affairs; University of Notre Dame; University of Pennsylvania
+  DOI: 10.1073/pnas.2603911123
+  Link: https://doi.org/10.1073/pnas.2603911123
+  Abstract: Religious institutions’ engagement in prohibited electoral advocacy is a growing concern for democratic governance. In the United States, such mobilization has been especially visible within the evangelical movement. We examine this phenomenon using a corpus of 88,546 sermons from predominantly evangelical churches, transcribed from 63,683 h of Sunday services spanning the 2020, 2022, and 2024 election cycles and a nonelection control period. Analysis of this corpus reveals that direct political advocacy and endorsements are widespread: 14.7% of churches engaged in this speech during the three months surrounding the 2024 election. This behavior follows a clear electoral rhythm, peaking on the Sunday before Election Day, when 3.5% of churches mobilized. Geographic analysis indicates that advocacy correlates with county partisan composition but lacks strategic targeting; rates in swing states are indistinguishable from those in safe states. Our results provide large-scale quantification of political speech from American pulpits that constitutes prohibited electioneering under current Internal Revenue Service (IRS) guidelines, revealing a pattern of base mobilization driven by local partisan context rather than national electoral strategy.
+
+### Previous Week Catch-Up
+
+#### American Political Science Review
+- **Attitudes Toward Electoral System Reform and Party System Change in the U.S.**
+  Published: 2026-05-14
+  Authors: QUINTON MAYNE; SHANE P. SINGH
+  Affiliations: Harvard University; University of Georgia
+  DOI: 10.1017/s0003055426101658
+  Link: https://doi.org/10.1017/s0003055426101658
+  Abstract: Electoral reform efforts in the United States are widespread, yet little is known about how Americans evaluate alternative electoral systems or their consequences. We address this gap using conjoint and vignette experiments to study how Americans assess electoral reforms based on their implications for the number of parties and the degree of ideological polarization in the U.S. House of Representatives. Focusing on democratic voice, governability, and responsiveness, our designs emphasize party-system outcomes rather than technical institutional features that may be difficult for citizens to understand. We find that Americans are strongly averse to reforms that generate pronounced legislative polarization, even when it might be expected to enhance democratic voice. Findings pertaining to multipartism are more mixed, with some evidence that respondents respond positively to moderate departures from the two-party system. Perceived gains in voice and responsiveness do not generally compensate for losses in governability, except under arrangements that avoid polarization.
+- **The Politics of Privilege: Discrimination, Monopolized Social Rights, and Reform**
+  Published: 2026-05-14
+  Authors: ANDREW SABL
+  Affiliations: University of Toronto, Canada
+  DOI: 10.1017/s0003055426101646
+  Link: https://doi.org/10.1017/s0003055426101646
+  Abstract: This article analyzes three kinds of privilege—roughly, the monopoly or near-monopoly of a prized social good by a group—in terms of the political barriers facing attempts to reform them. Extending previous work, it distinguishes among discrimination privileges, which are zero-sum and relative, benefiting some groups at others’ expense; monopolized social right privileges, involving goods enjoyed only by some that can and should be extended to all; and differential treatment privileges, involving disagreement over whether a good currently monopolized by some should be extended to all or to none. The political barriers to reforming discrimination privilege involve group interest; those to reforming monopolized social rights include privilege, ignorance, cost, priorities, policy uncertainty, and the psychological wage. Differential treatment privilege is complicated. An exercise in applied political realism, this article treats normative categories as political inputs rather than philosophical conclusions and seeks to demonstrate the insights enabled by doing so.
+
+#### Political Analysis
+- **Improving Small-Area Estimates of Public Opinion by Calibrating to Known Population Quantities**
+  Published: 2026-05-15
+  Authors: William Marble; Joshua D. Clinton
+  Affiliations: Stanford University; Vanderbilt University
+  DOI: 10.1017/pan.2026.10044
+  Link: https://doi.org/10.1017/pan.2026.10044
+  Abstract: Abstract Multilevel regression and poststratification (MRP) is widely used to estimate opinion in small subgroups and to adjust unrepresentative surveys. Yet, even flexible MRP models contain errors generated by non-response and model misspecification. We propose a principled, data-driven method to leverage observable errors on auxiliary quantities with known marginal distributions—for example, election outcomes—to improve estimates of policy attitudes. Our method leverages the correlation between auxiliary variables and outcomes of interest to calibrate MRP estimates to these known marginal distributions. We illustrate our approach using a pre-election poll measuring support for an abortion referendum. We find that the method reduces county-level error by nearly two-thirds relative to traditional MRP. We also show how our calibration approach can be used to generate estimates for smaller nested geographies, such as precincts, even in the absence of poststratification data at this level. Our approach provides a framework for fully incorporating known population data to improve estimates of public opinion in small subgroups, providing scholars another tool to study representation.
+
+#### Political Communication
+- **How National Cues Polarize Perceptions of Political Figures**
+  Published: 2026-05-13
+  Authors: Joel Sievert; Kevin K. Banda
+  Affiliations: Texas Tech University
+  DOI: 10.1080/10584609.2026.2672710
+  Link: https://doi.org/10.1080/10584609.2026.2672710
+  Abstract: Abstract unavailable.
+
+#### Communication Research
+- **The Effects of Individual Coping, Communal Coping, and Person-Centered Support on Depression Management**
+  Published: 2026-05-15
+  Authors: Xi Tian; Erin Basinger
+  Affiliations: University of Delaware, Newark, USA; University of North Carolina at Charlotte, USA
+  DOI: 10.1177/00936502261452885
+  Link: https://doi.org/10.1177/00936502261452885
+  Abstract: This study compared individual and communal coping messages to highly person-centered support in the context of depression management within romantic relationships. The sample included 138 adults who had been diagnosed with depression, and they evaluated messages that were manipulated to vary in coping strategies and person-centeredness. Results showed that communal coping messages led to greater emotional improvement than individual coping and highly person-centered messages through an indirect effect conveyed by increased perceptions of joint efforts between partners. Cognitive reappraisal, relational connectedness, and shared appraisal did not significantly mediate the relationships between message features and emotional improvement. In addition, highly person-centered messages corresponded with more emotional improvement than individual coping messages. The discussion highlights the implications of partners’ coping-oriented versus supportive approaches to depression management.
+
+#### Nature
+- **Obesity rise plateaus in developed nations and accelerates in developing nations**
+  Published: 2026-05-13
+  Authors: Bin Zhou; Nowell H. Phelps; Agnese Galeazzi; Olivia N. O’Driscoll; James E. Bennett; Lakshya Jain; Ysé D’Ailhaud De Brisis; Ana Barradas-Pires; Fulvio Deo; Gretchen A. Stevens; Vasilis Kontis; Christopher J. Paciorek; et al. (1880 total)
+  DOI: 10.1038/s41586-026-10383-0
+  Link: https://doi.org/10.1038/s41586-026-10383-0
+  Abstract: Abstract Global reporting of obesity is commonly based on comparisons over multiple decades 1 and lacks a granular and systematic analysis of its dynamics. We used 4,050 population-based studies with measured height and weight data on 232 million participants to assess the worldwide dynamics of obesity from 1980 to 2024. The rise in obesity decelerated in school-aged children and adolescents throughout the 1990s in many high-income countries, and subsequently plateaued in most at age-standardized prevalences spanning 20 percentage points, from 3–4% for girls in Japan, Denmark and France to 23% for boys in the USA. There were indications of a small decline in obesity in children and adolescents in some high-income western countries (for example, Italy, Portugal and France) since the 2000s. Similar trends were seen in some countries in Central and Eastern Europe. In adults, the rise in obesity slowed down in high-income western countries about a decade after children, followed by a plateau or possibly a small reversal of the rise in some countries (for example, Spain). In most low-income and middle-income countries, the annual absolute change in prevalence has remained stable or increased over time, even though prevalence has surpassed that of high-income countries. These highly varied dynamics suggest that the social, economic and technological trends that influence the availability, affordability and use of different foods may have helped control the rise in obesity in high-income countries, but require policy interventions in low-income and middle-income countries.
+- **State media control influences large language models**
+  Published: 2026-05-13
+  Authors: Hannah Waight; Eddie Yang; Yin Yuan; Solomon Messing; Margaret E. Roberts; Brandon M. Stewart; Joshua A. Tucker
+  DOI: 10.1038/s41586-026-10506-7
+  Link: https://doi.org/10.1038/s41586-026-10506-7
+  Abstract: Abstract unavailable.
+- **State media control shapes LLM behaviour by influencing training data**
+  Published: 2026-05-13
+  DOI: 10.1038/d41586-026-01486-9
+  Link: https://doi.org/10.1038/d41586-026-01486-9
+  Abstract: State control of the media is shown to alter the training data of large language models (LLMs) through its impact on the information environment. This has a substantial effect on the output of LLMs, with states rated more favourably in their own language when they have tighter media control. States with tight media control are rated more favourably by LLMs when prompted in their own language.
+
+#### Nature Human Behaviour
+- **To regulate vaping we need pragmatic, evidence-based policy**
+  Published: 2026-05-15
+  Authors: Sarah E. Jackson; Lion Shahab; Ann McNeill; Nancy A. Rigotti; Chris Bullen; Jamie Brown
+  DOI: 10.1038/s41562-026-02461-0
+  Link: https://doi.org/10.1038/s41562-026-02461-0
+  Abstract: Abstract unavailable.
+- **The political polarization of health outcomes in the USA**
+  Published: 2026-05-14
+  Authors: Elizabeth Elder; Neil A. O’Brian
+  DOI: 10.1038/s41562-026-02474-9
+  Link: https://doi.org/10.1038/s41562-026-02474-9
+  Abstract: Abstract Public health disparities provide an important lens for understanding social and political change in the USA. Using individual-level medical data and death records, this study shows that conservative Americans experienced worsening health and higher mortality than liberals during the 2010s. Here we find evidence consistent with two potential mechanisms. First, demographic realignment within political coalitions brought less healthy individuals into the conservative camp. Yet by the 2020s, demographic change, public policy and COVID-19 do not fully account for the widening gap in mortality rates. Public opinion data are consistent with a second mechanism: declining trust in medical professionals among right-leaning individuals, including lower willingness to seek care, follow clinical advice or believe in medication effectiveness, even for issues unrelated to COVID-19. These patterns suggest that growing ideological divides in health behaviours are leaving conservative Americans increasingly vulnerable to preventable health risks.
+
+#### Nature Machine Intelligence
+- **Re-thinking human–machine interaction and the governance of AI in the military domain**
+  Published: 2026-05-11
+  Authors: Ingvild Bode; Katherine Chandler
+  DOI: 10.1038/s42256-026-01231-x
+  Link: https://doi.org/10.1038/s42256-026-01231-x
+  Abstract: Abstract unavailable.
+
+#### Nature Communications
+- **Social implications of the 30×30 global conservation target**
+  Published: 2026-05-12
+  Authors: Javier Fajardo; Heather C. Bingham; Dan Brockington; Rebecca Chaplin-Kramer; James A. Fitzsimons; Forrest Fleischman; Alain Frechette; Rachael D. Garrett; Carolina Hazin; Tobias Kuemmerle; Janeth Lessmann; Milagre O. F. Nuvunga; et al. (25 total)
+  DOI: 10.1038/s41467-026-71860-8
+  Link: https://doi.org/10.1038/s41467-026-71860-8
+  Abstract: Abstract Target 3 of the Kunming-Montreal Global Biodiversity Framework aims to increase global protected and conserved area coverage to at least 30% by 2030. The impact on people, whether positive or negative, will depend on the social context of additional areas and how they are governed and managed. Here, we show that Target 3 could affect large and socially diverse populations under different implementation scenarios. Nearly half the human population lives within 10 km of areas included in a scenario maximising biodiversity representation. Four percent live near areas included in an Indigenous and traditional territories-based scenario, including many in areas with low Human Development Index scores (74%) and high participation in wild harvesting (91%). A scenario prioritising nature’s contributions to people is intermediate on all measures. Our results demonstrate that Target 3 is a highly ambitious social as well as ecological target, requiring an equally ambitious commitment to development funding and support for local residents.
+
+#### Science
+- **A civic grammar for AI rights**
+  Published: 2026-05-14
+  Authors: Alondra Nelson
+  Affiliations: Alondra Nelson* is Harold F. Linder Professor of Social Science, and leads the Science, Technology, and Social Values Lab at the Institute for Advanced Study, Princeton, NJ, USA.
+  DOI: 10.1126/science.aeh7153
+  Link: https://doi.org/10.1126/science.aeh7153
+  Abstract: Abstract unavailable.
+- **Aiding peace or conflict? The impact of USAID cuts on violence**
+  Published: 2026-05-14
+  Authors: D. Rohner; U. Sunde; O. Vanden Eynde; A. L. Wright; J.-R. Zeng
+  Affiliations: Centre for Economic and Policy Research (CEPR), London, UK.; Department of Economics, University of Lausanne, Lausanne, Switzerland.; Department of Economics, University of Munich (LMU), Munich, Germany.; Geneva Graduate Institute, Geneva, Switzerland.; Harris School of Public Policy, The University of Chicago, Chicago, IL, USA.; Humanities and Social Sciences, Centre National de la Recherche Scientifique (CNRS), Paris, France.; Paris School of Economics, Paris, France.
+  DOI: 10.1126/science.aed6802
+  Link: https://doi.org/10.1126/science.aed6802
+  Abstract: Less than a week after its inauguration, the second Trump administration issued a blanket stop-work order for the United States Agency for International Development (USAID), the largest national humanitarian donor. The social and political effects of abrupt aid withdrawal are poorly understood, especially in fragile states where relief is a key safety net. We provide quasi-experimental evidence on the shutdown’s impact on subnational conflict across Africa. Leveraging historical exposure to USAID programs, we show that conflict increased sharply after the shutdown in areas that previously received the most support. The increase spanned incidence and severity, including armed clashes, protests, and riots. The effects appeared immediately and persisted for months. Inclusive local institutions substantially mitigated these harms, underscoring vulnerability under weak governance and the capacity of institutions to buffer humanitarian and economic shocks.
+- **Amazon dredging law exposes governance gaps**
+  Published: 2026-05-14
+  Authors: Stephannie Fernandes; Cecília Leal; Leandro Castello; Tommaso Giarrizzo; Thiago B. A. Couto
+  Affiliations: Departamento de Ecologia e Conservação, Universidade Federal de Lavras, Lavras, Brazil.; Department of Fish And Wildlife Conservation, Virginia Polytechnic Institute and State University, Blacksburg, VA, USA.; Department of Global And Sociocultural Studies, Florida International University, Miami, FL, USA.; Instituto de Ciências do Mar (LABOMAR), Universidade Federal Do Ceará, Fortaleza, Brazil.; Lancaster Environment Centre, Lancaster University, Lancaster, UK.; School of Environmental Sciences, University of East Anglia, Norwich, UK.
+  DOI: 10.1126/science.aeg9714
+  Link: https://doi.org/10.1126/science.aeg9714
+  Abstract: Amazon dredging law exposes governance gapsA recent federal decree authorizing large-scale water resources development in the Amazon exposed weaknesses in Brazil's governance of the world's largest river basin (1).Passed in August, 2025, Federal Decree 12.600/2025 opened stretches of the Madeira, Tapajs, and Tocantins rivers to private dredging and waterway expansion under Brazil's National Privatization Program (2).Indigenous communities and civil society organizations argued that the decree advanced without adequate consultation under ILO Convention 169 or environmental assessment, raising concerns about violations of constitutionally protected rights (3).The decree also threatened to modify more than 3700 km of river channels, increasing turbidity and degrading habitats fundamental to biodiversity, fisheries, and regional food security (2,(4)(5)(6).Amid mounting collective mobilization and public political pressure, President Luiz Incio Lula da Silva revoked the decree in February (7).To prevent similar decrees from passing in the future, Brazil should implement and enforce better protection of its rivers.The initial passage of Federal Decree 12.600/2025 reveals a structural problem: Brazil's regulatory framework treats rivers primarily as economic infrastructure.Interventions proceed through licensing that assesses projects in isolation, whereas cumulative basinwide impacts are largely neglected.However, rivers are interconnected social-ecological systems that sustain biodiversity and cultural identity (8).Waterways play a particularly important role in the Amazon, where nature and people's livelihoods depend intimately on rivers and their seasonal flood pulses (9).The presidential reversal of the Federal Decree 12.600/2025 is not an adequate substitute for durable legal safeguards.Brazil should adopt a national legal framework recognizing major rivers as rights-bearing entities.Granting legal standing to rivers would enable representation in court and require environmental licensing to address basin-level impacts rather than projects in isolation.Embedding these principles into federal law would reduce reliance on case-by-case political intervention.Subnational legislation in Minas Gerais demonstrates that enhanced legal status for rivers can be incorporated within Brazil's legal system (10).Supported by sustained civic engagement (11,12), national reform could extend enforceable protections to major Amazonian rivers and provide a model for other biodiverse basins facing infrastructure expansion.
+- **Hungary’s chance to rebuild science**
+  Published: 2026-05-14
+  Authors: Albert-László Barabási
+  Affiliations: Albert-László Barabási is a Distinguished University Professor of Network Science at Northeastern University, Boston, MA, USA and a lecturer at Harvard Medical School, Boston, MA, USA. He is also a visiting professor at the Central European University, Vienna, Austria.
+  DOI: 10.1126/science.aei5835
+  Link: https://doi.org/10.1126/science.aei5835
+  Abstract: Last month’s parliamentary elections ended Prime Minister Viktor Orbán’s 16-year rule, giving Hungary something more consequential than a change of government: a chance to show the world how to rebuild science after political control. With a two-thirds parliamentary majority, the new leadership has the mandate and the constitutional power to rebuild Hungary’s scientific enterprise around merit, and resistance against future interference. If Hungary gets this right, it will offer a model that matters far beyond its borders.
+
+#### Proceedings of the National Academy of Sciences
+- **Scientific authority cues increase the spread of misinformation**
+  Published: 2026-05-15
+  Authors: Ismail Harrando; Rodrigo Reyes Cordova; Achim Edelmann
+  Affiliations: Médialab, Sciences Po
+  DOI: 10.1073/pnas.2535823123
+  Link: https://doi.org/10.1073/pnas.2535823123
+  Abstract: Despite extensive efforts to curb misinformation, it continues to spread on social media platforms. Research indicates that people rarely share content they know is false, rather, they do so unintentionally due to cognitive biases triggered by contextual cues. Combining a large-scale behavioral data analysis with an experimental study, we investigate how Scientific Authority Cues , which we define as mentions of entities that signal scientific expertise or findings, affect the sharing of fact-checked content on social media by granting it credibility. Analyzing 8.7 million tweets linking to fact-checked content shared on Twitter (now X) between 2010 and 2023, we find that tweets with such cues are shared more, especially when linking to low veracity content or posted by right-leaning users. In a preregistered experiment deployed to U.S. participants ( N = 1,187), headlines that attributed claims to scientific entities elicited a greater willingness to share, an effect statistically mediated by perceived accuracy and influenced by trust and familiarity. Together, these findings reveal the double edge of invoking scientific authority: In polarized online spaces, cues that signal scientific credibility can be co-opted to amplify misinformation.
+- **Selective divergence between Grokipedia and Wikipedia articles**
+  Published: 2026-05-15
+  Authors: Saeedeh Mohammadi; Taha Yasseri
+  Affiliations: Centre for Sociology of Humans and Machines; School of Mathematics and Statistics; Trinity College Dublin and Technological University Dublin; University College Dublin
+  DOI: 10.1073/pnas.2603294123
+  Link: https://doi.org/10.1073/pnas.2603294123
+  Abstract: The launch of Grokipedia, an AI-generated encyclopedia developed by xAI, was presented as a response to perceived ideological and structural biases in Wikipedia, with the goal of producing more “truthful” entries using the Grok large language model. However, whether such an AI-driven alternative can systematically correct the biases and limitations of human-edited platforms remains unclear. Here we conduct a large-scale computational comparison of 17,790 matched article pairs drawn from the 20,000 most-edited English Wikipedia pages. We find that Grokipedia pages are longer, more syntactically complex, and contain fewer references per word. Similarity measures across the two platforms reveal a bimodal structure: many Grokipedia articles closely resemble their Wikipedia counterparts, while a considerable subset diverges. Political bias differences emerge primarily within the divergent subset, where Grokipedia shows a relative rightward shift in the ideological orientation of frequently cited news media sources, particularly in articles related to religion and history. These patterns indicate selective, topic-specific divergence rather than a uniform debiasing of Wikipedia content. More broadly, AI-generated encyclopedias may depart from established editorial norms by favoring narrative expansion over citation-based verification, raising questions about transparency, provenance, and the governance of knowledge in automated information systems.
+- **The pig in the python: US decennial labor flows and economic opportunity, 1910–2040**
+  Published: 2026-05-15
+  Authors: Steven Ruggles
+  Affiliations: Department of History, University of Minnesota; Institute for Social Research and Data Innovation, University of Minnesota
+  DOI: 10.1073/pnas.2601716123
+  Link: https://doi.org/10.1073/pnas.2601716123
+  Abstract: This analysis revisits the relative cohort size hypothesis proposed by demographer Richard Easterlin in the 1960s. Easterlin argued that the economic and social prospects of a generation are influenced by the size of the cohort relative to adjacent cohorts. He hypothesized that relative cohort size affects wages, employment, marriage, and fertility decisions. The theory fits the data well for the period from 1940 to 1980 but fails in later decades. I present a more nuanced view of the impact of demographic factors on worker competition through the lens of a measure of decennial labor-force flows. This approach allows consideration of the effects of retirement, female labor-force participation, and immigration on labor-market competition. I calculate these flows for the period from 1910 to 2040 and propose an index of employment competition. The results show that trends in labor-market competition are consistent with wage trends of young workers since 1940. Projections to 2040 show that we are on the verge of a radical reshaping of labor markets in which new workers will be in extremely short supply.
+- **Educational policies can strengthen climate coalitions**
+  Published: 2026-05-14
+  Authors: Max Bradley; Rens Chazottes; Susanna Garside; Nina Lopez-Uroz
+  Affiliations: Department of Political and Social Sciences, European University Institute; Department of Politics and International Relations, University of Oxford; Max Planck Institute for the Study of Societies; Swiss Federal Institute of Technology Lausanne
+  DOI: 10.1073/pnas.2533821123
+  Link: https://doi.org/10.1073/pnas.2533821123
+  Abstract: Building public support for ambitious climate policies is a central challenge for governments seeking to decarbonize their economies. Many climate change mitigation policies impose visible material costs on citizens, and governments have limited fiscal capacity to deploy compensatory measures. Education is often used as a tool to build public awareness about climate change, but its effect on support for climate policies is not well understood. We evaluate the effects of a climate education policy through the study of a real-world large-scale educational intervention: a 3-h interactive workshop which has so far been implemented in over 500 French universities. We employed a randomized control trial reaching 1,845 students across 167 workshops. Students who took the workshop expressed 7 percentage points higher support for costly climate policies, including a beef tax, short-haul flight ban, and meat-free university canteen, compared with the control group. The workshop increased beliefs in the effectiveness of these policies and elicited more positive emotions about climate action. Evidence from a subsample of follow-up survey respondents suggests these effects may persist for at least 6 wk. We find no evidence that the workshop increases willingness to donate to a climate NGO. Overall, the results suggest that well-designed climate education can play a role in broadening public coalitions for ambitious climate policies by strengthening perceived policy effectiveness and support for costly policies.
+- **A multinational megastudy of the effects of gratitude practices on subjective well-being**
+  Published: 2026-05-11
+  Authors: Nicholas A. Coles; Annabel V. Dang; Shigehiro Oishi; Abigail Adade; Aderonke A. Akintola; Beatriz B. de Souza; Biljana Gjoneska; Christine R. Harris; Dev Kesarwani; Dinara Pisareva; Eugene Y. J. Tee; Goo Lyann; et al. (36 total)
+  Affiliations: Center for Health and Biological Sciences, Mackenzie Presbyterian University; Department of Business, Marketing and Law, University of South-Eastern Norway; Department of Humanities and Social Sciences, Indian Institute of Technology Roorkee; Department of Political Science and Internal Relations, Nazarbayev University; Department of Psychological and Brain Sciences, University of California Santa Barbara; Department of Psychology, Aarhus University; Department of Psychology, Chulalongkorn University; Department of Psychology, Higher Education Learning Philosophy University; et al. (24 total affiliations)
+  DOI: 10.1073/pnas.2537789123
+  Link: https://doi.org/10.1073/pnas.2537789123
+  Abstract: Scholars have observed people from a variety of cultures using a variety of gratitude-related practices to change their emotions, outlooks, and social relationships. Across 34 countries purposively sampled to cover a broad set of cross-cultural differences (total N = 10,696), we experimentally tested the effects of 6 brief gratitude interventions on subjective moods, life outlooks, and social evaluations. Compared to 3 control tasks, gratitude practices immediately produced theorized improvements in positive affect ( d = 0.37), negative affect ( d = −0.22), optimism ( d = 0.24), life satisfaction ( d = 0.12), indebtedness ( d = 0.15), and envy ( d = −0.16). Notably, these effects varied across different gratitude practices (0.00 practice country
+- **Global and regional climate modes modulate armed conflict risk**
+  Published: 2026-05-11
+  Authors: Tyler E. Bagwell; Sylvia G. Dee; Xinyue Luo; Anna Stravato; Divya Saikumar; Frederi Viens; Bomi K. Lee; Diana Z. O’Brien; Justin S. Mankin
+  Affiliations: Department of BioSciences, Rice University; Department of Earth, Environmental, and Planetary Sciences, Rice University; Department of English, Rice University; Department of Geography, Dartmouth College; Department of Political Science, Bucknell University; Department of Political Science, Washington University in St. Louis; Department of Statistics, Rice University; Zhejiang Climate Center
+  DOI: 10.1073/pnas.2532935123
+  Link: https://doi.org/10.1073/pnas.2532935123
+  Abstract: Because of their impacts on droughts, famines, and floods, modes of climate variability can shape patterns of social instability. Yet the mechanisms linking climate variability to armed conflict remain contested, especially relative to the myriad sociopolitical and economic determinants of conflict. A key challenge is that most studies rely on coarse, state-level data and treat climatic teleconnections as invariant. As such, it is unknown whether there are distinct climate hazards that select for conflict risk; whether conflict scales with climate hazard exposure; and whether such associations exist for more regional forms of climate variability. Here we leverage empirical modeling using a high-resolution gridded dataset of armed conflicts and the natural experiment afforded by two major climate modes—the El Niño–Southern Oscillation (ENSO) and the Indian Ocean Dipole (IOD)—to clarify how systematic hydroclimatic anomalies influence conflict emergence. Our results reveal the following: First, conflict risk heightens during El Niño, but ENSO-associated risk does not scale linearly with teleconnection strength; and, evidence for threshold behavior varies with spatial aggregation. Second, El Niño-related increases in conflict risk arise through its dry teleconnections, with limited evidence for wet teleconnections. Finally, the more regionally confined IOD also influences conflict, with both positive and negative phases elevating risk in strongly teleconnected regions, namely the Horn of Africa and Southeast Asia. These results reveal that modes of climate variability can differentially shape conflict risk, offering insight into societies’ vulnerabilities to natural climate fluctuations and, by extension, anthropogenic climate change.
+- **Hard and soft power in immigration enforcement**
+  Published: 2026-05-11
+  Authors: Emily Ryo
+  Affiliations: Department of Sociology, Duke University; School of Law, Duke University
+  DOI: 10.1073/pnas.2609140123
+  Link: https://doi.org/10.1073/pnas.2609140123
+  Abstract: Abstract unavailable.
+- **Politics embodied: How politics shapes and is shaped by the bodily experience of emotions**
+  Published: 2026-05-11
+  Authors: Andrea Vik; Alejandro Galvez-Pol; Sohee Park; Manos Tsakiris
+  Affiliations: Active Cognition, Embodiment, and Environment Lab, Cognition and Society Research Unit, University of the Balearic Islands; Centre for the Politics of Feelings; Department of Psychology; Department of Psychology, University of the Balearic Islands; Department of Psychology, Vanderbilt University; Royal Holloway, University of London; School of Advanced Study, University of London
+  DOI: 10.1073/pnas.2534895123
+  Link: https://doi.org/10.1073/pnas.2534895123
+  Abstract: Political emotions are widely acknowledged as key drivers of political participation and polarization. Yet while it is well established that political emotions matter, far less is known about how they are felt and represented in the body. Across a preregistered, nationally representative study ( N = 992), we introduce an embodied approach to political emotion using the validated emBODY-tool, which allows participants to map where in the body they experience sensations when feeling canonical emotions (e.g., anger) and their political counterparts (e.g., “political anger”). Specifically, we address three questions: 1) how political emotions are embodied and differ from their nonpolitical counterparts, 2) whether political dispositions influence how these political emotions are embodied, and 3) how their embodied experience interacts with political dispositions in explaining political attitudes and behavior. Pixelwise bodily sensation maps and aggregated “embodied impact” metrics show that political anger, anxiety, depression, disgust, and hope do not merely mirror their canonical forms, but take on distinct bodily patterns. Political ideology, but not political sophistication, modulates these bodily experiences, with Democrat-leaning participants reporting more intense sensations for negative political emotions, suggesting the presence of “ideological bodies.” Crucially, political participation is not explained by how intensely people report feeling emotions, but is instead closely linked to how strongly these emotions are embodied in the body. Together, our findings underscore the body’s central role in democratic engagement by showing how political contexts shape embodied emotional experience and how these embodied experiences shape politics and democracy.
+
+### Late Additions
+
+_No curated items this section._
+
