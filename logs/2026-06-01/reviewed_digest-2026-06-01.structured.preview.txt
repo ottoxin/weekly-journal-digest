@@ -1,0 +1,66 @@
+Subject: Weekly journal digest for 2026-05-25 to 2026-05-31
+
+Dear Reader,
+
+COMAP Journal Bot reviewed 325 collected candidates for the 2026-05-25 to 2026-05-31 digest window. After manual relevance filtering, the curated no-send preview keeps 40 papers: 22 new this week, 18 previous-week catch-up items, and 0 late additions.
+
+This week is especially strong on platforms as political infrastructure. The new papers include work on social media data access, gendered algorithmic underrepresentation in political Google searches, a national-election algorithm redesign experiment, technology-mediated child sexual exploitation and abuse, and two pieces on how AI systems are entering research practice. The broader social-science thread is also solid: immigration preferences, peer influence, public administration, one-child policy effects on inequality, and governance risks around sycophantic advice all make the cut.
+
+- Platform governance and algorithmic political communication are the clearest through-line in the new material.
+- AI-for-computational-social-science papers focus less on speculation and more on adoption, reproducibility, and measurement practice.
+- The catch-up section is mostly policy, misinformation, censorship, mobility, and political-methods work from the previous publication week.
+
+Highlights
+- Moving Targets, Moving Politics: The State of Play in Social Media Data Access
+  Political Communication | 2026-05-30
+  Authors: Claes H. de Vreese; Rebekah Tromble
+  Why it matters: Platform access is now a political object in its own right; this piece is directly relevant to social-media data governance and computational political communication.
+  Link: https://doi.org/10.1080/10584609.2026.2681041
+
+- The Prevalence and Consequences of Women’s Algorithmic Underrepresentation in Cross-National Political Google Searches
+  Political Communication | 2026-05-27
+  Authors: Tobias Rohrbach; Mykola Makhortykh; Maryna Sydorova
+  Why it matters: A sharp fit for multimodal and algorithmic political communication: it connects search infrastructures to gendered visibility in cross-national political information environments.
+  Link: https://doi.org/10.1080/10584609.2026.2679476
+
+- Redesigning algorithms to intervene on social norm misperceptions during a national election
+  Nature | 2026-05-27
+  Authors: William J. Brady; Meriel Doyle; Abdo Elnakouri; Eli J. Finkel; Joshua Conrad Jackson; et al. (11 total)
+  Why it matters: A rare large-platform intervention study during a national election, squarely on algorithmic ranking, polarization, and perceived social norms.
+  Link: https://doi.org/10.1038/s41586-026-10536-1
+
+- Technology mediation in child sexual exploitation and abuse in Africa and Asia
+  Nature | 2026-05-27
+  Authors: Sakshi Ghai; Matti Vuorre; Daniel Kardefelt-Winther; Amanda M. Ferguson; Sebastian Kurten; et al. (8 total)
+  Why it matters: The paper gives cross-national evidence on technology-mediated digital harms among children, with clear implications for online safety policy and platform governance.
+  Link: https://doi.org/10.1038/s41586-026-10525-4
+
+- The diffusion of large language models in published academic articles
+  Proceedings of the National Academy of Sciences | 2026-05-29
+  Authors: Kyle Siler
+  Why it matters: Useful for AI-for-CSS work because it measures LLM adoption across millions of articles and links uptake to institutional conditions.
+  Link: https://doi.org/10.1073/pnas.2605754123
+
+- AI-assisted teams outperform AI-led teams but not human-only teams in assessing research reproducibility in quantitative social science
+  Proceedings of the National Academy of Sciences | 2026-05-28
+  Authors: Abel Brodeur; David Valenta; Alexandru Marcoci; Juan P. Aparicio; Derek Mikola; et al. (272 total)
+  Why it matters: Directly relevant to computational social science infrastructure: it tests how AI assistance changes reproducibility work in quantitative social science.
+  Link: https://doi.org/10.1073/pnas.2524747123
+
+- Which immigrants do citizens prefer? A meta-reanalysis of 100 conjoint experiments
+  Science Advances | 2026-05-29
+  Authors: Marco Aviña; Taeku Lee; Mashail Malik; Reed Rasband; Marcel F. Roman; et al. (6 total)
+  Why it matters: A major synthesis of conjoint evidence on immigration preferences, valuable for public-opinion, migration, and survey-experiment work.
+  Link: https://doi.org/10.1126/sciadv.adz2271
+
+- Rational sycophants and catastrophic risks
+  Proceedings of the National Academy of Sciences | 2026-05-26
+  Authors: Robert Axelrod; Scott E. Page
+  Why it matters: A compact governance model of sycophancy, leadership incentives, and catastrophic policy risk that travels well beyond its formal setting.
+  Link: https://doi.org/10.1073/pnas.2537944123
+
+The full curated digest is attached as a PDF. A browser-ready HTML version is also generated.
+
+COMAP Journal Bot
+
+Delivery preferences can be changed in the local recipient configuration.
