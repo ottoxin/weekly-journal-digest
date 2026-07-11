@@ -19,3 +19,8 @@ client_secret*.json
 .env
 .env.local
 config/recipients.json
+
+# Local no-send digest previews
+logs/*/*.preview.html
+logs/*/*.preview.pdf
+logs/*/*.preview.txt
