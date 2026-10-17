@@ -1,0 +1,2610 @@
+{
+  "digest_date": "2026-10-10",
+  "prepared_on": "2026-10-10",
+  "delivery_status": "production_pending",
+  "preliminary": false,
+  "requires_post_cutoff_collection": false,
+  "windows": {
+    "digest_date": "2026-10-10",
+    "new_this_week_start": "2026-10-05",
+    "new_this_week_end": "2026-10-10",
+    "previous_week_start": "2026-09-28",
+    "previous_week_end": "2026-10-04",
+    "late_additions_before": "2026-09-28",
+    "late_additions_first_seen_since": "2026-10-05T00:00:00+00:00"
+  },
+  "candidate_counts": {
+    "new_this_week": 174,
+    "previous_week_catch_up": 142,
+    "late_additions": 1
+  },
+  "curated_counts": {
+    "new_this_week": 17,
+    "previous_week_catch_up": 1,
+    "late_additions": 0
+  },
+  "highlights": 8,
+  "unavailable_abstracts": [
+    {
+      "section": "new_this_week",
+      "title": "Emotional optimization by newsroom AI needs behavioural evaluation",
+      "doi": "10.1038/s42256-026-01315-8"
+    },
+    {
+      "section": "new_this_week",
+      "title": "Algorithm-assisted personalized risk communication to encourage flu vaccination in the USA: three randomized field trials",
+      "doi": "10.1038/s41562-026-02603-4"
+    }
+  ],
+  "missing_authors": [],
+  "missing_affiliations": [
+    {
+      "section": "new_this_week",
+      "title": "Distinguishing learning asymmetry from perseveration in behavioral models",
+      "doi": "10.1038/s41467-026-78198-1"
+    },
+    {
+      "section": "new_this_week",
+      "title": "Emergence of polarization in networks of large language model agents",
+      "doi": "10.1038/s41467-026-78228-y"
+    },
+    {
+      "section": "new_this_week",
+      "title": "Emotional optimization by newsroom AI needs behavioural evaluation",
+      "doi": "10.1038/s42256-026-01315-8"
+    },
+    {
+      "section": "new_this_week",
+      "title": "The limits of Antarctic conservation governance",
+      "doi": "10.1038/s41467-026-77606-w"
+    },
+    {
+      "section": "new_this_week",
+      "title": "Narrowing urban heat disparities alongside faster greening in low-income neighborhoods across cities in the United States",
+      "doi": "10.1038/s41467-026-78468-y"
+    },
+    {
+      "section": "new_this_week",
+      "title": "Algorithm-assisted personalized risk communication to encourage flu vaccination in the USA: three randomized field trials",
+      "doi": "10.1038/s41562-026-02603-4"
+    }
+  ],
+  "decisions": [
+    {
+      "section": "new_this_week",
+      "index": 0,
+      "doi": "10.1038/s41467-026-78376-1",
+      "title": "Twisted superconducting quantum diodes for high fidelity anharmonic qubits",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 1,
+      "doi": "10.1038/s41467-026-78428-6",
+      "title": "A co-evolved peptide-GPCR system senses host entry to drive fungal infection",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 2,
+      "doi": "10.1038/s41467-026-78027-5",
+      "title": "ATM promotes nucleolytic processing of reversed replication forks during DNA interstrand cross-link repair",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 3,
+      "doi": "10.1038/s41467-026-78123-6",
+      "title": "De novo design of miniprotein inhibitors of bacterial adhesins",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 4,
+      "doi": "10.1038/s41467-026-78433-9",
+      "title": "Environmentally Relevant Concentrations of Nanomaterials Drive Photochemical Production of Reactive Species and Pollutant Degradation in Surface Waters",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 5,
+      "doi": "10.1038/s41467-026-78042-6",
+      "title": "Fast-charging and durable all-solid-state lithium-sulfur batteries enabled by pre-embedded solid-solid redox mediator",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 6,
+      "doi": "10.1038/s41467-026-78196-3",
+      "title": "Lipid-organized tetramerization of PLPP1 defines the molecular basis of spatial lipid phosphate signaling",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 7,
+      "doi": "10.1038/s41467-026-78420-0",
+      "title": "MACF1 condensates serve as molecular rheostats translating mechanical stress into bone adaptation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 8,
+      "doi": "10.1038/s41467-026-78008-8",
+      "title": "Periodontal pathogen Tannerella forsythia promotes liver fibrosis via ICAM-1⁺ neutrophil–dependent hepatic stellate cell activation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 9,
+      "doi": "10.1038/s41467-026-78496-8",
+      "title": "Recognition and mechanism of M. tuberculosis cell wall galactan transport",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 10,
+      "doi": "10.1038/s41467-026-78142-3",
+      "title": "Resistance indicators in sewage microbiota mirror clinical antibiotic use with temporal lag linked to host",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 11,
+      "doi": "10.1038/s41467-026-78365-4",
+      "title": "Single-cell atlas of fetal immunity across lung, spleen, and umbilical cord blood in nonhuman primates",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 12,
+      "doi": "10.1038/s41467-026-77358-7",
+      "title": "The conformation-selective PI3Kδ inhibitor roginolisib in patients with advanced or metastatic cancer, including metastatic uveal melanoma: first-in-human clinical trial",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 13,
+      "doi": "10.1038/s43588-026-01063-0",
+      "title": "Advancing chemical reaction prediction in data-scarce drug discovery with active and geometric deep learning",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 14,
+      "doi": "10.1073/pnas.2618654123",
+      "title": "A second-generation “hypoxia in a pill” rescues neurodegenerative phenotypes across distinct mouse models",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 15,
+      "doi": "10.1073/pnas.2628617123",
+      "title": "A-to-I RNA editing–mediated stop codon read-through in <i>Fusarium graminearum</i> is not generally adaptive",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 16,
+      "doi": "10.1073/pnas.2620272123",
+      "title": "GTP orchestrates CTP synthase via an allosteric effector–cycling mechanism",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 17,
+      "doi": "10.1073/pnas.2524540123",
+      "title": "IGF2BP1 in 17q-gain cooperates with MYCN to regulate purine biosynthesis and immunotherapy efficacy in neuroblastoma",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 18,
+      "doi": "10.1073/pnas.2609982123",
+      "title": "Interventions to mitigate post-infection morbidity: Management insights from simple models",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 19,
+      "doi": "10.1073/pnas.2620271123",
+      "title": "Reaction-based cryo-EM resolves the continuous conformational spectrum of CTP synthase catalysis",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 20,
+      "doi": "10.1073/pnas.2606713123",
+      "title": "SETDB1 preferentially silences evolutionarily young retroelements",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 21,
+      "doi": "10.1126/sciadv.ady6048",
+      "title": "A neuronal GPCR modifies neuropeptide signaling to suppress proteostasis in distal tissues",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 22,
+      "doi": "10.1126/sciadv.aei1333",
+      "title": "ALIX-dependent small extracellular vesicles from tissue-resident mesenchymal cells regulate pancreatic β cell proliferation in obesity",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 23,
+      "doi": "10.1126/sciadv.aeh6459",
+      "title": "Buffaloed in Brandenburg: Germany’s first brush with foot-and-mouth disease after four decades of freedom",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 24,
+      "doi": "10.1126/sciadv.adz0181",
+      "title": "Canonical Wnt induction by OTULIN prevents keratinocyte death and skin inflammation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 25,
+      "doi": "10.1126/sciadv.aeh4948",
+      "title": "Carbonic anhydrase VIII regulates IP3R1-dependent Ca <sup>2+</sup> signaling to coordinate insulin secretion and hepatic glucose production",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 26,
+      "doi": "10.1126/sciadv.aeg8398",
+      "title": "Cis-regulatory inactivation of vitamin D signaling confers extreme calcium tolerance in Jialing fish",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 27,
+      "doi": "10.1126/sciadv.aee5257",
+      "title": "Citron kinase activity controls alternative splicing events that drive prostate cancer growth",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 28,
+      "doi": "10.1126/sciadv.aed8424",
+      "title": "Costly missed connections: Visitation and misconduct in California prisons",
+      "kept": true,
+      "reason": "Quasi-experimental study of social connection, incarceration, violence and institutional policy."
+    },
+    {
+      "section": "new_this_week",
+      "index": 29,
+      "doi": "10.1126/sciadv.aeh6920",
+      "title": "Dishevelled-mediated clustering stabilizes Frizzled6 and Vangl2 to establish planar cell polarity in the mammalian skin",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 30,
+      "doi": "10.1126/sciadv.aeh7555",
+      "title": "Embryos resolve the enigmatic origin of the theropod wishbone",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 31,
+      "doi": "10.1126/sciadv.aeh3957",
+      "title": "Extracellular matrix–targeted TNC-scFv armoring enhances CAR T cell persistence and antitumor activity in solid tumors",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 32,
+      "doi": "10.1126/sciadv.aee7253",
+      "title": "From plankton to fish: 21st-century redistribution of marine biodiversity and the changing role of rare species",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 33,
+      "doi": "10.1126/sciadv.adt4995",
+      "title": "HPSC-derived mesenchymal stromal cells ameliorate murine autistic-like phenotypes through activating oxytocinergic neurons",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 34,
+      "doi": "10.1126/sciadv.aeh3785",
+      "title": "Human trilayer engineered blood vessel reveals influence of fibroblasts on disease progression in model of Hutchinson-Gilford progeria",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 35,
+      "doi": "10.1126/sciadv.aef9368",
+      "title": "Hydration channel engineering in Tröger’s base-POP membranes for mono/multivalent cation and anion discrimination",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 36,
+      "doi": "10.1126/sciadv.aei4756",
+      "title": "Hydrogen isotopes reveal water leakage from the core",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 37,
+      "doi": "10.1126/sciadv.aeg6770",
+      "title": "Kupffer cells are key mediators of antigen-specific immune tolerance by peptide-coupled red blood cells",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 38,
+      "doi": "10.1126/sciadv.aeh6480",
+      "title": "Long-term immunoprophylaxis by TLR9 ligand mediates macrophage-ILC cross-talk against respiratory viral infection",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 39,
+      "doi": "10.1126/sciadv.aeh3246",
+      "title": "Machine learning–assisted directed evolution of plant Rubisco",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 40,
+      "doi": "10.1126/sciadv.aee5886",
+      "title": "Mesoscale structures in signed networks",
+      "kept": true,
+      "reason": "Computational signed-network method applied to social-political systems and online social networks."
+    },
+    {
+      "section": "new_this_week",
+      "index": 41,
+      "doi": "10.1126/sciadv.aeg9211",
+      "title": "Minimal-actuation feather star–inspired soft swimmers for multimodal 3D maneuverability",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 42,
+      "doi": "10.1126/sciadv.aei7996",
+      "title": "Multiscale insights into screw dislocation-driven growth mechanisms",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 43,
+      "doi": "10.1126/sciadv.aed4187",
+      "title": "Optical resolution of H/D isotopic chirality via asymmetric C–H amination",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 44,
+      "doi": "10.1126/sciadv.aeg3842",
+      "title": "Packing-accelerated consecutive NIR excitation (PACE) enables high energy photocatalysis and antitumor immunity in vivo",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 45,
+      "doi": "10.1126/sciadv.aed3416",
+      "title": "Phage-ICE tandems facilitate bacterial adaptation and antimicrobial resistance spread",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 46,
+      "doi": "10.1126/sciadv.aem0495",
+      "title": "Plenty of fish in the sea, but only one multimodal feather star robot",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 47,
+      "doi": "10.1126/sciadv.aec1413",
+      "title": "Rise and spread of lead-silver metallurgy deciphered from peatland archives",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 48,
+      "doi": "10.1126/sciadv.aeh2362",
+      "title": "SLC39-driven zinc influx orchestrates pleiotropic tumor–immune system cross-talk to establish immune suppression in colorectal cancer",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 49,
+      "doi": "10.1126/sciadv.aee3306",
+      "title": "Self-buoyant cell-spheroid culture programming multi-spheroid assembly",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 50,
+      "doi": "10.1126/sciadv.aei7570",
+      "title": "Sensory receptor expansion and neural accommodation in butterfly color vision",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 51,
+      "doi": "10.1126/sciadv.aeh5972",
+      "title": "Specific expertise from diffuse feedback: A feedforward-gated mechanism",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 52,
+      "doi": "10.1126/sciadv.aeh0566",
+      "title": "Spin force from a nitrogen-vacancy ensemble drives a 100-mg levitated resonator",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 53,
+      "doi": "10.1126/sciadv.aee9247",
+      "title": "Surficial carbonates in mantle plume sources revealed by magnesium isotopes",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 54,
+      "doi": "10.1126/sciadv.aef6902",
+      "title": "Targeted integration of extrachromosomal arrays in <i>C. elegans</i> using PhiC31 integrase",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 55,
+      "doi": "10.1126/sciadv.aea2001",
+      "title": "Targeting SUV39H2 exon skipping reverses resistance to CDK4/6 inhibitors via transcriptional activation of p21",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 56,
+      "doi": "10.1111/ajps.70082",
+      "title": "Teaching the past, informing the present? School history education and attitudes toward foreign countries",
+      "kept": true,
+      "reason": "Substantive dedicated communication or political-science article; retained."
+    },
+    {
+      "section": "new_this_week",
+      "index": 57,
+      "doi": "10.1017/s0003055426101920",
+      "title": "The Idea of a Counter-Structure: Rethinking Collective Action against Climate Injustice",
+      "kept": true,
+      "reason": "Substantive dedicated communication or political-science article; retained."
+    },
+    {
+      "section": "new_this_week",
+      "index": 58,
+      "doi": "10.1017/s0003055426101816",
+      "title": "When Can Clientelism Serve Democratic Ends? A Democratic Theory of Distributive Politics",
+      "kept": true,
+      "reason": "Substantive dedicated communication or political-science article; retained."
+    },
+    {
+      "section": "new_this_week",
+      "index": 59,
+      "doi": "10.1093/jcmc/zmag024",
+      "title": "The sequential replicant effect in interpersonal sincerity: evidence from AI-mediated apology and gratitude",
+      "kept": true,
+      "reason": "Substantive dedicated communication or political-science article; retained."
+    },
+    {
+      "section": "new_this_week",
+      "index": 60,
+      "doi": "10.1038/s41467-026-78455-3",
+      "title": "A convergent total synthesis of the ivermectin aglycon through transition metal-mediated and anionic transformations",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 61,
+      "doi": "10.1038/s41467-026-78514-9",
+      "title": "A universal twist-slide coupling mechanism governs deformations of DNA, RNA, and RNA-DNA hybrid duplexes",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 62,
+      "doi": "10.1038/s41467-026-78424-w",
+      "title": "ACAT1/SOAT1 governs mitochondrial dynamics and thermogenesis via the mTOR-MFN2-USP2 axis in brown adipocytes",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 63,
+      "doi": "10.1038/s41467-026-78094-8",
+      "title": "ATRX deficiency drives aberrant type I interferon signalling through cGAS-dependent transcriptional dysregulation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 64,
+      "doi": "10.1038/s41467-026-78499-5",
+      "title": "Bacterial toxin sensing induces transient inflammasome-dependent innate immune memory that improves survival during sepsis",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 65,
+      "doi": "10.1038/s41467-026-78410-2",
+      "title": "Bromide-mediated enhancement of far-UVC/peracetic acid process for selective micropollutant abatement",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 66,
+      "doi": "10.1038/s41467-026-78531-8",
+      "title": "Cooperative outer-surface recognition extends host–guest chemistry for high-capacity molecular separation beyond cavity inclusion",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 67,
+      "doi": "10.1038/s41467-026-78198-1",
+      "title": "Distinguishing learning asymmetry from perseveration in behavioral models",
+      "kept": true,
+      "reason": "Computational behavioral-model validation for separating learning asymmetry from perseveration and reducing spurious inference."
+    },
+    {
+      "section": "new_this_week",
+      "index": 68,
+      "doi": "10.1038/s41467-026-78228-y",
+      "title": "Emergence of polarization in networks of large language model agents",
+      "kept": true,
+      "reason": "LLM-agent political opinion dynamics, polarization and network interventions; directly aligned with AI for computational social science."
+    },
+    {
+      "section": "new_this_week",
+      "index": 69,
+      "doi": "10.1038/s41467-026-77769-6",
+      "title": "Generative diffusion surrogates with analytical variance schedule",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 70,
+      "doi": "10.1038/s41467-026-76882-w",
+      "title": "Immune genetic associations of antibody Fc-profiles across twins",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 71,
+      "doi": "10.1038/s41467-026-77783-8",
+      "title": "Modulate adsorption via Co2+-O-Coδ+ asymmetric pairs toward efficient upcycling of plastic waste to commodity chemicals",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 72,
+      "doi": "10.1038/s41467-026-78295-1",
+      "title": "Reward function compression facilitates goal-dependent reinforcement learning",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 73,
+      "doi": "10.1038/s41467-026-78285-3",
+      "title": "SWI/SNF subunit SMARCD1 deficiency promotes clear cell renal cell carcinoma progression via mitochondrial reprogramming",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 74,
+      "doi": "10.1038/s41467-026-78312-3",
+      "title": "Targeting CD28 on T lineage malignancies with chimeric antigen receptor T cells",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 75,
+      "doi": "10.1080/10584609.2026.2745844",
+      "title": "The Politics of the “Non-Political”: A Conceptual Review",
+      "kept": true,
+      "reason": "Substantive dedicated communication or political-science article; retained."
+    },
+    {
+      "section": "new_this_week",
+      "index": 76,
+      "doi": "10.1073/pnas.2619120123",
+      "title": "Cycles upon cycles—Temperature scaling of medaka development",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 77,
+      "doi": "10.1073/pnas.2602244123",
+      "title": "Large language models unlock the ecology of species interactions",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 78,
+      "doi": "10.1073/pnas.2604873123",
+      "title": "Mechanisms of intracellular pH gating and local anesthetic inhibition of the two-pore domain K <sup>+</sup> channel TASK-2",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 79,
+      "doi": "10.1073/pnas.2600686123",
+      "title": "Mechanotherapy enhances nanodrug uptake by overcoming the actin cytoskeleton damping effect",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 80,
+      "doi": "10.1073/pnas.2612173123",
+      "title": "Transcriptional regulation and function of GPR18 in macrophage subtype specification",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 81,
+      "doi": "10.1126/science.adz2675",
+      "title": "A fast radio burst at redshift 2, three billion years after the Big Bang",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 82,
+      "doi": "10.1126/science.aej2213",
+      "title": "Advancing mathematics research with AI-driven formal proof search",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 83,
+      "doi": "10.1126/science.ael3115",
+      "title": "Careful governance is needed to balance the benefits and risks of landfill mining in China",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 84,
+      "doi": "10.1126/science.aeb2986",
+      "title": "Epigenetic aging and transposon dysregulation reflect size-related lifespan compression in dogs",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 85,
+      "doi": "10.1126/science.aei1312",
+      "title": "High-fidelity entangling gates and nonlocal circuits with neutral atoms",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 86,
+      "doi": "10.1126/science.aem9877",
+      "title": "In Other Journals",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 87,
+      "doi": "10.1126/science.aei0940",
+      "title": "Natural <sup>15</sup> N <sup>15</sup> N abundances constrain fixed nitrogen loss",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 88,
+      "doi": "10.1126/science.aee9284",
+      "title": "Nutritional interventions’ impacts on human milk: Three trials in low-resource settings",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 89,
+      "doi": "10.1126/science.aef7249",
+      "title": "Phones impede learning: Evidence from a massive phone-free classroom experiment",
+      "kept": true,
+      "reason": "Large phone-free classroom experiment on technology, learning and policy; abstract metadata is limited to the supplied one-line summary."
+    },
+    {
+      "section": "new_this_week",
+      "index": 90,
+      "doi": "10.1126/science.aea7733",
+      "title": "The human gut microbiome primes fever after vaccination",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 91,
+      "doi": "10.1038/s41586-026-11122-1",
+      "title": "A nuclear clock synchronized to 229Th",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 92,
+      "doi": "10.1038/s41586-026-11127-w",
+      "title": "Alveolar stem cells transdifferentiate to drive bronchiolar regeneration",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 93,
+      "doi": "10.1038/d41586-026-02969-5",
+      "title": "Gut microbes that trace ancient human journeys",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 94,
+      "doi": "10.1038/d41586-026-02836-3",
+      "title": "How we ditched presentations and embraced silence in our lab meetings",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 95,
+      "doi": "10.1038/s41586-026-11106-1",
+      "title": "Prehistoric global migration of vanishing gut microbes with humans",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 96,
+      "doi": "10.1038/s41586-026-11140-z",
+      "title": "RNA catalysis emerges from dynamic structural ensembles",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 97,
+      "doi": "10.1038/s41586-026-11111-4",
+      "title": "Retrofitting language models to operate over bytes",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 98,
+      "doi": "10.1038/s41586-026-11095-1",
+      "title": "Spatially deterministic nucleation of 2D semiconductors by etching flux",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 99,
+      "doi": "10.1038/s41467-026-78315-0",
+      "title": "A cytidine deaminase biodegrader sensitises multiple cancer types to deoxycytidine analogue-based chemotherapies",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 100,
+      "doi": "10.1038/s41467-026-77990-3",
+      "title": "A selectivity filter in Tim17 mediates intramitochondrial protein sorting",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 101,
+      "doi": "10.1038/s41467-026-78459-z",
+      "title": "Carbon dioxide as a multifunctional regulator in electrochemical vicinal bromination",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 102,
+      "doi": "10.1038/s41467-026-78238-w",
+      "title": "Claudin-2 protects from enteropathogenic E. coli-infection and colitis by promoting crypt fetalization via β1-integrin/FAK/YAP signaling",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 103,
+      "doi": "10.1038/s41467-026-77376-5",
+      "title": "Deep diffractive optical neural networks for detecting skyrmionic topologies of light and their live training",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 104,
+      "doi": "10.1038/s41467-026-78245-x",
+      "title": "EP300 inhibition alleviates acute-on-chronic liver failure through modulation of scar-associated macrophages",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 105,
+      "doi": "10.1038/s41467-026-78219-z",
+      "title": "FMT combined with atezolizumab-bevacizumab in hepatocellular carcinoma refractory to immunotherapy: an open label, single-arm, phase II pilot study",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 106,
+      "doi": "10.1038/s41467-026-78213-5",
+      "title": "Game theory driven multi-agent framework mitigates language model hallucination",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 107,
+      "doi": "10.1038/s41467-026-78195-4",
+      "title": "Ions leaving no tracks",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 108,
+      "doi": "10.1038/s41467-026-78156-x",
+      "title": "Lung environment in healthy old age shapes the phenotype and CCR2-mediated recruitment of a subset of apoptotic, high-turnover alveolar macrophages",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 109,
+      "doi": "10.1038/s41467-026-78357-4",
+      "title": "The Wnt co-receptor Arrow-LRP5/6 is required for planar cell polarity establishment in Drosophila",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 110,
+      "doi": "10.1038/s42256-026-01303-y",
+      "title": "Characterizing the role of reasoning tokens in large language models as state over tokens",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 111,
+      "doi": "10.1038/s42256-026-01315-8",
+      "title": "Emotional optimization by newsroom AI needs behavioural evaluation",
+      "kept": true,
+      "reason": "Newsroom AI and behavioral evaluation; directly relevant to computational media despite unavailable abstract metadata."
+    },
+    {
+      "section": "new_this_week",
+      "index": 112,
+      "doi": "10.1073/pnas.2608835123",
+      "title": "<i>MATRIN3</i> deficiency in human cells triggers an autoinflammatory response via cGAS–STING activation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 113,
+      "doi": "10.1073/pnas.2620441123",
+      "title": "<i>Trans</i> - and <i>cis</i> -interaction dynamics of cadherin complexes on membranes visualized by high-speed atomic force microscopy",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 114,
+      "doi": "10.1073/pnas.2632686123",
+      "title": "Barry Bloom and the convergence of immunology, infectious disease, and public health",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 115,
+      "doi": "10.1073/pnas.2603111123",
+      "title": "Bone morphogenetic protein signaling as a key regulator of retinal fibrosis",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 116,
+      "doi": "10.1073/pnas.2617216123",
+      "title": "Cell jamming transition is regulated by mitochondrial pyruvate transport and endocytosis",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 117,
+      "doi": "10.1073/pnas.2521987123",
+      "title": "Enhancement of hippocampal synaptic AMPA receptor function by the antidepressant tianeptine and by opioid peptides",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 118,
+      "doi": "10.1073/pnas.2606341123",
+      "title": "Hyperfunction of PSD-95 leads to hyperexcitability and cognitive abnormalities in MEF2C haploinsufficiency",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 119,
+      "doi": "10.1073/pnas.2623525123",
+      "title": "Myeloid cell reprogramming drives enhanced defense against <i>Streptococcus pneumoniae</i> lung infection following exposure to commensal <i>Prevotella</i>",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 120,
+      "doi": "10.1017/s0003055426102007",
+      "title": "Crime and Participation",
+      "kept": true,
+      "reason": "Substantive dedicated communication or political-science article; retained."
+    },
+    {
+      "section": "new_this_week",
+      "index": 121,
+      "doi": "10.1080/19312458.2026.2742796",
+      "title": "Get a learner’s permit before you speed on the highway: farewell and a call for <i>a priori</i> model evaluation metrics and guardrails for computational communication research",
+      "kept": false,
+      "reason": "Non-substantive publication noise (editorial/farewell or corrigendum)."
+    },
+    {
+      "section": "new_this_week",
+      "index": 122,
+      "doi": "10.1038/s41467-026-77524-x",
+      "title": "Bifidobacterium animalis subsp. lactis BL-99 ameliorates age-related intestinal hypomotility in older adults: a randomized controlled trial",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 123,
+      "doi": "10.1038/s41467-026-78282-6",
+      "title": "Catalytic asymmetric dearomatization of (hetero)aromatic frameworks",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 124,
+      "doi": "10.1038/s41467-026-78000-2",
+      "title": "Differential effects of visual and tactile deprivation on spatially modulated cells in the medial entorhinal cortex",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 125,
+      "doi": "10.1038/s41467-026-78444-6",
+      "title": "Distinct T cell correlates of COVID-19 risk before and after a second booster in previously SARS-CoV-2 infected versus naïve COVAIL trial participants",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 126,
+      "doi": "10.1038/s41467-026-77236-2",
+      "title": "Effect of transcutaneous auricular vagus nerve stimulation on postoperative liver injury in patients undergoing partial hepatectomy: a phase II clinical randomized trial",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 127,
+      "doi": "10.1038/s41467-026-78162-z",
+      "title": "Genetically engineered RNA inducers of proximity for protein regulation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 128,
+      "doi": "10.1038/s41467-026-78192-7",
+      "title": "MOF-mediated cascade photoreactions under nanoconfinement for defluorination of per- and polyfluoroalkyl substances",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 129,
+      "doi": "10.1038/s41467-026-78057-z",
+      "title": "Neuropsychiatry genetics in Africa",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 130,
+      "doi": "10.1038/s41467-026-78460-6",
+      "title": "Real-time visualization of G2L4 reverse transcriptase in DNA repair via microhomology-mediated end joining",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 131,
+      "doi": "10.1038/s41467-026-78304-3",
+      "title": "RhoA Y42C drives cell plasticity and PD-1-mediated immune evasion of diffuse gastric cancer",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 132,
+      "doi": "10.1038/s41467-026-77606-w",
+      "title": "The limits of Antarctic conservation governance",
+      "kept": true,
+      "reason": "Computational analysis of 90,000 scientific and policy documents to study the limits of international conservation governance."
+    },
+    {
+      "section": "new_this_week",
+      "index": 133,
+      "doi": "10.1038/s41467-026-78233-1",
+      "title": "Water-oil interfacial kinetics control enables water-based organic solar cells with 12.59% certified efficiency",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 134,
+      "doi": "10.1017/pan.2026.10052",
+      "title": "Using Multilingual Language Technology to Classify Open-Ended Survey Responses: Conceptions of Democracy in a Cross-Cultural Survey Setting – CORRIGENDUM",
+      "kept": false,
+      "reason": "Non-substantive publication noise (editorial/farewell or corrigendum)."
+    },
+    {
+      "section": "new_this_week",
+      "index": 135,
+      "doi": "10.1073/pnas.2621299123",
+      "title": "53BP1 condensates regulate DNA replication progression and completion",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 136,
+      "doi": "10.1073/pnas.2616716123",
+      "title": "A receptor-like kinase pair integrates extracellular ATP and salicylic acid signaling to activate plant immunity",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 137,
+      "doi": "10.1073/pnas.2533689123",
+      "title": "An opto-microperfusion neural probe for multiplexed detection of optogenetically evoked neurochemical release dynamics",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 138,
+      "doi": "10.1073/pnas.2621848123",
+      "title": "Bypass of the canonical biotin synthesis pathway in yeast",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 139,
+      "doi": "10.1073/pnas.2608918123",
+      "title": "Chronic intermittent heat exposure induces anxiety in female mice via TLR4 upregulation in paraventricular nucleus CRH neurons",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 140,
+      "doi": "10.1073/pnas.2603938123",
+      "title": "KAT5/TIP60 orchestrates H4K16 and H2A.Z acetylation to drive the gonocyte-to-spermatogonia transition",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 141,
+      "doi": "10.1073/pnas.2614827123",
+      "title": "Late-onset preeclampsia is characterized by accelerated placental aging",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 142,
+      "doi": "10.1073/pnas.2621225123",
+      "title": "Maternal ranging strategies facilitate offspring social play at energetic cost in the most solitary ape",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 143,
+      "doi": "10.1073/pnas.2619427123",
+      "title": "Phenotypic screening identifies kenpaullone as a prolymphangiogenic compound to improve heart repair following myocardial infarction",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 144,
+      "doi": "10.1073/pnas.2607665123",
+      "title": "Structural basis for membrane-dependent positive feedback regulation of DOCK11 by activated Cdc42",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 145,
+      "doi": "10.1073/pnas.2534671123",
+      "title": "Titin extension explains residual force enhancement in skeletal muscle",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 146,
+      "doi": "10.1073/pnas.2610795123",
+      "title": "Two D-loop resolution systems enable natural genetic transformation in bacteria",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 147,
+      "doi": "10.1038/s41467-026-78100-z",
+      "title": "A multi-center, single-arm, phase 2 trial of dasatinib in T follicular helper cell lymphomas",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 148,
+      "doi": "10.1038/s41467-026-78477-x",
+      "title": "An inadequate over-parameterized Mössbauer spectral analysis for the mistaken detection of surface FeIV=O, in Nature Communications 16, 7642 (2025)",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 149,
+      "doi": "10.1038/s41467-026-78043-5",
+      "title": "Aridity regulates scale-dependent effects of multiple resource additions on productivity stability in Eurasian grasslands",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 150,
+      "doi": "10.1038/s41467-026-78220-6",
+      "title": "Coordination ring-opening transamidation copolymerization of cyclic lactones and lactams towards circular and biodegradable poly(ester amide) adhesives",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 151,
+      "doi": "10.1038/s41467-026-78297-z",
+      "title": "Copper(I)-catalyzed enantioselective Truce-Smiles rearrangement to access glutamine motifs bearing 1,3-nonadjacent stereocenters",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 152,
+      "doi": "10.1038/s41467-026-78294-2",
+      "title": "Electrochemiluminescence shunt via bi-based co-reaction accelerator for the identification of pentanol isomers",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 153,
+      "doi": "10.1038/s41467-026-78347-6",
+      "title": "Episodic changes in global forest edges in the 21st century",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 154,
+      "doi": "10.1038/s41467-026-78345-8",
+      "title": "Fear learning–induced brain dynamics predict individual extinction memory expression following transcranial magnetic stimulation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 155,
+      "doi": "10.1038/s41467-026-78275-5",
+      "title": "Global scale river discharge and mean depth from radar altimetry and model",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 156,
+      "doi": "10.1038/s41467-026-78468-y",
+      "title": "Narrowing urban heat disparities alongside faster greening in low-income neighborhoods across cities in the United States",
+      "kept": true,
+      "reason": "Longitudinal urban environmental inequality and equitable climate-adaptation policy across 55 U.S. cities."
+    },
+    {
+      "section": "new_this_week",
+      "index": 157,
+      "doi": "10.1038/s41467-026-78090-y",
+      "title": "Quasi-continuous cotranslational compaction and folding of a multidomain protein",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 158,
+      "doi": "10.1038/s41467-026-78208-2",
+      "title": "Reconfiguring interfacial hydrogen-bond networks to enhance anodic oxidation for efficient wastewater treatment",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 159,
+      "doi": "10.1038/s41467-026-77744-1",
+      "title": "Reframing decentralized diagnostics with a programmable multi-dimensional microfluidic system",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 160,
+      "doi": "10.1038/s41467-026-78421-z",
+      "title": "Selective radical pathways on defect-engineered electrophilic biochar for sustainable water purification",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 161,
+      "doi": "10.1038/s41467-026-78337-8",
+      "title": "Self-foaming sintering-resistant iron-tungsten powders enable high-cycle thermochemical hydrogen storage",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 162,
+      "doi": "10.1038/s41467-026-78199-0",
+      "title": "Sexually dimorphic control of excitatory synapse maintenance in ventral hippocampal circuits by Neurexin2α ligand Vstm2b",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 163,
+      "doi": "10.1038/s41467-026-78250-0",
+      "title": "Stomatin organizes laterally segregated membrane microdomains to modulate transmembrane transport and signal transduction",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 164,
+      "doi": "10.1038/s41467-026-78135-2",
+      "title": "Transmembrane PhoxID: photoproximity labelling across the plasma membrane in vivo",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 165,
+      "doi": "10.1038/s41562-026-02603-4",
+      "title": "Algorithm-assisted personalized risk communication to encourage flu vaccination in the USA: three randomized field trials",
+      "kept": true,
+      "reason": "Algorithm-assisted personalized risk communication tested in three randomized field trials; abstract unavailable in the candidate metadata."
+    },
+    {
+      "section": "new_this_week",
+      "index": 166,
+      "doi": "10.1080/10584609.2026.2733320",
+      "title": "Does the TikTok Feed Lean Right? Exposure to Political Content Among Non-Partisan Users in Germany",
+      "kept": true,
+      "reason": "Substantive dedicated communication or political-science article; retained."
+    },
+    {
+      "section": "new_this_week",
+      "index": 167,
+      "doi": "10.1073/pnas.2618289123",
+      "title": "Apomixis imposes evolutionary costs by reducing recombination efficiency and disrupting segregation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 168,
+      "doi": "10.1073/pnas.2604393123",
+      "title": "Chronic cigarette smoke exposure induces distinct stem cell states driving genetic driver–specific non–small cell lung cancer subtypes",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 169,
+      "doi": "10.1073/pnas.2608188123",
+      "title": "Formation of a swelling gel underlies a morphological transition in <i>Bacillus subtilis</i> biofilms",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 170,
+      "doi": "10.1073/pnas.2606997123",
+      "title": "Global divergence in urban–rural vegetation resilience driven by broken ecological trade-offs",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 171,
+      "doi": "10.1073/pnas.2617028123",
+      "title": "Opposing activity of SOX9 and Wnt in the developing otocyst ensures SOX10 control of endolymphatic development",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 172,
+      "doi": "10.1073/pnas.2538060123",
+      "title": "Regulation of morphogen signaling pathways by recurrent hypermotif circuits",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "new_this_week",
+      "index": 173,
+      "doi": "10.1073/pnas.2610214123",
+      "title": "The more you automate, the less you see: Hidden pitfalls of autonomous AI scientists",
+      "kept": true,
+      "reason": "Systematic validation and auditing of autonomous AI-scientist workflows, directly relevant to AI-enabled research infrastructure."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 0,
+      "doi": "10.1038/s41467-026-78126-3",
+      "title": "Multivalent antiviral conjugates enhance activity against Influenza via cross-linking viruses",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 1,
+      "doi": "10.1038/s41467-026-77740-5",
+      "title": "A proximity-driven and regioselective peptide bicyclization (PReP-Bicyc) approach for phage display libraries",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 2,
+      "doi": "10.1038/s41467-026-78200-w",
+      "title": "Herbicide degradation is driven by communication-mediated division of labor in synthetic communities",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 3,
+      "doi": "10.1038/s41467-026-78050-6",
+      "title": "Near-atomistic simulations reveal the molecular principles that control chromatin structure and phase separation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 4,
+      "doi": "10.1038/s41467-026-78165-w",
+      "title": "Self-restoration of reactive centers via contaminant-to-catalyst electron replenishment for sustained Fenton-like activity",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 5,
+      "doi": "10.1038/s41467-026-78261-x",
+      "title": "Sustainability cost of defect engineering in color centers for quantum communications",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 6,
+      "doi": "10.1038/s41467-026-78235-z",
+      "title": "The structural dynamics and molecular coupling in the slow inactivation of a prokaryotic voltage-gated sodium channel",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 7,
+      "doi": "10.1038/s41467-026-77088-w",
+      "title": "Universal random matrix behavior of a Fermionic quantum gas",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 8,
+      "doi": "10.1017/s0003055426101774",
+      "title": "The Representation Trap: How Minority Power Shapes Electoral Politics in India",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 9,
+      "doi": "10.1038/s41467-026-77957-4",
+      "title": "Cannabinoid modulation of central amygdala population dynamics during threat investigation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 10,
+      "doi": "10.1038/s41467-026-78190-9",
+      "title": "First-line dolutegravir/lamivudine in HIV-1 infection: lymph node penetration and reservoir decline in a randomized open-label clinical trial",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 11,
+      "doi": "10.1038/s41467-026-77518-9",
+      "title": "Spatial transcriptomics reveals microenvironmental heterogeneity in osteoarthritic subchondral bone",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 12,
+      "doi": "10.1038/s41562-026-02606-1",
+      "title": "Gendered motives for group formidability among children and adults",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 13,
+      "doi": "10.1073/pnas.2536965123",
+      "title": "A structure-aware generative AI framework for revealing functional relationships in protein families",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 14,
+      "doi": "10.1073/pnas.2536086123",
+      "title": "PAK4 exacerbates melanoma immunosuppression by promoting exosome release",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 15,
+      "doi": "10.1126/sciadv.aej6157",
+      "title": "<i>S</i> -Nitrosylation of glycogen phosphorylase regulates nuclear glycogenolysis and is impaired in metabolic liver disorders",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 16,
+      "doi": "10.1126/sciadv.aec7970",
+      "title": "A computational super-resolution framework for multidimensional fluorescence imaging",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 17,
+      "doi": "10.1126/sciadv.aei3417",
+      "title": "A forward genetics platform for papillomavirus research",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 18,
+      "doi": "10.1126/sciadv.aef1145",
+      "title": "A noncanonical function of the tyrosine degradation enzyme FAH drives CDK4/6 inhibitor resistance in breast cancer",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 19,
+      "doi": "10.1126/sciadv.aeg1622",
+      "title": "Aging-associated SATB1 deficiency remodels 3D genome architecture and transcriptional programs in naive CD4 <sup>+</sup> T cells",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 20,
+      "doi": "10.1126/sciadv.aef4504",
+      "title": "An anoxygenic photosynthesis-inspired dual biohybrid for light-enhanced chemical production",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 21,
+      "doi": "10.1126/sciadv.aed6938",
+      "title": "An immunocompetent, multifluorescent resource for real-time analysis of osteosarcoma progression, metastasis, and response to therapy",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 22,
+      "doi": "10.1126/sciadv.aeb5047",
+      "title": "CMOS multifunctional programmable metachip for terahertz-integrated sensing and communication",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 23,
+      "doi": "10.1126/sciadv.aee4577",
+      "title": "Chemo-metallo nanodrivers for spatiotemporally controlled in situ vaccination",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 24,
+      "doi": "10.1126/sciadv.aeg1967",
+      "title": "Correcting for spatial and temporal dependence in estimating the economic effect of extreme heat",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 25,
+      "doi": "10.1126/sciadv.aee4525",
+      "title": "Electronic profiling of neuronal extracellular vesicles enables early prediction of Parkinson’s disease",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 26,
+      "doi": "10.1126/sciadv.aeh8819",
+      "title": "GenAI-Net: A generative AI framework for automated biomolecular network design",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 27,
+      "doi": "10.1126/sciadv.aeg8302",
+      "title": "Harnessing interfacial kosmotropic effect for reversible quasi-solid-state zinc-iodine batteries",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 28,
+      "doi": "10.1126/sciadv.aei2831",
+      "title": "Macrophage-supported metabolic adaptation drives tumor survival under nutrient stress",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 29,
+      "doi": "10.1126/sciadv.aeg0399",
+      "title": "NAT10 governs development through the Xrp1-mediated stress response rather than its RNA acetylation activity",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 30,
+      "doi": "10.1126/sciadv.aej1838",
+      "title": "Observation of orbital-angular-momentum-driven temperature modulation via the spin Peltier effect",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 31,
+      "doi": "10.1126/sciadv.aeh5472",
+      "title": "Psychological and computational evidence that merit is a constructed evaluative process",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 32,
+      "doi": "10.1126/sciadv.aej5227",
+      "title": "Silver(I)-mediated amide-to-ester transformation on unprotected peptides for protein chemical synthesis and engineering",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 33,
+      "doi": "10.1126/sciadv.aef9864",
+      "title": "Speech clocks decode dementia phenotypes, social exposome, and biological aging",
+      "kept": true,
+      "reason": "Multimodal speech measurement across five countries linking acoustic and linguistic features to dementia, social exposome and aging."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 34,
+      "doi": "10.1126/sciadv.aeh3823",
+      "title": "Stochastic cloud fluctuations drive Arctic winter radiative bistability",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 35,
+      "doi": "10.1126/sciadv.aef8456",
+      "title": "Structural and kinetic mechanisms of state-dependent potassium channel inhibition",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 36,
+      "doi": "10.1126/sciadv.aeg6567",
+      "title": "Systematic identification of p11 as a signaling modulator across the GPCRome",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 37,
+      "doi": "10.1126/sciadv.aeg3270",
+      "title": "Targeting the ENO1 metabolic checkpoint via microenvironment-responsive nanotherapeutics promotes postinfarction cardiac repair",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 38,
+      "doi": "10.1126/sciadv.aeg3462",
+      "title": "The landscape of allele-specific expression in human kidneys",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 39,
+      "doi": "10.1126/sciadv.aeg8897",
+      "title": "Trans-Eurasian steppe herder and barley farmer migrations shaped paternal genomic dynamics in Northwest China and Hui evolution",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 40,
+      "doi": "10.1126/sciadv.aeb1137",
+      "title": "Tumor gasdermin E acts as a rheostat to limit apoptotic cell survival and mutagenesis in anticancer immune environments",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 41,
+      "doi": "10.1126/sciadv.aei5080",
+      "title": "Ultrahigh discharge voltage plateau of 3.2 V achieved in Li-CO <sub>2</sub> batteries using iron polyphthalocyanine",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 42,
+      "doi": "10.1093/joc/jqag018",
+      "title": "Inoculating against fatalistic beliefs: a comparative test of narrative and non-narrative strategies",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 43,
+      "doi": "10.1038/s41467-026-78166-9",
+      "title": "Genome mining of the tumor microbiome reveals biosynthetic diversity and potential pathology-modulating metabolites",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 44,
+      "doi": "10.1038/s41467-026-77175-y",
+      "title": "High-entropy enabled two-dimensional ferroelectricity and memristive synapses in van der Waals layered materials",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 45,
+      "doi": "10.1038/s41467-026-77509-w",
+      "title": "Nationwide sustainability assessment of PFAS treatment in U.S. water utilities",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 46,
+      "doi": "10.1038/s41467-026-78089-5",
+      "title": "Structural basis of voltage gating in a partially activated K+ channel",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 47,
+      "doi": "10.1038/s41467-026-77504-1",
+      "title": "Substrate coupling and inhibition in human Na+-dependent Cl−/HCO3− exchanger NCBE (SLC4A10)",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 48,
+      "doi": "10.1038/s41467-026-78267-5",
+      "title": "Wide-bandgap perovskite with homogeneous crystallization and suppressed halogen segregation for efficient perovskite-organic tandem solar cells",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 49,
+      "doi": "10.1038/s42256-026-01307-8",
+      "title": "Large language models discover complementary heuristics for combinatorial optimization",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 50,
+      "doi": "10.1080/10584609.2026.2735922",
+      "title": "When Populism? Consistent and Opportunistic Populist Communication in the 2022 Brazilian Presidential Elections",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 51,
+      "doi": "10.1073/pnas.2618715123",
+      "title": "Climate-driven adaptive microevolution in wild yeasts",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 52,
+      "doi": "10.1073/pnas.2607475123",
+      "title": "Constitutive sporulation in wild fission yeast enhances insect-mediated survival",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 53,
+      "doi": "10.1073/pnas.2617622123",
+      "title": "Defensive networks provide basis for late pre-Hispanic Andean polities",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 54,
+      "doi": "10.1073/pnas.2613915123",
+      "title": "Development of A10P3C, an isoform-selective inhibitor of EGLN2, for targeting breast cancer",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 55,
+      "doi": "10.1073/pnas.2622107123",
+      "title": "Signaling by a tyrosine-sulfated peptide balances growth and osmotic stress response in rice",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 56,
+      "doi": "10.1126/science.aef5175",
+      "title": "Dynamic multimodal cation-carbon interaction for efficient adiponitrile electrosynthesis",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 57,
+      "doi": "10.1126/science.aem4102",
+      "title": "Editor’s Note on the Research Article “China’s solar expansion policy reduces bird diversity”",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 58,
+      "doi": "10.1126/science.aem8457",
+      "title": "Fed up with politicians not listening, a climate scientist runs for office",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 59,
+      "doi": "10.1126/science.aed8207",
+      "title": "Hypertension fuels osteoarthritis through neuroendocrine signaling",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 60,
+      "doi": "10.1126/science.aem8011",
+      "title": "In Other Journals",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 61,
+      "doi": "10.1126/science.adz4797",
+      "title": "Mitochondrial carrier SLC25A34 links clock, diet, and temperature control of adipocyte lipid cycling",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 62,
+      "doi": "10.1126/science.aeh1375",
+      "title": "Stationary entanglement of a levitated oscillator with an optical field",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 63,
+      "doi": "10.1126/science.aeg4972",
+      "title": "Ultrahigh piezoelectricity by polaron-defect complexes",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 64,
+      "doi": "10.1126/science.aeh0145",
+      "title": "X and Y chromosomes as determinants of aging and disease",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 65,
+      "doi": "10.1038/s41586-026-11062-w",
+      "title": "Butterfly wing patterns in flight create powerful illusory motion cues",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 66,
+      "doi": "10.1038/s41586-026-11108-z",
+      "title": "Carbene transfer from thianthrenium ylides for cyclopropanation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 67,
+      "doi": "10.1038/s41586-026-11063-9",
+      "title": "Dynamic protrusions mediate crawling motility in Asgard archaea",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 68,
+      "doi": "10.1038/s41586-026-11088-0",
+      "title": "GPCR antagonism via rewiring of receptor trafficking and degradation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 69,
+      "doi": "10.1038/s41586-026-11092-4",
+      "title": "Transcription pause and elongation regulators mediate somatic hypermutation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 70,
+      "doi": "10.1038/s41586-026-11068-4",
+      "title": "X-ray liquidography decodes complex motions in azobenzene isomerization",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 71,
+      "doi": "10.1038/s41586-026-11076-4",
+      "title": "γδ T cell receptor dependencies define a unique immunosurveillance modality",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 72,
+      "doi": "10.1038/s41467-026-78065-z",
+      "title": "Cell-autonomous restoration of splicing homeostasis and RP11 phenotype in patient-derived RPE and retinal organoids by PRPF31.AAV gene therapy",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 73,
+      "doi": "10.1038/s41467-026-78073-z",
+      "title": "Chiral trions in enantiopure single-wall carbon nanotubes",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 74,
+      "doi": "10.1038/s41467-026-78203-7",
+      "title": "Dynamic carbon overlayered CuCo alloy promotes syngas to higher alcohols",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 75,
+      "doi": "10.1038/s41467-026-77552-7",
+      "title": "IAP antagonist tolinapant (ASTX660) in combination with pembrolizumab in advanced solid tumors: a phase I trial",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 76,
+      "doi": "10.1038/s41467-026-77933-y",
+      "title": "Largest eigenvalue statistics of wavefront shaping in complex scattering media",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 77,
+      "doi": "10.1038/s41467-026-77970-7",
+      "title": "Metabolization of human milk oligosaccharides by Streptococcus pneumoniae",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 78,
+      "doi": "10.1038/s41467-026-77894-2",
+      "title": "PIP5K-Ras bistability triggers plasma membrane symmetry breaking to define cellular polarity and regulate migration",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 79,
+      "doi": "10.1038/s41467-026-78144-1",
+      "title": "Programmable DNA protonuclei reveal environmental context on protein phase separation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 80,
+      "doi": "10.1038/s41467-026-78205-5",
+      "title": "Repurposing Cas12a2-mediated abortive infection for efficient and low-toxicity microbial genome editing",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 81,
+      "doi": "10.1038/s41467-026-78167-8",
+      "title": "Reversible six-electron tellurium redox enabled by selenium-modulated hypervalent activation in aqueous sodium/zinc hybrid batteries",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 82,
+      "doi": "10.1038/s41467-026-78109-4",
+      "title": "Salt mediated actuation of membranized coacervate droplets for regulation of enzymatic reactions",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 83,
+      "doi": "10.1038/s41467-026-77974-3",
+      "title": "Sphingolipids associate with the chlamydial nucleoid and mark developmental transitions in Chlamydia trachomatis",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 84,
+      "doi": "10.1038/s42256-026-01309-6",
+      "title": "Towards foundation-style models for energy-frontier heterogeneous neutrino detectors via self-supervised pretraining",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 85,
+      "doi": "10.1073/pnas.2620626123",
+      "title": "A conserved β-sheet motif mediates PIN2 hydrophilic loop–loop interactions to regulate PIN2 dynamics",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 86,
+      "doi": "10.1073/pnas.2614237123",
+      "title": "Genome stability disrupted by the circRBM39(4,5,6)–RPA2 axis represses breast tumorigenesis",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 87,
+      "doi": "10.1073/pnas.2614738123",
+      "title": "LAT condensation gates PLCγ1 activation via bimodal LAT phosphorylation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 88,
+      "doi": "10.1073/pnas.2536158123",
+      "title": "Mathematical discovery and exploration can be done at scale",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 89,
+      "doi": "10.1073/pnas.2616216123",
+      "title": "Metabolite ratiomics: Rapid diagnosis and classification of gliomas for intraoperative application during brain surgery",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 90,
+      "doi": "10.1073/pnas.2616692123",
+      "title": "MrtR of <i>Mesorhizobium tianshanense</i> reveals both activation and inhibition mechanisms of a LuxR-type quorum sensing receptor",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 91,
+      "doi": "10.1073/pnas.2632530123",
+      "title": "Profile of Shang-Ping Xie",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 92,
+      "doi": "10.1073/pnas.2616933123",
+      "title": "Targeted extracellular degradation of LRP8 promotes ferroptosis in cancer cells",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 93,
+      "doi": "10.1073/pnas.2614593123",
+      "title": "The circSNX6 restricts dengue virus replication in association with PARP1 and ferroptosis",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 94,
+      "doi": "10.1073/pnas.2613911123",
+      "title": "Thermosensor OsTT3.1 enhances rice thermotolerance by degrading OsGSK2 to reduce OsHsfB2c phosphorylation and nuclear translocation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 95,
+      "doi": "10.1073/pnas.2617741123",
+      "title": "Ufd4p-mediated Sum1p clearance ensures proper chromosome organization during cell division",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 96,
+      "doi": "10.1017/s0003055426101889",
+      "title": "Democratic Accountability with Citizen Coproduction",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 97,
+      "doi": "10.1017/s0003055426101890",
+      "title": "Marriage as Slavery: Oroonoko, the Slave Trade, and the Origins of English Feminism",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 98,
+      "doi": "10.1017/s0003055426101968",
+      "title": "What Would It Mean to Democratize Finance? An Evaluation of Divergent Conceptions of Democracy and Finance",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 99,
+      "doi": "10.1177/00936502261489660",
+      "title": "From Hate Speech to Collective Action Intentions: The Role of Counter-Speech and Accuracy Cues Among Targeted Minorities",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 100,
+      "doi": "10.1038/d41586-026-02961-z",
+      "title": "AI can widen science — but only if institutions stop rewarding the already measurable",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 101,
+      "doi": "10.1038/s41467-026-78127-2",
+      "title": "A SAGA-like AP2-P-ARP1-GCN5 transcriptional complex targets pathogenesis-associated genes during the blood-stage development of Babesia gibsoni",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 102,
+      "doi": "10.1038/s41467-026-77964-5",
+      "title": "Hierarchical quasiparticle dynamics in antiferromagnets revealed by time- and momentum-resolved X-ray scattering",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 103,
+      "doi": "10.1038/s41467-026-77654-2",
+      "title": "Pulsed electromagnetic fields activate a peripheral interoceptive pathway to suppress sympathetic Npy for osteogenesis",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 104,
+      "doi": "10.1038/s41467-026-78153-0",
+      "title": "Religious celibacy is linked to marriage and wealth transmission practices across different world religions",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 105,
+      "doi": "10.1038/s41467-026-77906-1",
+      "title": "Single-molecule imaging reveals DNA shape read-out by the INO80 chromatin remodeler",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 106,
+      "doi": "10.1038/s41467-026-78174-9",
+      "title": "Zona incerta somatostatin+ neurons modulate seizure progression through hypothalamic circuits",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 107,
+      "doi": "10.1073/pnas.2526156123",
+      "title": "Associative synaptic plasticity creates dynamic persistent activity",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 108,
+      "doi": "10.1073/pnas.2615054123",
+      "title": "Chain organization of dimple-ended magnetite magnetosomes supports field-dependent cell linking in unicellular magnetotactic bacteria",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 109,
+      "doi": "10.1073/pnas.2620180123",
+      "title": "Desulfinylation of the deubiquitinase USP7 by SRXN1 attenuates oxidative acute liver injury",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 110,
+      "doi": "10.1073/pnas.2624702123",
+      "title": "Loss of CsrA in <i>Acinetobacter baumannii</i> leads to lethal dysregulation of alanine metabolism",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 111,
+      "doi": "10.1073/pnas.2601083123",
+      "title": "Slc35a1-mediated endothelial sialylation controls the fate and integrity of the intestinal microvascular network in adult mice",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 112,
+      "doi": "10.1073/pnas.2612904123",
+      "title": "TCR–mTORC1 signaling promotes epigenetic stabilization of Foxp3 expression in regulatory T cells via TET protein translation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 113,
+      "doi": "10.1073/pnas.2612869123",
+      "title": "The Ca <sup>2+</sup> channel CYCLIC NUCLEOTIDE GATED CHANNEL13 regulates vasculature-mediated systemic Ca <sup>2+</sup> and jasmonate signaling on herbivory",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 114,
+      "doi": "10.1073/pnas.2623500123",
+      "title": "The PKMYT1–ALDOA axis drives chemoresistance in cholangiocarcinoma by enhancing glycolysis and MRE11 lactylation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 115,
+      "doi": "10.1177/00936502261487784",
+      "title": "Media Use for Strong and Weak Ties: A Configural Examination of Personal Media System and Well-Being",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 116,
+      "doi": "10.1038/s41467-026-78007-9",
+      "title": "A pharynx-to-brain sensory pathway mediates swallowing-like behavior evoked by mechanical stimulation",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 117,
+      "doi": "10.1038/s41467-026-78117-4",
+      "title": "Amorphous BaO-Al2O3 encapsulation enables durable metal catalysts for ammonia decomposition",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 118,
+      "doi": "10.1038/s41467-026-77702-x",
+      "title": "Cell-derived lactate triggers local hydrogelation and phenotype remodelling",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 119,
+      "doi": "10.1038/s41467-026-78111-w",
+      "title": "Contact-electro-catalyzed direct hydroxylation of aromatic C–H bonds under ambient conditions",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 120,
+      "doi": "10.1038/s41467-026-78023-9",
+      "title": "Environmental stochasticity reduces human planning effort",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 121,
+      "doi": "10.1038/s41467-026-78112-9",
+      "title": "Membrane damage induces TagQ/TagR complex-mediated H1-T6SS assembly in Pseudomonas aeruginosa",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 122,
+      "doi": "10.1038/s41467-026-78201-9",
+      "title": "NDE1-Mediated Regulation of Neural Progenitor Regional Identity and Its Implication in Microcephaly",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 123,
+      "doi": "10.1038/s41467-026-78028-4",
+      "title": "Orthosteric and allosteric inhibition of the brain V-ATPase outside the alternating-access cycle",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 124,
+      "doi": "10.1038/s41467-026-78099-3",
+      "title": "Phase-dependent Al leaching and crystal structure stability of CoAl2O4 in alkaline media",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 125,
+      "doi": "10.1038/s41467-026-78122-7",
+      "title": "Structural basis of stepwise G protein activation by the viral chemokine receptor US28",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 126,
+      "doi": "10.1038/s41467-026-77771-y",
+      "title": "Synthesis of 4- and 5-membered fluorine-stabilised semi-saturated heterocycles via alkylidene carbenes",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 127,
+      "doi": "10.1038/s41467-026-78095-7",
+      "title": "Tall adhesions overcome cell surface steric interference and rescue antibody-dependent phagocytosis in macrophages",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 128,
+      "doi": "10.1038/s41467-026-78173-w",
+      "title": "The plasma protease inhibitor ITIH4 forms oligomeric complexes and senses broader proteolytic activity",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 129,
+      "doi": "10.1038/s41467-026-77816-2",
+      "title": "Tuning intracellular immunity by Nodamura virus B2 protein enhances self-amplifying RNA activity",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 130,
+      "doi": "10.1038/s41467-026-77949-4",
+      "title": "“Descending Enkephalinergic neurons in Barrington’s nucleus gate sex-biased control of micturition”",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 131,
+      "doi": "10.1073/pnas.2528514123",
+      "title": "BAG3 coordinates astrocytic proteostasis of Alzheimer’s disease–linked proteins via proteasome, autophagy, and retromer interactions",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 132,
+      "doi": "10.1073/pnas.2613113123",
+      "title": "Classifying strategy use in multiattribute subjective choice: Application to conjoint experiments in political science",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 133,
+      "doi": "10.1073/pnas.2607106123",
+      "title": "Cnidarian mechanosensory cells as ancestors of vertebrate hair cells: Molecular targeting of an ancient mechanotransduction complex",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 134,
+      "doi": "10.1073/pnas.2602433123",
+      "title": "Continuous UV irradiation played an inconclusive role in selecting the canonical genetic alphabet",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 135,
+      "doi": "10.1073/pnas.2625638123",
+      "title": "Human antibody heavy chain variable region exon interacts with the 3′ regulatory region to form a stable somatic hypermutation center",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 136,
+      "doi": "10.1073/pnas.2613077123",
+      "title": "Longitudinal adaptations in neural and behavioral systems following hearing restoration using cochlear implants",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 137,
+      "doi": "10.1073/pnas.2618249123",
+      "title": "MicroRNA-driven regulation of immunosuppressive microenvironment in hepatocellular carcinoma",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 138,
+      "doi": "10.1073/pnas.2601665123",
+      "title": "Nuclear cGAS inhibits stimulation-induced inflammatory gene transcription via HDAC1",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 139,
+      "doi": "10.1073/pnas.2617804123",
+      "title": "The economic returns to citizenship: Evidence from a meta-analysis",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 140,
+      "doi": "10.1073/pnas.2618666123",
+      "title": "Uneven attention to climate tipping points",
+      "kept": false,
+      "reason": "Already delivered in the October 3 edition."
+    },
+    {
+      "section": "previous_week_catch_up",
+      "index": 141,
+      "doi": "10.1073/pnas.2608087123",
+      "title": "Zinc mediates the allosteric activation of Shiftless to suppress programmed −1 ribosomal frameshifting",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    },
+    {
+      "section": "late_additions",
+      "index": 0,
+      "doi": "10.1038/s41586-026-11102-5",
+      "title": "A quadruped robot designed to complete a marathon on a single battery charge",
+      "kept": false,
+      "reason": "Outside the strict COMAP relevance threshold: natural science, clinical research, technical AI without a social-science application, or non-substantive publication noise."
+    }
+  ]
+}

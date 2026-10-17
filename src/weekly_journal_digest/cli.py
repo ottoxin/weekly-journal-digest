@@ -24,6 +24,8 @@ from .reviewed_digest import (
     render_summary_plain_text,
 )
 from .storage import StateStore
+from .validation import validate_reviewed_digest
+from .special_issues import prepare_updates, delivery_metadata
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -70,13 +72,29 @@ def build_parser() -> argparse.ArgumentParser:
 
     build_parser_ = subparsers.add_parser(
         "build-weekly-digest",
-        help="Build candidate_digest.json for Monday review.",
+        help="Build candidate_digest.json for editorial review.",
     )
     build_parser_.add_argument("--config", default=str(DEFAULT_CONFIG_PATH))
     build_parser_.add_argument("--state-dir", default=None)
     build_parser_.add_argument("--digest-date", default=None, help="Digest date in YYYY-MM-DD.")
+    build_parser_.add_argument("--week-start", default=None, help="Override New This Week start date.")
+    build_parser_.add_argument("--week-end", default=None, help="Override New This Week end date.")
     build_parser_.add_argument("--output", default=None)
     build_parser_.set_defaults(func=cmd_build_weekly_digest)
+
+    validate_parser = subparsers.add_parser("validate-digest", help="Check reviewed articles against candidate JSON.")
+    validate_parser.add_argument("--candidate-digest", required=True)
+    validate_parser.add_argument("--reviewed-digest", required=True)
+    validate_parser.set_defaults(func=cmd_validate_digest)
+
+    special_parser = subparsers.add_parser("prepare-special-issues", help="Prepend companion CFP updates and the pending one-time coverage announcement.")
+    special_parser.add_argument("--config", default=str(DEFAULT_CONFIG_PATH))
+    special_parser.add_argument("--state-dir", default=None)
+    special_parser.add_argument("--source-repo", default=None)
+    special_parser.add_argument("--digest-date", required=True)
+    special_parser.add_argument("--as-of", default=None, help="CFP check date for a refreshed edition; defaults to digest date.")
+    special_parser.add_argument("--reviewed-digest", required=True)
+    special_parser.set_defaults(func=cmd_prepare_special_issues)
 
     render_parser = subparsers.add_parser(
         "render-digest",
@@ -101,6 +119,10 @@ def build_parser() -> argparse.ArgumentParser:
     send_parser.add_argument("--subject", default=None)
     send_parser.add_argument("--force", action="store_true")
     send_parser.add_argument(
+        "--test", action="store_true",
+        help="Send only to an explicit --recipient, label TEST, and isolate delivery history; skip git publishing.",
+    )
+    send_parser.add_argument(
         "--full-html",
         action="store_true",
         help="Include the collection snapshot and full curated digest in the outgoing HTML body.",
@@ -119,7 +141,9 @@ def cmd_collect(args: argparse.Namespace) -> int:
         semantic_scholar_api_key=os.environ.get("WJD_SEMANTIC_SCHOLAR_API_KEY")
     )
     end_date = parse_date(args.end_date) if args.end_date else date.today()
-    lookback_days = args.lookback_days or config.default_lookback_days
+    lookback_days = args.lookback_days if args.lookback_days is not None else config.default_lookback_days
+    if lookback_days < 1:
+        raise ValueError("--lookback-days must be positive.")
     start_date = end_date - timedelta(days=lookback_days - 1)
     seen_at = utc_now().isoformat()
     archive_dir = state_dir / "archives"
@@ -136,13 +160,21 @@ def cmd_collect(args: argparse.Namespace) -> int:
         try:
             adapter = adapters[source.adapter]
             records = adapter.collect(source, start_date, end_date)
-            records = enricher.enrich_records(records)
+            enrichment_error = None
+            try:
+                records = enricher.enrich_records(records)
+            except Exception as exc:
+                enrichment_error = str(exc)
+                print(f"Optional enrichment failed for {source.id}; retaining source metadata: {exc}", file=sys.stderr)
             included = []
+            excluded_reasons: dict[str, int] = {}
             for record in records:
                 include, reason = should_include_record(source, record, config.social_science_keywords)
                 if include:
                     record.relevance_status = reason
                     included.append(record)
+                else:
+                    excluded_reasons[reason] = excluded_reasons.get(reason, 0) + 1
             store.upsert_articles(included, seen_at=seen_at)
             stored_total += len(included)
             archive_payload["sources"].append(
@@ -151,6 +183,8 @@ def cmd_collect(args: argparse.Namespace) -> int:
                     "journal": source.journal,
                     "retrieved": len(records),
                     "stored": len(included),
+                    "excluded_reasons": excluded_reasons,
+                    "enrichment_error": enrichment_error,
                 }
             )
         except Exception as exc:  # pragma: no cover - exercised through CLI behavior
@@ -182,13 +216,44 @@ def cmd_build_weekly_digest(args: argparse.Namespace) -> int:
     store = StateStore(state_dir / "digest.db")
     digest_date = parse_date(args.digest_date) if args.digest_date else date.today()
     output_path = Path(args.output) if args.output else REPO_ROOT / "out" / f"candidate_digest-{digest_date.isoformat()}.json"
-    payload = build_candidate_digest(store, config, digest_date, output_path)
+    week_start = parse_date(args.week_start) if args.week_start else None
+    week_end = parse_date(args.week_end) if args.week_end else None
+    if bool(week_start) != bool(week_end):
+        raise ValueError("--week-start and --week-end must be supplied together.")
+    payload = build_candidate_digest(
+        store, config, digest_date, output_path, new_start=week_start, new_end=week_end
+    )
     print(
         f"Wrote candidate digest to {output_path} "
         f"({len(payload['sections']['new_this_week'])} new / "
         f"{len(payload['sections']['previous_week_catch_up'])} catch-up / "
         f"{len(payload['sections']['late_additions'])} late additions)."
     )
+    return 0
+
+
+def cmd_prepare_special_issues(args: argparse.Namespace) -> int:
+    config = load_config(args.config)
+    source_repo = args.source_repo or config.special_issue_repo
+    if not source_repo:
+        raise ValueError("Configure special_issue_repo or pass --source-repo.")
+    store = StateStore(resolve_state_dir(args.config, args.state_dir or config.state_dir) / "digest.db")
+    path = prepare_updates(resolve_repo_path(args.config, source_repo), Path(args.reviewed_digest), store, args.digest_date, config.sources, as_of=parse_date(args.as_of) if args.as_of else None)
+    print(f"Prepared opening special-issue section; source snapshot: {path}")
+    return 0
+
+
+def cmd_validate_digest(args: argparse.Namespace) -> int:
+    candidate = json.loads(Path(args.candidate_digest).read_text(encoding="utf-8"))
+    markdown = Path(args.reviewed_digest).read_text(encoding="utf-8")
+    delivery_metadata(Path(args.reviewed_digest), markdown, candidate["digest_key"])
+    errors = validate_reviewed_digest(candidate, markdown)
+    for error in errors:
+        print(error, file=sys.stderr)
+    if errors:
+        print(f"Digest validation failed: {len(errors)} issue(s).", file=sys.stderr)
+        return 1
+    print("Digest validation passed.")
     return 0
 
 
@@ -199,6 +264,7 @@ def cmd_render_digest(args: argparse.Namespace) -> int:
     markdown_body = reviewed_path.read_text(encoding="utf-8")
     parsed_subject, body = extract_subject(markdown_body)
     reviewed = parse_reviewed_digest(markdown_body)
+    require_valid_structured_digest(markdown_body, reviewed, args.full_html)
     output_stem = reviewed_path.stem
     written_paths: list[Path] = []
     if reviewed is None:
@@ -224,12 +290,16 @@ def cmd_render_digest(args: argparse.Namespace) -> int:
 
 
 def cmd_send_digest(args: argparse.Namespace) -> int:
+    if args.test and not args.recipient:
+        raise ValueError("--test requires an explicit --recipient.")
     config = load_config(args.config)
     repo_root = repo_root_for_config(args.config)
     state_dir = resolve_state_dir(args.config, args.state_dir or config.state_dir)
     store = StateStore(state_dir / "digest.db")
     digest_date = parse_date(args.digest_date) if args.digest_date else date.today()
     digest_key = digest_date.isoformat()
+    if args.test:
+        digest_key = f"test:{digest_key}"
     recipients = resolve_recipients(args.config, config.recipients_file, args.recipient)
     if not recipients:
         raise ValueError(
@@ -237,9 +307,15 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
         )
     reviewed_path = Path(args.reviewed_digest)
     markdown_body = reviewed_path.read_text(encoding="utf-8")
+    special_issues = delivery_metadata(reviewed_path, markdown_body, digest_date.isoformat())
+    if special_issues and special_issues.get("announcement_key") and not store.announcement_pending(special_issues["announcement_key"], digest_date.isoformat()):
+        raise ValueError("The one-time announcement was already delivered; rerun prepare-special-issues for this digest.")
     parsed_subject, body = extract_subject(markdown_body)
     subject = args.subject or parsed_subject or default_subject(digest_date)
+    if args.test:
+        subject = f"[TEST] {subject}"
     reviewed = parse_reviewed_digest(markdown_body)
+    require_valid_structured_digest(markdown_body, reviewed, args.full_html)
     plain_text_body = None
     html_body = None
     pdf_bytes = None
@@ -266,6 +342,10 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
                     mime_type="text/html",
                 )
             )
+    if special_issues and special_issues.get("coverage_text"):
+        coverage_path = reviewed_path.with_suffix(".coverage.txt")
+        coverage_path.write_text(special_issues["coverage_text"], encoding="utf-8")
+        attachments.append(EmailAttachment(filename=coverage_path.name, content=special_issues["coverage_text"].encode("utf-8"), mime_type="text/plain"))
     recipients_to_send = [
         recipient
         for recipient in recipients
@@ -310,9 +390,10 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
                 body=markdown_body,
                 sent_at=utc_now().isoformat(),
                 message_id=message_id,
+                special_issues=special_issues if not args.test else None,
             )
             sent_any = True
-            print(f"Sent digest {digest_key} to {recipient.email}.")
+            print(f"Sent digest {digest_key} to {recipient.email}. Gmail message id: {message_id}")
     except Exception as exc:
         detail = describe_delivery_error(exc)
         if sent_any:
@@ -327,9 +408,18 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
                 file=sys.stderr,
             )
         return 1
-    if sent_any:
+    if sent_any and not args.test:
         maybe_commit_and_push_log_artifacts(repo_root, digest_key, reviewed_path)
     return 0
+
+
+def require_valid_structured_digest(markdown_body: str, reviewed: object, full_html: bool) -> None:
+    structured = any(
+        line.strip() in {"## Summary", "## Email Summary", "## Highlights", "## Full Curated Digest"}
+        for line in markdown_body.splitlines()
+    )
+    if reviewed is None and (structured or full_html):
+        raise ValueError("Invalid structured digest: require Subject, Summary, Highlights, and Full Curated Digest; refusing plain-text fallback.")
 
 
 def parse_date(value: str) -> date:
@@ -386,7 +476,15 @@ def resolve_recipients(
     recipient_override: str | None,
 ) -> list[Recipient]:
     if recipient_override:
-        return [Recipient(email=recipient_override.strip())]
+        email = recipient_override.strip()
+        if not email or any(char in email for char in "\r\n,;") or email.count("@") != 1:
+            raise ValueError("--recipient must be a single email address.")
+        recipients_path = resolve_repo_path(config_path, recipients_file_value)
+        if recipients_path.exists():
+            for recipient in load_recipients(recipients_path):
+                if recipient.email.casefold() == email.casefold():
+                    return [recipient]
+        return [Recipient(email=email)]
     env_recipients = os.environ.get("WJD_GMAIL_RECIPIENT")
     if env_recipients:
         return dedupe_recipients(
@@ -459,6 +557,8 @@ def maybe_commit_and_push_log_artifacts(
         reviewed_path,
         reviewed_path.with_suffix(".pdf"),
         reviewed_path.with_suffix(".html"),
+        reviewed_path.with_suffix(".special-issues.json"),
+        reviewed_path.with_suffix(".coverage.txt"),
     ]
     artifact_paths = [path.resolve() for path in artifact_paths if path.exists()]
     if not artifact_paths:

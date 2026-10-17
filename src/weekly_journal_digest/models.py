@@ -49,6 +49,7 @@ class AppConfig:
     recipients_file: str
     social_science_keywords: list[str]
     sources: list[SourceConfig]
+    special_issue_repo: str | None = None
 
 
 @dataclass(slots=True)

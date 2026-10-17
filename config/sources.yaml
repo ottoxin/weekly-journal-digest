@@ -2,6 +2,7 @@ timezone: America/Chicago
 default_lookback_days: 28
 state_dir: .state
 recipients_file: config/recipients.json
+special_issue_repo: ../communication-journal-site
 social_science_keywords:
   - communication
   - media
@@ -39,6 +40,17 @@ social_science_keywords:
   - collective behavior
   - collective behaviour
   - social network
+  - censorship
+  - propaganda
+  - authoritarian
+  - repression
+  - information control
+  - platform manipulation
+  - algorithmic governance
+  - multimodal
+  - large language model
+  - generative ai
+  - computational social science
 sources:
   - id: joc
     journal: Journal of Communication

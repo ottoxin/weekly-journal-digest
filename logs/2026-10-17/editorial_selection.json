@@ -1,0 +1,34 @@
+{
+  "broad_keep": {
+    "10.1073/pnas.2611368123": "Direct evidence on conversational AI and real political behavior.",
+    "10.1073/pnas.2537819123": "Urban governance, collective participation and sustainability policy.",
+    "10.1126/sciadv.aed6878": "Quasi-experimental evaluation of conservation policy and enforcement.",
+    "10.1126/sciadv.ady6737": "Social networks, durable inequality and state formation.",
+    "10.1126/sciadv.aee5162": "Spatial network analysis of decentralized urban connectivity and institutions.",
+    "10.1073/pnas.2606460123": "AI survey contamination and measurement validation for computational social science.",
+    "10.1073/pnas.2618402123": "Citation manipulation, scientific communication and research evaluation.",
+    "10.1126/science.ael4888": "Generative AI, intellectual property and evidence requirements for science policy.",
+    "10.1038/s41586-026-11154-7": "Randomized evidence on information interventions and social-network restructuring.",
+    "10.1038/s41562-026-02611-4": "Cross-national validation of LLM-based synthetic survey responses.",
+    "10.1073/pnas.2531748123": "Validation and calibration of LLM-generated social communication.",
+    "10.1073/pnas.2617040123": "Cross-cultural behavioral evidence on reciprocity, norms and cooperation.",
+    "10.1073/pnas.2532121123": "Policy evasion, modern slavery and governance of supply-chain networks.",
+    "10.1073/pnas.2523034123": "Deep learning and satellite-based measurement of urban social inequality.",
+    "10.1038/s41467-026-77472-6": "Quantitative evaluation of aviation climate roadmaps and demand-side governance.",
+    "10.1038/s41467-026-74719-0": "Cross-national social survey analysis of family demography, care systems and unequal access.",
+    "10.1038/s41467-026-78115-6": "Open-data social mobility network modeling for scenario analysis and policy.",
+    "10.1038/s41467-026-78222-4": "Cross-national attribution of resource inequality through foreign investment, corporate ownership and trade."
+  },
+  "highlights": {
+    "10.1073/pnas.2611368123": "Two preregistered experiments test actual petition signing and donations, showing why attitude changes alone can misstate AI\u2019s behavioral influence.",
+    "10.1073/pnas.2606460123": "Validates detection tests across seven survey platforms and shows how undetected AI agents can distort social-science results.",
+    "10.1038/s41562-026-02611-4": "Benchmarks simulated economic preferences against 67,201 respondents in 74 countries, exposing limits in cross-national representativeness.",
+    "10.1073/pnas.2531748123": "Introduces CHAT to evaluate generated social-media language, identifying trade-offs between human likeness and fidelity to human content.",
+    "10.1017/pan.2026.10057": "Targets sparse annotation categories with synthetic texts and tests when augmentation improves political text classification.",
+    "10.1111/ajps.70085": "Combines satellite imagery, digital street views and fieldwork to examine demolition as preemptive authoritarian control.",
+    "10.1038/s41586-026-11154-7": "A village-level randomized intervention changes friendship, financial and advice ties, treating information provision as a force that reorganizes social structure.",
+    "10.1177/00936502261496144": "Uses LLM-assisted analysis of Reddit vaccine debate to distinguish the participation patterns associated with statistical and narrative evidence."
+  },
+  "summary": "This week, COMAP Journal Bot examines how AI changes political behavior\u2014and how researchers can tell whether AI-generated evidence resembles human evidence. New studies test consequential political persuasion, detect automated survey respondents, benchmark synthetic preferences across 74 countries, and validate generated social-media language. A political-methods contribution offers a targeted approach to sparse text-classification categories.\n\nThe institutional reading connects authoritarian demolition, declining public services and populist support, academic freedom, and the durability of inequality. Work on information-driven network change, online vaccine debate, smartphone policies, policy evasion and urban vulnerability broadens the picture; catch-up papers add visual persuasion and the local credibility of AI-assisted election verification.",
+  "coverage_note": "- All 17 article sources completed for September 20\u2013October 17, 2026, with no source failures or recorded optional-enrichment errors. October 10 selections are not repeated."
+}

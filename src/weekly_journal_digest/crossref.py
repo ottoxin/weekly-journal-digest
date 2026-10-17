@@ -58,8 +58,6 @@ class CrossrefClient:
             params = {
                 "rows": str(rows),
                 "cursor": cursor,
-                "sort": "published",
-                "order": "desc",
                 "filter": ",".join(filters),
             }
             if self.mailto:

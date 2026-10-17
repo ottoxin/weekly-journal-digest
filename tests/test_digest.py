@@ -6,7 +6,7 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 
 from weekly_journal_digest.digest import build_candidate_digest, compute_weekly_windows
-from weekly_journal_digest.models import AppConfig, ArticleRecord
+from weekly_journal_digest.models import AppConfig, ArticleRecord, SourceConfig
 from weekly_journal_digest.storage import StateStore
 
 
@@ -17,6 +17,16 @@ class DigestTests(unittest.TestCase):
         self.assertEqual(windows.new_this_week_end, "2026-03-29")
         self.assertEqual(windows.previous_week_start, "2026-03-16")
         self.assertEqual(windows.previous_week_end, "2026-03-22")
+
+    def test_compute_weekly_windows_accepts_saturday_delivery_window(self) -> None:
+        windows = compute_weekly_windows(
+            date(2026, 9, 12), new_start=date(2026, 9, 7), new_end=date(2026, 9, 12)
+        )
+        self.assertEqual(windows.digest_date, "2026-09-12")
+        self.assertEqual(windows.new_this_week_start, "2026-09-07")
+        self.assertEqual(windows.new_this_week_end, "2026-09-12")
+        self.assertEqual(windows.previous_week_start, "2026-08-31")
+        self.assertEqual(windows.previous_week_end, "2026-09-06")
 
     def test_build_candidate_digest_classifies_sections(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
@@ -58,7 +68,8 @@ class DigestTests(unittest.TestCase):
                 state_dir=".state",
                 recipients_file="config/recipients.json",
                 social_science_keywords=[],
-                sources=[],
+                sources=[SourceConfig(id=source_id, journal=source_id, category="test", adapter="crossref")
+                         for source_id in ["joc", "apsr", "nature"]],
             )
             payload = build_candidate_digest(
                 store,
@@ -76,6 +87,9 @@ class DigestTests(unittest.TestCase):
                 payload["sections"]["new_this_week"][0]["affiliations"],
                 ["Northwestern University", "COMAP Lab"],
             )
+            config.sources = []
+            empty = build_candidate_digest(store, config, date(2026, 3, 30), Path(tmpdir) / "empty.json")
+            self.assertTrue(all(not items for items in empty["sections"].values()))
 
 
 if __name__ == "__main__":  # pragma: no cover

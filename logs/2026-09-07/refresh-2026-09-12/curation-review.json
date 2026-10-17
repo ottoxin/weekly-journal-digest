@@ -1,0 +1,2913 @@
+{
+  "reviewed_on": "2026-09-12",
+  "candidate_counts": {
+    "new_this_week": 207,
+    "previous_week_catch_up": 191,
+    "late_additions": 16
+  },
+  "curated_counts": {
+    "new_this_week": 28,
+    "previous_week_catch_up": 21,
+    "late_additions": 3
+  },
+  "decisions": [
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77500-5",
+      "title": "Benchmarking copy number alteration inference methods for spatial transcriptomics",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77256-y",
+      "title": "Dysregulated tissue immunity in human fatal asthma",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77370-x",
+      "title": "Human-guided continual learning for multifaceted improvement of self-driving vehicles",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77433-z",
+      "title": "Neoadjuvant PD1 plus CTLA-4 immune checkpoint blockade in surgically resectable recurrent glioblastoma: a randomized surgical window-of-opportunity trial",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77379-2",
+      "title": "OXR1 is a dual redox–mitochondrial checkpoint governing osteoclast differentiation and bone loss in an osteoporosis mouse model",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77519-8",
+      "title": "Operando electrochemiluminescence imaging of intermediate evolution and kinetics in electrocatalytic nitrate reduction",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77247-z",
+      "title": "Selectively intraparticle oxygen dissociation and metalloid mineralization for long-term groundwater remediation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77151-6",
+      "title": "Suppressing glutamate dehydrogenase guides hematopoietic stem cell divisions into self-renewal",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77377-4",
+      "title": "Ternary Neurexin-T178-PTPR complexes represent a pre-synaptic core-module of neuronal synapse organization",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/d41586-026-02739-3",
+      "title": "Body parts used for ancient Egyptian artworks traced to surprising source",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77467-3",
+      "title": "Cadonilimab plus lenvatinib in advanced endometrial cancer: the multicenter single-arm phase II CLEAR-EC trial",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77482-4",
+      "title": "Cobalt-catalyzed Markovnikov-selective hydrophosphonylation of unactivated alkenes enabled by phthalimidyl phosphite reagents",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76589-y",
+      "title": "Effect of human urinary microenvironment and fluid flow on antibiotic and phage therapy efficacy against uropathogenic Escherichia coli",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77428-w",
+      "title": "HDAC inhibition via suberoylanilide hydroxamic acid ameliorates doxorubicin-induced cardiotoxicity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77182-z",
+      "title": "Higher-order epistasis drives evolutionary unpredictability toward new antibiotic resistance",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77400-8",
+      "title": "Hippocampal mechanisms underlying the resolution of competition in memory and perception",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77253-1",
+      "title": "In-situ chlorine radical generation from captured Cl- for redox synergy in electrocatalytic hydrodehalogenation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77575-0",
+      "title": "Manipulating Peierls-Nabarro stress to realize extraordinary thermoelectric performance in n-type PbTe",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76382-x",
+      "title": "Multimodal radiopathomics model predicts postoperative metachronous liver metastasis in gastric cancer",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76826-4",
+      "title": "Multiple local PfDHFR I164L haplotype expansions drive Plasmodium falciparum antifolate resistance in Uganda",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77464-6",
+      "title": "Phenological fluctuations induce seasonal asymmetric warming in boreal forests",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77435-x",
+      "title": "Probing electron transport and thermodynamic properties in expanded warm dense matter",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77407-1",
+      "title": "Unified down-stream analysis of crosslinking mass spectrometry results with pyXLMS",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77468-2",
+      "title": "Visible light-mediated Alder-ene reaction of bicyclobutanes with cyclohexynes to access skipped dienes and skeletal remodeling to tetralines",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77437-9",
+      "title": "Zipper polydefluorination-monoborylation of perfluoroalkyl chains",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1017/pan.2026.10055",
+      "title": "Correcting for Nonignorable Nonresponse Bias in Ordinal Observational Survey Data",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2610284123",
+      "title": "Ancient DNA reveals early use of melons in China’s Song dynasty",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2612038123",
+      "title": "Disentangling unique site-specific and shared habitat-level adaptation in a classic system of repeated evolution",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2616059123",
+      "title": "Intratumoral injection of EpCAM BITE, IL-12, and GM-CSF mRNA-LNPs blocks the growth of local treated and distant untreated tumors",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2525618123",
+      "title": "Lysine iminylation derived from ω-3 polyunsaturated fatty acids",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2600933123",
+      "title": "One mechanism, two diseases: Involvement of enzyme–substrate complexes in the pathogenesis of celiac disease and rheumatoid arthritis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2618039123",
+      "title": "Peptides adopt stable omega-loop structures in concentrated sulfuric acid",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2532413123",
+      "title": "Retinotopic remapping of the visual system in deaf adults",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2534920123",
+      "title": "State-sponsored agenda setting: Measuring the impact of narrative laundering",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2621054123",
+      "title": "The genomic origins and evolutionary path to a key innovation in the world’s most venomous snakes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aef5793",
+      "title": "A MAP-SNARE interaction links cortical microtubules to the exocytic fusion machinery during auxin-dependent growth remodeling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aee4251",
+      "title": "A decagon wave around Saturn’s south pole",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aed8456",
+      "title": "A full-range sweat rate sensor with superhydrophobic heterophase shunt for psychology, skin health and body dehydration evaluating",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeb6839",
+      "title": "A male-biased hypothalamic circuit modulates postmating sleep suppression in mice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aee3948",
+      "title": "A single-point mutation in TRPA1 drives heat resilience in oviparous embryos",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeg5294",
+      "title": "AMPK phosphorylation proceeds through hierarchical proteoform cascades revealed by integrated mass spectrometry",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeg1640",
+      "title": "Aortic disease-linked mutations reveal unexpected convergent allosteric mechanisms of protein kinase G misregulation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aed6844",
+      "title": "Assessing cellular metabolic dynamics with two-photon NAD(P)H fluorescence polarization microscopy",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aef9450",
+      "title": "Branched-chain amino acid assimilation enables mixotrophy of ammonia-oxidizing archaeal sponge symbionts",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aec8703",
+      "title": "Can a public information campaign increase trust in American elections?",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.adx9868",
+      "title": "Critical role for the TGF-β1/mTORC1 signaling axis in defining the transcriptional identity of CTHRC1 <sup>+</sup> pathologic fibroblasts",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.adu3955",
+      "title": "Defective EV-mediated transport of SHH alters neural fate specification in EPM1 epilepsy",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeh8260",
+      "title": "Digital twins are funhouse mirrors: Five systematic distortions",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeg8852",
+      "title": "Discovery of CDK8/19 inhibitors as lead compounds for IL-6–dependent lymphoma enabled by the formal synthesis of cortistatin A",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeg6797",
+      "title": "Dorsoventral gradient of theta sweeps in the medial entorhinal cortex",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeb0659",
+      "title": "Electrical control of induced magnetism in an air-stable two-dimensional semiconductor",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aee9228",
+      "title": "Enhanced carbon loss in the Southern Ocean under mitigation scenarios",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aec2357",
+      "title": "Estimating the carcinogenesis timelines in early-onset versus late-onset cancers and changes across birth cohorts",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeg9566",
+      "title": "Glucose-TOR-PDCB signaling restricts cell-to-cell communication through callose deposition",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aef2894",
+      "title": "Human cortical networks trade communication efficiency for computational reliability",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aec0787",
+      "title": "Identifying the principal mechanism of star formation feedback",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeb4011",
+      "title": "Impaired liver-muscle lactate metabolism causes sarcopenia via lactic acidosis in skeletal muscle in mice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aed3734",
+      "title": "Intra-cluster receptor density (IRD): A molecular switch for TNFR1 clusters’ signaling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aef0343",
+      "title": "Learning induces activation-mechanism–dependent neural plasticity in an intracortical microstimulation task",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aee3256",
+      "title": "Mechanical cues of an interpenetrating polysaccharide matrix regulate self-assembly of collagen fibers",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aef8132",
+      "title": "Mitochondrial superoxide–induced mitohormesis is mediated by citrate and cardioprotective",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeg8609",
+      "title": "Natural variation in <i>SL6</i> determines fatty acid components and seed longevity in rice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aee0634",
+      "title": "Observation of localization-driven zero-threshold fermionic superradiance",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.adz7115",
+      "title": "Recovering the precolonial population structure of Khoe-San descendant populations",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aef3930",
+      "title": "Sequential clearance of neutrophil extracellular traps for precision therapy of sepsis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aed3793",
+      "title": "Structural basis for modulation of group III mGlu receptors by transsynaptic interactions",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeg1088",
+      "title": "Sub-4-nm Pt <sub>4</sub> FeCoNiCu HEI nanocrystals via borophene-mediated co-anchoring for efficient and durable electrocatalysis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aei1190",
+      "title": "Synthetic long peptide and DNA personalized cancer vaccines induce robust neoantigen-specific T cell responses in pancreatic cancer",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aef5945",
+      "title": "The OsUVR8-OsNAC3-OsERF117 signaling module mediates metabolic acclimation and climate adaptation in rice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeb3209",
+      "title": "The actomyosin cortex controls t-tubule remodeling in skeletal muscle",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aeh0615",
+      "title": "Upconverted nanoparticle for 2D nanomapping of excitation energy transfer in conjugated polymer",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/sciadv.aed1386",
+      "title": "Variable redox states of sulfur in porphyry copper–fertile arc magmas",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1177/00936502261480405",
+      "title": "Investigating Conditional Macro-Level Media Effects Over a Long-Term: How Crisis Periods Moderate the Effects of Suicide Coverage on Suicide Rate Change (1861–2007)",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77351-0",
+      "title": "Distinct constraints but shared dynamics shape the macroevolution of volatile organic compound chemodiversity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77403-5",
+      "title": "Excitation of acyclic trisubstituted alkenes via triplet energy transfer for diastereo- and enantioselective [2 + 2] photocycloaddition",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77132-9",
+      "title": "Extracellular vesicle proteins monitor and interfere with CLDN18.2-targeted CAR-T cell and antibody therapies against gastrointestinal cancers",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77327-0",
+      "title": "First-line tislelizumab plus chemotherapy versus placebo plus chemotherapy in unresectable advanced/metastatic esophageal squamous cell carcinoma: minimum 3-year survival follow-up of a randomized phase 3 trial (RATIONALE-306)",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76561-w",
+      "title": "Functional coupling between MC4R and Kir7.1 contributes to clozapine-induced weight gain in female mice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77336-z",
+      "title": "General access to azoles through tailored nitrogen–nitrogen bond construction",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77232-6",
+      "title": "Heterogeneity in the response to the metabolic environment drives fosfomycin heteroresistance",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77254-0",
+      "title": "High-resolution structures of human NHE6 and NHE9 elucidate endosomal ion and lipid interactions",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77470-8",
+      "title": "Interfacial hydride transfer for dehalogenation with water",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77355-w",
+      "title": "Microbial-derived tryptophan metabolites in the infant gut associate with increased risk of asthma following cesarean section",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77314-5",
+      "title": "Motifs of brain cortical folding from birth to adulthood",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77479-z",
+      "title": "Multiple overlapping SNARE complexes drive endosome maturation in Drosophila nephrocytes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77318-1",
+      "title": "Offline generative network reconfiguration guides insight-like accelerated learning by assimilation into schema in rats",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77432-0",
+      "title": "PIP2 binding at allosteric site blocks activation in human rod CNG channels",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77350-1",
+      "title": "Perceived humanness and empathy are dissociated in relationship advice generated by a large language model",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76069-3",
+      "title": "Real-time black-box optimization for dynamic discrete environments using embedded Ising machines",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77439-7",
+      "title": "Site-specific programming characterizes dynamic post-translational acetylation of histone H2B lysine 108 in mouse embryonic stem cells",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77434-y",
+      "title": "Spatial transcriptomics reveals laminar and cell-type-specific A-to-I RNA editing signatures in the macaque cortex",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76684-0",
+      "title": "The overlooked conservation values of saline lakes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77416-0",
+      "title": "Tuning of AMPA receptor activation by inhibitory auxiliary subunits and epilepsy-associated disease mutations",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77169-w",
+      "title": "Ultra-low-power probabilistic graphical computing based on memristors enabling communications signal processing",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76942-1",
+      "title": "Yellow protein co-opted to sustain obligate symbiosis in leaf beetles",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41562-026-02510-8",
+      "title": "Gender and LGBTQ+ representation across college majors and achievement levels using nationally representative US data",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41562-026-02448-x",
+      "title": "The gender gap reconsidered",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s42256-026-01295-9",
+      "title": "NucleicBERT interprets RNA sequence space through self-supervised language modelling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2532946123",
+      "title": "<i>Hex</i> -MASP for mapping the whole-tissue spatial proteome and the intrabrain distribution of monoclonal antibodies",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2613565123",
+      "title": "Fish navigate a hydrodynamic maze via yaw-mediated lateral migration",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2609634123",
+      "title": "Lenacapavir binding to immature Gag induces giant virions and causes protease-dependent inhibition of viral release",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2530532123",
+      "title": "Leveraging generative AI for causal inference with unstructured data",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.ael8715",
+      "title": "(Un)intended consequences of mass-prescribing GLP-1s",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.aed6035",
+      "title": "An embryo-derived peptide signal directs endosperm polarity in <i>Arabidopsis</i>",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.aea4611",
+      "title": "Conformational asymmetry of replicated human chromosomes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.ael0869",
+      "title": "Fall Books 2026 <b>Wither: A Modern Gothic</b> , <i>Dan Warner</i> , Bloomsbury, 2026, 336 pp. <b>Under Story</b> , <i>Chloe Benjamin</i> , Putnam, 2026, 512 pp. <b>The Bullwhip’s Algorithm: Artificial Intelligence and America’s Racial Caste System</b> , <i>Kamau Bobb</i> , Beacon Press, 2026, 240 pp. <b>A Wall Is Also a Road</b> , <i>Annalee Newitz</i> , Tor Books, 2026, 304 pp. <b>Tyrant Lizard Queen: The Love, Life, and Terror of Earth’s Greatest Carnivore</b> , <i>Riley Black</i> , St. Martin’s Press, 2026, 288 pp. <b>Kobuk the Destroyer: And Other Tales from the Wild, Unseen World of Test Engineering</b> , <i>Alex Davies</i> , Norton, 2026, 272 pp. <b>This Book May Cause Side Effects: The Curious and Dangerous Power of the Nocebo Effect, Placebo’s Evil Twin</b> , <i>Helen Pilcher</i> , Abrams Press, 2026, 384 pp. <b>The Carbon Wave: A Story of Democracy, Parenthood, and the Race to Protect Our Planet</b> , <i>Leah C. Stokes</i> , MIT Press, 2026, 328 pp. <b>Minds I’ve Met: From Denying to Embracing the Inner Lives of Animals</b> , <i>Frans de Waal</i> , Norton, 2026, 304 pp.",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.aem0117",
+      "title": "In Other Journals",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.aed8723",
+      "title": "Monomer-biased manufacture of industrial-scale colloidal photonic films",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.aec6116",
+      "title": "Psilocybin prevents chemotherapy-induced peripheral neuropathy through mitochondrial trafficking preservation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.aed2974",
+      "title": "Rising plant extinction rates on European mountain summits",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.ady5180",
+      "title": "Thalamic NRXN1-mediated input to human cortical progenitors drives excitatory neurogenesis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1126/science.adz8203",
+      "title": "Tumor-derived antioxidants suppress immunity by depriving T cells of reactive oxygen species",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41586-026-10987-6",
+      "title": "3D epigenome of glial cell types in developing human cortex",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/d41586-026-02541-1",
+      "title": "Aquatic invertebrates contribute substantially to global nutrient supplies",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/d41586-026-02694-z",
+      "title": "Blood cells replace the immune cells of the ageing human brain",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41586-026-10981-y",
+      "title": "Intracellular complement factor H protects neurons during CNS inflammation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41586-026-10992-9",
+      "title": "Robust inference and correlates from genetic associations with personality",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41586-026-10908-7",
+      "title": "The nutritional value of invertebrate aquatic foods",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77282-w",
+      "title": "A spin-photon interface in the telecom C-band with long hole spin dephasing time",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77394-3",
+      "title": "Biomechanical energy harvesting to improve post-stroke mobility",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77168-x",
+      "title": "Cholinergic-dependent dopamine signals in mouse dorsomedial striatum are regulated by frontal but not sensory cortices",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77476-2",
+      "title": "Common alleles associated with connectivity within and across the brain’s main functional networks",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77273-x",
+      "title": "Disentangling cation–polyanion coupling reveals which anion motion dominates cation transport in solid electrolytes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77002-4",
+      "title": "Dual effect of α-synuclein disease variants on condensate formation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77302-9",
+      "title": "Identification and validation of central amygdala FGFR1 as a therapeutic target for alcohol use disorder using single-nucleus sequencing in rats",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77457-5",
+      "title": "Interfacial spin-order engineering mitigates the permeability-loss trade-off in amorphous soft magnetic composites",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77207-7",
+      "title": "Molecular basis of nick ligation in the nucleosome by DNA Ligase IIIα",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77324-3",
+      "title": "Multi-objective optimization in the context of generative chemistry",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-74841-z",
+      "title": "Observation of a spin-textured nematic Kondo lattice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77281-x",
+      "title": "Programmable hydrodynamics of active particles",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76771-2",
+      "title": "RAGE mediates LPS-induced inflammatory pain in human skin – a double-blind, randomised, placebo-controlled full crossover study",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76890-w",
+      "title": "Reciprocal, methylation-dependent binding of Zfp57 and Gzf1 safeguards Dlk1-Dio3 imprinting during developmental reprogramming",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77181-0",
+      "title": "Selective organ deposition of nanoparticles directed by metal–organic network coatings",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77275-9",
+      "title": "Sex- and fiber type-specific remodeling of the muscle proteome implicates CSRP3 in resistance training-induced hypertrophy",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76110-5",
+      "title": "Toward an integrated and globally equitable understanding of political polarization",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77347-w",
+      "title": "Trace Al/Rb regulation stabilizes Cu-Fe5C2 active sites for ambient-pressure photothermal CO2 hydrogenation to C2-C4 olefin",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77341-2",
+      "title": "Trifluoroacetate mediated reduction of atherosclerosis in mice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77148-1",
+      "title": "Unveiling hidden air pollution exposure and impacts with low-cost sensor network-based frameworks",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41562-026-02560-y",
+      "title": "Saturation of moral language predicts lower content engagement on social media",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41562-026-02587-1",
+      "title": "Turning biometrics into a commodity raises privacy and governance risks",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2624480123",
+      "title": "A salivary protein NlSP2 engages the OsCBSX3–SNAC3 module to enhance rice immunity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2618114123",
+      "title": "Cell body position of <i>Drosophila</i> Moonwalker Descending Neurons regulates locomotor circuit function",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2614664123",
+      "title": "Changes in the transcriptome and synthetic lethal dependencies following <i>KRAS</i> mutant expression reveal profound tissue specificity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2602503123",
+      "title": "From wild to domestic: Single-cell transcriptomic perspectives on hippocampal regulation and evolution",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2535905123",
+      "title": "Targeting CTGF <sup>+</sup> cancer-associated fibroblasts disrupts tumor–stroma crosstalk in pancreatic ductal adenocarcinoma",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1017/s0003055426101853",
+      "title": "Are Voters Myopic or Looking for Improvement?",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1017/s0003055426101841",
+      "title": "Measuring Partisanship and Representation in Online Congressional Communications",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1177/00936502261478981",
+      "title": "Experimental Research on Stereotype Expression in Freely Generated Language: A Systematic Literature Review",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1093/jcmc/zmag019",
+      "title": "A comparative test of the protection motivation theory: active and passive privacy protection in Brazil, Germany, the United States, and Vietnam",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1093/jcmc/zmag016",
+      "title": "Context, script, cue: understanding human–AI intimate relationships",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76492-6",
+      "title": "Bacterial growth under confinement requires transcriptional adaptation to resist turgor pressure build-up",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77361-y",
+      "title": "Construction of molecular fans in metal-organic framework to overcome diffusion resistance for trace benzene capture",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77266-w",
+      "title": "Distributed cortical learning through LEC-mediated γ-synchrony",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77231-7",
+      "title": "Effect of liposome rigidity on corona formation and its implications for uptake by cells",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77298-2",
+      "title": "FBXW7 mitigates hepatic fibrosis by degrading NOTCH1 to transcriptionally silence SEMA3G in liver sinusoidal endothelial cells",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77345-y",
+      "title": "Proton-gated multisite concerted proton-electron transfer-like pathway in a dual-atom framework for selective water purification",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77276-8",
+      "title": "Quinone-heme π-π interactions bridge the biotic-abiotic interface for enhanced methanogenesis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77224-6",
+      "title": "Reprogramming product selectivity and activity in promiscuous terpene synthases via substrate conformation engineering",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77335-0",
+      "title": "The Fanconi anemia pathway restrains MLL-rearranged leukemogenesis through suppressing non-homologous end joining-mediated genomic instability",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76234-8",
+      "title": "The changing surface of the world’s roads",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77248-y",
+      "title": "The mPFC-reuniens-hippocampus pathway links brain circuitry and neural plasticity in antidepressant response",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77166-z",
+      "title": "Ultrathin nano-layered boron nitride stabilizing perovskite quantum dot-based light-emitting diodes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2616645123",
+      "title": "A Hox-dependent anchoring mechanism mediates transcriptional repression of autophagy-related genes at the nuclear periphery",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2616452123",
+      "title": "A multispecies toolkit of <i>TOP2</i> hypercleavage mutants for studying topoisomerase II–mediated DNA damage",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2607934123",
+      "title": "A single extracellular glycan links AMPA receptor gating to synaptic plasticity and memory persistence",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2608310123",
+      "title": "AML1-ETO hijacks a distal enhancer of NAT10 to reprogram glutathione metabolism and sustain leukemia stem cell stemness",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2530072123",
+      "title": "Actin depolymerization factor (ADF) moonlighting: Nuclear immune regulation by interacting with WRKY transcription factors and shaping the transcriptome",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2536750123",
+      "title": "Comparative atlas of PVN oxytocin and vasopressin systems reveals sex-conserved input–output wiring",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2606406123",
+      "title": "Elevated CO <sub>2</sub> reinforces PT11-dependent symbiotic phosphate uptake to reprogram root nutrient acquisition in rice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2605721123",
+      "title": "Experimentally controlling scattering of water waves in correlated disorder",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2609814123",
+      "title": "Genetic architectures of brain-related traits are shaped by strong selective constraints",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2616112123",
+      "title": "Hormone-dependent miRNA cascades converge on <i>glycogen phosphorylase</i> to regulate wing plasticity in aphids",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2605886123",
+      "title": "Mechanism of gating and isoform-specific inhibition in renal CLC chloride channels",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2525481123",
+      "title": "Rbp-Jκ controls NK cell late maturation and migration via chromatin landscape remodeling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2618215123",
+      "title": "The SLC15A4–TASL complex is essential for lupus development in mice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2603028123",
+      "title": "YTHDF1-mediated m <sup>6</sup> A RNA regulation controls cardiomyocyte remodeling through KLF11–HIF1α",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1111/ajps.70087",
+      "title": "The territorial rights of wild animals: Justification",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1080/19312458.2026.2714769",
+      "title": "Beyond beyond standardization: studying robustness of empirical claims based on topic modeling through multiverse analysis",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1177/00936502261480401",
+      "title": "Sex, Romance, or Recreation? An Experiment Testing the Effects of Cannabis Brand-generated Social Media Ads on College Students’ Expectancies and Intentions to Use Cannabis Prior to Sex",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77368-5",
+      "title": "A lipid transfer-dependent feedback loop activates ATG9A compartments in autophagy initiation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77250-4",
+      "title": "An interpretable learning framework for exploring superelastic degradation of NiTi shape memory alloys using multimodal data",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77216-6",
+      "title": "Dietary protein governs the role of insulin signaling in the postprandial regulation of hepatic mTORC1",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77371-w",
+      "title": "Grain boundary segregation of ceramic aerogels for reliable thermal insulation at extreme conditions",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76972-9",
+      "title": "IFN-γ-driven iNOS induction in macrophages mediates CAR T cell resistance in B cell lymphoma",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77063-5",
+      "title": "Listeria promotes systemic infection by targeting the host deubiquitinase CYLD",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77325-2",
+      "title": "Perirenal fat β₃-adrenergic signaling alleviates renal fibrosis via regulating Bcat2/BCAA-TNFα pathway in diabetic kidney disease",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77116-9",
+      "title": "Single-cell profiling identifies obesity-disrupted brain glucose sensing",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76686-y",
+      "title": "Subicular spatial codes arise from predictive mapping",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-76952-z",
+      "title": "The default mode network exhibits circuit-specific selective vulnerability despite widespread amyloid burden in an animal model of Alzheimer’s disease",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-75533-4",
+      "title": "Unassisted bipolar photoelectrochemical synthesis of H2O2",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41467-026-77149-0",
+      "title": "α-KG conformationally stabilizes nuclear GLUD1-SNAIL complex to fuel trans-endothelial migration in metastasis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1038/s41562-026-02559-5",
+      "title": "Anatomical white matter tracts span the cortical hierarchy to support cognitive diversity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1080/10584609.2026.2721665",
+      "title": "Democratic Accountability in East Asia: A Comparative Experimental Study of Voter Responses to Norm Violations",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1080/10584609.2026.2717428",
+      "title": "From #StayWoke to “Culture Wars”: How Social Justice Discourse is Separately and Synergistically Politicized on Twitter and YouTube",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2604868123",
+      "title": "A three-decade-long analysis shows rising threatened species and responsibility gaps in global supply chains",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2536548123",
+      "title": "Aligning private incentives with societal goals in smallholder agriculture",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2536560123",
+      "title": "Asymmetrical modulation of fear expression via GABA <sub>B</sub> receptors in the mouse medial habenula",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2619939123",
+      "title": "CDK8 phosphorylation of DELLA limits Mediator recruitment in gibberellin signaling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2600906123",
+      "title": "Cousin marriage and reduced exposure to intimate partner violence and coercive control",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2623373123",
+      "title": "Dissecting the cell biology of the ISR in cognitive disorders at the single-cell resolution",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2532099123",
+      "title": "Epithelial convergent extension as a tuning process",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2610627123",
+      "title": "Impact of pH and <i>Mycoplasma hominis</i> endosymbiosis on <i>Trichomonas vaginalis</i> pathogenesis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2525548123",
+      "title": "Kelp forest collapse alters the reef microbiome and associated metabolome",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2534625123",
+      "title": "Photoreceptor recordings reveal remarkable acuity in small solitary bees compared with larger species",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2602218123",
+      "title": "Pregnancy diet based on ancestral patterns increases growth in subcortical fetal brain regions",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2531151123",
+      "title": "Single-cell profiling of mitochondrial phenotyping–coupled mtDNA genotyping",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "new_this_week",
+      "doi": "10.1073/pnas.2536563123",
+      "title": "Temporally structured motor and auditory representations in covert syllable production",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1093/joc/jqag013",
+      "title": "Do good chat groups make good neighbors? Continuity and change of norms in neighbor relations under digital co-presence",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76503-6",
+      "title": "What one sees depends on how far the eye has moved",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77128-5",
+      "title": "A pre-train and fine-tune framework for adaptive boosting of pre-trained polygenic risk scores",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77060-8",
+      "title": "Cavity-enhanced optical readout and control of nuclear spin qubits",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77163-2",
+      "title": "Coupled spin-coordination self-adaptation drives efficient nitrate to ammonia conversion",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76992-5",
+      "title": "GRAF1-dependent endocytotic processes and the Golgi apparatus contribute to previously unrecognized intermediate stages of early ciliogenesis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76949-8",
+      "title": "Hybrid exosomal nanomotors convert pathological ROS into transport-driving cues to enhance cartilage accumulation in osteoarthritis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77274-w",
+      "title": "Ionic gel-mediated synthesis of nanostructured chiral 2D halide perovskites with amplified chiroptical response",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77304-7",
+      "title": "Mapping genetic regulation of gene expression to cellular contexts identifies long non-coding RNAs associated with brain disorders",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76154-7",
+      "title": "Modeling nonlinear and interaction effects of spatiotemporal and nongenetic factors improves prediction for complex traits",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77288-4",
+      "title": "Multiple orthoflaviviruses secrete sfRNA in mosquito saliva to promote transmission by inhibiting MDA5-mediated early interferon response",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77338-x",
+      "title": "Navigating regulatory fragmentation in the convergence of synthetic biology, artificial intelligence, and automation",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77331-4",
+      "title": "Persistent chromatin alterations and gene expression reprogramming follow widespread DNA damage in glioblastoma",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77240-6",
+      "title": "Prefrontal–thalamic goal states organize spatially aligned hippocampal maps",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77269-7",
+      "title": "Programmable mesoporous carbon architectures from liquefied wood via reactive-emulsion-mediated self-assembly",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-75898-6",
+      "title": "Steric Gating Contributes to the Preferential Ubiquitin Charging of BIRC6 by UBA6 versus UBA1",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77295-5",
+      "title": "Widespread genomic islands are hotspots of genome variations and mosaicism in giant viruses",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77032-y",
+      "title": "Woven dECM yarn scaffolds enable volumetric muscle loss regeneration via immunomodulation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/d41586-026-02747-3",
+      "title": "Daily briefing: Thousand years of coral show El Niños are getting stronger",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/d41586-026-02733-9",
+      "title": "Will Meta’s deal make social media safe for kids? Researchers are dubious",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76697-9",
+      "title": "A programmable lipid-triggered allosteric site modulates LC3 LIR receptor binding activity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76994-3",
+      "title": "Cell-inspired dual-tandem catalytic nanoreactors drive targeted hearing protection",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s42256-026-01283-z",
+      "title": "Large language models as uncertainty-calibrated optimizers for experimental discovery",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2525536123",
+      "title": "PLASTID ENVELOPE ION CHANNELS (PEC1/2) link Ca <sup>2+</sup> and jasmonic acid signaling in plant cells",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2535933123",
+      "title": "Structural insights into fosfomycin efflux by a streptococcal ABC transporter",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2610728123",
+      "title": "Trophic regulation constrains ecosystem carbon accumulation under global change",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aef9186",
+      "title": "A self-triggering and fully sustainable gastric device enabling long-acting oral delivery of macromolecules",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aee6195",
+      "title": "A spatially resolved implantable microdevice for multiplexed in situ screening of engineered cellular therapies in solid tumors",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aef8959",
+      "title": "A vitamin B <sub>3</sub> –driven root bacterial metabolite primes systemic immunity in <i>Arabidopsis</i>",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aee6780",
+      "title": "Adipose-cartilage communication via EV-Mito–mtDNA signaling promotes osteoarthritis progression",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aeb8946",
+      "title": "Antibody Fc receptor CD16a mediates natural killer cell activation via mechanotransduction of piconewton forces",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.ady3618",
+      "title": "Beyond animal glue: Paleoproteomic analysis of paint binders and adhesives in ancient Egypt",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aec7590",
+      "title": "Carbon ion irradiation at a clinically used dose rewires super-enhancers to drive necroptosis and systemic immunity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aef7706",
+      "title": "Cryo-EM structures of Cdr1 reveal snapshots of substrate transport and diverse inhibitor recognition",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aec8647",
+      "title": "Dams trigger long-term river-floodplain decoupling in dynamic Andean foreland rivers",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aef3514",
+      "title": "Dose-ranging pharmacokinetics, safety, and efficacy of a 90-day intravaginal ring delivering islatravir in pigtail macaques",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aeg8495",
+      "title": "Electrocatalytic polyvinylidene fluoride defluorination with water mediation at room temperature",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aeg3509",
+      "title": "Emergent polar order from interlayer microstrain in layered perovskites",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aee6105",
+      "title": "Hydrogen bond reorganization activates water radical chemistry for CO <sub>2</sub> -to-methane conversion under geologically relevant pressures",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aeh4670",
+      "title": "IDE-mediated GLP-1 degradation as the basis for designing long-acting and CNS-stable GLP-1 receptor agonists",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aed3977",
+      "title": "Identifying heat-related diagnoses in emergency department visits among adults in Chicago: A heat-wide association study",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aef8468",
+      "title": "LATS1/2 inactivation drives a distinct venous endothelial cell response that contributes to fibrotic remodeling of the lung",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aef6109",
+      "title": "Lignin-degrading-inspired dehydrogenative photocatalysis via reductive quenching of donor-acceptor covalent organic framework",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aed4172",
+      "title": "Locomotion optimizes sensory representations through a computational principle shared by rodents and primates",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aee3092",
+      "title": "Metal-free redox active covalent organic frameworks for electrocatalytic oxygen reduction reaction",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.adr1424",
+      "title": "Narwhals document atlantification of East Greenland",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aee6185",
+      "title": "Near-term, geospatial opportunity for biomass carbon storage to address the wildfire and climate crises",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aeg9496",
+      "title": "Ninjurin-1 mediates hepatic ischemia-reperfusion injury",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aec8271",
+      "title": "Programmable protein degraders enable selective knockdown of pathogenic β-catenin subpopulations in vitro and in vivo",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aeh7999",
+      "title": "RIBOTAC-mediated degradation of hsa-microRNA-301a-3p suppresses TNBC bone metastasis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aef3043",
+      "title": "Realizing long-cycling silicon-based all-solid-state batteries with near-zero-stress variation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aec4519",
+      "title": "Sorting of lysosomal enzyme and autophagy are regulated by the GGA1-induced TGN lipid scrambling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aeh6867",
+      "title": "Structural and functional analysis of LarC, a CTP-dependent cyclometallase required for nickel-pincer nucleotide cofactor biosynthesis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aei1233",
+      "title": "Structure-function analysis of the FCRL5–IgG1 Fc complex reveals an unappreciated pathway for B cell modulation by Fc-attenuated IgG",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aef4315",
+      "title": "Surface chemistry governs sex-dependent responses to PEG and zwitterionic siRNA nanocarriers in primary macrophages",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aeg1209",
+      "title": "The structure of the native cardiac crossbridge in the rigor state",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aea7513",
+      "title": "Transglutaminase 2 regulates vimentin-dependent proteostasis during macrophage activation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aed3650",
+      "title": "Truthful visualizations for mass spectrometry imaging enable high-spatial-resolution interactive <i>m/z</i> mapping and exploration",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/sciadv.aed3922",
+      "title": "Universal bound on microwave dissipation in superconducting circuits",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/d41586-026-02662-7",
+      "title": "The Roman telescope is about to take planet-hunting to the next level",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77050-w",
+      "title": "ALKBH5-mediated microglia-neuron crosstalk inhibits sympathetic innervation and adipocyte browning in male mice",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77141-8",
+      "title": "Agrivoltaics can reduce political polarization and local opposition to solar energy on land",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77130-x",
+      "title": "An AI-powered self-driving microscope for low-cost acute leukemia detection",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76768-x",
+      "title": "Anisotropic shape-shifting robotic matter enabling versatile collective behaviors",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77230-8",
+      "title": "Automated transition state generation for mechanistic exploration in organic synthesis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-75733-y",
+      "title": "Disitamab vedotin for HER2-positive breast cancer with liver metastases: phase 3 results from the RC48-C006 phase 2/3 trial",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77114-x",
+      "title": "Dynamic neuro-immune regulation of psychiatric risk loci in human neurons",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77174-z",
+      "title": "In-silico solute transport via perivascular networks in the human intracranial space",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76970-x",
+      "title": "Long-range two-dimensional exciton sensitization of triplet-pair emission",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77238-0",
+      "title": "Psilocybin enhances sociability only in altered behavioural state and does not need an awake experience to be effective",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77202-y",
+      "title": "Quantum nonlinearity for optical neural computing",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76965-8",
+      "title": "The potential of syngas as a central mediator for a carbon-agnostic circular economy",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76242-8",
+      "title": "Whole-brain, all-optical interrogation of neuronal dynamics underlying gut and vascular interoception in zebrafish",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2601536123",
+      "title": "<i>SNHG26</i> orchestrates pro-fibrotic fibroblast maintenance via PTBP1-mediated alternative polyadenylation of <i>AKT3</i> in dermal fibrosis",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2607940123",
+      "title": "A self-resetting soft ring for autonomous, continuous leaping in unstructured environments",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2616911123",
+      "title": "Cerebellar microcircuits enable robust evidence-based decisions through cortico–cerebellar coupling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2525600123",
+      "title": "Fundamental limits incorporating logical reasoning into Shannon’s information theory",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2603982123",
+      "title": "Multilevel sex-influenced neurobiological signatures of early life adversity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2606688123",
+      "title": "RNF213-dependent lytic destruction of <i>Chlamydia</i> -containing vacuoles activates host cell death pathways",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2605150123",
+      "title": "Synthetic DNA fragments as ultra-high-resolution multitracers to quantify transport behavior of micro- and nanoplastics in plant systems",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.aeh7112",
+      "title": "A necroptotic-to-apoptotic signaling axis underlies inflammatory bowel disease",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.aef0464",
+      "title": "Correcting the logic behind the 2026 US vehicle emissions standard rollback",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.aec2171",
+      "title": "Hierarchical sensory processing in zebrafish thalamocortical-like circuits",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.ael7895",
+      "title": "In Other Journals",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.aej0194",
+      "title": "Iron-catalyzed [1+1+1] cyclopropanation by sequential coupling of an ester to two carbenes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.ael8354",
+      "title": "New chief of child health institute has MAHA ties",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.aef8874",
+      "title": "Recovering signatures of archaic hominin introgression using ancestral recombination graphs",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.aeh4856",
+      "title": "SGLT2 inhibitors activate pantothenate kinase in the human heart",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.ael7924",
+      "title": "SciLine helps journalists bring scientific evidence to midterm election news coverage",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.aej2018",
+      "title": "The worst energy policy in the world",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1126/science.aeb5274",
+      "title": "Thermal cycling–induced nitriding increases energy-storage density in titanate ferroelectric films",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1111/ajps.70086",
+      "title": "Partisan bias in a sorted party system: A problem of epistemic inequality",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1177/00936502261472023",
+      "title": "Less Effort to Believe and More Effort to Disbelieve: Examining the Interplay between News-Finds-Me and Affective Polarization in Political Fake News Susceptibility in the United States",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41586-026-10971-0",
+      "title": "A binding-to-release strategy for targeted anticancer drug delivery",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41586-026-10964-z",
+      "title": "Aberrant excitatory neuronal ERBB4 promotes Alzheimer’s disease pathology",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/d41586-026-02509-1",
+      "title": "Are pro-nuclear politics a threat to public safety?",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41586-026-10949-y",
+      "title": "Automated prototyping of genetic codes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41586-026-10932-7",
+      "title": "Insights into longevity and virus-driven adaptation from Myotis bat genomes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41586-026-10893-x",
+      "title": "Tidal tomography reveals a thermal anomaly beneath Mars’s crustal dichotomy",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76987-2",
+      "title": "A bipartite glucan synthase-remodeler module organizes branched glucan assembly in the fungal cell wall",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77164-1",
+      "title": "A conserved small RNA-generating gene cluster undergoes sequence diversification and contributes to plant immunity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77067-1",
+      "title": "A machine-assisted framework for systematic error analysis in clinical concept extraction",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77146-3",
+      "title": "A redox switch on CDC48 regulates peroxisomal function via controlling peroxisome-associated protein degradation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77019-9",
+      "title": "Atomic resolution structure of human papillomavirus bound to heparin",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77031-z",
+      "title": "Circadian temperature compensation is intrinsically linked with metabolism and redox signaling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76636-8",
+      "title": "Direct visualization of complex mechanisms in lithium tellurium batteries",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-75943-4",
+      "title": "Electronic and solvent reorganization in proton-coupled electron transfer captured by ultrafast X-rays",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76465-9",
+      "title": "Heritable transgenic schistosomes as a living platform for SARS-CoV-2 neutralizing antibody secretion",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77245-1",
+      "title": "Iontrovoltaic effect based on triboelectrically induced ion polarization at semiconductor-liquid interfaces",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76032-2",
+      "title": "Leptomeningeal fibroblasts promote glioblastoma progression by regulating cerebrospinal fluid dynamics",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-72311-0",
+      "title": "Novel surveillance design exploiting network analysis for efficient, rapid detection of emerging Clostridioides difficile strains",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76521-4",
+      "title": "Optotagging in primate cortex uncovers excitatory and inhibitory neuron specializations in form vision",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76923-4",
+      "title": "Peptides display multilayered hydration shell substructures dictated by sequence-specific surface chemistry",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76378-7",
+      "title": "Scaling multimodal materials representation learning with synthetic narratives",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76927-0",
+      "title": "State-dependent binding of the wedge domain controls inactivation of the mechanosensitive ion channel PIEZO1",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76852-2",
+      "title": "Triptolide sensitizes cancer cells to nucleoside DNA methyltransferase inhibitors through inhibition of DCTPP1-mediated cell-intrinsic resistance",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77258-w",
+      "title": "Unlocking High-Valent Chalcogen Redox with Halide-Rich Electrolytes for High-Energy Lithium Batteries",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s43588-026-01026-5",
+      "title": "Longitudinal alignments and syntheses of multimodal clinical data for personalized medicine with the PULSE framework",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41562-026-02540-2",
+      "title": "Mentalizing and heuristics as distinct cognitive strategies in human teaching",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41562-026-02562-w",
+      "title": "Public perceptions of polygenic testing and embryo selection for non-medical traits",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s42256-026-01294-w",
+      "title": "The epistemic debt of generative AI",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1080/10584609.2026.2715702",
+      "title": "Social Media Savvy? The Use and Effectiveness of Political Parties’ Issue Strategies Across Platforms in the German Federal Election Campaign 2025",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2601318123",
+      "title": "Amino acid homeostasis by CORVET/HOPS: A metabolic and stress resilience checkpoint for T cells",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2602574123",
+      "title": "Engineering antigenic breadth against SARS-CoV-2 by pairing divergent RBDs within a single mRNA immunogen",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2603685123",
+      "title": "Large-scale brain network reinstatement supports recognition memory",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2613615123",
+      "title": "Lysophospholipid–TRPV1 interactions in chemotherapy-induced neuropathy",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2603667123",
+      "title": "Nociceptive sensitization and pain perception are dissociable in humans",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2626408123",
+      "title": "Perfectibility in science and democracy: Institutions that learn",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2621443123",
+      "title": "SESN1 is a negative regulator of MAVS and dynamically expressed during RNA viral infection",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2600317123",
+      "title": "Sensory context improves language prediction in humans and LLMs",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2518287123",
+      "title": "Uncovering dynamic human brain phase coherence networks",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/d41586-026-02382-y",
+      "title": "Ancient surveying instrument found in Egypt",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77092-0",
+      "title": "Amide synthesis via molecular shuffling of carboxylic acids",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76763-2",
+      "title": "An atlas of colonization factors in the human gut microbiome reveals ecological strategies and inflammatory bowel disease signatures",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77029-7",
+      "title": "BRANCHED1 acts as a rheostat of Nuclear Factor Y-dependent epigenetic regulation in axillary bud development",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77154-3",
+      "title": "Clinical applicable skin-interfaced thermal guiding sensor for warning perioperative abnormalities in core body temperature and blood perfusion rate",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76513-4",
+      "title": "Dual-phase engineering of CFx electrode and interphase enables low-temperature Li||CFx batteries",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-75544-1",
+      "title": "Exosomal export of activated CASPASE-8 is linked to the prevention of TNF-induced cytotoxicity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76660-8",
+      "title": "Fibrin-rich environment drives catheter-associated UTIs by suppressing macrophage defenses",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77131-w",
+      "title": "Homo-metal-element mediated surface modification of sapphire for robust epitaxy of wafer-scale single-crystalline 2D semiconductors",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76377-8",
+      "title": "Leveraging long read RNA-seq to decipher neuronal regulation of alternative polyadenylation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77161-4",
+      "title": "Maternal obesity programs offspring metabolic dysfunction via small extracellular vesicle-mediated epigenetic remodeling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76990-7",
+      "title": "Molecular determinants of species-specific gamete adhesion triggering HAP2-mediated membrane fusion",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-74857-5",
+      "title": "Multi-source agent-based modeling to optimize influenza mitigation strategies in Hong Kong",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76875-9",
+      "title": "Protein entanglement misfolding influences whether proteins undergo proteasomal degradation or persist in near-native misfolded states",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76455-x",
+      "title": "Regiospecific de mayo reactions of enamino ketones",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77043-9",
+      "title": "SPOP-mediated ZMYND8 ubiquitination and phase separation exclusion drives mTOR inhibitor resistance in kidney cancer",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77185-w",
+      "title": "Scaffold hopping of furans into 3-cyanopyridines",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76816-6",
+      "title": "Slow-water strategy for fracture-resistant hydrogels",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76550-z",
+      "title": "Therapeutic modulation of the vitreoretinal fibrosis microenvironment in female mice using engineered macrophage-derived extracellular vesicles",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77126-7",
+      "title": "Twistionics in halide perovskites",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41562-026-02506-4",
+      "title": "Refining the role of behavioural and social sciences in pandemic response post-COVID-19",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2606900123",
+      "title": "<i>Ank3</i> loss in adult forebrain excitatory neurons disrupts behavior, neuronal activity, membrane proteome, and myelination",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2534594123",
+      "title": "<i>Plasmodium</i> thiamine pyrophosphokinase is essential for sporozoite formation and activation of an antiplasmodial thiamine analogue",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2608386123",
+      "title": "A gut symbiotic filamentous fungus reprograms host metabolism and the microbiota to confer radioprotection",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2616888123",
+      "title": "Barcoded mutant library enables high-throughput functional genomics in a filamentous fungus",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2606671123",
+      "title": "Cannabinoid tolerance relies on CB <sub>1</sub> receptor ubiquitination by NEDD4L",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2532908123",
+      "title": "Interactive representations of power and status signals in learning social hierarchies",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2614164123",
+      "title": "Loss of neuronal population organization links pathology to behavior in a model of Alzheimer’s disease",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2615937123",
+      "title": "Mechanisms behind facilitation–competition transition along rainfall gradients",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2609226123",
+      "title": "Multidomain interaction governs the filamentous assembly of the dominant-negative DNMT3A R882H mutant",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2618972123",
+      "title": "On the origin of the ionic strength control of the motility of kinesin-14",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2615838123",
+      "title": "Quantitative nanoscale imaging shows peptide–MHC I complexes are monomeric and spatially regulated in human dendritic cells",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2615107123",
+      "title": "Reconstruction of an extinct soundscape reveals ultrasonic communication in the Jurassic",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2601297123",
+      "title": "SET7-mediated methylation of IRF3 at lysine 98 attenuates antiviral innate immunity",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2623365123",
+      "title": "ST6GAL1-mediated sialyl linkage switching drives cancer-promoting α2,6-sialo-protrusions radiating from anti-inflammatory TAMs",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2612761123",
+      "title": "WNK-dependent phosphorylation of gephyrin tunes GABA <sub>A</sub> receptors at inhibitory synapses and modulates anxiety behavior",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1177/00936502261478972",
+      "title": "From Exposure to Creation: Cultivating Narrative Ownership to Reduce Stigma",
+      "keep": true,
+      "reason": "Dedicated communication or political science journal"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76091-5",
+      "title": "A transmembrane protein confers the Yr26/Yr24/YrCH42/YrG22-mediated stripe rust resistance in wheat",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77095-x",
+      "title": "Additive strongly-coordinated solvation structure towards high-voltage 600 Wh/kg-class lithium metal pouch cell",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76738-3",
+      "title": "Cohesin acts as a transcriptional gatekeeper by restraining pause–release to promote processive elongation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76946-x",
+      "title": "Hydrogen bond mediated oxidation enables sustained oxygen evolution at industrial current densities",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77074-2",
+      "title": "Larger habitat islands maintain more persistent mutualistic assemblages",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77100-3",
+      "title": "Liquefaction electrochemistry evolving liquid-gas conversion to liquid-liquid modes of zinc||chlorine batteries",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77028-8",
+      "title": "Load-dependent RGD-context sensing via αV-class integrins reprograms cell adhesion and mechanics",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77005-1",
+      "title": "Maternal Huluwa regulates postfertilization microtubule array organization for asymmetrical transport of dorsal determinants in zebrafish",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76598-x",
+      "title": "Preserved topography, lateralization, selectivity, and functional connectivity of the language network in older brains",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-76824-6",
+      "title": "Supporting upper limb movements with a soft robot after a brachial plexus injury",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41467-026-77038-6",
+      "title": "iEVIP: a dual-inspired intelligent platform for smart response extracellular vesicle isolation and single-vesicle profiling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41562-026-02558-6",
+      "title": "Large language models do not have emotions",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41562-026-02553-x",
+      "title": "Quantifying the prevalence and impact of overreaching causal claims in social science",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1038/s41562-026-02550-0",
+      "title": "The shrinking landscape of linguistic diversity in the age of large language models",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2602594123",
+      "title": "Convergent roles of GDF-15 in mechanotransduction, vascular disorganization, and immune suppression in melanoma",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2619192123",
+      "title": "HLA class I escape drives the evolution of SARS-CoV-2 in human populations",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2529490123",
+      "title": "Hidden global diversity and sampling gaps in Orthoptera insects revealed through distribution data",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2611585123",
+      "title": "Histone modification cross talk between a host and pathogen",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2532225123",
+      "title": "SIRT2 deacylase modulators control B cell metabolic reprogramming in EBV infection and mitogenic activation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2605731123",
+      "title": "Soil management practices shape the abundance, diversity, and spread of antimicrobial resistance",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2614339123",
+      "title": "Structural basis of GSDME pore formation and its regulation by S-palmitoylation",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2532792123",
+      "title": "The rod bipolar cell pathway contributes to surround responses in OFF retinal ganglion cells",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "previous_week_catch_up",
+      "doi": "10.1073/pnas.2605760123",
+      "title": "The role of chloride ions in serotonin transport",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1126/sciadv.aeg8849",
+      "title": "BeetleBot: An integrated bioinspired soft robot for multimodal sensing and adaptive interaction",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1126/sciadv.aee4389",
+      "title": "Large language models enhance annotation of enzymes in metagenomes",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1038/s41467-026-76404-8",
+      "title": "CoxFormer enables spatial omics inference with multimodal generative modeling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1038/s41467-026-76837-1",
+      "title": "Drug screen and machine learning predict neuroprotective agents in a preclinical human model of childhood dementia",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1038/s41467-026-76834-4",
+      "title": "PubMind: literature-based genetic variant extraction and functional annotation using large language models",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1126/science.adz4351",
+      "title": "Autonomous biomedical research with an artificial intelligence agent",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1038/s41586-026-10687-1",
+      "title": "Safety and security of large language models in healthcare",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1073/pnas.2531697123",
+      "title": "Group size effects and collective misalignment in LLM multi-agent systems",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1038/s41467-026-76390-x",
+      "title": "Generative AI for efficient statistical computation of fluids",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1038/s42256-026-01276-y",
+      "title": "Towards principled knowledge editing methods for large language model reasoning",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1126/sciadv.adz4263",
+      "title": "Multimodal profiling of pro-inflammatory protease activity identifies caspase-1 as a target for lung cancer interception",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1126/sciadv.aee2305",
+      "title": "Prediction of mild cognitive impairment progression using time-sensitive multimodal biomarkers",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1126/sciadv.aed7511",
+      "title": "Predictive processing as a scalable computational principle for embodied multitask intelligence",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1126/sciadv.aeg6231",
+      "title": "Terminator-dependent facilitated recycling of RNA polymerase III provides gene-specific transcriptional activation in vivo",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1038/s41467-026-76620-2",
+      "title": "A unified mechano-ionic skin for resolving native electromechanical coupling",
+      "keep": false,
+      "reason": "Outside COMAP social-science scope or non-research news/noise"
+    },
+    {
+      "section": "late_additions",
+      "doi": "10.1073/pnas.2618638123",
+      "title": "Scientific production in the era of large language models: Outcome-triggered treatment timing and spurious event-study dynamics",
+      "keep": true,
+      "reason": "COMAP-relevant social science, governance, or research methodology"
+    }
+  ]
+}

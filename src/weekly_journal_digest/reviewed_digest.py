@@ -110,6 +110,7 @@ class ReviewedDigest:
     collection_snapshot: list[str]
     highlights: list[Highlight]
     full_curated_digest_markdown: str
+    special_issue_updates: str = ""
 
 
 def parse_reviewed_digest(markdown_body: str) -> ReviewedDigest | None:
@@ -133,7 +134,7 @@ def parse_reviewed_digest(markdown_body: str) -> ReviewedDigest | None:
     ]
     highlights = _parse_highlights(sections["Highlights"])
     full_curated_digest_markdown = "\n".join(sections["Full Curated Digest"]).strip()
-    if not summary or not highlights or not full_curated_digest_markdown:
+    if not summary or not full_curated_digest_markdown:
         return None
     return ReviewedDigest(
         subject=subject,
@@ -141,6 +142,7 @@ def parse_reviewed_digest(markdown_body: str) -> ReviewedDigest | None:
         collection_snapshot=collection_snapshot,
         highlights=highlights,
         full_curated_digest_markdown=full_curated_digest_markdown,
+        special_issue_updates="\n".join(sections.get("Special Issue Updates", [])).strip(),
     )
 
 
@@ -151,6 +153,7 @@ def render_summary_plain_text(
     lines = [
         f"Dear {_salutation_name(recipient_name)},",
         "",
+        *(["Special Issue Updates", "", reviewed.special_issue_updates, ""] if reviewed.special_issue_updates else []),
         reviewed.summary.strip(),
         "",
         "Highlights",
@@ -214,7 +217,7 @@ def render_summary_html(
         else "The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents."
     )
     return (
-        "<html><body style=\"margin:0; padding:0; background:#eef2f8;"
+        "<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"></head><body style=\"margin:0; padding:0; background:#eef2f8;"
         " font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;\">"
         "<div style=\"max-width:760px; margin:0 auto; padding:24px 16px;\">"
         "<div style=\"background:#ffffff; border-radius:18px; overflow:hidden;"
@@ -225,6 +228,7 @@ def render_summary_html(
         "</div>"
         "<div style=\"padding:24px 28px 26px 28px;\">"
         f"<p style=\"margin:0 0 16px 0; font-size:15px; line-height:1.55; color:#1f2937;\">Dear {escape(_salutation_name(recipient_name))},</p>"
+        f"{_special_issue_html(reviewed.special_issue_updates)}"
         "<h2 style=\"margin:0 0 14px 0; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#1f6feb;\">Summary</h2>"
         f"{summary_html}"
         "<h2 style=\"margin:26px 0 14px 0; font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#1f6feb;\">Highlights</h2>"
@@ -278,6 +282,12 @@ def render_curated_digest_pdf(reviewed: ReviewedDigest) -> bytes:
     structured = _structure_full_digest(reviewed.full_curated_digest_markdown)
     story: list = []
     story.extend(_pdf_cover_block(reviewed, styles))
+    if reviewed.special_issue_updates:
+        story.append(_section_band("Special Issue Updates", styles))
+        for paragraph in _special_issue_paragraphs(reviewed.special_issue_updates, pdf=True):
+            flowable = Paragraph(paragraph, styles["body"])
+            story.append(KeepTogether([flowable]) if paragraph.startswith("<b>") else flowable)
+        story.append(Spacer(1, 0.16 * inch))
     story.extend(_pdf_summary_block(reviewed, styles))
     story.extend(_pdf_highlights_block(reviewed, styles))
     if structured:
@@ -317,6 +327,7 @@ def render_full_digest_html(reviewed: ReviewedDigest) -> str:
         "<aside class=\"toc\">"
         "<div class=\"toc__title\">In this digest</div>"
         "<nav class=\"toc__list\">"
+        f"{'<a class=\"toc__group-link\" href=\"#special-issues\">Special Issue Updates</a>' if reviewed.special_issue_updates else ''}"
         "<a class=\"toc__group-link\" href=\"#summary\">Summary</a>"
         "<a class=\"toc__group-link\" href=\"#highlights\">Highlights</a>"
         + (
@@ -329,6 +340,7 @@ def render_full_digest_html(reviewed: ReviewedDigest) -> str:
         + "</nav>"
         "</aside>"
         "<main class=\"main\">"
+        f"{_special_issue_html(reviewed.special_issue_updates)}"
         "<section id=\"summary\" class=\"section section--summary\">"
         "<h2 class=\"section__title\">Summary</h2>"
         f"<div class=\"summary-body\">{summary_html}</div>"
@@ -356,6 +368,34 @@ def render_full_digest_html(reviewed: ReviewedDigest) -> str:
         "</footer>"
         "</body></html>"
     )
+
+
+def _special_issue_paragraphs(text: str, *, pdf: bool = False) -> list[str]:
+    paragraphs = []
+    for block in text.split("\n\n"):
+        lines = []
+        for line in block.splitlines():
+            stripped = line.strip()
+            if stripped.startswith("Link: https://"):
+                url = stripped.removeprefix("Link: ")
+                lines.append(f'<a href="{escape(url, quote=True)}">Official call / submission details</a>')
+            elif stripped.startswith("- **") and stripped.endswith("**"):
+                title = stripped[4:-2]
+                lines.append(f"<b>{escape(_to_pdf_text(title) if pdf else title)}</b>")
+            else:
+                lines.append(escape(_to_pdf_text(stripped) if pdf else stripped))
+        if lines:
+            paragraphs.append("<br/>".join(lines))
+    return paragraphs
+
+
+def _special_issue_html(text: str) -> str:
+    if not text:
+        return ""
+    return ('<section id="special-issues" class="section" style="margin-bottom:28px">'
+            '<h2 style="color:#1f6feb;font-size:18px">Special Issue Updates</h2>'
+            + "".join(f'<p style="font-size:14px;line-height:1.6;margin:0 0 16px">{p}</p>' for p in _special_issue_paragraphs(text))
+            + '</section>')
 
 
 def _salutation_name(recipient_name: str | None) -> str:
@@ -1233,8 +1273,9 @@ def _pdf_summary_block(reviewed: ReviewedDigest, styles: dict[str, ParagraphStyl
 
 
 def _pdf_highlights_block(reviewed: ReviewedDigest, styles: dict[str, ParagraphStyle]) -> list:
-    story: list = [_section_band("Highlights", styles)]
-    for highlight in reviewed.highlights:
+    story: list = []
+    heading = _section_band("Highlights", styles)
+    for index, highlight in enumerate(reviewed.highlights):
         inner: list = [
             Paragraph(escape(_to_pdf_text(highlight.title)), styles["highlight_title"]),
         ]
@@ -1284,8 +1325,13 @@ def _pdf_highlights_block(reviewed: ReviewedDigest, styles: dict[str, ParagraphS
                 ]
             ),
         )
-        story.append(KeepTogether(card))
+        if index == 0:
+            story.append(KeepTogether([heading, card]))
+        else:
+            story.append(KeepTogether(card))
         story.append(Spacer(1, 0.08 * inch))
+    if not reviewed.highlights:
+        story.append(heading)
     story.append(Spacer(1, 0.08 * inch))
     return story
 
@@ -1313,7 +1359,7 @@ def _pdf_snapshot_block(items: list[str], styles: dict[str, ParagraphStyle]) -> 
     note_items: list[str] = []
     for entry in items:
         label, _, value = entry.partition(":")
-        if value:
+        if value.strip().isdigit():
             stat_cells.append((label.strip(), value.strip()))
         else:
             note_items.append(entry.strip())
@@ -1350,11 +1396,12 @@ def _pdf_snapshot_block(items: list[str], styles: dict[str, ParagraphStyle]) -> 
                 ]
             ),
         )
-        story.append(KeepTogether(snapshot_table))
+        story.append(snapshot_table)
     for note in note_items:
         story.append(Spacer(1, 0.05 * inch))
         story.append(Paragraph(escape(_to_pdf_text(note)), styles["snapshot_note"]))
-    story.append(Spacer(1, 0.16 * inch))
+    # The next block begins with a PageBreak. A trailing spacer can overflow
+    # onto an otherwise empty page, which that break would then skip.
     return story
 
 
@@ -1368,14 +1415,14 @@ def _pdf_full_digest_block(
         if section_index > 0:
             story.append(Spacer(1, 0.18 * inch))
         story.append(_digest_section_header(section.name, styles))
-        story.append(Spacer(1, 0.1 * inch))
-        for journal in section.journals:
+        for journal_index, journal in enumerate(section.journals):
             story.append(_journal_header(journal, styles))
-            story.append(Spacer(1, 0.05 * inch))
-            for article in journal.articles:
+            for article_index, article in enumerate(journal.articles):
                 story.extend(_article_card(article, styles))
+                if article_index < len(journal.articles) - 1:
+                    story.append(Spacer(1, 0.06 * inch))
+            if journal_index < len(section.journals) - 1:
                 story.append(Spacer(1, 0.06 * inch))
-            story.append(Spacer(1, 0.06 * inch))
     return story
 
 
@@ -1395,6 +1442,7 @@ def _section_band(label: str, styles: dict[str, ParagraphStyle]) -> Table:
         ),
     )
     band.spaceAfter = 0.08 * inch
+    band.keepWithNext = True
     return band
 
 
@@ -1405,7 +1453,7 @@ def _digest_section_header(name: str, styles: dict[str, ParagraphStyle]) -> Tabl
         parent=styles["digest_section_heading"],
         textColor=colors.HexColor(accent_color),
     )
-    return Table(
+    header = Table(
         [[Paragraph(escape(_to_pdf_text(name)), style)]],
         colWidths=[None],
         style=TableStyle(
@@ -1419,11 +1467,14 @@ def _digest_section_header(name: str, styles: dict[str, ParagraphStyle]) -> Tabl
             ]
         ),
     )
+    header.keepWithNext = True
+    header.spaceAfter = 0.1 * inch
+    return header
 
 
 def _journal_header(journal: FullDigestJournal, styles: dict[str, ParagraphStyle]) -> Table:
     anchored = f"<a name='{journal.anchor}'/>{escape(_to_pdf_text(journal.name))}"
-    return Table(
+    header = Table(
         [[Paragraph(anchored, styles["journal_heading"])]],
         colWidths=[None],
         style=TableStyle(
@@ -1437,13 +1488,18 @@ def _journal_header(journal: FullDigestJournal, styles: dict[str, ParagraphStyle
             ]
         ),
     )
+    header.keepWithNext = True
+    header.spaceAfter = 0.05 * inch
+    return header
 
 
 def _article_card(article: FullDigestArticle, styles: dict[str, ParagraphStyle]) -> list:
     story: list = [_article_rule()]
+    title = Paragraph(escape(_to_pdf_text(article.title)), styles["article_title"])
+    title.keepWithNext = True
     story.extend(
         [
-        Paragraph(escape(_to_pdf_text(article.title)), styles["article_title"]),
+        title,
         ]
     )
     meta_parts: list[str] = []
@@ -1470,12 +1526,12 @@ def _article_card(article: FullDigestArticle, styles: dict[str, ParagraphStyle])
             )
         )
     if article.abstract:
-        story.append(
-            Paragraph(
-                f"<b>Abstract.</b> {escape(_to_pdf_text(article.abstract))}",
-                styles["article_abstract"],
-            )
+        abstract = Paragraph(
+            f"<b>Abstract.</b> {escape(_to_pdf_text(article.abstract))}",
+            styles["article_abstract"],
         )
+        abstract.keepWithNext = bool(article.link)
+        story.append(abstract)
     if article.link:
         story.append(
             Paragraph(
@@ -1502,6 +1558,7 @@ def _article_rule() -> Flowable:
         ),
     )
     rule.spaceAfter = 0.08 * inch
+    rule.keepWithNext = True
     return rule
 
 

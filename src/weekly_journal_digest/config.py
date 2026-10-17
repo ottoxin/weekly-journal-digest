@@ -31,4 +31,5 @@ def load_config(path: str | Path) -> AppConfig:
         recipients_file=raw.get("recipients_file", "config/recipients.json"),
         social_science_keywords=list(raw.get("social_science_keywords", [])),
         sources=sources,
+        special_issue_repo=raw.get("special_issue_repo"),
     )

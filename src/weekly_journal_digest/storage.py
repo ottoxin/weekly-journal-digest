@@ -54,6 +54,14 @@ class StateStore:
                     sent_at TEXT NOT NULL,
                     PRIMARY KEY (digest_key, recipient)
                 );
+                CREATE TABLE IF NOT EXISTS special_issue_snapshots (
+                    digest_key TEXT PRIMARY KEY,
+                    payload_json TEXT NOT NULL
+                );
+                CREATE TABLE IF NOT EXISTS announcements (
+                    name TEXT PRIMARY KEY,
+                    digest_key TEXT NOT NULL
+                );
                 """
             )
             existing_columns = {
@@ -188,6 +196,7 @@ class StateStore:
         body: str,
         sent_at: str,
         message_id: str | None,
+        special_issues: dict | None = None,
     ) -> None:
         with self._connect() as connection:
             connection.execute(
@@ -205,6 +214,22 @@ class StateStore:
                     sent_at,
                 ),
             )
+            if special_issues:
+                connection.execute("INSERT OR REPLACE INTO special_issue_snapshots VALUES (?, ?)",
+                                   (digest_key, json.dumps(special_issues["calls"])))
+                if special_issues.get("announcement_key"):
+                    connection.execute("INSERT OR IGNORE INTO announcements VALUES (?, ?)",
+                                       (special_issues["announcement_key"], digest_key))
+
+    def announcement_pending(self, name: str, digest_key: str) -> bool:
+        with self._connect() as connection:
+            row = connection.execute("SELECT digest_key FROM announcements WHERE name = ?", (name,)).fetchone()
+        return row is None or row["digest_key"] == digest_key
+
+    def last_special_issue_snapshot(self, before_digest: str) -> list[dict] | None:
+        with self._connect() as connection:
+            row = connection.execute("SELECT payload_json FROM special_issue_snapshots WHERE digest_key < ? ORDER BY digest_key DESC LIMIT 1", (before_digest,)).fetchone()
+        return json.loads(row["payload_json"]) if row else None
 
     def _row_to_article(self, row: sqlite3.Row) -> ArticleRecord:
         return ArticleRecord(
