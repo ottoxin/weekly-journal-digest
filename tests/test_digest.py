@@ -11,6 +11,19 @@ from weekly_journal_digest.storage import StateStore
 
 
 class DigestTests(unittest.TestCase):
+    def test_saturday_defaults_include_delivery_day(self) -> None:
+        windows = compute_weekly_windows(date(2026, 10, 31))
+        self.assertEqual(windows.new_this_week_start, "2026-10-26")
+        self.assertEqual(windows.new_this_week_end, "2026-10-31")
+        self.assertEqual(windows.previous_week_start, "2026-10-19")
+        self.assertEqual(windows.previous_week_end, "2026-10-25")
+
+    def test_late_additions_start_at_local_midnight_across_dst(self) -> None:
+        for saturday, expected in [(date(2026, 10, 31), "2026-10-26T05:00:00+00:00"),
+                                   (date(2026, 11, 7), "2026-11-02T06:00:00+00:00")]:
+            windows = compute_weekly_windows(saturday, timezone_name="America/Chicago")
+            self.assertEqual(windows.late_additions_first_seen_since, expected)
+
     def test_compute_weekly_windows_uses_previous_complete_week(self) -> None:
         windows = compute_weekly_windows(date(2026, 3, 30))
         self.assertEqual(windows.new_this_week_start, "2026-03-23")

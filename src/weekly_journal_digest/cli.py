@@ -8,6 +8,7 @@ import sys
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from .adapters import build_adapter_registry
 from .config import load_config
@@ -140,7 +141,7 @@ def cmd_collect(args: argparse.Namespace) -> int:
     enricher = build_metadata_enricher(
         semantic_scholar_api_key=os.environ.get("WJD_SEMANTIC_SCHOLAR_API_KEY")
     )
-    end_date = parse_date(args.end_date) if args.end_date else date.today()
+    end_date = parse_date(args.end_date) if args.end_date else utc_now().astimezone(ZoneInfo(config.timezone)).date()
     lookback_days = args.lookback_days if args.lookback_days is not None else config.default_lookback_days
     if lookback_days < 1:
         raise ValueError("--lookback-days must be positive.")
@@ -214,7 +215,7 @@ def cmd_build_weekly_digest(args: argparse.Namespace) -> int:
     config = load_config(args.config)
     state_dir = resolve_state_dir(args.config, args.state_dir or config.state_dir)
     store = StateStore(state_dir / "digest.db")
-    digest_date = parse_date(args.digest_date) if args.digest_date else date.today()
+    digest_date = parse_date(args.digest_date) if args.digest_date else utc_now().astimezone(ZoneInfo(config.timezone)).date()
     output_path = Path(args.output) if args.output else REPO_ROOT / "out" / f"candidate_digest-{digest_date.isoformat()}.json"
     week_start = parse_date(args.week_start) if args.week_start else None
     week_end = parse_date(args.week_end) if args.week_end else None
@@ -296,7 +297,7 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
     repo_root = repo_root_for_config(args.config)
     state_dir = resolve_state_dir(args.config, args.state_dir or config.state_dir)
     store = StateStore(state_dir / "digest.db")
-    digest_date = parse_date(args.digest_date) if args.digest_date else date.today()
+    digest_date = parse_date(args.digest_date) if args.digest_date else utc_now().astimezone(ZoneInfo(config.timezone)).date()
     digest_key = digest_date.isoformat()
     if args.test:
         digest_key = f"test:{digest_key}"
@@ -305,7 +306,15 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
         raise ValueError(
             "At least one recipient is required via --recipient, WJD_GMAIL_RECIPIENT, or the configured recipients file."
         )
+    recipients_to_send = [
+        recipient for recipient in recipients
+        if args.force or not store.has_sent_digest(digest_key, recipient.email)
+    ]
+    if not recipients_to_send:
+        print(f"Digest {digest_key} was already sent to all configured recipients. Use --force to resend.")
+        return 0
     reviewed_path = Path(args.reviewed_digest)
+    artifact_path = reviewed_path.with_name(f"{reviewed_path.stem}.test.md") if args.test else reviewed_path
     markdown_body = reviewed_path.read_text(encoding="utf-8")
     special_issues = delivery_metadata(reviewed_path, markdown_body, digest_date.isoformat())
     if special_issues and special_issues.get("announcement_key") and not store.announcement_pending(special_issues["announcement_key"], digest_date.isoformat()):
@@ -322,9 +331,9 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
     attachments: list[EmailAttachment] = []
     if reviewed is not None:
         pdf_bytes = render_curated_digest_pdf(reviewed)
-        attachment_path = reviewed_path.with_suffix(".pdf")
+        attachment_path = artifact_path.with_suffix(".pdf")
         attachment_path.write_bytes(pdf_bytes)
-        full_html_path = reviewed_path.with_suffix(".html")
+        full_html_path = artifact_path.with_suffix(".html")
         full_html_body = render_full_digest_html(reviewed)
         full_html_path.write_text(full_html_body, encoding="utf-8")
         attachments.append(
@@ -343,17 +352,9 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
                 )
             )
     if special_issues and special_issues.get("coverage_text"):
-        coverage_path = reviewed_path.with_suffix(".coverage.txt")
+        coverage_path = artifact_path.with_suffix(".coverage.txt")
         coverage_path.write_text(special_issues["coverage_text"], encoding="utf-8")
         attachments.append(EmailAttachment(filename=coverage_path.name, content=special_issues["coverage_text"].encode("utf-8"), mime_type="text/plain"))
-    recipients_to_send = [
-        recipient
-        for recipient in recipients
-        if args.force or not store.has_sent_digest(digest_key, recipient.email)
-    ]
-    if not recipients_to_send:
-        print(f"Digest {digest_key} was already sent to all configured recipients. Use --force to resend.")
-        return 0
     sent_any = False
     try:
         sender = GmailSender.from_env()

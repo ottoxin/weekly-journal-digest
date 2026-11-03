@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 
@@ -77,6 +78,46 @@ sources:
                 with self.assertRaises(ValueError):
                     main(self.args + extra)
             sender.assert_not_called()
+
+    def test_duplicate_send_preserves_artifacts_without_rendering(self):
+        store = StateStore(self.repo / ".state/digest.db")
+        store.record_sent_digest("2026-09-07", "otto@example.com", "original", "original", "2026-09-07", "message")
+        paths = [self.reviewed.with_suffix(ext) for ext in [".pdf", ".html", ".coverage.txt"]]
+        for path in paths:
+            path.write_bytes(b"original delivered artifact")
+        # A duplicate is a no-op even when the draft has subsequently changed.
+        self.reviewed.write_text("changed draft")
+        with patch("weekly_journal_digest.cli.render_curated_digest_pdf") as render, patch("weekly_journal_digest.cli.GmailSender.from_env") as sender:
+            self.assertEqual(main(self.args + ["--recipient", "otto@example.com"]), 0)
+            render.assert_not_called()
+            sender.assert_not_called()
+        for path in paths:
+            self.assertEqual(path.read_bytes(), b"original delivered artifact")
+
+    def test_test_send_uses_separate_artifact_paths(self):
+        for extension in [".pdf", ".html"]:
+            self.reviewed.with_suffix(extension).write_bytes(b"production artifact")
+        sender = MagicMock()
+        sender.send_digest_package.return_value = "test-message"
+        with patch("weekly_journal_digest.cli.GmailSender.from_env", return_value=sender):
+            self.assertEqual(main(self.args + ["--test", "--recipient", "otto@example.com"]), 0)
+        for extension in [".pdf", ".html"]:
+            self.assertEqual(self.reviewed.with_suffix(extension).read_bytes(), b"production artifact")
+            self.assertTrue((self.repo / f"reviewed.test{extension}").exists())
+
+    def test_default_dates_use_configured_timezone(self):
+        # Sunday UTC is still the Saturday edition in Chicago.
+        now = datetime(2026, 11, 1, 2, tzinfo=timezone.utc)
+        output = self.repo / "candidate.json"
+        adapter = MagicMock()
+        adapter.collect.return_value = []
+        with patch("weekly_journal_digest.cli.utc_now", return_value=now), patch("weekly_journal_digest.cli.build_adapter_registry", return_value={"crossref": adapter}):
+            self.assertEqual(main(["collect", "--config", str(self.config)]), 0)
+            self.assertEqual(main(["build-weekly-digest", "--config", str(self.config), "--output", str(output)]), 0)
+        self.assertEqual(adapter.collect.call_args.args[2].isoformat(), "2026-10-31")
+        candidate = json.loads(output.read_text())
+        self.assertEqual(candidate["digest_key"], "2026-10-31")
+        self.assertEqual(candidate["windows"]["late_additions_first_seen_since"], "2026-10-26T05:00:00+00:00")
 
     def test_malformed_structure_never_sends_legacy_email(self):
         self.reviewed.write_text(EMPTY.replace("## Highlights", "## Highlight"))
