@@ -74,7 +74,7 @@ def coverage_announcement(repo: Path, article_sources: list) -> str:
         "Starting this week, special-issue calls and approaching deadlines will lead the digest. "
         f"We monitor {count} journals through publisher feeds and add individually verified calls from other journals. "
         f"Our regular {len(article_sources)}-journal article digest continues as before. "
-        "Coverage varies by journal; the attached coverage note lists the journals and sources."
+        "Coverage varies by journal; the archived coverage note lists the journals and sources."
     )
 
 

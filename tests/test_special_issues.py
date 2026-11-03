@@ -102,9 +102,10 @@ class SpecialIssueTests(unittest.TestCase):
         with patch('weekly_journal_digest.cli.GmailSender.from_env', return_value=sender):
             self.assertEqual(main(args + ['--test']), 0)
             attachments = sender.send_digest_package.call_args.args[4]
-            self.assertEqual(attachments[-1].mime_type, 'text/plain')
-            self.assertTrue(attachments[-1].filename.endswith('.coverage.txt'))
-            self.assertIn(b'Test Journal', attachments[-1].content)
+            self.assertEqual(len(attachments), 1)
+            self.assertEqual(attachments[0].mime_type, 'text/html')
+            coverage = self.reviewed.with_name(self.reviewed.stem + '.test.coverage.txt')
+            self.assertIn('Test Journal', coverage.read_text())
             self.assertTrue(self.store.announcement_pending(NOTICE_KEY, '2026-09-14'))
             self.assertIsNone(self.store.last_special_issue_snapshot('2026-09-14'))
             sender.send_digest_package.side_effect = RuntimeError('failed before send')

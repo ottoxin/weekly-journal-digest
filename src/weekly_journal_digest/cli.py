@@ -338,23 +338,14 @@ def cmd_send_digest(args: argparse.Namespace) -> int:
         full_html_path.write_text(full_html_body, encoding="utf-8")
         attachments.append(
             EmailAttachment(
-                filename=attachment_path.name,
-                content=pdf_bytes,
-                mime_type="application/pdf",
+                filename=full_html_path.name,
+                content=full_html_body.encode("utf-8"),
+                mime_type="text/html",
             )
         )
-        if args.full_html:
-            attachments.append(
-                EmailAttachment(
-                    filename=full_html_path.name,
-                    content=full_html_body.encode("utf-8"),
-                    mime_type="text/html",
-                )
-            )
     if special_issues and special_issues.get("coverage_text"):
         coverage_path = artifact_path.with_suffix(".coverage.txt")
         coverage_path.write_text(special_issues["coverage_text"], encoding="utf-8")
-        attachments.append(EmailAttachment(filename=coverage_path.name, content=special_issues["coverage_text"].encode("utf-8"), mime_type="text/plain"))
     sent_any = False
     try:
         sender = GmailSender.from_env()

@@ -165,7 +165,7 @@ sources: []
             self.assertEqual(len(sent), 1)
             self.assertEqual(sent[0][1], "Test digest")
 
-    def test_send_digest_uses_html_summary_and_pdf_attachment_when_structured(self) -> None:
+    def test_send_digest_attaches_html_and_archives_pdf_when_structured(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             repo = Path(tmpdir)
             config_path = repo / "sources.yaml"
@@ -247,7 +247,7 @@ Short summary.
             self.assertEqual(len(sent), 1)
             self.assertEqual(sent[0][1], "Test digest")
             self.assertIn("Dear Reader,", sent[0][2])
-            self.assertIn("The full curated digest is attached as a PDF.", sent[0][2])
+            self.assertIn("The full curated digest is attached as a browser-ready HTML file.", sent[0][2])
             self.assertIn("COMAP Journal Bot", sent[0][2])
             self.assertIn("Delivery preferences can be changed in the local recipient configuration.", sent[0][2])
             self.assertIn("Dear Reader,", sent[0][3])
@@ -257,7 +257,7 @@ Short summary.
             self.assertNotIn("Full Curated Digest", sent[0][3])
             self.assertIn("Open article", sent[0][3])
             self.assertEqual(len(sent[0][4]), 1)
-            self.assertEqual(sent[0][4][0].filename, "reviewed.pdf")
+            self.assertEqual(sent[0][4][0].filename, "reviewed.html")
             self.assertTrue((repo / "reviewed.pdf").exists())
 
     def test_send_digest_can_include_full_curated_digest_in_html_body(self) -> None:
@@ -339,14 +339,13 @@ Short summary.
             self.assertIn("Full Curated Digest", sent[0][3])
             self.assertIn("Collection Snapshot", sent[0][3])
             self.assertIn("Example abstract for the HTML body.", sent[0][3])
-            self.assertEqual(len(sent[0][4]), 2)
-            self.assertEqual(sent[0][4][0].filename, "reviewed.pdf")
-            self.assertEqual(sent[0][4][0].mime_type, "application/pdf")
-            self.assertEqual(sent[0][4][1].filename, "reviewed.html")
-            self.assertEqual(sent[0][4][1].mime_type, "text/html")
+            self.assertEqual(len(sent[0][4]), 1)
+            self.assertEqual(sent[0][4][0].filename, "reviewed.html")
+            self.assertEqual(sent[0][4][0].mime_type, "text/html")
+            self.assertTrue((repo / "reviewed.pdf").read_bytes().startswith(b"%PDF"))
             self.assertIn(
                 "Example abstract for the HTML body.",
-                sent[0][4][1].content.decode("utf-8"),
+                sent[0][4][0].content.decode("utf-8"),
             )
             full_html_path = repo / "reviewed.html"
             self.assertTrue(full_html_path.exists())
@@ -592,6 +591,7 @@ Short summary.
             self.assertEqual(status, "")
             committed_files = self._run_git(repo, "show", "--name-only", "--format=", "HEAD").stdout
             self.assertIn("logs/2026-03-30/reviewed_digest-2026-03-30.structured.html", committed_files)
+            self.assertIn("logs/2026-03-30/reviewed_digest-2026-03-30.structured.pdf", committed_files)
 
     def test_send_digest_skips_auto_commit_when_repo_has_unrelated_changes(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:

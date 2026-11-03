@@ -1,6 +1,6 @@
 ---
 name: write-weekly-journal-digest
-description: Operate the weekly COMAP Journal Bot workflow from collection through reviewed output. Use when Codex needs to determine the target week, run the weekly-journal-digest repo if needed, review the candidate set, keep all communication and political science journal articles, filter and rank general-science articles for COMAP lab interests, and produce the structured reviewed digest used for the HTML email body and attached PDF.
+description: Operate the weekly COMAP Journal Bot workflow from collection through reviewed output. Use when Codex needs to determine the target week, run the weekly-journal-digest repo if needed, review the candidate set, keep all communication and political science journal articles, filter and rank general-science articles for COMAP lab interests, and produce the structured reviewed digest used for the HTML email body, HTML attachment, and Git-archived PDF.
 ---
 
 # Write Weekly Journal Digest
@@ -11,8 +11,8 @@ The send pipeline now uses this file in three related ways:
 
 - The full HTML email body begins with `Special Issue Updates`, followed by `Summary`, `Highlights`, optional `Collection Snapshot`, and `Full Curated Digest` when `--full-html` is used.
 - The no-send preview is generated as a sibling `.preview.html` file with `render-digest --full-html`.
-- The browser-openable delivery artifact is generated as a sibling `.html` file with `send-digest`, and it is attached to the outgoing email when `--full-html` is used.
-- The attached PDF begins with `Special Issue Updates`, followed by `Summary`, `Highlights`, optional `Collection Snapshot`, and `Full Curated Digest`.
+- The browser-openable delivery artifact is generated as a sibling `.html` file with `send-digest`, and it is the only attachment to every structured outgoing email; `--full-html` controls the email body.
+- The Git-archived PDF begins with `Special Issue Updates`, followed by `Summary`, `Highlights`, optional `Collection Snapshot`, and `Full Curated Digest`.
 - The PDF now generates a journal table of contents automatically from the journal headings in `Full Curated Digest`.
 
 Use the bot name `COMAP Journal Bot` in the final polish and framing.
@@ -53,12 +53,12 @@ Use the companion `communication-journal-site` public special-issue export for t
    Integrate special issues before validation and rendering. Refresh the companion repository’s special-issue collector and public export using its CLI from `/Users/hao/NU/communication-journal-site`: `PYTHONPATH=src python3 -m communication_journal_site.cli collect-special-issues`, then `PYTHONPATH=src python3 -m communication_journal_site.cli export-public-data --output-dir data/public --flat`. This is a data refresh, not site deployment or article collection. Use that repository’s source package and persistent state. Check collection errors and export health; never equate partial coverage with no calls. Do not renew manual verification dates without checking the official source.
    Expand discovery each week with targeted web searches for official calls from Oxford/SAGE journals missing stable feeds and COMAP-relevant Nature Portfolio collections. Prioritize the current article journals, then adjacent communication/social-science titles. Open official pages and check the public-entry deadline; search snippets, publication dates, revision deadlines, and old calls are not sufficient. Record verified open calls in the companion `config/special_issue_sources.yaml` using dated manual records (review again within 10 days), then rerun its collection/export. For cross-journal calls preserve all participating journal names; use CFP-only source records without expanding article collection. Refresh existing manual records only after opening their official pages. This supplements publisher feeds; do not count it as new automated coverage.
    Back in this repo, run `weekly-journal-digest prepare-special-issues --digest-date YYYY-MM-DD --reviewed-digest logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md`. The companion location is configured as `special_issue_repo` in `config/sources.yaml`. This prepends `Special Issue Updates` and writes a sibling `.special-issues.json` source snapshot. Preserve both files and do not manually alter the generated block.
-   The initial edition lists current opportunities; later editions show newly found/changed calls and deadlines within 14 days, using the last delivered snapshot. Expired/unverified calls are omitted. The next production edition includes a brief one-time announcement automatically; detailed journal lists and limitations belong in the generated `.coverage.txt` attachment, not the email introduction. Keep each call compact: title, journal/type/status, deadline, and official link. Test sends and previews do not consume it. After the first production edition succeeds, subsequent editions omit the announcement; retries of the same edition retain it. Do not hard-code an announcement date or manually remove delivery state.
+   The initial edition lists current opportunities; later editions show newly found/changed calls and deadlines within 14 days, using the last delivered snapshot. Expired/unverified calls are omitted. The next production edition includes a brief one-time announcement automatically; detailed journal lists and limitations belong in the generated Git-archived `.coverage.txt` file, not the email introduction. Keep each call compact: title, journal/type/status, deadline, and official link. Test sends and previews do not consume it. After the first production edition succeeds, subsequent editions omit the announcement; retries of the same edition retain it. Do not hard-code an announcement date or manually remove delivery state.
    Write the structured markdown to `logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md`.
    Keep the candidate digest in the same log folder.
    Run `weekly-journal-digest render-digest --reviewed-digest logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md --full-html` to create the no-send full HTML and PDF preview files.
    Run `weekly-journal-digest send-digest --digest-date YYYY-MM-DD --reviewed-digest logs/YYYY-MM-DD/reviewed_digest-YYYY-MM-DD.structured.md --full-html` when sending is requested.
-   Let `send-digest` generate the sibling delivery PDF and browser-openable sibling HTML in that same folder; with `--full-html`, both files are attached to the outgoing email.
+   Let `send-digest` generate the sibling delivery PDF and browser-openable sibling HTML in that same folder; only the HTML file is attached to the outgoing email, regardless of `--full-html`. Preserve the PDF and coverage note for Git publishing; do not attach them.
    When `send-digest` runs against a reviewed digest stored under `logs/YYYY-MM-DD/`, it now auto-commits and pushes the candidate JSON, reviewed markdown, sibling PDF, sibling HTML, and special-issue source snapshot if the repo has no unrelated changes. If the repo is dirty beyond those log artifacts, it skips the git step safely.
 9. Write the email summary, highlights, and final polish in the voice of `COMAP Journal Bot`.
 10. Send to the configured recipient list by default.
@@ -89,7 +89,7 @@ Subject: Weekly journal digest for YYYY-MM-DD to YYYY-MM-DD
 - Previous Week Catch-Up candidates: N
 - Late Additions candidates: N
 - Curated digest below: N new, N catch-up, N late additions
-- Note: The full collected set above is before manual relevance filtering, while the attached PDF reflects the curated digest.
+- Note: The full collected set above is before manual relevance filtering, while the attached HTML reflects the curated digest.
 
 ## Highlights
 
@@ -139,7 +139,7 @@ Subject: Weekly journal digest for YYYY-MM-DD to YYYY-MM-DD
 
 - `Special Issue Updates` appears first; `Summary` and `Highlights` follow in the email body and should remain concise and readable on a phone screen.
 - The `Collection Snapshot` section is optional. If you include it, it appears in the PDF, sibling full HTML file, and `--full-html` email body.
-- `Full Curated Digest` feeds the attached PDF, sibling full HTML file, and `--full-html` email body. Put the complete curated paper list there with abstracts for `New This Week`.
+- `Full Curated Digest` feeds the Git-archived PDF, attached full HTML file, and `--full-html` email body. Put the complete curated paper list there with abstracts for `New This Week`.
 - Write the `Summary` in a more vivid, human, academically polished voice. It should sound like a thoughtful weekly brief, not a system notification.
 - The `Summary` may mix short paragraphs and bullet points. Bullet points are encouraged when they make the week easier to scan quickly.
 - For every kept article in `Full Curated Digest`, include abstract, authors, affiliations when available, DOI, and link.

@@ -170,7 +170,7 @@ def render_summary_plain_text(
         if highlight.link:
             lines.append(f"  Link: {highlight.link}")
         lines.append("")
-    lines.append("The full curated digest is attached as a PDF. A browser-ready HTML version is also generated.")
+    lines.append("The full curated digest is attached as a browser-ready HTML file.")
     lines.extend(["", BOT_NAME, "", DELIVERY_PREFERENCES_TEXT])
     return "\n".join(lines).strip() + "\n"
 
@@ -212,9 +212,9 @@ def render_summary_html(
         )
     full_digest_html = _render_email_full_digest_html(reviewed) if include_full_digest else ""
     digest_callout = (
-        "The full curated digest is included below. The attached PDF is also available for archive and printing."
+        "The full curated digest is included below and attached as a browser-ready HTML file."
         if include_full_digest
-        else "The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents."
+        else "The attached HTML file includes the full curated digest and abstract-level details."
     )
     return (
         "<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"></head><body style=\"margin:0; padding:0; background:#eef2f8;"

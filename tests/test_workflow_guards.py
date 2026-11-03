@@ -66,7 +66,7 @@ sources:
             publish.assert_not_called()
         sender.send_digest_package.assert_called_once()
         self.assertTrue(sender.send_digest_package.call_args.args[1].startswith("[TEST]"))
-        self.assertEqual(len(sender.send_digest_package.call_args.args[4]), 2)
+        self.assertEqual(len(sender.send_digest_package.call_args.args[4]), 1)
         self.assertTrue(store.has_sent_digest("test:2026-09-07", "otto@example.com"))
         with store._connect() as connection:
             row = connection.execute("SELECT message_id FROM sent_digests WHERE digest_key = '2026-09-07'").fetchone()

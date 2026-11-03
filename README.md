@@ -46,7 +46,7 @@ flowchart TD
 
     K --> D3[send-digest]
     D3 --> L[Render email body<br/>plain text + HTML summary]
-    D3 --> M[Render full digest<br/>PDF attachment + HTML file]
+    D3 --> M[Render full digest<br/>PDF archive + HTML attachment]
     L --> N[Gmail API<br/>send email]
     M --> N
     N --> O[Recipients]
@@ -142,7 +142,7 @@ The operational flow is:
 5. Refresh the companion special-issue export and run `prepare-special-issues` (see below), then run `validate-digest --candidate-digest CANDIDATE.json --reviewed-digest REVIEWED.md`.
 6. Run `render-digest --full-html` to generate no-send preview artifacts: plain text, full HTML, and PDF.
 7. Inspect the `.preview.html` and `.preview.pdf` files before delivery.
-8. Run `send-digest --full-html` to send the HTML digest body and attach the full curated PDF plus the sibling full HTML file.
+8. Run `send-digest --full-html` to send the HTML digest body and attach only the sibling full HTML file; the PDF and coverage note are generated for Git archiving.
 
 The reviewed markdown should contain these major sections:
 
@@ -231,6 +231,8 @@ weekly-journal-digest send-digest \
 
 If the reviewed markdown starts with `Subject: ...`, that subject line is used automatically.
 
+Every structured email attaches only the full HTML digest. The PDF is still generated and included in Git log publishing, along with any coverage note.
+
 Use `--full-html` when the HTML preview or outgoing email should include the collection snapshot and full curated digest directly in the message body. Without it, the HTML body stays compact and contains only the summary and highlights.
 
 ## Example Weekly Run
@@ -276,7 +278,7 @@ The companion review skill is vendored in this repo at:
 
 - `skills/write-weekly-journal-digest`
 
-Its job is narrow: determine the target week, run the repo when needed, keep all communication and political science journal articles, filter and rank the general-science candidates for the configured priorities, write an academic `Summary`, choose a limited set of in-email highlights, and produce the full curated digest used for the attached PDF.
+Its job is narrow: determine the target week, run the repo when needed, keep all communication and political science journal articles, filter and rank the general-science candidates for the configured priorities, write an academic `Summary`, choose a limited set of in-email highlights, and produce the full curated digest used for the HTML attachment and Git-archived PDF.
 
 A sufficient Codex automation prompt is:
 
@@ -329,7 +331,7 @@ This adds Special Issue Updates before Summary in plain text, both HTML outputs,
 
 The first edition presents the current inventory; later editions show new or changed calls and deadlines within fourteen days. Expired and unverified calls are excluded. The import uses the companion's CFP export, not its broader article list, so the regular 17-journal article scope remains unchanged.
 
-A short one-time introduction announces the addition. Detailed article/CFP journal lists, manual sources, and gaps are attached separately as `.coverage.txt`. Weekly official-page searches supplement feeds with verified, dated CFP-only records, including relevant Nature Portfolio collections. It stays pending until a successful production send and remains available on retries of that edition. Test sends do not consume the introduction or change the comparison baseline. Delivery receipts and CFP baseline updates are recorded in the same database transaction. Previews do not send mail.
+A short one-time introduction announces the addition. Detailed article/CFP journal lists, manual sources, and gaps are archived separately in Git as `.coverage.txt`. Weekly official-page searches supplement feeds with verified, dated CFP-only records, including relevant Nature Portfolio collections. It stays pending until a successful production send and remains available on retries of that edition. Test sends do not consume the introduction or change the comparison baseline. Delivery receipts and CFP baseline updates are recorded in the same database transaction. Previews do not send mail.
 
 ## Weekly archive website
 

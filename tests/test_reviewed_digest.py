@@ -18,7 +18,7 @@ SAMPLE_REVIEWED_DIGEST = """Subject: Weekly journal digest for 2026-03-23 to 202
 This week brought a focused set of papers worth your attention.
 
 - Political communication and AI methods are the strongest themes.
-- The attached PDF is organized by journal for quick navigation.
+- The attached HTML digest is organized by journal for quick navigation.
 
 ## Collection Snapshot
 
@@ -88,7 +88,7 @@ class ReviewedDigestTests(unittest.TestCase):
         plain_text = render_summary_plain_text(reviewed, "Haohang Xin")
         html = render_summary_html(reviewed, "Haohang Xin")
         self.assertIn("Dear Haohang Xin,", plain_text)
-        self.assertIn("The full curated digest is attached as a PDF.", plain_text)
+        self.assertIn("The full curated digest is attached as a browser-ready HTML file.", plain_text)
         self.assertIn("COMAP Journal Bot", plain_text)
         self.assertTrue(
             plain_text.rstrip().endswith(
@@ -102,7 +102,7 @@ class ReviewedDigestTests(unittest.TestCase):
         self.assertIn("Dear Haohang Xin,", html)
         self.assertIn("COMAP Journal Bot</div>", html)
         self.assertIn("Delivery preferences can be changed in the local recipient configuration.", html)
-        self.assertIn("The attached PDF includes the full curated digest, abstract-level details, and a journal table of contents.", html)
+        self.assertIn("The attached HTML file includes the full curated digest and abstract-level details.", html)
         self.assertIn("<ul", html)
         self.assertIn("Open article", html)
 
@@ -114,7 +114,7 @@ class ReviewedDigestTests(unittest.TestCase):
         self.assertIn("Full Curated Digest", html)
         self.assertIn("Late discovery in institutions", html)
         self.assertIn("Example late addition abstract.", html)
-        self.assertIn("The full curated digest is included below.", html)
+        self.assertIn("The full curated digest is included below and attached as a browser-ready HTML file.", html)
 
     def test_render_curated_digest_pdf_returns_pdf_bytes(self) -> None:
         reviewed = parse_reviewed_digest(SAMPLE_REVIEWED_DIGEST)
